@@ -1,0 +1,225 @@
+# Translation of Clicky WordPress plugin in Indonesian
+# This file is distributed under the same license as the Clicky WordPress plugin package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2012-06-28 16:22:37+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Clicky WordPress plugin\n"
+
+#: clicky.php:37
+msgid "Clicky is almost ready. "
+msgstr "Clicky hampir siap."
+
+#: clicky.php:39
+msgid "You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work."
+msgstr "Agar dapat bekerja, Anda harus %1$s memasukkan ID Clicky Site, Site Key dan Admin Site Key%2$s."
+
+#: clicky.php:48
+msgid "Clicky needs a bit more info. "
+msgstr "Clicky membutuhkan informasi lebih."
+
+#: clicky.php:50
+msgid "You must %1$s enter your Clicky Database server%2$s for this plugin to be able to track comments."
+msgstr "Anda harus %1$s memasukkan server%2$s Clicky Database ke plugin ini agar dapat melacak komentar."
+
+#: clicky.php:71 clicky.php:79
+msgid "Twitter"
+msgstr "Twitter"
+
+#: clicky.php:73
+msgid "The Clicky.me short URL for this post is"
+msgstr "URL pendek Clicky.me untuk posting ini"
+
+#: clicky.php:75
+msgid "Tweet this post"
+msgstr "Tweet post ini"
+
+#: clicky.php:81
+msgid "This post is not published yet, a short URL will be created for it once the post is published. Do you want it to be tweeted automatically too?"
+msgstr "Postingan ini belum dipublikasikan, URL pendek akan dibuat setelah dipublikasikan. Apakah Anda ingin ini di tweet secara otomatis juga?"
+
+#: clicky.php:83
+msgid "Tweet post on publish"
+msgstr "Posting Tweet di publikasikan"
+
+#: clicky.php:88
+msgid "Goal Tracking"
+msgstr "Tujuan Pelacakan"
+
+#: clicky.php:90
+msgid "Clicky can track Goals for you too, %1$sread the documentation here%2$s. To be able to track a goal on this post, you need to specify the goal ID here. Optionally, you can also provide the goal revenue."
+msgstr "Clicky dapat melacak Tujuan untuk Anda juga,%1$sbaca dokumentasi disini%2$s. Untuk dapat melacak tujuan pada posting ini, Anda perlu menentukan ID tujuan disini. Opsional, Anda juga dapat memberikan pendapatan tujuan."
+
+#: clicky.php:93
+msgid "Goal ID"
+msgstr "ID Tujuan"
+
+#: clicky.php:94
+msgid "Goal Revenue"
+msgstr "Pendapatan Tujuan"
+
+#: clicky.php:134
+msgid "Stats"
+msgstr "Statistik"
+
+#: clicky.php:149
+msgid "You cannot edit the Clicky settings."
+msgstr "Anda tidak dapat mengedit pengaturan Clicky."
+
+#: clicky.php:168
+msgid "Clicky settings have been updated."
+msgstr "Pengaturan Clicky telah diperbarui."
+
+#: clicky.php:181
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+#: clicky.php:189
+msgid "Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information."
+msgstr "Masuk ke %1$suser Halaman Utama anda di Clicky%2$s dan klik &quot;Preferences&quot; di bawah nama domain, Anda akan menemukan ID Site, Site Key, Admin Site Key dan Database Server dibawah informasi Situs."
+
+#: clicky.php:194
+msgid "Site ID"
+msgstr "ID Site"
+
+#: clicky.php:201
+msgid "Site Key"
+msgstr "Site Key"
+
+#: clicky.php:208
+msgid "Admin Site Key"
+msgstr "Admin Site Key"
+
+#: clicky.php:215
+msgid "Database Server"
+msgstr "Database Server"
+
+#: clicky.php:221
+msgid "Clicky Settings"
+msgstr "Pengaturan Clicky"
+
+#: clicky.php:223
+msgid "This plugin allows you to automatically create short URLs through the %1$sClicky.me service%2$s"
+msgstr "Plugin ini mengijinkan Anda untuk secara otomatis membuat URL singkat melalui  %1$sClicky.me service%2$s"
+
+#: clicky.php:223
+msgid "and tweet your post immediately when you publish it. To do that, this plugin will need your Twitter username and pass."
+msgstr "dan tweet posting Anda segera ketika Anda mempublikasikannya. Untuk melakukannya, plugin ini membutuhkan username dan pasword Twitter Anda."
+
+#: clicky.php:228
+msgid "Ignore Admin users"
+msgstr "Abaikan Admin pengguna"
+
+#: clicky.php:229
+msgid "If you are using a caching plugin, such as WP-Supercache, please ensure that you have it configured to NOT use the cache for logged in users. Otherwise, admin users <em>will still</em> be tracked."
+msgstr "Jika Anda menggunakan plugin caching, seperti WP-Supercache, pastikan bahwa Anda telah mengkonfigurasi untuk TIDAK menggunakan cache untuk login pengguna. Jika tidak, admin pengguna  <em>masih bisa</em> dilacak."
+
+#: clicky.php:235
+msgid "Track names of commenters"
+msgstr "Melacak nama komentator"
+
+#: clicky.php:240
+msgid "Advanced Settings"
+msgstr "Pengaturan Lanjutan"
+
+#: clicky.php:245
+msgid "Allow Clicky.me integration"
+msgstr "Mengijinkan integrasi Clicky.me"
+
+#: clicky.php:252
+msgid "Auto Tweet"
+msgstr "Auto Tweet"
+
+#: clicky.php:253
+msgid "No need to check the box on each post, by checking this box, each post get's tweeted automatically."
+msgstr "Tidak perlu mencentang kotak pada setiap posting, dengan mencentang kotak ini, setiap posting di tweet secara otomatis."
+
+#: clicky.php:259
+msgid "Twitter username"
+msgstr "Username Twitter"
+
+#: clicky.php:266
+msgid "Twitter password"
+msgstr "Password Twitter"
+
+#: clicky.php:273
+msgid "Prefix for Tweets"
+msgstr "Awalan untuk Tweets"
+
+#: clicky.php:274
+msgid "This text will be put in front of Tweets that are published when a blog post is published"
+msgstr "Teks ini akan diletakkan di depan Tweets yang dipublikasikan ketika postingan blog ini dipublikasikan."
+
+#: clicky.php:278
+msgid "Clicky.me &amp; Twitter Integration"
+msgstr "Integrasi Clicky.me &amp; Twitter"
+
+#: clicky.php:283
+msgid "Update Clicky Settings"
+msgstr "Perbarui Pengaturan Clicky"
+
+#: clicky.php:392
+msgid "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators."
+msgstr "Pelacakan Clicky tidak ditampilkan karena Anda adalah administrator dan Anda telah mengkonfigurasi Clicky untuk mengabaikan administrator."
+
+#: clicky.php:513
+msgid "Posted a comment"
+msgstr "Memposting komentar"
+
+#: yst_plugin_tools.php:64
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: yst_plugin_tools.php:138
+msgid "Why not do any or all of the following:"
+msgstr "Mengapa tidak melakukan salah satu atau semua hal berikut:"
+
+#: yst_plugin_tools.php:140
+msgid "Link to it so other folks can find out about it."
+msgstr "Tautkan sehingga orang lain dapat mencari tahu."
+
+#: yst_plugin_tools.php:141
+msgid "Give it a good rating on WordPress.org."
+msgstr "Berikan rating yang baik di Wordpress.org"
+
+#: yst_plugin_tools.php:142
+msgid "Donate a token of your appreciation."
+msgstr "Donasi tanda penghargaan Anda."
+
+#: yst_plugin_tools.php:144
+msgid "Like this plugin?"
+msgstr "Suka plugin ini?"
+
+#: yst_plugin_tools.php:151
+msgid "If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the"
+msgstr "Jika Anda memiliki masalah dengan plugin ini atau punya ide bagus untuk perbaikan atau fitur baru, silakan menyampaikannya di"
+
+#: yst_plugin_tools.php:151
+msgid "Support forums"
+msgstr "Support forum"
+
+#: yst_plugin_tools.php:152
+msgid "Need support?"
+msgstr "Butuh dukungan?"
+
+#: yst_plugin_tools.php:168
+msgid "Subscribe"
+msgstr "Berlangganan"
+
+#: yst_plugin_tools.php:169 yst_plugin_tools.php:171
+msgid "Latest news from Clicky"
+msgstr "Kabar terbaru dari Clicky"
+
+#: yst_plugin_tools.php:171
+msgid "Nothing to say..."
+msgstr "Tidak berkata apapun..."
+
+msgid "Clicky for WordPress"
+msgstr "Clicky untuk WordPress"
+
+msgid "Integrates Clicky on your blog!"
+msgstr "Mengintegrasikan Clicky di blog Anda!"

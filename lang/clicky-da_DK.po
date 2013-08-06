@@ -1,0 +1,225 @@
+# Translation of Clicky WordPress plugin in Danish
+# This file is distributed under the same license as the Clicky WordPress plugin package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2012-06-28 16:28:30+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Clicky WordPress plugin\n"
+
+#: clicky.php:37
+msgid "Clicky is almost ready. "
+msgstr "Clicky er næsten klar."
+
+#: clicky.php:39
+msgid "You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work."
+msgstr "Du skal %1$s angive dit Clicky Site ID, Site Key og Admin Site Key%2$s for at få det til at virke."
+
+#: clicky.php:48
+msgid "Clicky needs a bit more info. "
+msgstr "Clicky behøver lidt mere information."
+
+#: clicky.php:50
+msgid "You must %1$s enter your Clicky Database server%2$s for this plugin to be able to track comments."
+msgstr "Du skal %1$s angive din Clicky database server%2$s for at dette plugin kan tracke kommentarer."
+
+#: clicky.php:71 clicky.php:79
+msgid "Twitter"
+msgstr "Twitter"
+
+#: clicky.php:73
+msgid "The Clicky.me short URL for this post is"
+msgstr "Clicky.me kort-URL'en for dette indlæg er"
+
+#: clicky.php:75
+msgid "Tweet this post"
+msgstr "Tweet dette indlæg"
+
+#: clicky.php:81
+msgid "This post is not published yet, a short URL will be created for it once the post is published. Do you want it to be tweeted automatically too?"
+msgstr "Dette indlæg er ikke publiseret endnu. Der bliver oprettet en kort-URL så snart indlægget bliver publiseret. Vil du også Tweete indlægget automatisk?"
+
+#: clicky.php:83
+msgid "Tweet post on publish"
+msgstr "Tweet dette indlæg ved publisering"
+
+#: clicky.php:88
+msgid "Goal Tracking"
+msgstr "Målsporing"
+
+#: clicky.php:90
+msgid "Clicky can track Goals for you too, %1$sread the documentation here%2$s. To be able to track a goal on this post, you need to specify the goal ID here. Optionally, you can also provide the goal revenue."
+msgstr "Clicky kan også tracke dine mål for dig - %1$læs vejledningen her%2$. For at kunne tracke et mål på dette indlæg, skal du indtaste et mål-ID. Du kan også indtaste indtjeningen for målet. "
+
+#: clicky.php:93
+msgid "Goal ID"
+msgstr "Mål-ID"
+
+#: clicky.php:94
+msgid "Goal Revenue"
+msgstr "Mål indtjening"
+
+#: clicky.php:134
+msgid "Stats"
+msgstr "Statistik"
+
+#: clicky.php:149
+msgid "You cannot edit the Clicky settings."
+msgstr "Du kan ikke rette Clicky indstillingerne."
+
+#: clicky.php:168
+msgid "Clicky settings have been updated."
+msgstr "Indstillinger for Clicky er opdateret."
+
+#: clicky.php:181
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: clicky.php:189
+msgid "Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information."
+msgstr "Åbn din %1$sbruger homepage på Clicky%2$s og klik &quot;Indstillinger&quot; under dit domænenavn. Dit Site ID, din Site Key, Admin Site Key og Database server finder du under Site information."
+
+#: clicky.php:194
+msgid "Site ID"
+msgstr "Site ID"
+
+#: clicky.php:201
+msgid "Site Key"
+msgstr "Site Key"
+
+#: clicky.php:208
+msgid "Admin Site Key"
+msgstr "Admin Site Key"
+
+#: clicky.php:215
+msgid "Database Server"
+msgstr "Database server"
+
+#: clicky.php:221
+msgid "Clicky Settings"
+msgstr "Clicky indstillinger"
+
+#: clicky.php:223
+msgid "This plugin allows you to automatically create short URLs through the %1$sClicky.me service%2$s"
+msgstr "Dette plugin giver dig mulighed for at lave automatiske kort-URL'er via %1$sClicky.me servicen%2$s"
+
+#: clicky.php:223
+msgid "and tweet your post immediately when you publish it. To do that, this plugin will need your Twitter username and pass."
+msgstr "og Tweet dit indlæg samtidig med at du publiserer det. For at gøre det, har plugin'et brug for dit Twitter brugernavn og password."
+
+#: clicky.php:228
+msgid "Ignore Admin users"
+msgstr "Ignorér administratorer "
+
+#: clicky.php:229
+msgid "If you are using a caching plugin, such as WP-Supercache, please ensure that you have it configured to NOT use the cache for logged in users. Otherwise, admin users <em>will still</em> be tracked."
+msgstr "Hvis du bruger et cache plugin som f.eks. WP-Supercache, så sørg for at det er konfigureret til IKKE at cache brugere, der er logget ind. Ellers vil administratorer <em>stadig</em> blive tracket."
+
+#: clicky.php:235
+msgid "Track names of commenters"
+msgstr "Gem navne på kommentatorer"
+
+#: clicky.php:240
+msgid "Advanced Settings"
+msgstr "Avancerede indstillinger"
+
+#: clicky.php:245
+msgid "Allow Clicky.me integration"
+msgstr "Tillad Clicky.me integration"
+
+#: clicky.php:252
+msgid "Auto Tweet"
+msgstr "Auto Tweet"
+
+#: clicky.php:253
+msgid "No need to check the box on each post, by checking this box, each post get's tweeted automatically."
+msgstr "Du behøver ikke at markere en checkbox for hvert indlæg. Ved at markere denne checkbox, bliver hvert indlæg Tweeted automatisk."
+
+#: clicky.php:259
+msgid "Twitter username"
+msgstr "Twitter brugernavn"
+
+#: clicky.php:266
+msgid "Twitter password"
+msgstr "Twitter password"
+
+#: clicky.php:273
+msgid "Prefix for Tweets"
+msgstr "Prefix for Tweets"
+
+#: clicky.php:274
+msgid "This text will be put in front of Tweets that are published when a blog post is published"
+msgstr "Denne tekst vil blive tilføjet foran de Tweets, der bliver sendt når et blogindlæg publiseres "
+
+#: clicky.php:278
+msgid "Clicky.me &amp; Twitter Integration"
+msgstr "Clicky.me & Twitter integration"
+
+#: clicky.php:283
+msgid "Update Clicky Settings"
+msgstr "Opdatér Clicky indstillinger"
+
+#: clicky.php:392
+msgid "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators."
+msgstr "Clicky tracking bliver ikke vist, fordi du er adminstrator og du har konfigureret Clicky til at ignorere administratorer."
+
+#: clicky.php:513
+msgid "Posted a comment"
+msgstr "Indsendte en kommentar"
+
+#: yst_plugin_tools.php:64
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: yst_plugin_tools.php:138
+msgid "Why not do any or all of the following:"
+msgstr "Hvorfor ikke gøre en eller flere af følgende ting:"
+
+#: yst_plugin_tools.php:140
+msgid "Link to it so other folks can find out about it."
+msgstr "Link til det, så andre også kan finde det."
+
+#: yst_plugin_tools.php:141
+msgid "Give it a good rating on WordPress.org."
+msgstr "Giv det en god anmeldelse på WordPress.org"
+
+#: yst_plugin_tools.php:142
+msgid "Donate a token of your appreciation."
+msgstr "Giv en erkendtlighed"
+
+#: yst_plugin_tools.php:144
+msgid "Like this plugin?"
+msgstr "Synes du godt om dette plugin?"
+
+#: yst_plugin_tools.php:151
+msgid "If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the"
+msgstr "Hvis du har problemer med dette plugin eller gode idéer til forbedringer eller nye funktionaliteter, så skriv om dem på"
+
+#: yst_plugin_tools.php:151
+msgid "Support forums"
+msgstr "Supportfora"
+
+#: yst_plugin_tools.php:152
+msgid "Need support?"
+msgstr "Brug for hjælp?"
+
+#: yst_plugin_tools.php:168
+msgid "Subscribe"
+msgstr "Abonnér"
+
+#: yst_plugin_tools.php:169 yst_plugin_tools.php:171
+msgid "Latest news from Clicky"
+msgstr "Nyheder fra Clicky"
+
+#: yst_plugin_tools.php:171
+msgid "Nothing to say..."
+msgstr "Intet at sige..."
+
+msgid "Clicky for WordPress"
+msgstr "Clicky til WordPress"
+
+msgid "Integrates Clicky on your blog!"
+msgstr "Integrerer Clicky på din blog!"

@@ -1,0 +1,225 @@
+# Translation of Clicky WordPress plugin in Chinese
+# This file is distributed under the same license as the Clicky WordPress plugin package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2012-08-24 07:59:32+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Clicky WordPress plugin\n"
+
+#: clicky.php:37
+msgid "Clicky is almost ready. "
+msgstr "Clicky快准备好了。"
+
+#: clicky.php:39
+msgid "You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work."
+msgstr "你必须输入你的Clicky ID %1$s ，密钥，和管理密码使他工作%2$s。"
+
+#: clicky.php:48
+msgid "Clicky needs a bit more info. "
+msgstr "Clicky需要更多信息"
+
+#: clicky.php:50
+msgid "You must %1$s enter your Clicky Database server%2$s for this plugin to be able to track comments."
+msgstr "你必须在 %1$s 输入您Clicky数据库服务器%2$s 这个插件才能够跟踪意见。"
+
+#: clicky.php:71 clicky.php:79
+msgid "Twitter"
+msgstr "推特"
+
+#: clicky.php:73
+msgid "The Clicky.me short URL for this post is"
+msgstr "这篇文章的短网址Clicky.me"
+
+#: clicky.php:75
+msgid "Tweet this post"
+msgstr "Tweet 这篇文章"
+
+#: clicky.php:81
+msgid "This post is not published yet, a short URL will be created for it once the post is published. Do you want it to be tweeted automatically too?"
+msgstr "文章还未公布，正在为他创建短网址，是否也需要自动 tweet"
+
+#: clicky.php:83
+msgid "Tweet post on publish"
+msgstr "Tweet 文章发布"
+
+#: clicky.php:88
+msgid "Goal Tracking"
+msgstr "目标跟踪"
+
+#: clicky.php:90
+msgid "Clicky can track Goals for you too, %1$sread the documentation here%2$s. To be able to track a goal on this post, you need to specify the goal ID here. Optionally, you can also provide the goal revenue."
+msgstr "clicky也可以跟踪你的目标，%1$sread the documentation here%2$s.为了能够跟踪一个目标，本篇文章，你需要在这里指定的目标ID。另外，您还可以提供的目标收入。"
+
+#: clicky.php:93
+msgid "Goal ID"
+msgstr "Goal ID"
+
+#: clicky.php:94
+msgid "Goal Revenue"
+msgstr "Goal收益"
+
+#: clicky.php:134
+msgid "Stats"
+msgstr "统计"
+
+#: clicky.php:149
+msgid "You cannot edit the Clicky settings."
+msgstr " 你不能编辑Clicky设置。"
+
+#: clicky.php:168
+msgid "Clicky settings have been updated."
+msgstr "Clicky设置已经更新"
+
+#: clicky.php:181
+msgid "Configuration"
+msgstr "配置"
+
+#: clicky.php:189
+msgid "Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information."
+msgstr "去你的 %1$ suser网页Clicky %2$，单击“首选项”下的域名，你会发现在网站信息站点ID，网站的关键，管理网站的关键和数据库服务器。"
+
+#: clicky.php:194
+msgid "Site ID"
+msgstr "网站ID"
+
+#: clicky.php:201
+msgid "Site Key"
+msgstr "网站密钥"
+
+#: clicky.php:208
+msgid "Admin Site Key"
+msgstr "网站管理员密钥"
+
+#: clicky.php:215
+msgid "Database Server"
+msgstr "数据库服务器"
+
+#: clicky.php:221
+msgid "Clicky Settings"
+msgstr "Clicky 设置"
+
+#: clicky.php:223
+msgid "This plugin allows you to automatically create short URLs through the %1$sClicky.me service%2$s"
+msgstr "这个插件允许你通过％1短网址自动创建 %1$sClicky.me服务%2$s"
+
+#: clicky.php:223
+msgid "and tweet your post immediately when you publish it. To do that, this plugin will need your Twitter username and pass."
+msgstr "且tweet 您的文章时，立即发布。这样做，这个插件将需要你的推特用户名和密码。"
+
+#: clicky.php:228
+msgid "Ignore Admin users"
+msgstr "忽视管理员用户"
+
+#: clicky.php:229
+msgid "If you are using a caching plugin, such as WP-Supercache, please ensure that you have it configured to NOT use the cache for logged in users. Otherwise, admin users <em>will still</em> be tracked."
+msgstr "如果您正在使用一个缓存插件，如WP-Supercache，请确保您已经配置登录用户不使用缓存。否则，管理员用户的<em>仍将</em>的被跟踪。"
+
+#: clicky.php:235
+msgid "Track names of commenters"
+msgstr "跟踪评论名称"
+
+#: clicky.php:240
+msgid "Advanced Settings"
+msgstr "高级设置"
+
+#: clicky.php:245
+msgid "Allow Clicky.me integration"
+msgstr "允许clicky.me整合"
+
+#: clicky.php:252
+msgid "Auto Tweet"
+msgstr "自动Tweet"
+
+#: clicky.php:253
+msgid "No need to check the box on each post, by checking this box, each post get's tweeted automatically."
+msgstr "无需勾选此方块，每个帖子上的检查框，每个帖子自动获得 tweet。"
+
+#: clicky.php:259
+msgid "Twitter username"
+msgstr "推特账号"
+
+#: clicky.php:266
+msgid "Twitter password"
+msgstr "推特密码"
+
+#: clicky.php:273
+msgid "Prefix for Tweets"
+msgstr "Tweets前缀"
+
+#: clicky.php:274
+msgid "This text will be put in front of Tweets that are published when a blog post is published"
+msgstr "这个文本将在前面的tweets发表博客文章时发表"
+
+#: clicky.php:278
+msgid "Clicky.me &amp; Twitter Integration"
+msgstr "Clicky.me &amp; Twitter 整合"
+
+#: clicky.php:283
+msgid "Update Clicky Settings"
+msgstr "更新Clicky设置"
+
+#: clicky.php:392
+msgid "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators."
+msgstr "clicky跟踪没有显示，因为你是一个管理员，你已经配置Clicky忽略管理员。"
+
+#: clicky.php:513
+msgid "Posted a comment"
+msgstr "发布文章"
+
+#: yst_plugin_tools.php:64
+msgid "Settings"
+msgstr "设置"
+
+#: yst_plugin_tools.php:138
+msgid "Why not do any or all of the following:"
+msgstr "为什么不看看下面的做法呢："
+
+#: yst_plugin_tools.php:140
+msgid "Link to it so other folks can find out about it."
+msgstr "链接到它，其他人可以找到它。"
+
+#: yst_plugin_tools.php:141
+msgid "Give it a good rating on WordPress.org."
+msgstr "在WordPress.org上给个好评分"
+
+#: yst_plugin_tools.php:142
+msgid "Donate a token of your appreciation."
+msgstr "捐赠您的鉴赏令牌。"
+
+#: yst_plugin_tools.php:144
+msgid "Like this plugin?"
+msgstr "像这个插件"
+
+#: yst_plugin_tools.php:151
+msgid "If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the"
+msgstr "如果你有任何问题，这个插件或好想法改进或新功能，请和他们谈谈。"
+
+#: yst_plugin_tools.php:151
+msgid "Support forums"
+msgstr "支持论坛"
+
+#: yst_plugin_tools.php:152
+msgid "Need support?"
+msgstr "需要帮助吗？"
+
+#: yst_plugin_tools.php:168
+msgid "Subscribe"
+msgstr "订阅"
+
+#: yst_plugin_tools.php:169 yst_plugin_tools.php:171
+msgid "Latest news from Clicky"
+msgstr "Clicky最新动态"
+
+#: yst_plugin_tools.php:171
+msgid "Nothing to say..."
+msgstr "没有什么说的..."
+
+msgid "Clicky for WordPress"
+msgstr "Clicky for WordPress"
+
+msgid "Integrates Clicky on your blog!"
+msgstr "在你的博客上集成Clicky"

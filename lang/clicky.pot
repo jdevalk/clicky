@@ -1,0 +1,261 @@
+# Copyright (C) 2012 Clicky for WordPress
+# This file is distributed under the same license as the Clicky for WordPress package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Clicky for WordPress 1.4.1.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/clicky\n"
+"POT-Creation-Date: 2012-06-10 05:39:17+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: clicky.php:27
+msgid "Clicky Goal Tracking"
+msgstr ""
+
+#: clicky.php:36
+msgid "Clicky is almost ready. "
+msgstr ""
+
+#: clicky.php:38
+msgid ""
+"You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for "
+"it to work."
+msgstr ""
+
+#: clicky.php:53
+msgid ""
+"Clicky can track Goals for you too, %1$sread the documentation here%2$s. To "
+"be able to track a goal on this post, you need to specify the goal ID here. "
+"Optionally, you can also provide the goal revenue."
+msgstr ""
+
+#: clicky.php:56
+msgid "Goal ID"
+msgstr ""
+
+#: clicky.php:57
+msgid "Goal Revenue"
+msgstr ""
+
+#: clicky.php:91
+msgid "Stats"
+msgstr ""
+
+#: clicky.php:106
+msgid "You cannot edit the Clicky settings."
+msgstr ""
+
+#: clicky.php:125
+msgid "Clicky settings have been updated."
+msgstr ""
+
+#: clicky.php:138
+msgid "Configuration"
+msgstr ""
+
+#: clicky.php:146
+msgid ""
+"Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; "
+"under the name of the domain, you will find the Site ID, Site Key, Admin "
+"Site Key and Database Server under Site information."
+msgstr ""
+
+#: clicky.php:151
+msgid "Site ID"
+msgstr ""
+
+#: clicky.php:158
+msgid "Site Key"
+msgstr ""
+
+#: clicky.php:165
+msgid "Admin Site Key"
+msgstr ""
+
+#: clicky.php:171
+msgid "Clicky Settings"
+msgstr ""
+
+#: clicky.php:173
+msgid ""
+"This plugin allows you to automatically create short URLs through the "
+"%1$sClicky.me service%2$s"
+msgstr ""
+
+#: clicky.php:173
+msgid ""
+"and tweet your post immediately when you publish it. To do that, this plugin "
+"will need your Twitter username and pass."
+msgstr ""
+
+#: clicky.php:178
+msgid "Ignore Admin users"
+msgstr ""
+
+#: clicky.php:179
+msgid ""
+"If you are using a caching plugin, such as W3 Total Cache or WP-Supercache, "
+"please ensure that you have it configured to NOT use the cache for logged in "
+"users. Otherwise, admin users <em>will still</em> be tracked."
+msgstr ""
+
+#: clicky.php:185
+msgid "Disable cookies"
+msgstr ""
+
+#: clicky.php:186
+msgid ""
+"If you don't want Clicky to use cookies on your site, check this button. By "
+"doing so, uniques will instead be determined based on their IP address."
+msgstr ""
+
+#: clicky.php:192
+msgid "Track names of commenters"
+msgstr ""
+
+#: clicky.php:199
+msgid "Outbound Link Pattern"
+msgstr ""
+
+#: clicky.php:200
+msgid ""
+"If your site uses redirects for outbound links, instead of links that point "
+"directly to their external source (this is popular with affiliate links, for "
+"example), then you'll need to use this variable to tell our tracking code "
+"additional patterns to look for when automatically tracking outbound links. "
+"%1$sRead more here%1$s."
+msgstr ""
+
+#: clicky.php:201
+msgid "For instance: <code>/out/,/go/</code>"
+msgstr ""
+
+#: clicky.php:204
+msgid "Advanced Settings"
+msgstr ""
+
+#: clicky.php:208
+msgid "Update Clicky Settings"
+msgstr ""
+
+#: clicky.php:251
+msgid "Visitors over 48 hours. Click for more Clicky Site Stats."
+msgstr ""
+
+#: clicky.php:384
+msgid ""
+"Clicky tracking not shown because you're an administrator and you've "
+"configured Clicky to ignore administrators."
+msgstr ""
+
+#: clicky.php:539
+msgid "Posted a comment"
+msgstr ""
+
+#: yst_plugin_tools.php:41
+msgid "Settings"
+msgstr ""
+
+#: yst_plugin_tools.php:122
+msgid "Why not do any or all of the following:"
+msgstr ""
+
+#: yst_plugin_tools.php:124
+msgid "Link to it so other folks can find out about it."
+msgstr ""
+
+#: yst_plugin_tools.php:125
+msgid "Give it a 5 star rating on WordPress.org."
+msgstr ""
+
+#: yst_plugin_tools.php:126
+msgid "Let other people know that it works with your WordPress setup."
+msgstr ""
+
+#: yst_plugin_tools.php:128 yst_plugin_tools.php:196
+msgid "Like this plugin?"
+msgstr ""
+
+#: yst_plugin_tools.php:138
+msgid ""
+"If you're in need of support with Clicky and / or this plugin, please visit "
+"the <a href='https://secure.getclicky.com/forums/'>Clicky forums</a>."
+msgstr ""
+
+#: yst_plugin_tools.php:139
+msgid "Need Support?"
+msgstr ""
+
+#: yst_plugin_tools.php:151 yst_plugin_tools.php:174
+msgid "No news items, feed might be broken..."
+msgstr ""
+
+#: yst_plugin_tools.php:160 yst_plugin_tools.php:186
+msgid "Subscribe with RSS"
+msgstr ""
+
+#: yst_plugin_tools.php:162
+msgid "Latest news from Clicky"
+msgstr ""
+
+#: yst_plugin_tools.php:183
+msgid "Like Yoast on Facebook"
+msgstr ""
+
+#: yst_plugin_tools.php:184
+msgid "Follow Yoast on Twitter"
+msgstr ""
+
+#: yst_plugin_tools.php:185
+msgid "Circle Yoast on Google+"
+msgstr ""
+
+#: yst_plugin_tools.php:187
+msgid "Subscribe by email"
+msgstr ""
+
+#: yst_plugin_tools.php:189
+msgid "Latest news from Yoast"
+msgstr ""
+
+#: yst_plugin_tools.php:196
+msgid ""
+"Want to help make it better? All donations are used to improve this plugin, "
+"so donate $10, $20 or $50 now!"
+msgstr ""
+
+#: yst_plugin_tools.php:202
+msgid "Or you could:"
+msgstr ""
+
+#: yst_plugin_tools.php:204
+msgid "Rate the plugin 5★ on WordPress.org"
+msgstr ""
+
+#: yst_plugin_tools.php:205
+msgid "Blog about it & link to the plugin page"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Clicky for WordPress"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://getclicky.com/goodies/#wordpress"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Integrates Clicky on your blog!"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Joost de Valk"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://yoast.com/"
+msgstr ""

@@ -1,0 +1,225 @@
+# Translation of Clicky WordPress plugin in Spanish (Spain)
+# This file is distributed under the same license as the Clicky WordPress plugin package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2012-06-28 16:19:20+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Clicky WordPress plugin\n"
+
+#: clicky.php:37
+msgid "Clicky is almost ready. "
+msgstr "Clicky está casi listo."
+
+#: clicky.php:39
+msgid "You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work."
+msgstr "Debes %1$s ingresar el ID de tu sitio en Clicky, la Site Key y Admin Site Key%2$s para que funcione."
+
+#: clicky.php:48
+msgid "Clicky needs a bit more info. "
+msgstr "Clicky necesita más información."
+
+#: clicky.php:50
+msgid "You must %1$s enter your Clicky Database server%2$s for this plugin to be able to track comments."
+msgstr "Debes %1$s ingresar tu servidor de base de datos de Clicky%2$s para que este plugin pueda rastrear los comentarios."
+
+#: clicky.php:71 clicky.php:79
+msgid "Twitter"
+msgstr "Twitter"
+
+#: clicky.php:73
+msgid "The Clicky.me short URL for this post is"
+msgstr "La URL corta de Clicky.me para esta entrada es"
+
+#: clicky.php:75
+msgid "Tweet this post"
+msgstr "Haz tweet en esta entrada"
+
+#: clicky.php:81
+msgid "This post is not published yet, a short URL will be created for it once the post is published. Do you want it to be tweeted automatically too?"
+msgstr "Esta entrada no está publicada todavía, una URL corta será creada para ella una vez que la entrada esté publicada. ¿También quieres enviarla a Twitter automáticamente?"
+
+#: clicky.php:83
+msgid "Tweet post on publish"
+msgstr "Tweetear entrada en publicar"
+
+#: clicky.php:88
+msgid "Goal Tracking"
+msgstr "Rastreo del objetivo"
+
+#: clicky.php:90
+msgid "Clicky can track Goals for you too, %1$sread the documentation here%2$s. To be able to track a goal on this post, you need to specify the goal ID here. Optionally, you can also provide the goal revenue."
+msgstr "Clicky puede rastrear Objetivos para ti, %1$slee la documentación aquí%2$s. Para quepuedas rastrear un objetivo en esta entrada, necesitas especificar la ID del objetivo aquí. Opcionalmente, también puedes proporcionar las ganancias del objetivo."
+
+#: clicky.php:93
+msgid "Goal ID"
+msgstr "ID del Objetivo"
+
+#: clicky.php:94
+msgid "Goal Revenue"
+msgstr "Ganancias del Objetivo"
+
+#: clicky.php:134
+msgid "Stats"
+msgstr "Estadísticas"
+
+#: clicky.php:149
+msgid "You cannot edit the Clicky settings."
+msgstr "No puedes editar la configuración de Clicky."
+
+#: clicky.php:168
+msgid "Clicky settings have been updated."
+msgstr "La configuración de Clicky ha sido actualizada"
+
+#: clicky.php:181
+msgid "Configuration"
+msgstr "Configuración"
+
+#: clicky.php:189
+msgid "Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information."
+msgstr "Ve a tu %1$spágina de inicio en Clicky%2$s y haz click en Preferencias con el nombre de dominio, encontrarás el Site ID, Site Key, Admin Site Key y el Servidor de Base de Datos en Información del Sitio."
+
+#: clicky.php:194
+msgid "Site ID"
+msgstr "ID del Sitio"
+
+#: clicky.php:201
+msgid "Site Key"
+msgstr "Site Key"
+
+#: clicky.php:208
+msgid "Admin Site Key"
+msgstr "Admin Site Key"
+
+#: clicky.php:215
+msgid "Database Server"
+msgstr "Servidor de Base de Datos"
+
+#: clicky.php:221
+msgid "Clicky Settings"
+msgstr "Configuración de Clicky"
+
+#: clicky.php:223
+msgid "This plugin allows you to automatically create short URLs through the %1$sClicky.me service%2$s"
+msgstr "Este plugin te permite crear URL's cortas por medio de el %1$sservicio de Clicky.me%2$s"
+
+#: clicky.php:223
+msgid "and tweet your post immediately when you publish it. To do that, this plugin will need your Twitter username and pass."
+msgstr "y tweetea tu entrada inmediatamente cuando la publicas. Para hacer eso, este plugin necesitará tu Nombre de Usuario y Contraseña en Twitter."
+
+#: clicky.php:228
+msgid "Ignore Admin users"
+msgstr "Ignorar a los Admin Users"
+
+#: clicky.php:229
+msgid "If you are using a caching plugin, such as WP-Supercache, please ensure that you have it configured to NOT use the cache for logged in users. Otherwise, admin users <em>will still</em> be tracked."
+msgstr "Si estás usando un plugin de caché, como WP-Supercache, por favor asegúrate de que lo tienes configurado para no usar la caché con los usuarios que han iniciado sesión. De otra forma, los admin users <em>seguirán</em> siendo rastreados."
+
+#: clicky.php:235
+msgid "Track names of commenters"
+msgstr "Rastrear los nombre de los que comentan"
+
+#: clicky.php:240
+msgid "Advanced Settings"
+msgstr "Configuración avanzada"
+
+#: clicky.php:245
+msgid "Allow Clicky.me integration"
+msgstr "Permitir integración con Clicky.me"
+
+#: clicky.php:252
+msgid "Auto Tweet"
+msgstr "Tweetear automáticamente"
+
+#: clicky.php:253
+msgid "No need to check the box on each post, by checking this box, each post get's tweeted automatically."
+msgstr "No hay necesidad de activar la casilla en cada entrada, activando esta casilla, cada entrada se tweetéa automáticamente"
+
+#: clicky.php:259
+msgid "Twitter username"
+msgstr "Nombre de Usuario en Twitter"
+
+#: clicky.php:266
+msgid "Twitter password"
+msgstr "Contraseña de Twitter"
+
+#: clicky.php:273
+msgid "Prefix for Tweets"
+msgstr "Prefijo para los tweets"
+
+#: clicky.php:274
+msgid "This text will be put in front of Tweets that are published when a blog post is published"
+msgstr "Este texto será puesto antes de los tweets que son publicados cuando una entrada de blog es publicada"
+
+#: clicky.php:278
+msgid "Clicky.me &amp; Twitter Integration"
+msgstr "Clicky.me &amp; Integración con Twitter"
+
+#: clicky.php:283
+msgid "Update Clicky Settings"
+msgstr "Actualizar la configuración de Clicky"
+
+#: clicky.php:392
+msgid "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators."
+msgstr "Rastreo de Clicky no es mostrado por que eres un administrador y haz configurado Clicky para ignorar a los administradores."
+
+#: clicky.php:513
+msgid "Posted a comment"
+msgstr "Publicado un comentario"
+
+#: yst_plugin_tools.php:64
+msgid "Settings"
+msgstr "Configuración"
+
+#: yst_plugin_tools.php:138
+msgid "Why not do any or all of the following:"
+msgstr "Por qué no haces algo o todo lo siguiente:"
+
+#: yst_plugin_tools.php:140
+msgid "Link to it so other folks can find out about it."
+msgstr "Enlaza a esto, así otros se enterarán."
+
+#: yst_plugin_tools.php:141
+msgid "Give it a good rating on WordPress.org."
+msgstr "Dale una buena calificación en WordPress.org"
+
+#: yst_plugin_tools.php:142
+msgid "Donate a token of your appreciation."
+msgstr "Dona algo como muestra de tu aprecio."
+
+#: yst_plugin_tools.php:144
+msgid "Like this plugin?"
+msgstr "¿Te gusta este plugin?"
+
+#: yst_plugin_tools.php:151
+msgid "If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the"
+msgstr "Si tienes algún problema(s) con este plugin, ideas para mejorarlo o nuevas funciónes, por favor difunde la palabra en el"
+
+#: yst_plugin_tools.php:151
+msgid "Support forums"
+msgstr "Foros de soporte"
+
+#: yst_plugin_tools.php:152
+msgid "Need support?"
+msgstr "¿Necesitas ayuda?"
+
+#: yst_plugin_tools.php:168
+msgid "Subscribe"
+msgstr "Suscribirse"
+
+#: yst_plugin_tools.php:169 yst_plugin_tools.php:171
+msgid "Latest news from Clicky"
+msgstr "Últimas noticias de Clicky"
+
+#: yst_plugin_tools.php:171
+msgid "Nothing to say..."
+msgstr "Nada que decir..."
+
+msgid "Clicky for WordPress"
+msgstr "Clicky para WordPress"
+
+msgid "Integrates Clicky on your blog!"
+msgstr "¡Esto integra Clicky a tu blog!"

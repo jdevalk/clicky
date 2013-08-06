@@ -1,0 +1,225 @@
+# Translation of Clicky WordPress plugin in Bulgarian
+# This file is distributed under the same license as the Clicky WordPress plugin package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2012-06-28 16:27:28+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Clicky WordPress plugin\n"
+
+#: clicky.php:37
+msgid "Clicky is almost ready. "
+msgstr "Clicky е почти готов."
+
+#: clicky.php:39
+msgid "You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work."
+msgstr "Трябва да %1$s въведете Вашият Clicky Site ID, Site Key и Admin site Key%2$s за да работи."
+
+#: clicky.php:48
+msgid "Clicky needs a bit more info. "
+msgstr "Clicky се нуждае от малко повече информация."
+
+#: clicky.php:50
+msgid "You must %1$s enter your Clicky Database server%2$s for this plugin to be able to track comments."
+msgstr "Трябва да %1$s въведете Вашият Clicky Database server%2$s за този плъгин, за да може да проследи коментарите."
+
+#: clicky.php:71 clicky.php:79
+msgid "Twitter"
+msgstr "Twitter"
+
+#: clicky.php:73
+msgid "The Clicky.me short URL for this post is"
+msgstr "Краткия Clicky.me URL за тази публикация е"
+
+#: clicky.php:75
+msgid "Tweet this post"
+msgstr "Пусни Tweet за този пост"
+
+#: clicky.php:81
+msgid "This post is not published yet, a short URL will be created for it once the post is published. Do you want it to be tweeted automatically too?"
+msgstr "Този пост все още не е публикуван. Ще му бъде създаден кратък URL, в момента в който бъде публикуван. Искате ли да изпратите автоматично Tweet, когато това се случи?"
+
+#: clicky.php:83
+msgid "Tweet post on publish"
+msgstr "Tweet-ни за тази публикация при публикуването ѝ"
+
+#: clicky.php:88
+msgid "Goal Tracking"
+msgstr "Проследяване на цел"
+
+#: clicky.php:90
+msgid "Clicky can track Goals for you too, %1$sread the documentation here%2$s. To be able to track a goal on this post, you need to specify the goal ID here. Optionally, you can also provide the goal revenue."
+msgstr "Clicky може да проследи целите за вас, също. %1$Прочете документацията тук%2$s. За да можете да проследите цел в този пост, трябва да посочите ID на целта. Като алтернатива можете да предоставите името на целта."
+
+#: clicky.php:93
+msgid "Goal ID"
+msgstr "ID на цел"
+
+#: clicky.php:94
+msgid "Goal Revenue"
+msgstr "Цена на приходите."
+
+#: clicky.php:134
+msgid "Stats"
+msgstr "Статус"
+
+#: clicky.php:149
+msgid "You cannot edit the Clicky settings."
+msgstr "Не може да променяте настройките на Clicky."
+
+#: clicky.php:168
+msgid "Clicky settings have been updated."
+msgstr "Настройките на Clicky бяха обновени."
+
+#: clicky.php:181
+msgid "Configuration"
+msgstr "Конфигурация"
+
+#: clicky.php:189
+msgid "Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information."
+msgstr "Посетете %1$страницата с проблеми в Clicky%2$s и кликнете на &quot;Предпочитания&quot; под името на домейна, ще откриете ID на сайта, Ключ на сайта, Ключ на администрацията на сайта и сървърът с база данни под информацията за сайта."
+
+#: clicky.php:194
+msgid "Site ID"
+msgstr "ID на сайта"
+
+#: clicky.php:201
+msgid "Site Key"
+msgstr "Ключ на сайта"
+
+#: clicky.php:208
+msgid "Admin Site Key"
+msgstr "Ключ на администрацията на сайта"
+
+#: clicky.php:215
+msgid "Database Server"
+msgstr "Сървър с база данни"
+
+#: clicky.php:221
+msgid "Clicky Settings"
+msgstr "Настройки на Clicky"
+
+#: clicky.php:223
+msgid "This plugin allows you to automatically create short URLs through the %1$sClicky.me service%2$s"
+msgstr "Този плъгин ви дава възможност да създавате автоматично кратки URL-и чрез %1$sуслугата Clicky.me%2$s"
+
+#: clicky.php:223
+msgid "and tweet your post immediately when you publish it. To do that, this plugin will need your Twitter username and pass."
+msgstr "и публикувай коментара си в twitter, веднага щом го пуснеш. За да се случи това, този плъгин има нужда от Twitter потребителско име и парола."
+
+#: clicky.php:228
+msgid "Ignore Admin users"
+msgstr "Игнорирай администраторите"
+
+#: clicky.php:229
+msgid "If you are using a caching plugin, such as WP-Supercache, please ensure that you have it configured to NOT use the cache for logged in users. Otherwise, admin users <em>will still</em> be tracked."
+msgstr "Ако използвате плъгин за кеширане, като например WP-Supercache, моля, уверете се, че сте го настроили да НЕ кешира информация за логнатите потребители. В противен случай, действията на администраторите <em>ще бъдат</em> проследявани."
+
+#: clicky.php:235
+msgid "Track names of commenters"
+msgstr "Следи имената на коментаторите"
+
+#: clicky.php:240
+msgid "Advanced Settings"
+msgstr "Допълнителни настройки"
+
+#: clicky.php:245
+msgid "Allow Clicky.me integration"
+msgstr "Позволи интеграцията на Clicky.me"
+
+#: clicky.php:252
+msgid "Auto Tweet"
+msgstr "Автоматично Tweet-ване"
+
+#: clicky.php:253
+msgid "No need to check the box on each post, by checking this box, each post get's tweeted automatically."
+msgstr "Няма нужда да маркирате тази отметка на всяка публикация, чрез тази отметка всичките публикации автоматично се постват в twitter."
+
+#: clicky.php:259
+msgid "Twitter username"
+msgstr "Потребителско име в Twitter"
+
+#: clicky.php:266
+msgid "Twitter password"
+msgstr "Парола за Twitter"
+
+#: clicky.php:273
+msgid "Prefix for Tweets"
+msgstr "Префикс за туитър съобщенията"
+
+#: clicky.php:274
+msgid "This text will be put in front of Tweets that are published when a blog post is published"
+msgstr "Този текст ще се появи пред съобщенията в туитър, които се публикуват едновременно с поста"
+
+#: clicky.php:278
+msgid "Clicky.me &amp; Twitter Integration"
+msgstr "Clicky.me &amp; интеграция в Twitter"
+
+#: clicky.php:283
+msgid "Update Clicky Settings"
+msgstr "Обнови настройките на Clicky"
+
+#: clicky.php:392
+msgid "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators."
+msgstr "Следенето чрез Clicky не се отчита, защото вие сте администратор и сте настроили Clicky да игнорира администраторите."
+
+#: clicky.php:513
+msgid "Posted a comment"
+msgstr "Публикува коментар"
+
+#: yst_plugin_tools.php:64
+msgid "Settings"
+msgstr "Настройки"
+
+#: yst_plugin_tools.php:138
+msgid "Why not do any or all of the following:"
+msgstr "Защо не направите едно или всички от изброените:"
+
+#: yst_plugin_tools.php:140
+msgid "Link to it so other folks can find out about it."
+msgstr "Поставете линк към него, за да могат и други да го открият."
+
+#: yst_plugin_tools.php:141
+msgid "Give it a good rating on WordPress.org."
+msgstr "Дайте му добър рейтинг в WordPress.org."
+
+#: yst_plugin_tools.php:142
+msgid "Donate a token of your appreciation."
+msgstr "Дари знак на признателност."
+
+#: yst_plugin_tools.php:144
+msgid "Like this plugin?"
+msgstr "Харесайте този плъгин?"
+
+#: yst_plugin_tools.php:151
+msgid "If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the"
+msgstr "Ако имате някакви проблеми с този плъгин, добри идеи за развитието му или нови функции, моля, споделете ги в "
+
+#: yst_plugin_tools.php:151
+msgid "Support forums"
+msgstr "Форуми за поддръжка"
+
+#: yst_plugin_tools.php:152
+msgid "Need support?"
+msgstr "Нужда от помощ?"
+
+#: yst_plugin_tools.php:168
+msgid "Subscribe"
+msgstr "Абонирай се"
+
+#: yst_plugin_tools.php:169 yst_plugin_tools.php:171
+msgid "Latest news from Clicky"
+msgstr "Последните новини от Clicky"
+
+#: yst_plugin_tools.php:171
+msgid "Nothing to say..."
+msgstr "Нямам какво да кажа ..."
+
+msgid "Clicky for WordPress"
+msgstr "Clicky за WordPress"
+
+msgid "Integrates Clicky on your blog!"
+msgstr "Интегрирайте Clicky във вашия блог!"

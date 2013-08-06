@@ -1,0 +1,227 @@
+# Translation of Clicky WordPress plugin in Persian
+# This file is distributed under the same license as the Clicky WordPress plugin package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2012-06-28 16:29:23+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Clicky WordPress plugin\n"
+
+#: clicky.php:37
+msgid "Clicky is almost ready. "
+msgstr "کلیکی تقریبا آماده است."
+
+#: clicky.php:39
+msgid "You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work."
+msgstr "شما باید%1$s آی دی کیلیکی سایت ،کلید سایت،کلید مدیریت سایت بزنید %2$sبرای به کار افتادن."
+
+#: clicky.php:48
+msgid "Clicky needs a bit more info. "
+msgstr "کیلیکی نیازمند به ادامه است."
+
+#: clicky.php:50
+msgid "You must %1$s enter your Clicky Database server%2$s for this plugin to be able to track comments."
+msgstr ""
+
+#: clicky.php:71 clicky.php:79
+msgid "Twitter"
+msgstr "توییتر"
+
+#: clicky.php:73
+msgid "The Clicky.me short URL for this post is"
+msgstr "آدرس کوتاه Clicky.me برای این پست عبارت است از "
+
+#: clicky.php:75
+msgid "Tweet this post"
+msgstr "توییت این پست"
+
+#: clicky.php:81
+msgid "This post is not published yet, a short URL will be created for it once the post is published. Do you want it to be tweeted automatically too?"
+msgstr "این نوشته انتشار نیافته است، یک پیوند کوتاه برای آن ساخته شده است. آیا می خواهید آن را به صورت خودکارتوییت کنید"
+
+#: clicky.php:83
+msgid "Tweet post on publish"
+msgstr "توییت کردن پست برای اشتراک"
+
+#: clicky.php:88
+msgid "Goal Tracking"
+msgstr "پیگیری دروازه"
+
+#: clicky.php:90
+msgid "Clicky can track Goals for you too, %1$sread the documentation here%2$s. To be able to track a goal on this post, you need to specify the goal ID here. Optionally, you can also provide the goal revenue."
+msgstr ""
+
+#: clicky.php:93
+msgid "Goal ID"
+msgstr "آی دی ورود"
+
+#: clicky.php:94
+msgid "Goal Revenue"
+msgstr "بازده هدف"
+
+#: clicky.php:134
+msgid "Stats"
+msgstr "آمار"
+
+#: clicky.php:149
+msgid "You cannot edit the Clicky settings."
+msgstr "شما نمی توانید تنظیمات کیلیکی را ویرایش کنید."
+
+#: clicky.php:168
+msgid "Clicky settings have been updated."
+msgstr "تنظیمات کیلیکی به روز شد."
+
+#: clicky.php:181
+msgid "Configuration"
+msgstr "پیکربندی"
+
+#: clicky.php:189
+msgid "Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information."
+msgstr ""
+
+#: clicky.php:194
+msgid "Site ID"
+msgstr "آی دی سایت"
+
+#: clicky.php:201
+msgid "Site Key"
+msgstr "کلید سایت"
+
+#: clicky.php:208
+msgid "Admin Site Key"
+msgstr "کلید مدیریت سایت"
+
+#: clicky.php:215
+msgid "Database Server"
+msgstr "سرور پایگاه داده"
+
+#: clicky.php:221
+msgid "Clicky Settings"
+msgstr "تنظیمات کیلیکی"
+
+#: clicky.php:223
+msgid "This plugin allows you to automatically create short URLs through the %1$sClicky.me service%2$s"
+msgstr ".این افزونه به شما اجازه می دهد از طریق  %1$sسرویس کلیکی %1$s پیوند کوتاه بسازید"
+
+#: clicky.php:223
+msgid "and tweet your post immediately when you publish it. To do that, this plugin will need your Twitter username and pass."
+msgstr "و پست شما را فورا بعد از انتشار توییت می کند.این افزونه به نام کاربری و رمز عبور توییتر نیاز دارد."
+
+#: clicky.php:228
+msgid "Ignore Admin users"
+msgstr "رد کردن مدیریت کاربران"
+
+#: clicky.php:229
+msgid "If you are using a caching plugin, such as WP-Supercache, please ensure that you have it configured to NOT use the cache for logged in users. Otherwise, admin users <em>will still</em> be tracked."
+msgstr ""
+"اگر شما از پلاگین کش استفاده می کنید،همچنین هز WP-Supercache، لطفاً مطمئین شوید که شما آن را تغییر داده اید یا نه برای استفادهاز این آدرس\n"
+"راه دیگر Otherwise, admin users <em>will still</em> تراک شود"
+
+#: clicky.php:235
+msgid "Track names of commenters"
+msgstr "پیگیری نام نظر دهندگان"
+
+#: clicky.php:240
+msgid "Advanced Settings"
+msgstr "تنظیمات پیشرفته"
+
+#: clicky.php:245
+msgid "Allow Clicky.me integration"
+msgstr "اجازه کلیک: افزودن من"
+
+#: clicky.php:252
+msgid "Auto Tweet"
+msgstr "توییت اتوماتیک"
+
+#: clicky.php:253
+msgid "No need to check the box on each post, by checking this box, each post get's tweeted automatically."
+msgstr "بوسیله ی این جعبه نیازی به چک کردن توئیت هایتان نخواهید داشت و اتومات انجام می شود"
+
+#: clicky.php:259
+msgid "Twitter username"
+msgstr "نام کاربری توییتر"
+
+#: clicky.php:266
+msgid "Twitter password"
+msgstr "رمز عبور توییتر"
+
+#: clicky.php:273
+msgid "Prefix for Tweets"
+msgstr "پیشوند برای توییت ها"
+
+#: clicky.php:274
+msgid "This text will be put in front of Tweets that are published when a blog post is published"
+msgstr "این متن نمایش داده خواهد شد در مقابل تویت ها شما هنگامی که یک پست وبلاگ منتشرمی شود"
+
+#: clicky.php:278
+msgid "Clicky.me &amp; Twitter Integration"
+msgstr "Clicky.me &amp : ادغام با توئیتر"
+
+#: clicky.php:283
+msgid "Update Clicky Settings"
+msgstr "بروز رسانی تنظیمات"
+
+#: clicky.php:392
+msgid "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators."
+msgstr "ردیابی آمار نشان داده شده است دلیل این که شما یک مدیر هستید و شما پیکربندی قالب به چشم پوشی از مدیران است."
+
+#: clicky.php:513
+msgid "Posted a comment"
+msgstr "نظری ارسال کرده"
+
+#: yst_plugin_tools.php:64
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: yst_plugin_tools.php:138
+msgid "Why not do any or all of the following:"
+msgstr "چرا انجام ندهید یا دنبال نکنید"
+
+#: yst_plugin_tools.php:140
+msgid "Link to it so other folks can find out about it."
+msgstr "لینکی اضافه کنید تا دیگران آن را پیدا کنند"
+
+#: yst_plugin_tools.php:141
+msgid "Give it a good rating on WordPress.org."
+msgstr "بدست آوردن رتبه ی خوب در WordPress.org."
+
+#: yst_plugin_tools.php:142
+msgid "Donate a token of your appreciation."
+msgstr "اهدا کنید برای قدردانی خود"
+
+#: yst_plugin_tools.php:144
+msgid "Like this plugin?"
+msgstr "این افزونه را دوست دارید؟"
+
+#: yst_plugin_tools.php:151
+msgid "If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the"
+msgstr "اگر شما مسئله ایی با این افزونه دارید (پیشتهاد و انتقاد)چه خوب و چه بد برای پروژه های آینده لطفاً آن را با ما در میان بگذارید"
+
+#: yst_plugin_tools.php:151
+msgid "Support forums"
+msgstr "انجمن های پشتیبانی"
+
+#: yst_plugin_tools.php:152
+msgid "Need support?"
+msgstr "آیا احتیاج به پشتیبانی دارید؟"
+
+#: yst_plugin_tools.php:168
+msgid "Subscribe"
+msgstr "اشتراک"
+
+#: yst_plugin_tools.php:169 yst_plugin_tools.php:171
+msgid "Latest news from Clicky"
+msgstr "آخرین اخبار از کلیکی"
+
+#: yst_plugin_tools.php:171
+msgid "Nothing to say..."
+msgstr "چیزی برای گفتن نیست..."
+
+msgid "Clicky for WordPress"
+msgstr "کلیکی برای وردپرس"
+
+msgid "Integrates Clicky on your blog!"
+msgstr "کلیکی در وبلاگ شما"

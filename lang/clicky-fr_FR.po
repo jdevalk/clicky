@@ -1,0 +1,225 @@
+# Translation of Clicky WordPress plugin in French (France)
+# This file is distributed under the same license as the Clicky WordPress plugin package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2012-06-28 16:25:44+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Clicky WordPress plugin\n"
+
+#: clicky.php:37
+msgid "Clicky is almost ready. "
+msgstr "Clicky est presque prêt."
+
+#: clicky.php:39
+msgid "You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work."
+msgstr "Vous devez %1$s entrer votre ID du site Clicky, la clé du site et la clé d'administration%2$s pour que l'extension fonctionne."
+
+#: clicky.php:48
+msgid "Clicky needs a bit more info. "
+msgstr "L'extension Clicky a besoin d'un peu plus d'informations."
+
+#: clicky.php:50
+msgid "You must %1$s enter your Clicky Database server%2$s for this plugin to be able to track comments."
+msgstr "Vous devez %1$s entrer vos informations de base de données Clicky%2$s pour que cette extension puisse suivre les commentaires."
+
+#: clicky.php:71 clicky.php:79
+msgid "Twitter"
+msgstr "Twitter"
+
+#: clicky.php:73
+msgid "The Clicky.me short URL for this post is"
+msgstr "Le lien URL raccourci Clicky.me pour cet article est "
+
+#: clicky.php:75
+msgid "Tweet this post"
+msgstr "Tweeter cet article"
+
+#: clicky.php:81
+msgid "This post is not published yet, a short URL will be created for it once the post is published. Do you want it to be tweeted automatically too?"
+msgstr "Cet article n'est pas encore publié. Un lien URL raccourci sera créé une fois que l'article sera publié. Voulez-vous également qu'il soit tweeté automatiquement ?"
+
+#: clicky.php:83
+msgid "Tweet post on publish"
+msgstr "Tweeter l'article dès sa publication"
+
+#: clicky.php:88
+msgid "Goal Tracking"
+msgstr "Suivi des objectifs"
+
+#: clicky.php:90
+msgid "Clicky can track Goals for you too, %1$sread the documentation here%2$s. To be able to track a goal on this post, you need to specify the goal ID here. Optionally, you can also provide the goal revenue."
+msgstr "Clicky peut aussi faire pour vous le suivi de vos objectifs, %1$slisez la documentation pour en savoir plus%2$s. Pour être en mesure de suivre un objectif pour cet article, vous devez spécifier l' ID de l'objectif ici. Optionnellement, vous pouvez aussi ajouter l'objectif de revenue."
+
+#: clicky.php:93
+msgid "Goal ID"
+msgstr "ID de l'objectif"
+
+#: clicky.php:94
+msgid "Goal Revenue"
+msgstr "Revenu de l'objectif"
+
+#: clicky.php:134
+msgid "Stats"
+msgstr "Statistiques"
+
+#: clicky.php:149
+msgid "You cannot edit the Clicky settings."
+msgstr "Vous ne pouvez pas modifier les réglages de Clicky."
+
+#: clicky.php:168
+msgid "Clicky settings have been updated."
+msgstr "Les réglages de Clicky ont été mis à jour."
+
+#: clicky.php:181
+msgid "Configuration"
+msgstr "Configuration"
+
+#: clicky.php:189
+msgid "Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information."
+msgstr "Allez sur votre %1$spage d'accueil utilisateur du site Clicky%2$s et cliquez sur &quot;Préférences&quot; sous le nom de domaine, vous y trouverez l'ID du site, sa clé, sa clé d'administration et les informations du serveur sous la section Information."
+
+#: clicky.php:194
+msgid "Site ID"
+msgstr "ID du site"
+
+#: clicky.php:201
+msgid "Site Key"
+msgstr "Clé du site"
+
+#: clicky.php:208
+msgid "Admin Site Key"
+msgstr "Clé du site de l'administrateur"
+
+#: clicky.php:215
+msgid "Database Server"
+msgstr "Serveur de la base de données"
+
+#: clicky.php:221
+msgid "Clicky Settings"
+msgstr "Réglages de Clicky"
+
+#: clicky.php:223
+msgid "This plugin allows you to automatically create short URLs through the %1$sClicky.me service%2$s"
+msgstr "Cette extension vous permet de créer automatiquement des liens URL raccourcis par le biais du %1$sservice Clicky.me%2$s"
+
+#: clicky.php:223
+msgid "and tweet your post immediately when you publish it. To do that, this plugin will need your Twitter username and pass."
+msgstr "et de tweeter votre article immédiatement quand vous le publier. Pour cela, l'extension a besoin de votre nom d'utilisateur et de votre mot de passe Twitter."
+
+#: clicky.php:228
+msgid "Ignore Admin users"
+msgstr "Ignorer les utilisateurs Administrateurs"
+
+#: clicky.php:229
+msgid "If you are using a caching plugin, such as WP-Supercache, please ensure that you have it configured to NOT use the cache for logged in users. Otherwise, admin users <em>will still</em> be tracked."
+msgstr "Si vous utilisez une extension de cache, comme WP-SuperCache, assurez-vous que vous l'avez configuré afin de ne pas utiliser le cache pour les utilisateurs connectés. Sinon, les administrateurs <em>vont encore</em> être suivis."
+
+#: clicky.php:235
+msgid "Track names of commenters"
+msgstr "Faire le suivi des noms des commentateurs "
+
+#: clicky.php:240
+msgid "Advanced Settings"
+msgstr "Paramètres avancés"
+
+#: clicky.php:245
+msgid "Allow Clicky.me integration"
+msgstr "Permettre l'intégration de Clicky.me"
+
+#: clicky.php:252
+msgid "Auto Tweet"
+msgstr "Tweeter automatiquement"
+
+#: clicky.php:253
+msgid "No need to check the box on each post, by checking this box, each post get's tweeted automatically."
+msgstr "En cochant cette case, vous n'aurez pas besoin de cocher la case sur chaque article, puisque chaque nouvel article sera tweeté automatiquement."
+
+#: clicky.php:259
+msgid "Twitter username"
+msgstr "Nom d'utilisateur Twitter"
+
+#: clicky.php:266
+msgid "Twitter password"
+msgstr "Mot de passe Twitter"
+
+#: clicky.php:273
+msgid "Prefix for Tweets"
+msgstr "Préfixe pour les Tweets"
+
+#: clicky.php:274
+msgid "This text will be put in front of Tweets that are published when a blog post is published"
+msgstr "Ce texte va être ajouté avant les tweets qui sont partagés quand un nouvel article est publié"
+
+#: clicky.php:278
+msgid "Clicky.me &amp; Twitter Integration"
+msgstr "Clicky.me &amp; l'intégration Twitter"
+
+#: clicky.php:283
+msgid "Update Clicky Settings"
+msgstr "Mettre à jour les paramètres Clicky"
+
+#: clicky.php:392
+msgid "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators."
+msgstr "Le suivi Clicky ne peut être affiché parce que vous êtes un administrateur et vous avez configuré Clicky pour ignorer les administrateurs."
+
+#: clicky.php:513
+msgid "Posted a comment"
+msgstr "Publié un commentaire"
+
+#: yst_plugin_tools.php:64
+msgid "Settings"
+msgstr "Réglages"
+
+#: yst_plugin_tools.php:138
+msgid "Why not do any or all of the following:"
+msgstr "Pourquoi ne pas essayer de :"
+
+#: yst_plugin_tools.php:140
+msgid "Link to it so other folks can find out about it."
+msgstr "Faites un lien vers cette extension afin que d'autres puissent la découvrir."
+
+#: yst_plugin_tools.php:141
+msgid "Give it a good rating on WordPress.org."
+msgstr "Donnez-lui une bonne évaluation sur WordPress.org."
+
+#: yst_plugin_tools.php:142
+msgid "Donate a token of your appreciation."
+msgstr "Donnez en gage de votre appréciation."
+
+#: yst_plugin_tools.php:144
+msgid "Like this plugin?"
+msgstr "Vous aimez cette extension ?"
+
+#: yst_plugin_tools.php:151
+msgid "If you have any problems with this plugin or good ideas for improvements or new features, please talk about them in the"
+msgstr "Si vous avez des problèmes avec cette extension, ou vous avez des idées pour l'améliorer, vous pouvez en discuter dans le "
+
+#: yst_plugin_tools.php:151
+msgid "Support forums"
+msgstr "Forums d'aide (en anglais)"
+
+#: yst_plugin_tools.php:152
+msgid "Need support?"
+msgstr "Besoin d'aide ?"
+
+#: yst_plugin_tools.php:168
+msgid "Subscribe"
+msgstr "Abonnez-vous"
+
+#: yst_plugin_tools.php:169 yst_plugin_tools.php:171
+msgid "Latest news from Clicky"
+msgstr "Les dernières nouvelles de Clicky"
+
+#: yst_plugin_tools.php:171
+msgid "Nothing to say..."
+msgstr "Rien à dire..."
+
+msgid "Clicky for WordPress"
+msgstr "Clicky pour WordPress"
+
+msgid "Integrates Clicky on your blog!"
+msgstr "Intégrer Clicky à votre blog !"
