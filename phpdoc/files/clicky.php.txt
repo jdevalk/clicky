@@ -724,3 +724,4 @@ function clicky_track_comment( $commentID, $comment_status ) {
 }
 
 add_action( 'comment_post', 'clicky_track_comment', 10, 2 );
+
