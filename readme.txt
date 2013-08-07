@@ -39,6 +39,12 @@ Read the authors [review of Clicky Analytics](http://yoast.com/clicky-analytics-
 
 == Changelog ==
 
+= Trunk =
+
+* Added phpDoc
+* Use https instead of http for showing stats page
+* The <noscript>-part now uses // instead of http:// so it can switch to https.
+
 = 1.4.2.2 =
 
 * Prevent collission with utm username param.

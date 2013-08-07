@@ -7,31 +7,90 @@ Description: Integrates Clicky on your blog!
 Author: Joost de Valk
 Author URI: http://yoast.com/
 */
+/**
+ * The Clicky for WordPress plugin by Yoast makes it easy for you to add your Clicky analytics tracking code to your WordPress install, while also giving you some advanced tracking options.
+ *
+ * @link http://yoast.com/wordpress/clicky/
+ */
 
 load_plugin_textdomain( 'clicky', '', '/clicky/lang/' );
 
 if ( !class_exists( 'Clicky_Admin' ) ) {
 
 	require_once( 'yst_plugin_tools.php' );
+/**
+ * Class Clicky_Admin
+ *
+ * Creates the admin for the Clicky for WordPress plugin by Yoast
+ */
+    class Clicky_Admin extends Clicky_Base_Plugin_Admin {
 
-	class Clicky_Admin extends Clicky_Base_Plugin_Admin {
+        /**
+         * Menu slug for WordPress admin
+         *
+         * @access private
+         * @var string
+         */
+        var $hook = 'clicky';
 
-		var $hook = 'clicky';
-		var $longname = 'Clicky Configuration';
-		var $shortname = 'Clicky';
-		var $homepage = 'http://yoast.com/wordpress/clicky/';
+        /**
+         * Name of the plugin (long version)
+         *
+         * @access private
+         * @var string
+         */
+        var $longname = 'Clicky Configuration';
+
+        /**
+         * Name of the plugin (short version)
+         *
+         * @access private
+         * @var string
+         */
+        var $shortname = 'Clicky';
+
+        /**
+         * Link to Clicky homepage
+         *
+         * @access private
+         * @var string
+         */
+        var $homepage = 'http://yoast.com/wordpress/clicky/';
+
+        /**
+         * Link to Clicky RSS feed
+         *
+         * @access private
+         * @var string
+         */
 		var $feed = 'http://getclicky.com/blog/rss';
 
-		function meta_box() {
+        /**
+         * Adds meta boxes to the Admin interface
+         *
+         * @link http://codex.wordpress.org/Function_Reference/add_meta_box
+         * @link http://codex.wordpress.org/Function_Reference/get_post_types
+         */
+        function meta_box() {
 			foreach ( get_post_types() as $pt ) {
 				add_meta_box( 'clicky', __( 'Clicky Goal Tracking', 'clicky' ), array( 'Clicky_Admin', 'clicky_meta_box' ), $pt, 'side' );
 			}
 		}
 
-		function clicky_admin_warnings() {
+        /**
+         * Creates  warnings for empty fields in the admin
+         *
+         * @uses clicky_get_options()
+         * @uses clicky_warning()
+         * @link http://codex.wordpress.org/Function_Reference/add_action
+         */
+        function clicky_admin_warnings() {
 			$options = clicky_get_options();
 			if ( ( !$options['site_id'] || empty( $options['site_id'] ) || !$options['site_key'] || empty( $options['site_key'] ) || !$options['admin_site_key'] || empty( $options['admin_site_key'] ) ) && !$_POST ) {
-				function clicky_warning() {
+                /**
+                 * Outputs a warning
+                 */
+                function clicky_warning() {
 					echo "<div id='clickywarning' class='updated fade'><p><strong>";
 					_e( 'Clicky is almost ready. ', 'clicky' );
 					echo "</strong>";
@@ -45,7 +104,12 @@ if ( !class_exists( 'Clicky_Admin' ) ) {
 			}
 		}
 
-		function clicky_meta_box() {
+        /**
+         * Add meta box for entering specific goals
+         *
+         * @link http://codex.wordpress.org/Function_Reference/get_post_meta
+         */
+        function clicky_meta_box() {
 			global $post;
 			$clicky_goal = get_post_meta( $post->ID, '_clicky_goal', true );
 
@@ -58,7 +122,14 @@ if ( !class_exists( 'Clicky_Admin' ) ) {
 			echo '</table>';
 		}
 
-		function __construct() {
+        /**
+         * Construct of class Clicky_admin
+         *
+         * @access private
+         * @link http://codex.wordpress.org/Function_Reference/add_action
+         * @link http://codex.wordpress.org/Function_Reference/add_filter
+         */
+        function __construct() {
 			$this->filename = __FILE__;
 
 			add_action( 'admin_menu', array( &$this, 'register_settings_page' ) );
@@ -76,7 +147,14 @@ if ( !class_exists( 'Clicky_Admin' ) ) {
 			$this->clicky_admin_warnings();
 		}
 
-		function clicky_insert_post( $pID ) {
+        /**
+         * Updates post meta for '_clicky_goal' with goal ID and value
+         *
+         * @param int $pID The post ID
+         * @link http://codex.wordpress.org/Function_Reference/delete_post_meta
+         * @link http://codex.wordpress.org/Function_Reference/add_post_meta
+         */
+        function clicky_insert_post( $pID ) {
 			$clicky_goal = array(
 				'id'    => $_POST['clicky_goal_id'],
 				'value' => $_POST['clicky_goal_value']
@@ -85,20 +163,39 @@ if ( !class_exists( 'Clicky_Admin' ) ) {
 			add_post_meta( $pID, '_clicky_goal', $clicky_goal, true );
 		}
 
-		function register_dashboard_page() {
+        /**
+         * Creates the dashboard page for Clicky for WordPress plugin by Yoast
+         *
+         * @link http://codex.wordpress.org/Function_Reference/add_dashboard_page
+         */
+        function register_dashboard_page() {
 			add_dashboard_page( $this->shortname . ' ' . __( 'Stats', 'clicky' ), $this->shortname . ' ' . __( 'Stats', 'clicky' ), $this->accesslvl, $this->hook, array( &$this, 'dashboard_page' ) );
 		}
 
-		function dashboard_page() {
+        /**
+         * Loads (external) stats page in an iframe
+         *
+         * @uses clicky_get_options()
+         */
+        function dashboard_page() {
 			$options = clicky_get_options();
 			?>
 		<br/>
 		<iframe style="margin-left: 20px; width: 850px; height: 1000px;"
-				src="http://getclicky.com/stats/wp-iframe?site_id=<?php echo $options['site_id']; ?>&amp;sitekey=<?php echo $options['site_key']; ?>"></iframe>
+				src="https://clicky.com/stats/wp-iframe?site_id=<?php echo $options['site_id']; ?>&amp;sitekey=<?php echo $options['site_key']; ?>"></iframe>
 		<?php
 		}
 
-		function config_page() {
+        /**
+         * Creates the configuration page for Clicky for WordPress by Yoast
+         *
+         * @uses clicky_get_options()
+         * @link http://codex.wordpress.org/Function_Reference/current_user_can
+         * @link http://codex.wordpress.org/Function_Reference/check_admin_referer
+         * @link http://codex.wordpress.org/Function_Reference/update_option
+         * @link http://codex.wordpress.org/Function_Reference/wp_nonce_field
+         */
+        function config_page() {
 			$options = clicky_get_options();
 
 			if ( isset( $_POST['submit'] ) ) {
@@ -133,7 +230,7 @@ if ( !class_exists( 'Clicky_Admin' ) ) {
 			}
 			?>
 		<div class="wrap">
-			<a href="http://getclicky.com/145844">
+			<a href="http://clicky.com/145844">
 				<div id="clicky-icon"
 					 style="background: url('<?php echo plugins_url( '', __FILE__ ); ?>/images/clicky-32x32.png') no-repeat;"
 					 class="icon32"><br/></div>
@@ -234,7 +331,12 @@ if ( !class_exists( 'Clicky_Admin' ) ) {
 		<?php
 		}
 
-		function stats_admin_bar_head() {
+        /**
+         * Creates (CSS for) head for the admin menu bar
+         *
+         * @link http://codex.wordpress.org/Function_Reference/add_action
+         */
+        function stats_admin_bar_head() {
 			add_action( 'admin_bar_menu', array( &$this, 'stats_admin_bar_menu' ), 1200 );
 			?>
 
@@ -257,7 +359,15 @@ if ( !class_exists( 'Clicky_Admin' ) ) {
 		<?php
 		}
 
-		function stats_admin_bar_menu( &$wp_admin_bar ) {
+        /**
+         * Adds Clicky (graph) to the admin bar of the website
+         *
+         * @param obj $wp_admin_bar Class that contains all information for the admin bar. Passed by reference.
+         * @uses clicky_get_options()
+         * @uses create_graph()
+         * @link http://codex.wordpress.org/Class_Reference/WP_Admin_Bar
+         */
+        function stats_admin_bar_menu( &$wp_admin_bar ) {
 			$options = clicky_get_options();
 
 			$img_src = $this->create_graph();
@@ -271,7 +381,15 @@ if ( !class_exists( 'Clicky_Admin' ) ) {
 			$wp_admin_bar->add_menu( $menu );
 		}
 
-		function create_graph() {
+        /**
+         * Creates the graph to be used in the admin bar
+         *
+         * @uses clicky_get_options()
+         * @link http://codex.wordpress.org/Function_Reference/wp_remote_get
+         * @link http://codex.wordpress.org/Function_Reference/is_wp_error
+         * @return bool|string Returns base64-encoded image on succes (String) or fail (boolean) on failure
+         */
+        function create_graph() {
 			$options = clicky_get_options();
 
 			if ( !function_exists( 'imagecreate' ) )
@@ -366,6 +484,14 @@ if ( !class_exists( 'Clicky_Admin' ) ) {
 	$clicky_admin = new Clicky_Admin();
 }
 
+/**
+ * Loads Clicky-options set in WordPress.
+ * If already set: trim some option. Otherwise load defaults.
+ *
+ * @link http://codex.wordpress.org/Function_Reference/get_option
+ * @uses clicky_defaults()
+ * @return array Returns the trimmed/default options for clicky
+ */
 function clicky_get_options() {
 	$options = get_option( 'clicky' );
 	if ( !is_array( $options ) ) {
@@ -378,6 +504,11 @@ function clicky_get_options() {
 	return $options;
 }
 
+/**
+ * Default options for Clicky for WordPress plugin by Yoast
+ *
+ * @link http://codex.wordpress.org/Function_Reference/add_option
+ */
 function clicky_defaults() {
 	$options = array(
 		'site_id'                          => '',
@@ -391,6 +522,11 @@ function clicky_defaults() {
 	add_option( 'clicky', $options );
 }
 
+/**
+ * Add clicky scripts to footer
+ *
+ * @link http://codex.wordpress.org/Function_Reference/current_user_can
+ */
 function clicky_script() {
 	$options = clicky_get_options();
 
@@ -479,13 +615,21 @@ function clicky_script() {
 	})();
 </script>
 <noscript><p><img alt="Clicky" width="1" height="1"
-				  src="http://in.getclicky.com/<?php echo $options['site_id']; ?>ns.gif"/></p></noscript>
+				  src="//in.getclicky.com/<?php echo $options['site_id']; ?>ns.gif"/></p></noscript>
 <!-- End Clicky Tracking -->
 <?php
 }
 
 add_action( 'wp_footer', 'clicky_script', 90 );
 
+/**
+ * Create the log for clicky
+ *
+ * @uses clicky_get_options()
+ * @link http://codex.wordpress.org/Function_Reference/wp_remote_get
+ * @param array $a The array with basic log-data
+ * @return bool Returns true on success or false on failure
+ */
 function clicky_log( $a ) {
 	$options = clicky_get_options();
 
@@ -550,6 +694,12 @@ function clicky_log( $a ) {
 	return wp_remote_get( $file ) ? true : false;
 }
 
+/**
+ * Tracks comments that are not spam and not ping- or trackbacks
+ *
+ * @param int $commentID The ID of the comment that needs to be tracked
+ * @param int $comment_status Status of the comment (e.g. spam)
+ */
 function clicky_track_comment( $commentID, $comment_status ) {
 	// Make sure to only track the comment if it's not spam (but do it for moderated comments).
 	if ( $comment_status != 'spam' ) {
