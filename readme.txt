@@ -42,6 +42,9 @@ Read the authors [review of Clicky Analytics](http://yoast.com/clicky-analytics-
 = 1.4.2.3 =
 
 * Don't overwrite the `clicky_custom` variable when it's already there.
+* Added phpDoc
+* Use https instead of http for showing stats page
+* The <noscript>-part now uses // instead of http:// so it can switch to https.
 
 = 1.4.2.2 =
 
