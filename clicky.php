@@ -7,13 +7,21 @@ Description: Integrates Clicky on your blog!
 Author: Joost de Valk
 Author URI: http://yoast.com/
 */
+
 /**
  * The Clicky for WordPress plugin by Yoast makes it easy for you to add your Clicky analytics tracking code to your WordPress install, while also giving you some advanced tracking options.
  *
  * @link http://yoast.com/wordpress/clicky/
  */
 
-load_plugin_textdomain( 'clicky', '', '/clicky/lang/' );
+/**
+ * Load the proper text domain
+ */
+function clicky_init() {
+  load_plugin_textdomain( 'clicky', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' ); 
+}
+
+add_action( 'plugins_loaded', 'clicky_init' );
 
 if ( !class_exists( 'Clicky_Admin' ) ) {
 
