@@ -644,21 +644,23 @@ function clicky_log( $a ) {
 	if ( !isset( $options['site_id'] ) || empty( $options['site_id'] ) || !isset( $options['admin_site_key'] ) || empty( $options['admin_site_key'] ) )
 		return;
 
-	$type = $a['type'];
+	$type = '';
+	if ( isset( $a['type'] ) )
+		$type = $a['type'];
 	if ( !in_array( $type, array( "pageview", "download", "outbound", "click", "custom", "goal" ) ) )
 		$type = "pageview";
 
 	$file = "http://in.getclicky.com/in.php?site_id=" . $options['site_id'] . "&sitekey_admin=" . $options['admin_site_key'] . "&type=" . $type;
 
 	# referrer and user agent - will only be logged if this is the very first action of this session
-	if ( $a['ref'] )
+	if ( isset( $a['ref'] ) && is_string( $a['ref'] ) )
 		$file .= "&ref=" . urlencode( $a['ref'] );
 
-	if ( $a['ua'] )
+	if ( isset( $a['ua'] ) && is_string( $a['ua'] ) )
 		$file .= "&ua=" . urlencode( $a['ua'] );
 
 	# we need either a session_id or an ip_address...
-	if ( is_numeric( $a['session_id'] ) ) {
+	if ( isset( $a['session_id'] ) && is_numeric( $a['session_id'] ) ) {
 		$file .= "&session_id=" . $a['session_id'];
 	} else {
 		if ( !$a['ip_address'] )
@@ -669,7 +671,7 @@ function clicky_log( $a ) {
 	}
 
 	# goals can come in as integer or array, for convenience
-	if ( $a['goal'] ) {
+	if ( isset( $a['goal'] ) ) {
 		if ( is_numeric( $a['goal'] ) ) {
 			$file .= "&goal[id]=" . $a['goal'];
 		} else {
