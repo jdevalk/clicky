@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Joost de Valk, Yoast
 Requires at least: 2.8
 Tested up to: 3.5
-Stable tag: 1.4.2.3
+Stable tag: 1.4.2.4
 
 Integrates the Clicky (from getClicky.com) web analytics service into your blog.
 
@@ -38,6 +38,14 @@ Read the authors [review of Clicky Analytics](http://yoast.com/clicky-analytics-
 3. The stats indicator on the WordPress Toolbar.
 
 == Changelog ==
+
+== 1.4.2.4 ==
+
+* Minor stability improvements to code.
+* Improved code formatting.
+* i18n updates
+	* Replaced mangled fr_FR files
+	* Updated tr_TK
 
 = 1.4.2.3 =
 
@@ -81,7 +89,7 @@ Read the authors [review of Clicky Analytics](http://yoast.com/clicky-analytics-
 
 = 1.4 =
 
-* Interface cleanup, interface no longer breaks on smaller resolutions. 
+* Interface cleanup, interface no longer breaks on smaller resolutions.
 * No more unneeded JavaScript being loaded on the admin pages.
 * Made the Goal Tracking box work for all post types and made it smaller.
 * Removed some code that was no longer used.
@@ -109,7 +117,7 @@ Read the authors [review of Clicky Analytics](http://yoast.com/clicky-analytics-
 
 = 1.2 =
 
-* Update to work with the new CDN per [this post](http://getclicky.com/blog/264/important-were-moving-to-a-real-cdn-soon-depending-on-how-youve-set-up-tracking-you-may-need-to-take-action). 
+* Update to work with the new CDN per [this post](http://getclicky.com/blog/264/important-were-moving-to-a-real-cdn-soon-depending-on-how-youve-set-up-tracking-you-may-need-to-take-action).
 * Remove clicky.me integration that was no longer working anyway due to Twitter API changes.
 
 = 1.1.5 =
@@ -141,7 +149,7 @@ Read the authors [review of Clicky Analytics](http://yoast.com/clicky-analytics-
 
 = 1.0.6 =
 
-* Auto-tweeting now only happens when a post is first published. 
+* Auto-tweeting now only happens when a post is first published.
 * Made sure there are no spaces in site ID, site key and admin site key are always trimmed.
 * Added extra check to make sure clicky.me returned a valid short URL before tweeting.
 

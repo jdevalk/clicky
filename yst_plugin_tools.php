@@ -1,122 +1,40 @@
 <?php
+
 /**
  * Backend Class for use in all Yoast plugins
- * @version 0.2
+ * Version 0.2
  */
 
 if (!class_exists('Clicky_Base_Plugin_Admin')) {
-    /**
-     * Class Clicky_Base_Plugin_Admin
-     *
-     * The Clicky for WordPress plugin by Yoast makes it easy for you to add your Clicky analytics tracking code to
-     * your WordPress install, while also giving you some advanced tracking options.
-     *
-     * @link http://yoast.com/wordpress/clicky/
-     */
-    class Clicky_Base_Plugin_Admin {
+	class Clicky_Base_Plugin_Admin {
 
-        /**
-         * Menu slug for WordPress admin
-         *
-         * @access private
-         * @var string
-         */
-        var $hook = '';
-
-        /**
-         * Name of the plugin (long version)
-         *
-         * @access private
-         * @var string
-         */
-        var $longname = '';
-
-        /**
-         * Name of the plugin (short version)
-         *
-         * @access private
-         * @var string
-         */
-        var $shortname = '';
-
-        /**
-         * Variable 'ohzicon'
-         *
-         * @access private
-         * @var string
-         */
-        var $ozhicon	= '';
-
-        /**
-         * Option name
-         *
-         * @access private
-         * @var string
-         */
-        var $optionname = '';
-
-        /**
-         * Link to Clicky homepage
-         *
-         * @access private
-         * @var string
-         */
-        var $homepage	= '';
-
-        /**
-         * Filename
-         *
-         * @access private
-         * @var string
-         */
-        var $filename 	= '';
-
-        /**
-         * Access level used for creation of (admin) menu items
-         *
-         * @access private
-         * @var string
-         */
-        var $accesslvl	= 'manage_options';
-
-        /**
-         * Loads the CSS file for styling the admin
-         *
-         * @link http://codex.wordpress.org/Function_Reference/wp_enqueue_style
-         */
-        function config_page_styles() {
+		var $hook 		= '';
+		var $longname	= '';
+		var $shortname	= '';
+		var $ozhicon	= '';
+		var $optionname = '';
+		var $homepage	= '';
+		var $filename 	= '';
+		var $accesslvl	= 'manage_options';
+		
+		function config_page_styles() {
 			if (isset($_GET['page']) && $_GET['page'] == $this->hook) {
 				wp_enqueue_style('clicky-admin-css', WP_CONTENT_URL . '/plugins/' . plugin_basename(dirname(__FILE__)). '/yst_plugin_tools.css');
 			}
 		}
 
-        /**
-         * Adds a submenu to the settings-page
-         *
-         * @link http://codex.wordpress.org/Function_Reference/add_options_page
-         */
-        function register_settings_page() {
+		function register_settings_page() {
 			add_options_page($this->longname, $this->shortname, $this->accesslvl, $this->hook, array(&$this,'config_page'));
 		}
-
-        /**
-         * Creates the link to the URL of the plugin options
-         *
-         * @link http://codex.wordpress.org/Function_Reference/admin_url
-         * @return string|void Returns link to the plugin options page
-         */
-        function plugin_options_url() {
+		
+		function plugin_options_url() {
 			return admin_url( 'options-general.php?page='.$this->hook );
 		}
-
-        /**
-         * Add a link to the settings page to the plugins list
-         *
-         * @param array $links
-         * @param string $file
-         * @return array
-         */
-        function add_action_link( $links, $file ) {
+		
+		/**
+		 * Add a link to the settings page to the plugins list
+		 */
+		function add_action_link( $links, $file ) {
 			static $this_plugin;
 			if( empty($this_plugin) ) $this_plugin = $this->filename;
 			if ( $file == $this_plugin ) {
@@ -125,48 +43,31 @@ if (!class_exists('Clicky_Base_Plugin_Admin')) {
 			}
 			return $links;
 		}
-
-        /**
-         * Placeholder for function config_page
-         *
-         * Can be filled in child classes
-         */
-        function config_page() {
+		
+		function config_page() {
 			
 		}
-
-        /**
-         * Create a Checkbox input field
-         *
-         * @param int $id ID of the new checkbox
-         * @param string $label Text to be displayed next to the checkbox
-         * @return string The complete checkbox
-         */
-        function checkbox($id, $label) {
+		
+		/**
+		 * Create a Checkbox input field
+		 */
+		function checkbox($id, $label) {
 			$options = get_option($this->optionname);
 			return '<input type="checkbox" id="'.$id.'" name="'.$id.'"'. checked($options[$id],true,false).'/> <label for="'.$id.'">'.$label.'</label><br/>';
 		}
-
-        /**
-         * Create a Text input field
-         *
-         * @param int $id ID of the new label
-         * @param string $label Text to be displayed in the label
-         * @return string The complete label
-         */
-        function textinput($id, $label) {
+		
+		/**
+		 * Create a Text input field
+		 */
+		function textinput($id, $label) {
 			$options = get_option($this->optionname);
 			return '<label for="'.$id.'">'.$label.':</label><br/><input size="45" type="text" id="'.$id.'" name="'.$id.'" value="'.$options[$id].'"/><br/><br/>';
 		}
 
-        /**
-         * Create a postbox widget
-         *
-         * @param int $id ID of the div of the postbox
-         * @param string $title Title of the handle
-         * @param string $content Content of the postbox
-         */
-        function postbox($id, $title, $content) {
+		/**
+		 * Create a postbox widget
+		 */
+		function postbox($id, $title, $content) {
 		?>
 			<div id="<?php echo $id; ?>" class="postbox">
 				<h3 class="hndle"><span><?php echo $title; ?></span></h3>
@@ -178,13 +79,11 @@ if (!class_exists('Clicky_Base_Plugin_Admin')) {
 			$this->toc .= '<li><a href="#'.$id.'">'.$title.'</a></li>';
 		}	
 
-        /**
-         * Create a form table from an array of rows
-         *
-         * @param array $rows Array with data to fill the new table
-         * @return string The complete table
-         */
-        function form_table($rows) {
+
+		/**
+		 * Create a form table from an array of rows
+		 */
+		function form_table($rows) {
 			$content = '<table class="form-table">';
 			$i = 1;
 			foreach ($rows as $row) {
@@ -213,12 +112,10 @@ if (!class_exists('Clicky_Base_Plugin_Admin')) {
 			return $content;
 		}
 
-        /**
-         * Create a "plugin like" box.
-         *
-         * @param string $hook Hook the function needs to hook on. If empty code will be executed immediately.
-         */
-        function plugin_like($hook = '') {
+		/**
+		 * Create a "plugin like" box.
+		 */
+		function plugin_like($hook = '') {
 			if (empty($hook)) {
 				$hook = $this->hook;
 			}
@@ -230,13 +127,11 @@ if (!class_exists('Clicky_Base_Plugin_Admin')) {
 			$content .= '</ul>';
 			$this->postbox($hook.'like', __( 'Like this plugin?', 'clicky' ), $content);
 		}	
-
-        /**
-         * Info box with link to the bug tracker.
-         *
-         * @param string $hook Hook the function needs to hook on. If empty code will be executed immediately.
-         */
-        function plugin_support($hook = '') {
+		
+		/**
+		 * Info box with link to the bug tracker.
+		 */
+		function plugin_support($hook = '') {
 			if (empty($hook)) {
 				$hook = $this->hook;
 			}
@@ -245,9 +140,9 @@ if (!class_exists('Clicky_Base_Plugin_Admin')) {
 		}
 
 		/**
-		 * Box with latest news from Clicky
+		 * Box with latest news from GetClicky
 		 */
-        function news( ) {
+		function news( ) {
 			include_once(ABSPATH . WPINC . '/feed.php');
 			$rss = fetch_feed( $this->feed );
 			$rss_items = $rss->get_items( 0, $rss->get_item_quantity(3) );
@@ -270,7 +165,7 @@ if (!class_exists('Clicky_Base_Plugin_Admin')) {
 		/**
 		 * Box with latest news from Yoast.com for sidebar
 		 */
-        function yoast_news() {
+		function yoast_news() {
 			$rss = fetch_feed('http://feeds.feedburner.com/joostdevalk');
 			$rss_items = $rss->get_items( 0, $rss->get_item_quantity(3) );
 			
@@ -310,16 +205,9 @@ if (!class_exists('Clicky_Base_Plugin_Admin')) {
 			.'<li><a href="http://yoast.com/wordpress/clicky/#utm_source=wpadmin&utm_medium=sidebanner&utm_term=link&utm_campaign=clickywpplugin">'.__('Blog about it & link to the plugin page', 'clicky').'</a></li>'
 			.'</ul>');
 		}
-
-        /**
-         * Crops text to given length (keeps whole words only)
-         *
-         * @param string $text The text to crop
-         * @param int $limit Maximum length of the result
-         * @param string $finish What needs to be the end of the cropped text
-         * @return string The cropped text
-         */
-        function text_limit( $text, $limit, $finish = ' [&hellip;]') {
+		
+				
+		function text_limit( $text, $limit, $finish = ' [&hellip;]') {
 			if( strlen( $text ) > $limit ) {
 		    	$text = substr( $text, 0, $limit );
 				$text = substr( $text, 0, - ( strlen( strrchr( $text,' ') ) ) );
