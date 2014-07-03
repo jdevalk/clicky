@@ -1,35 +1,34 @@
 === Clicky by Yoast ===
 Contributors: joostdevalk
-Donate link: http://yoast.com/donate/
 Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Joost de Valk, Yoast
-Requires at least: 2.8
-Tested up to: 3.5
-Stable tag: 1.4.2.4
+Requires at least: 3.5
+Tested up to: 3.8
+Stable tag: 1.4.3
 
-Integrates the Clicky (from getClicky.com) web analytics service into your blog.
+Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
 
 == Description ==
 
-Integrates the [Clicky web analytics](http://getclicky.com/145844) service into your blog.
+Integrates the [Clicky web analytics](http://clicky.com/145844) service into your blog.
 
-* Automatically adding your Clicky (from getClicky.com) tracking code everywhere.
+* Automatically adding your Clicky tracking code everywhere.
 * Option to ignore admins.
 * Option to store names of commenters.
 * Option to disable the use of cookies.
-* Stores comments as an action using the getClicky [internal data logging API](https://secure.getclicky.com/help/customization/manual#internal). This requires a [pro account](http://getclicky.com/145844) to work.
+* Stores comments as an action using the Clicky [internal data logging API](https://secure.getclicky.com/help/customization/manual#internal). This requires a [pro account](http://clicky.com/145844) to work.
 * Option to track posts &amp; pages as goals and assign a revenue to that page or post.
 * An overview of your site's statistics on your dashboard.
 * Easily add outbound link pattern matching for affiliate links etc.
 * Adds a small stats indicator of visitors in the last 48 to the WordPress toolbar.
 
-Read the authors [review of Clicky Analytics](http://yoast.com/clicky-analytics-review/) if you want to see a bit more of the cool integration this plugin provides.
+Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics-review/) if you want to see a bit more of the cool integration this plugin provides.
 
 == Installation ==
 
 1. Upload the `clicky` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Enter your Site ID, Key and Admin Key.
-1. You're done, getClicky should start working.
+1. You're done, Clicky should start working.
 
 == Screenshots ==
 
@@ -38,6 +37,25 @@ Read the authors [review of Clicky Analytics](http://yoast.com/clicky-analytics-
 3. The stats indicator on the WordPress Toolbar.
 
 == Changelog ==
+
+== 1.4.3 ==
+
+* Minor security improvements:
+	* Escape goal value before outputting them, both on frontend and in the admin.
+	* Block direct file access to plugin files.
+	* Sanitize user settings before saving.
+	* Properly load CSS over HTTPS when admin is using HTTPS.
+
+* Other improvements:
+	* Remove unused functions in admin class.
+	* Made clicky script output smaller by removing extraneous newlines.
+	* Slight cosmetic changes to admin.
+	* Moved screenshots to assets directory.
+
+* Inline documentation:
+	* Change link to goals setup to link straight to current site's goal setup page.
+	* Change links to point to clicky.com instead of getclicky.com.
+	* Change all links to yoast.com to point to https instead of http.
 
 == 1.4.2.4 ==
 
@@ -52,7 +70,7 @@ Read the authors [review of Clicky Analytics](http://yoast.com/clicky-analytics-
 * Don't overwrite the `clicky_custom` variable when it's already there.
 * Added phpDoc
 * Use https instead of http for showing stats page
-* The <noscript>-part now uses // instead of http:// so it can switch to https.
+* The `<noscript>`-part now uses `//` instead of `http://` so it can switch to https.
 * Added Turkish (tr_TK)
 
 = 1.4.2.2 =
