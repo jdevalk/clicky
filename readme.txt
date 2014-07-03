@@ -38,7 +38,9 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 
 == Changelog ==
 
-== 1.4.3 ==
+= 1.4.3 =
+
+Released July 3rd, 2014.
 
 * Minor security improvements:
 	* Escape goal value before outputting them, both on frontend and in the admin.
@@ -57,7 +59,7 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 	* Change links to point to clicky.com instead of getclicky.com.
 	* Change all links to yoast.com to point to https instead of http.
 
-== 1.4.2.4 ==
+= 1.4.2.4 =
 
 * Minor stability improvements to code.
 * Improved code formatting.
