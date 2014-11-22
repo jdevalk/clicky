@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Clicky for WordPress package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Clicky for WordPress 1.4.4\n"
+"Project-Id-Version: Clicky for WordPress 1.5\n"
 "Report-Msgid-Bugs-To: https://github.com/yoast/clicky/issues\n"
-"POT-Creation-Date: 2014-11-22 12:35:33+00:00\n"
+"POT-Creation-Date: 2014-11-22 16:18:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,52 +24,52 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 
-#: clicky.php:92
+#: admin/class-clicky_admin.php:67
 msgid "Clicky Goal Tracking"
 msgstr ""
 
-#: clicky.php:114
+#: admin/class-clicky_admin.php:89
 msgid "Clicky is almost ready. "
 msgstr ""
 
-#: clicky.php:116
+#: admin/class-clicky_admin.php:91
 msgid ""
 "You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s "
 "for it to work."
 msgstr ""
 
-#: clicky.php:143
+#: admin/class-clicky_admin.php:118
 msgid ""
 "Clicky can track Goals for you too, %1$syou can create them here%2$s. To be "
 "able to track a goal on this post, you need to specify the goal ID here. "
 "Optionally, you can also provide the goal revenue."
 msgstr ""
 
-#: clicky.php:147
+#: admin/class-clicky_admin.php:122
 msgid "Goal ID"
 msgstr ""
 
-#: clicky.php:151
+#: admin/class-clicky_admin.php:126
 msgid "Goal Revenue"
 msgstr ""
 
-#: clicky.php:205
+#: admin/class-clicky_admin.php:180
 msgid "Stats"
 msgstr ""
 
-#: clicky.php:239
+#: admin/class-clicky_admin.php:214
 msgid "You cannot edit the Clicky settings."
 msgstr ""
 
-#: clicky.php:261
+#: admin/class-clicky_admin.php:236
 msgid "Clicky settings have been updated."
 msgstr ""
 
-#: clicky.php:273
+#: admin/class-clicky_admin.php:248
 msgid "Configuration"
 msgstr ""
 
-#: clicky.php:282
+#: admin/class-clicky_admin.php:257
 msgid ""
 "Go to your %1$suser homepage on Clicky%2$s and click "
 "&quot;Preferences&quot; under the name of the domain, you will find the "
@@ -77,52 +77,52 @@ msgid ""
 "information."
 msgstr ""
 
-#: clicky.php:287
+#: admin/class-clicky_admin.php:262
 msgid "Site ID"
 msgstr ""
 
-#: clicky.php:294
+#: admin/class-clicky_admin.php:269
 msgid "Site Key"
 msgstr ""
 
-#: clicky.php:301
+#: admin/class-clicky_admin.php:276
 msgid "Admin Site Key"
 msgstr ""
 
-#: clicky.php:307
+#: admin/class-clicky_admin.php:282
 msgid "Clicky Settings"
 msgstr ""
 
-#: clicky.php:312
+#: admin/class-clicky_admin.php:287
 msgid "Ignore Admin users"
 msgstr ""
 
-#: clicky.php:313
+#: admin/class-clicky_admin.php:288
 msgid ""
 "If you are using a caching plugin, such as W3 Total Cache or WP-Supercache, "
 "please ensure that you have it configured to NOT use the cache for logged "
 "in users. Otherwise, admin users <em>will still</em> be tracked."
 msgstr ""
 
-#: clicky.php:319
+#: admin/class-clicky_admin.php:294
 msgid "Disable cookies"
 msgstr ""
 
-#: clicky.php:320
+#: admin/class-clicky_admin.php:295
 msgid ""
 "If you don't want Clicky to use cookies on your site, check this button. By "
 "doing so, uniques will instead be determined based on their IP address."
 msgstr ""
 
-#: clicky.php:326
+#: admin/class-clicky_admin.php:301
 msgid "Track names of commenters"
 msgstr ""
 
-#: clicky.php:333
+#: admin/class-clicky_admin.php:308
 msgid "Outbound Link Pattern"
 msgstr ""
 
-#: clicky.php:334
+#: admin/class-clicky_admin.php:309
 msgid ""
 "If your site uses redirects for outbound links, instead of links that point "
 "directly to their external source (this is popular with affiliate links, "
@@ -131,96 +131,92 @@ msgid ""
 "links. %1$sRead more here%1$s."
 msgstr ""
 
-#: clicky.php:335
+#: admin/class-clicky_admin.php:310
 msgid "For instance: <code>/out/,/go/</code>"
 msgstr ""
 
-#: clicky.php:338
+#: admin/class-clicky_admin.php:313
 msgid "Advanced Settings"
 msgstr ""
 
-#: clicky.php:343
+#: admin/class-clicky_admin.php:318
 msgid "Update Clicky Settings"
 msgstr ""
 
-#: clicky.php:410
+#: admin/class-clicky_admin.php:385
 msgid "Visitors over 48 hours. Click for more Clicky Site Stats."
 msgstr ""
 
-#: clicky.php:583
-msgid ""
-"Clicky tracking not shown because you're an administrator and you've "
-"configured Clicky to ignore administrators."
-msgstr ""
-
-#: clicky.php:768
-msgid "Posted a comment"
-msgstr ""
-
-#: includes/yst_plugin_tools.php:54
+#: admin/class-clicky_admin.php:536
 msgid "Settings"
 msgstr ""
 
-#: includes/yst_plugin_tools.php:135
+#: admin/class-clicky_admin.php:613
 msgid "Why not do any or all of the following:"
 msgstr ""
 
-#: includes/yst_plugin_tools.php:137
+#: admin/class-clicky_admin.php:615
 msgid "Link to it so other folks can find out about it."
 msgstr ""
 
-#: includes/yst_plugin_tools.php:138
+#: admin/class-clicky_admin.php:616
 msgid "Give it a 5 star rating on WordPress.org."
 msgstr ""
 
-#: includes/yst_plugin_tools.php:139
+#: admin/class-clicky_admin.php:617
 msgid "Let other people know that it works with your WordPress setup."
 msgstr ""
 
-#: includes/yst_plugin_tools.php:141
+#: admin/class-clicky_admin.php:619
 msgid "Like this plugin?"
 msgstr ""
 
-#: includes/yst_plugin_tools.php:148
+#: admin/class-clicky_admin.php:626
 msgid ""
 "If you're in need of support with Clicky and / or this plugin, please visit "
 "the %1$sClicky forums%2$s."
 msgstr ""
 
-#: includes/yst_plugin_tools.php:149
+#: admin/class-clicky_admin.php:627
 msgid "Need Support?"
 msgstr ""
 
-#: includes/yst_plugin_tools.php:161 includes/yst_plugin_tools.php:184
+#: admin/class-clicky_admin.php:639 admin/class-clicky_admin.php:662
 msgid "No news items, feed might be broken..."
 msgstr ""
 
-#: includes/yst_plugin_tools.php:170 includes/yst_plugin_tools.php:196
+#: admin/class-clicky_admin.php:648 admin/class-clicky_admin.php:673
 msgid "Subscribe with RSS"
 msgstr ""
 
-#: includes/yst_plugin_tools.php:172
+#: admin/class-clicky_admin.php:650
 msgid "Latest news from Clicky"
 msgstr ""
 
-#: includes/yst_plugin_tools.php:193
+#: admin/class-clicky_admin.php:671
 msgid "Like Yoast on Facebook"
 msgstr ""
 
-#: includes/yst_plugin_tools.php:194
+#: admin/class-clicky_admin.php:672
 msgid "Follow Yoast on Twitter"
 msgstr ""
 
-#: includes/yst_plugin_tools.php:195
-msgid "Circle Yoast on Google+"
-msgstr ""
-
-#: includes/yst_plugin_tools.php:197
+#: admin/class-clicky_admin.php:674
 msgid "Subscribe by email"
 msgstr ""
 
-#: includes/yst_plugin_tools.php:199
+#: admin/class-clicky_admin.php:676
 msgid "Latest news from Yoast"
+msgstr ""
+
+#: frontend/class-clicky_frontend.php:47
+msgid ""
+"Clicky tracking not shown because you're an administrator and you've "
+"configured Clicky to ignore administrators."
+msgstr ""
+
+#: frontend/class-clicky_frontend.php:230
+msgid "Posted a comment"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -232,7 +228,10 @@ msgid "https://yoast.com/wordpress/plugins/clicky/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Integrates Clicky on your blog!"
+msgid ""
+"The Clicky for WordPress plugin by Yoast makes it easy for you to add your "
+"Clicky analytics tracking code to your WordPress install, while also giving "
+"you some advanced tracking options."
 msgstr ""
 
 #. Author of the plugin/theme
