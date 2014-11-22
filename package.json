@@ -3,7 +3,7 @@
   "description": "Development files for the Clicky WordPress plugin",
   "plugin": {
     "glotpress": "https://translate.yoast.com",
-	  "glotpress_path": "ga-ecommerce-tracking",
+	  "glotpress_path": "clicky-wordpress-plugin",
 	  "textdomain": "clicky"
   },
   "pot": {
