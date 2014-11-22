@@ -2,8 +2,9 @@
 Contributors: joostdevalk
 Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Joost de Valk, Yoast
 Requires at least: 3.5
-Tested up to: 3.8
-Stable tag: 1.4.3
+Tested up to: 4.0
+Stable tag: 1.4.4
+Text Domain: clicky
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
 
@@ -37,6 +38,10 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 3. The stats indicator on the WordPress Toolbar.
 
 == Changelog ==
+
+= 1.4.4 =
+
+Released November 22nd, 2014
 
 = 1.4.3 =
 

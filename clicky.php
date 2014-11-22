@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Clicky for WordPress
-Version: 1.4.3
+Version: 1.4.4
 Plugin URI: https://yoast.com/wordpress/plugins/clicky/
 Description: Integrates Clicky on your blog!
 Author: Team Yoast
@@ -24,14 +24,15 @@ if ( ! function_exists( 'add_filter' ) ) {
  * Load the proper text domain
  */
 function clicky_init() {
-	load_plugin_textdomain( 'clicky', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+	load_plugin_textdomain( 'clicky', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	define( 'CLICKY_PLUGIN_DIR', plugin_dir_url( __FILE__ ) );
 }
 
 add_action( 'plugins_loaded', 'clicky_init' );
 
 if ( ! class_exists( 'Clicky_Admin' ) ) {
 
-	require_once( 'yst_plugin_tools.php' );
+	require_once( 'includes/yst_plugin_tools.php' );
 
 	/**
 	 * Class Clicky_Admin
