@@ -7,6 +7,7 @@ module.exports = {
 		files: {
 			src: [
 				'<%= files.php %>',
+				'!admin/i18n-module/**'
 			]
 		}
 	}
