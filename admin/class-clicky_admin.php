@@ -155,10 +155,7 @@ class Clicky_Admin {
 	 * @link https://codex.wordpress.org/Function_Reference/add_dashboard_page
 	 */
 	function register_dashboard_page() {
-		add_dashboard_page( __( 'Clicky Stats', 'clicky' ), __( 'Clicky Stats', 'clicky' ), 'manage_options', $this->hook, array(
-			&$this,
-			'dashboard_page'
-		) );
+		add_dashboard_page( __( 'Clicky Stats', 'clicky' ), __( 'Clicky Stats', 'clicky' ), 'manage_options', 'clicky_stats', array( $this, 'dashboard_page' ) );
 	}
 
 	/**

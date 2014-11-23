@@ -11,10 +11,15 @@ if ( ! function_exists( 'add_filter' ) ) {
  */
 class Clicky_Admin_Page extends Clicky_Admin {
 
+	/**
+	 * Class constructor
+	 */
 	function __construct() {
 		$this->options = Clicky_Options::instance()->get();
 
 		add_action( 'admin_print_styles', array( $this, 'config_page_styles' ) );
+
+		add_action( 'admin_head', array( $this, 'i18n_module' ) );
 	}
 
 	/**
@@ -309,5 +314,23 @@ class Clicky_Admin_Page extends Clicky_Admin {
 		$extra_links .= '<li class="email"><a href="https://yoast.com/newsletter/">' . __( 'Subscribe by email', 'clicky' ) . '</a></li>';
 
 		$this->rss_news( 'yoastlatest', 'https://yoast.com/feed/', __( 'Latest news from Yoast', 'clicky' ), $extra_links );
+	}
+
+	/**
+	 * Instantiate the i18n module
+	 */
+	function i18n_module() {
+		new yoast_i18n(
+			array(
+				'textdomain'     => 'clicky',
+				'project_slug'   => 'clicky-wordpress-plugin',
+				'plugin_name'    => 'Clikcy for WordPress',
+				'hook'           => 'clicky_admin_footer',
+				'glotpress_url'  => 'http://translate.yoast.com',
+				'glotpress_name' => 'Yoast Translate',
+				'glotpress_logo' => 'https://cdn.yoast.com/wp-content/uploads/i18n-images/Yoast_Translate.svg',
+				'register_url '  => 'http://translate.yoast.com/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=clicky-i18n-promo',
+			)
+		);
 	}
 }

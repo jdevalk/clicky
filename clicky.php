@@ -35,10 +35,10 @@ class Yoast_Clicky {
 	 * Initialize the whole plugin
 	 */
 	function init() {
-		load_plugin_textdomain( 'clicky', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
 		// register class autoloader
 		spl_autoload_register( array( $this, 'autoload' ) );
+
+		load_plugin_textdomain( 'clicky', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 		if ( is_admin() ) {
 			new Clicky_Admin();
@@ -63,6 +63,7 @@ class Yoast_Clicky {
 				'clicky_admin_page' => $include_path . '/admin/class-clicky_admin_page.php',
 				'clicky_frontend'   => $include_path . '/frontend/class-clicky_frontend.php',
 				'clicky_options'    => $include_path . '/includes/class-clicky_options.php',
+				'yoast_i18n'        => $include_path . '/admin/i18n-module/i18n-module.php',
 			);
 		}
 		$class_name = strtolower( $class );
