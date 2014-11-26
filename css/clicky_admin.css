@@ -1,26 +1,16 @@
-td.yst_desc {
-	color: #777;
-	font-size: 12px;
-	font-weight: normal;
-	line-height: 130%;
+.yoast_box {
+	margin: 0 0 20px 0;
+	border: 1px solid #ccc;
+	background-color: #fff;
 }
 
-tr.yst_row {
-	margin: 5px 0 0 0;
-	padding: 5px 0 0 0;
+.yoast_box h3 {
+	padding: 0 0 8px 20px;
+	border-bottom: 1px solid #ccc;
 }
 
-tr.yst_row th,
-tr.yst_row td {
-	padding: 10px;
-}
-
-tr.yst_row th {
-	padding-left: 5px;
-}
-
-tr.yst_row.even {
-	background-color: #f6f6f6;
+div.inside {
+	padding: 0 20px;
 }
 
 div.inside ul {
@@ -67,53 +57,52 @@ div.inside ul li.yoast {
 	width: 250px;
 }
 
-.postbox p {
-	margin: 0 10px 10px 10px;
-	font-size: 13px;
-	line-height: 150%;
-	text-align: left;
-}
-
-.postbox pre {
-	margin: 5px 10px;
-	padding: 4px;
-	background: lightyellow;
-}
-
-.side .postbox p,
-.side .postbox a,
-.side .postbox a.rsswidget {
-	font-size: 13px;
-}
-
-div.inside .button:hover,
-div.inside .button-primary:hover {
-	text-decoration: none;
-}
-
-.button,
-.button-primary {
-	margin-top: 10px;
-}
-
-.postbox#donate {
-	border: 2px solid green;
-}
-
 strong.red {
 	color: green;
 	font-size: 105%;
 	font-weight: bold;
 }
 
-.postbox {
-	margin: 0 10px 10px 0;
-}
-
-.postbox .hndle {
-	cursor: default;
-}
-
 #clicky-icon {
 	margin: 0 10px 0 0;
+}
+
+.nav-tab-wrapper {
+	margin-bottom: 0;
+}
+
+#yoast_wrapper {
+	float: left;
+	max-width: 600px;
+	margin: 0 20px 0 0;
+}
+
+#yoast_sidebar {
+	float: left;
+	max-width: 300px;
+	margin: 0 20px 0 0;
+}
+
+.yoast_tab {
+	display: none;
+}
+
+.yoast_tab.active {
+	display: block;
+	padding: 0.5em 0.9em;
+	border: 1px solid #ddd;
+	border-radius: 0 3px 3px 3px;
+	background-color: #fff;
+}
+
+.tabwrapper .yoast_tab {
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+.tabwrapper .yoast_tab h3 {
+	padding: 9px 15px 4px 0;
+	font-size: 23px;
+	font-weight: 400;
 }

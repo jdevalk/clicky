@@ -31,46 +31,23 @@ class Clicky_Frontend {
 
 	/**
 	 * Add Clicky scripts to footer
-	 *
-	 * @return bool
-	 *
-	 * @link https://codex.wordpress.org/Function_Reference/current_user_can
 	 */
 	public function script() {
 		if ( is_preview() ) {
-			return false;
+			return;
 		}
+
+		echo '<!-- Clicky Web Analytics - https://clicky.com, WordPress Plugin by Yoast - https://yoast.com/wordpress/plugins/clicky/ -->';
 
 		// Bail early if current user is admin and ignore admin is true
 		if ( $this->options['ignore_admin'] && current_user_can( "manage_options" ) ) {
 			echo "\n<!-- " . __( "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators.", 'clicky' ) . " -->\n";
 
-			return false;
+			return;
 		}
 
-
-		// Debug
-		?>
-<!-- Clicky Web Analytics - https://clicky.com, WordPress Plugin by Yoast - https://yoast.com/wordpress/plugins/clicky/ -->
-<?php
-		// Track commenter name if track_names is true
 		if ( $this->options['track_names'] ) {
-			?>
-<script type='text/javascript'>
-function clicky_gc(name) {
-	var ca = document.cookie.split(';');
-	for (var i in ca) {
-		if (ca[i].indexOf(name + '=') != -1) {
-			return decodeURIComponent(ca[i].split('=')[1]);
-		}
-	}
-	return '';
-}
-var username_check = clicky_gc('comment_author_<?php echo md5( get_option( "siteurl" ) ); ?>');
-if (username_check) var clicky_custom_session = {username: username_check};
-</script>
-
-<?php
+			require 'views/comment_author_script.php';
 		}
 
 		$clicky_extra = '';
@@ -105,31 +82,11 @@ if (username_check) var clicky_custom_session = {username: username_check};
 			$clicky_extra .= "clicky_custom.cookies_disable = 1;\n";
 		}
 
-		?>
-<script type="text/javascript">
-<?php
-			if ( ! empty( $clicky_extra ) ) {
-					echo 'var clicky_custom = clicky_custom || {}; ';
-					echo $clicky_extra;
-			} ?>
-var clicky = { log : function () { return true;	}, goal: function () { return true;	} };
-var clicky_site_id = <?php echo $this->options['site_id']; ?>;
-(function () {
-	var s = document.createElement('script');s.type = 'text/javascript';s.async = true;s.src = '//static.getclicky.com/js';
-	( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild(s);
-})();
-</script>
-<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/<?php echo $this->options['site_id']; ?>ns.gif" /></p></noscript>
-		<?php
-		return true;
+		require 'views/script.php';
 	}
-
 
 	/**
 	 * Create the log for clicky
-	 *
-	 * @uses clicky_get_options()
-	 * @link https://codex.wordpress.org/Function_Reference/wp_remote_get
 	 *
 	 * @param array $a The array with basic log-data
 	 *

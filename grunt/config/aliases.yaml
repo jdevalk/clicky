@@ -18,6 +18,9 @@ build:
   - 'addtextdomain'
   - 'makepot'
   - 'glotpress_download'
+# Build JavaScript from assets to production
+'build:js':
+  - 'uglify'
 # Check health of the project
 check:
   - 'phplint'

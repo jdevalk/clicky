@@ -16,6 +16,7 @@ if ( ! function_exists( 'add_filter' ) ) {
 }
 
 define( 'CLICKY_PLUGIN_FILE', __FILE__ );
+define( 'CLICKY_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'CLICKY_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 
 class Yoast_Clicky {
@@ -44,6 +45,9 @@ class Yoast_Clicky {
 			new Clicky_Admin();
 		} else {
 			new Clicky_Frontend();
+			if ( current_user_can( 'manage_options' ) ) {
+				new Clicky_Visitor_Graph();
+			}
 		}
 	}
 
@@ -58,17 +62,19 @@ class Yoast_Clicky {
 		static $classes = null;
 		if ( $classes === null ) {
 			$include_path = dirname( __FILE__ );
-			$classes = array(
-				'clicky_admin'      => $include_path . '/admin/class-clicky_admin.php',
-				'clicky_admin_page' => $include_path . '/admin/class-clicky_admin_page.php',
-				'clicky_frontend'   => $include_path . '/frontend/class-clicky_frontend.php',
-				'clicky_options'    => $include_path . '/includes/class-clicky_options.php',
-				'yoast_i18n'        => $include_path . '/admin/i18n-module/i18n-module.php',
+			$classes      = array(
+				'clicky_admin'         => $include_path . '/admin/class-clicky_admin.php',
+				'clicky_admin_page'    => $include_path . '/admin/class-clicky_admin_page.php',
+				'clicky_frontend'      => $include_path . '/frontend/class-clicky_frontend.php',
+				'clicky_options'       => $include_path . '/includes/class-clicky_options.php',
+				'clicky_options_admin' => $include_path . '/admin/class-clicky_options_admin.php',
+				'clicky_visitor_graph' => $include_path . '/frontend/class-clicky_visitor_graph.php',
+				'yoast_i18n'           => $include_path . '/admin/i18n-module/i18n-module.php',
 			);
 		}
 		$class_name = strtolower( $class );
-		if ( isset( $classes[$class_name] ) ) {
-			require_once( $classes[$class_name] );
+		if ( isset( $classes[ $class_name ] ) ) {
+			require_once( $classes[ $class_name ] );
 		}
 	}
 }

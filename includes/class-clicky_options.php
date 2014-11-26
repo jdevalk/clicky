@@ -18,7 +18,7 @@ class Clicky_Options {
 	 *
 	 * @var string
 	 */
-	private $option_name = 'clicky';
+	public static $option_name = 'clicky';
 
 	/**
 	 * Holds the actual options
@@ -73,7 +73,7 @@ class Clicky_Options {
 	 * @return array Returns the trimmed/default options for clicky
 	 */
 	public function load() {
-		$this->options = get_option( $this->option_name );
+		$this->options = get_option( self::$option_name );
 		if ( ! is_array( $this->options ) ) {
 			$this->defaults();
 		} else {
@@ -98,6 +98,6 @@ class Clicky_Options {
 			'track_names'      => true,
 			'cookies_disable'  => false,
 		);
-		add_option( $this->option_name, $this->options );
+		add_option( self::$option_name, $this->options );
 	}
 }
