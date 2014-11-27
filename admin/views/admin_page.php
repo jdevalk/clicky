@@ -1,6 +1,6 @@
 <div class="wrap">
 	<h2>
-		<img id="clicky-icon" src="<?php echo CLICKY_PLUGIN_DIR_URL; ?>images/clicky-32x32.png" class="alignleft" /> Clicky <?php _e( "Configuration", 'clicky' ); ?>
+		<img id="plugin_icon" src="<?php echo CLICKY_PLUGIN_DIR_URL; ?>images/clicky-32x32.png" class="alignleft" /> Clicky <?php _e( "Configuration", 'clicky' ); ?>
 	</h2>
 
 	<form action="<?php echo admin_url( 'options.php' ); ?>" method="post">
@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<?php
-			submit_button();
+			submit_button( __( 'Save Clicky settings', 'clicky' ) );
 
 			do_action( 'clicky_admin_footer' );
 		?>
@@ -30,8 +30,8 @@
 	</form>
 	<div id="yoast_sidebar">
 		<?php
-			$this->plugin_like();
 			$this->yoast_news();
+			$this->website_review_banner();
 			$this->clicky_news();
 		?>
 	</div>

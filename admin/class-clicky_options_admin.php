@@ -44,7 +44,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	private function register_basic_settings_section() {
-		add_settings_section( 'basic-settings', __( 'Clicky Settings', 'clicky' ), array(
+		add_settings_section( 'basic-settings', __( 'Basic settings', 'clicky' ), array(
 			$this,
 			'basic_settings_intro'
 		), 'clicky' );
@@ -61,12 +61,25 @@ class Clicky_Options_Admin extends Clicky_Options {
 			) );
 		}
 
+		add_settings_section( 'clicky-like', __( 'Like this plugin?', 'clicky' ), array(
+			$this,
+			'like_text'
+		), 'clicky' );
+
 		add_settings_section( 'clicky-support', __( 'Need support?', 'clicky' ), array(
 			$this,
 			'support_text'
 		), 'clicky' );
 
 		add_settings_section( 'clicky-advanced', __( 'Advanced Settings', 'clicky' ), null, 'clicky-advanced' );
+	}
+
+
+	/**
+	 * Create a "plugin like" box.
+	 */
+	public function like_text() {
+		require 'views/like_box.php';
 	}
 
 	/**
@@ -175,7 +188,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * @param array $args
 	 */
 	public function input_text( $args ) {
-		echo '<input type="text" name="' . esc_attr( $args['name'] ) . '" value="' . esc_attr( $args['value'] ) . '"/>';
+		echo '<input type="text" class="text" name="' . esc_attr( $args['name'] ) . '" value="' . esc_attr( $args['value'] ) . '"/>';
 		$this->input_desc( $args );
 	}
 
@@ -185,7 +198,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * @param array $args
 	 */
 	public function input_checkbox( $args ) {
-		echo '<input type="checkbox" ' . checked( $this->options[ $args['name'] ], true, false ) . ' name="clicky[' . esc_attr( $args['name'] ) . ']"/>';
+		echo '<input class="checkbox" type="checkbox" ' . checked( $this->options[ $args['name'] ], true, false ) . ' name="clicky[' . esc_attr( $args['name'] ) . ']"/>';
 		$this->input_desc( $args );
 	}
 

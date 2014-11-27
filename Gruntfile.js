@@ -22,6 +22,9 @@ module.exports = function(grunt) {
 				'css/*.css',
 				'!css/*.min.css'
 			],
+			images: [
+				'images/*'
+			],
 			js: [
 				'js/*.js',
 				'!js/*.min.js'
@@ -29,6 +32,7 @@ module.exports = function(grunt) {
 			php: [
 				'*.php',
 				'admin/**/*.php',
+				'frontend/**/*.php',
 				'includes/**/*.php'
 			],
 			phptests: 'tests/**/*.php',
