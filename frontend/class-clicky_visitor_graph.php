@@ -52,6 +52,10 @@ class Clicky_Visitor_Graph {
 
 		$this->options = Clicky_Options::instance()->get();
 
+		if ( isset( $this->options['disable_stats'] ) && $this->options['disable_stats'] ) {
+			return;
+		}
+
 		add_action( 'wp_head', array( $this, 'stats_css' ) );
 		add_action( 'admin_bar_menu', array( $this, 'stats_admin_bar_menu' ), 100 );
 	}

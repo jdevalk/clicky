@@ -87,6 +87,10 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 */
 	private function register_advanced_settings_screen() {
 		$advanced_settings = array(
+			'disable_stats'   => array(
+				'label' => __( 'Disable Admin Bar stats', 'clicky' ),
+				'desc'  => __( 'If you don\'t want to display the stats in your admin menu, check this box.', 'clicky' ),
+			),
 			'ignore_admin'    => array(
 				'label' => __( 'Ignore Admin users', 'clicky' ),
 				'desc'  => __( 'If you are using a caching plugin, such as W3 Total Cache or WP-Supercache, please ensure that you have it configured to NOT use the cache for logged in users. Otherwise, admin users <em>will still</em> be tracked.', 'clicky' ),
@@ -105,7 +109,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 				'input_checkbox'
 			), 'clicky-advanced', 'clicky-advanced', array(
 				'name'  => $key,
-				'value' => $this->options[ $key ],
+				'value' => isset( $this->options[ $key ] ) ? $this->options[ $key ] : false,
 				'desc'  => isset( $arr['desc'] ) ? $arr['desc'] : '',
 			) );
 		}
@@ -135,7 +139,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 			}
 		}
 
-		foreach ( array( 'ignore_admin', 'track_names', 'cookies_disable' ) as $option_name ) {
+		foreach ( array( 'ignore_admin', 'track_names', 'cookies_disable', 'disable_stats' ) as $option_name ) {
 			if ( isset( $new_options[ $option_name ] ) ) {
 				$new_options[ $option_name ] = true;
 			} else {
@@ -198,7 +202,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * @param array $args
 	 */
 	public function input_checkbox( $args ) {
-		echo '<input class="checkbox" type="checkbox" ' . checked( $this->options[ $args['name'] ], true, false ) . ' name="clicky[' . esc_attr( $args['name'] ) . ']"/>';
+		$option = isset( $this->options[ $args['name'] ] ) ? $this->options[ $args['name'] ] : false;
+		echo '<input class="checkbox" type="checkbox" ' . checked( $option, true, false ) . ' name="clicky[' . esc_attr( $args['name'] ) . ']"/>';
 		$this->input_desc( $args );
 	}
 
