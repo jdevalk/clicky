@@ -70,7 +70,8 @@ class Clicky_Options {
 	 * Class constructor
 	 */
 	public function __construct() {
-		$this->load();
+		$this->load_options();
+		$this->sanitize_options();
 	}
 
 	/**
@@ -79,12 +80,22 @@ class Clicky_Options {
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/get_option
 	 *
-	 * @uses clicky_defaults()
-	 *
 	 * @return array Returns the trimmed/default options for clicky
 	 */
-	public function load() {
-		$this->options = array_merge( self::$option_defaults, get_option( self::$option_name ) );
+	private function load_options() {
+		$options = get_option( self::$option_name );
+		if ( ! is_array( $options ) ) {
+			$this->options = self::$option_defaults;
+			update_option( self::$option_name, $this->options );
+		} else  {
+			$this->options = array_merge( self::$option_defaults, $options );
+		}
+	}
+
+	/**
+	 * Forces all options to be of the type we expect them to be of.
+	 */
+	private function sanitize_options() {
 		foreach( $this->options as $key => $value ) {
 			switch ( self::$option_var_types[$key] ) {
 				case 'string':
