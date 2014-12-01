@@ -21,7 +21,7 @@ class Clicky_Frontend {
 	/**
 	 * Class constructor
 	 */
-	function __construct() {
+	public function __construct() {
 		$this->options = Clicky_Options::instance()->get();
 		
 		add_action( 'wp_footer', array( $this, 'script' ), 90 );
@@ -88,16 +88,16 @@ class Clicky_Frontend {
 	/**
 	 * Create the log for clicky
 	 *
-	 * @param array $a The array with basic log-data
+	 * @param array $log_data The array with basic log-data
 	 *
 	 * @return bool Returns true on success or false on failure
 	 */
-	function log( $a ) {
+	private function log( $log_data ) {
 		if ( ! isset( $this->options['site_id'] ) || empty( $this->options['site_id'] ) || ! isset( $this->options['admin_site_key'] ) || empty( $this->options['admin_site_key'] ) ) {
 			return false;
 		}
 
-		$type = $a['type'];
+		$type = $log_data['type'];
 		if ( ! in_array( $type, array( "pageview", "download", "outbound", "click", "custom", "goal" ) ) ) {
 			$type = "pageview";
 		}
@@ -105,43 +105,43 @@ class Clicky_Frontend {
 		$file = "https://in.getclicky.com/in.php?site_id=" . $this->options['site_id'] . "&sitekey_admin=" . $this->options['admin_site_key'] . "&type=" . $type;
 
 		# referrer and user agent - will only be logged if this is the very first action of this session
-		if ( $a['ref'] ) {
-			$file .= "&ref=" . urlencode( $a['ref'] );
+		if ( $log_data['ref'] ) {
+			$file .= "&ref=" . urlencode( $log_data['ref'] );
 		}
 
-		if ( $a['ua'] ) {
-			$file .= "&ua=" . urlencode( $a['ua'] );
+		if ( $log_data['ua'] ) {
+			$file .= "&ua=" . urlencode( $log_data['ua'] );
 		}
 
 		# we need either a session_id or an ip_address...
-		if ( is_numeric( $a['session_id'] ) ) {
-			$file .= "&session_id=" . $a['session_id'];
+		if ( is_numeric( $log_data['session_id'] ) ) {
+			$file .= "&session_id=" . $log_data['session_id'];
 		} else {
-			if ( ! $a['ip_address'] ) {
-				$a['ip_address'] = $_SERVER['REMOTE_ADDR'];
+			if ( ! $log_data['ip_address'] ) {
+				$log_data['ip_address'] = $_SERVER['REMOTE_ADDR'];
 			} # automatically grab IP that PHP gives us.
-			if ( ! preg_match( "`^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$`", $a['ip_address'] ) ) {
+			if ( ! filter_var( $log_data['ip_address'], FILTER_VALIDATE_IP ) ) {
 				return false;
 			}
-			$file .= "&ip_address=" . $a['ip_address'];
+			$file .= "&ip_address=" . $log_data['ip_address'];
 		}
 
 		# goals can come in as integer or array, for convenience
-		if ( $a['goal'] ) {
-			if ( is_numeric( $a['goal'] ) ) {
-				$file .= "&goal[id]=" . $a['goal'];
+		if ( $log_data['goal'] ) {
+			if ( is_numeric( $log_data['goal'] ) ) {
+				$file .= "&goal[id]=" . $log_data['goal'];
 			} else {
-				if ( ! is_numeric( $a['goal']['id'] ) ) {
+				if ( ! is_numeric( $log_data['goal']['id'] ) ) {
 					return false;
 				}
-				foreach ( $a['goal'] as $key => $value ) {
+				foreach ( $log_data['goal'] as $key => $value ) {
 					$file .= "&goal[" . urlencode( $key ) . "]=" . urlencode( $value );
 				}
 			}
 		}
 
 		# custom data, must come in as array of key=>values
-		foreach ( $a['custom'] as $key => $value ) {
+		foreach ( $log_data['custom'] as $key => $value ) {
 			$file .= "&custom[" . urlencode( $key ) . "]=" . urlencode( $value );
 		}
 
@@ -149,18 +149,18 @@ class Clicky_Frontend {
 			# dont do anything, data has already been cat'd
 		} else {
 			if ( $type == "outbound" ) {
-				if ( ! preg_match( "`^(https?|telnet|ftp)`", $a['href'] ) ) {
+				if ( ! preg_match( "`^(https?|telnet|ftp)`", $log_data['href'] ) ) {
 					return false;
 				}
 			} else {
 				# all other action types must start with either a / or a #
-				if ( ! preg_match( "`^(/|#)`", $a['href'] ) ) {
-					$a['href'] = "/" . $a['href'];
+				if ( ! preg_match( "`^(/|#)`", $log_data['href'] ) ) {
+					$log_data['href'] = "/" . $log_data['href'];
 				}
 			}
-			$file .= "&href=" . urlencode( $a['href'] );
-			if ( $a['title'] ) {
-				$file .= "&title=" . urlencode( $a['title'] );
+			$file .= "&href=" . urlencode( $log_data['href'] );
+			if ( $log_data['title'] ) {
+				$file .= "&title=" . urlencode( $log_data['title'] );
 			}
 		}
 
@@ -173,7 +173,7 @@ class Clicky_Frontend {
 	 * @param int $commentID      The ID of the comment that needs to be tracked
 	 * @param int $comment_status Status of the comment (e.g. spam)
 	 */
-	function track_comment( $commentID, $comment_status ) {
+	public function track_comment( $commentID, $comment_status ) {
 		// Make sure to only track the comment if it's not spam (but do it for moderated comments).
 		if ( $comment_status != 'spam' ) {
 			$comment = get_comment( $commentID );

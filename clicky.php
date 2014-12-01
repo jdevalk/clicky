@@ -24,7 +24,7 @@ class Yoast_Clicky {
 	/**
 	 * Initialize the plugin settings
 	 */
-	function __construct() {
+	public function __construct() {
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			return;
 		}
@@ -35,7 +35,7 @@ class Yoast_Clicky {
 	/**
 	 * Initialize the whole plugin
 	 */
-	function init() {
+	public function init() {
 		// register class autoloader
 		spl_autoload_register( array( $this, 'autoload' ) );
 

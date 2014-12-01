@@ -14,26 +14,18 @@ class Clicky_Admin {
 
 	/**
 	 * This holds the plugins options
-	 * 
+	 *
 	 * @var array
 	 */
-	var $options = array();
-	
+	public $options = array();
+
 	/**
 	 * Menu slug for WordPress admin
 	 *
 	 * @access private
 	 * @var string
 	 */
-	var $hook = 'clicky';
-
-	/**
-	 * Link to Clicky homepage
-	 *
-	 * @access private
-	 * @var string
-	 */
-	var $homepage = 'https://yoast.com/wordpress/plugins/clicky/';
+    public $hook = 'clicky';
 
 	/**
 	 * Construct of class Clicky_admin
@@ -44,7 +36,7 @@ class Clicky_Admin {
 	 */
 	public function __construct() {
 		$this->options = Clicky_Options::instance()->get();
-		
+
 		add_action( 'admin_menu', array( $this, 'register_settings_page' ) );
 		add_action( 'admin_menu', array( $this, 'register_dashboard_page' ) );
 
@@ -57,19 +49,18 @@ class Clicky_Admin {
 			new Clicky_Admin_Page();
 		}
 
-		$this->clicky_admin_warnings();
+		$this->admin_warnings();
 	}
-	
+
 	/**
 	 * Outputs a warning
 	 */
 	public function setup_warning() {
-		echo "<div id='clickywarning' class='updated fade'><p><strong>";
+		echo "<div class='updated'><p><strong>";
 		_e( 'Clicky is almost ready. ', 'clicky' );
 		echo "</strong>";
 		printf( __( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ), "<a href='" . $this->plugin_options_url() . "'>", "</a>" );
 		echo "</p></div>";
-		echo "<script type=\"text/javascript\">setTimeout(function(){jQuery('#clickywarning').hide('slow');}, 10000);</script>";
 	}
 
 	/**
@@ -77,11 +68,14 @@ class Clicky_Admin {
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/add_action
 	 */
-	public function clicky_admin_warnings() {
-		if ( $_POST ) {
+	public function admin_warnings() {
+		if ( ! empty( $_POST ) ) {
 			return;
 		}
-		foreach ( array( 'site_id', 'site_key', 'admin_site_key' ) as $option ) {
+
+        $required_options = array( 'site_id', 'site_key', 'admin_site_key' );
+
+		foreach ( $required_options as $option ) {
 			if ( empty( $this->options[$option] ) ) {
 				add_action( 'admin_notices', array( $this, 'setup_warning' ) );
 				return;
@@ -96,7 +90,9 @@ class Clicky_Admin {
 	 * @link https://codex.wordpress.org/Function_Reference/get_post_types
 	 */
 	public function meta_box() {
-		foreach ( get_post_types( array( 'public' => true ) ) as $post_type ) {
+        $public_post_types = get_post_types( array( 'public' => true ) );
+
+		foreach ( $public_post_types as $post_type ) {
 			add_meta_box( 'clicky', __( 'Clicky Goal Tracking', 'clicky' ), array( $this, 'meta_box_content' ), $post_type, 'side' );
 		}
 	}
@@ -115,19 +111,7 @@ class Clicky_Admin {
 
 		$clicky_goal = get_post_meta( $post->ID, '_clicky_goal', true );
 
-		echo '<p>';
-		printf( __( 'Clicky can track Goals for you too, %1$syou can create them here%2$s. To be able to track a goal on this post, you need to specify the goal ID here. Optionally, you can also provide the goal revenue.', 'clicky' ), '<a target="_blank" href="https://clicky.com/stats/goals-setup?site_id=' . $this->options['site_id'] . '">', '</a>' );
-		echo '</p>';
-		echo '<table>';
-		echo '<tr>';
-		echo '<th><label for="clicky_goal_id">' . __( 'Goal ID:', 'clicky' ) . '</label></th>';
-		echo '<td><input type="text" name="clicky_goal_id" id="clicky_goal_id" value="' . ( isset( $clicky_goal['id'] ) ? esc_attr( $clicky_goal['id'] ) : '' ) . '"/></td>';
-		echo '</tr>';
-		echo '<tr>';
-		echo '<th><label for="clicky_goal_value">' . __( 'Goal Revenue:', 'clicky' ) . '</label></th>';
-		echo '<td><input type="text" name="clicky_goal_value" id="clicky_goal_value" value="' . ( isset( $clicky_goal['value'] ) ? esc_attr( $clicky_goal['value'] ) : '' ) . '"/></td>';
-		echo '</tr>';
-		echo '</table>';
+        require 'views/meta_box.php';
 	}
 
 	/**
@@ -160,17 +144,13 @@ class Clicky_Admin {
 	 * Loads (external) stats page in an iframe
 	 */
 	public function dashboard_page() {
-		?>
-		<br />
-		<iframe style="margin-left: 20px; width: 850px; height: 1000px;"
-		        src="https://clicky.com/stats/wp-iframe?site_id=<?php echo $this->options['site_id']; ?>&amp;sitekey=<?php echo $this->options['site_key']; ?>"></iframe>
-	<?php
+		require 'views/stats_page.php';
 	}
 
 	/**
 	 * Register the plugins settings page
 	 */
-	function register_settings_page() {
+	public function register_settings_page() {
 		add_options_page( __( 'Clicky settings', 'clicky' ), __( 'Clicky', 'clicky' ), 'manage_options', $this->hook, array( new Clicky_Admin_Page, 'config_page' ) );
 	}
 
@@ -179,19 +159,24 @@ class Clicky_Admin {
 	 *
 	 * @return string
 	 */
-	function plugin_options_url() {
+	private function plugin_options_url() {
 		return admin_url( 'options-general.php?page=' . $this->hook );
 	}
 
 	/**
 	 * Add a link to the settings page to the plugins list
-	 */
-	function add_action_link( $links, $file ) {
+     *
+     * @param array $links
+     * @param string $file
+     *
+     * @return array
+     */
+	public function add_action_link( $links, $file ) {
 		static $this_plugin;
 		if ( empty( $this_plugin ) ) {
 			$this_plugin = CLICKY_PLUGIN_FILE;
 		}
-		if ( $file == $this_plugin ) {
+		if ( $file === $this_plugin ) {
 			$settings_link = '<a href="' . $this->plugin_options_url() . '">' . __( 'Settings', 'clicky' ) . '</a>';
 			array_unshift( $links, $settings_link );
 		}

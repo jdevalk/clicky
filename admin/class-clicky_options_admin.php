@@ -124,6 +124,17 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
+	 * Sanitizes and trims a string
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
+	private function sanitize_string( $string ) {
+		return (string) trim( sanitize_text_field( $string ) );
+	}
+
+	/**
 	 * Sanitize options
 	 *
 	 * @param array $new_options
@@ -131,19 +142,18 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * @return array
 	 */
 	public function sanitize_options( $new_options ) {
-		foreach ( array( 'site_id', 'site_key', 'admin_site_key', 'outbound_pattern' ) as $option_name ) {
-			if ( isset( $new_options[ $option_name ] ) ) {
-				$new_options[ $option_name ] = sanitize_text_field( $new_options[ $option_name ] );
-			} else {
-				$new_options[ $option_name ] = '';
-			}
-		}
-
-		foreach ( array( 'ignore_admin', 'track_names', 'cookies_disable', 'disable_stats' ) as $option_name ) {
-			if ( isset( $new_options[ $option_name ] ) ) {
-				$new_options[ $option_name ] = true;
-			} else {
-				$new_options[ $option_name ] = false;
+		foreach( $new_options as $key => $value ) {
+			switch( self::$option_var_types[$key] ) {
+				case 'string':
+					$new_options[$key] = $this->sanitize_string( $new_options[ $key ] );
+					break;
+				case 'bool':
+					if ( isset( $new_options[$key] ) ) {
+						$new_options[ $key ] = true;
+					} else {
+						$new_options[ $key ] = false;
+					}
+					break;
 			}
 		}
 
