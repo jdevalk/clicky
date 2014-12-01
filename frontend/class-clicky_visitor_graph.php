@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Backend Class the Clicky plugin
  */
-
 class Clicky_Visitor_Graph {
 
 	/**
 	 * Width of the generated image
 	 * @var int
 	 */
-	private $img_width  = 99;
+	private $img_width = 99;
 
 	/**
 	 * Height of the generated image
@@ -19,10 +19,11 @@ class Clicky_Visitor_Graph {
 	private $img_height = 20;
 
 	/**
-	 * Margins around the generated image
-	 * @var int
+	 * Height of the generated image
+	 *
+	 * @var float
 	 */
-	private $margins    = 0;
+	private $bar_width  = 0.02;
 
 	/**
 	 * This holds the plugins options
@@ -92,57 +93,109 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
+	 * Creates the basic rectangle we'll project the bars on
+	 *
+	 * @return resource
+	 */
+	private function create_base_image() {
+		$img = imagecreate( $this->img_width, $this->img_height );
+
+		$black            = imagecolorallocate( $img, 0, 0, 0 );
+		$background_color = imagecolortransparent( $img, $black );
+
+		imagefilledrectangle( $img, 0, 0, $this->img_width, $this->img_height, $background_color );
+
+		return $img;
+	}
+
+	/**
+	 * Creates the graph to be used in the admin bar
+	 *
+	 * @link https://codex.wordpress.org/Function_Reference/is_wp_error
+	 *
+	 * @return bool|string Returns base64-encoded image on success (String) or fail (boolean) on failure
+	 */
+	private function create_graph() {
+		$values = $this->retrieve_clicky_api_details();
+
+		if ( ! $values ) {
+			return false;
+		}
+
+		$img = $this->create_base_image();
+
+		$bar_color  = imagecolorallocate( $img, 255, 255, 255 );
+		$total_bars = count( $values ); // Normally 48, but less if there's less data
+		$gap        = ( $this->img_width - $total_bars * $this->bar_width ) / ( $total_bars + 1 );
+
+		# ------- Max value is required to adjust the scale	-------
+		$max_value = max( $values );
+		if ( $max_value == 0 ) {
+			$max_value = 1;
+		}
+		$ratio = $this->img_height / $max_value;
+
+		foreach( $values as $key => $value ) {
+			$x1 = $gap + $key * ( $gap + $this->bar_width );
+			$x2 = $x1 + $this->bar_width;
+			$y1 = $this->img_height - intval( $value * $ratio );
+			imagefilledrectangle( $img, $x1, $y1, $x2, $this->img_height, $bar_color );
+		}
+
+		return $this->build_img( $img );
+	}
+
+	/**
 	 * Retrieve the visitor data from the Clicky API
 	 *
-	 * @return bool|SimpleXMLElement
+	 * @link https://codex.wordpress.org/Function_Reference/wp_remote_get
+	 *
+	 * @return array Array of values
 	 */
 	private function retrieve_clicky_api_details() {
-		$resp = wp_remote_get( "https://api.getclicky.com/api/stats/4?site_id=" . $this->options['site_id'] . "&sitekey=" . $this->options['site_key'] . "&type=visitors&hourly=1&date=last-3-days" );
+		$args = array(
+			'site_id' => $this->options['site_id'],
+			'sitekey' => $this->options['site_key'],
+			'type'    => 'visitors',
+			'hourly'  => 1,
+			'date'    => 'last-3-days',
+			'output'  => 'json'
+		);
+		$url  = "https://api.getclicky.com/api/stats/4?" . http_build_query( $args );
+
+		$resp = wp_remote_get( $url );
 
 		if ( is_wp_error( $resp ) || ! isset( $resp['response']['code'] ) || $resp['response']['code'] != 200 ) {
 			return false;
 		}
 
-		$xml = simplexml_load_string( $resp['body'] );
+		$output = $this->parse_clicky_results( $resp['body'] );
 
-		if ( ! $xml ) {
-			return false;
-		}
-
-		$values = $this->parse_clicky_results( $xml );
-
-		return $values;
+		return $output;
 	}
 
 	/**
-	 * Parse the Clicky resultset into a usable array
+	 * Parse the Clicky results into a usable array
 	 *
-	 * @param SimpleXMLElement $xml
+	 * @param array $json JSON encoded object of results
 	 *
 	 * @return array|bool
 	 */
-	private function parse_clicky_results( $xml ) {
-		$i      = 0;
-		$j      = 0;
-		$k      = 0;
-		$values = array();
-		foreach ( $xml->type->date as $value ) {
-			foreach ( $xml->type->date[ $i ]->item->value as $art ) //nested loop for multiple values in tag
-			{
+	private function parse_clicky_results( $json ) {
 
-				$data = (int) ( $xml->type->date[ $i ]->item->value[ $j ] ); //$i and $j is used to iterate multiples of both tags respectively
-				array_push( $values, $data );
-				$j = $j + 1;
-				$k ++;
-				if ( $k == 48 ) {
+		$json = json_decode( $json );
+
+		$hours  = 0;
+		$values = array();
+
+		foreach ( $json[0]->dates as $date ) {
+			foreach ( $date->items as $item ) {
+				if ( $hours === 48 ) {
 					break 2;
 				}
+				$values[] = $item->value;
+				$hours ++;
 			}
-			$j = 0; //so that in next item it starts from 0(zero)
-			$i ++;
-		}
-		if ( count( $values ) == 0 ) {
-			return false;
 		}
 		$values = array_reverse( $values );
 
@@ -165,63 +218,5 @@ class Clicky_Visitor_Graph {
 		$image = 'data:image/png;base64,' . base64_encode( $image );
 
 		return $image;
-	}
-
-	/**
-	 * Creates the graph to be used in the admin bar
-	 *
-	 * @link https://codex.wordpress.org/Function_Reference/wp_remote_get
-	 * @link https://codex.wordpress.org/Function_Reference/is_wp_error
-	 *
-	 * @return bool|string Returns base64-encoded image on success (String) or fail (boolean) on failure
-	 */
-	private function create_graph() {
-		$values = $this->retrieve_clicky_api_details();
-
-		if ( $values === false ) {
-			return false;
-		}
-
-		# ---- Find the size of graph by substracting the size of borders
-		$graph_width  = $this->img_width - $this->margins * 2;
-		$graph_height = $this->img_height - $this->margins * 2;
-		$img          = imagecreate( $this->img_width, $this->img_height );
-
-		$bar_width  = 0.01;
-		$total_bars = count( $values );
-		$gap        = ( $graph_width - $total_bars * $bar_width ) / ( $total_bars + 1 );
-
-		# -------  Define Colors ----------------
-		$bar_color = imagecolorallocate( $img, 220, 220, 220 );
-
-		$black            = imagecolorallocate( $img, 0, 0, 0 );
-		$background_color = imagecolortransparent( $img, $black );
-		$border_color     = imagecolorallocate( $img, 50, 50, 50 );
-
-		# ------ Create the border around the graph ------
-
-		imagefilledrectangle( $img, 1, 1, $this->img_width - 2, $this->img_height - 2, $border_color );
-		imagefilledrectangle( $img, $this->margins, $this->margins, $this->img_width - 1 - $this->margins, $this->img_height - 1 - $this->margins, $background_color );
-
-		# ------- Max value is required to adjust the scale	-------
-		$max_value = max( $values );
-		if ( $max_value == 0 ) {
-			$max_value = 1;
-		}
-		$ratio = $graph_height / $max_value;
-
-
-		# ----------- Draw the bars here ------
-		for ( $i = 0; $i < $total_bars; $i ++ ) {
-			# ------ Extract key and value pair from the current pointer position
-			list( $key, $value ) = each( $values );
-			$x1 = $this->margins + $gap + $i * ( $gap + $bar_width );
-			$x2 = $x1 + $bar_width;
-			$y1 = $this->margins + $graph_height - intval( $value * $ratio );
-			$y2 = $this->img_height - $this->margins;
-			imagefilledrectangle( $img, $x1, $y1, $x2, $y2, $bar_color );
-		}
-
-		return $this->build_img( $img );
 	}
 }
