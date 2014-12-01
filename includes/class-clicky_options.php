@@ -97,23 +97,6 @@ class Clicky_Options {
 	}
 
 	/**
-	 * Default options for Clicky for WordPress plugin by Yoast
-	 *
-	 * @link https://codex.wordpress.org/Function_Reference/add_option
-	 */
-	private function defaults() {
-		foreach ( $this->options_text as $option ) {
-			$this->options[ $option ] = '';
-		}
-
-		foreach ( $this->options_bool as $option ) {
-			$this->options[ $option ] = false;
-		}
-
-		add_option( self::$option_name, $this->options );
-	}
-
-	/**
 	 * Getting instance of this object. If instance doesn't exists it will be created.
 	 *
 	 * @return object|Clicky_Options
