@@ -15,28 +15,26 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Class constructor
 	 */
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'register_setting' ) );
-		add_action( 'admin_init', array( $this, 'register_sections' ) );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
 		parent::__construct();
 	}
 
 	/**
-	 * Register the plugin setting
+	 * Register the needed option and its settings sections
 	 */
-	public function register_setting() {
+	public function admin_init() {
 		register_setting( self::$option_group, parent::$option_name, array( $this, 'sanitize_options' ) );
+
+		$this->register_basic_settings();
+		$this->register_advanced_settings();
+		$this->register_outbound_settings();
 	}
 
 	/**
-	 * Register the plugin settings sections
+	 * Register the basic settings
 	 */
-	public function register_sections() {
-		$this->register_basic_settings_section();
-		$this->register_advanced_settings_screen();
-	}
-
-	private function register_basic_settings_section() {
+	private function register_basic_settings() {
 		add_settings_section( 'basic-settings', __( 'Basic settings', 'clicky' ), array(
 			$this,
 			'basic_settings_intro'
@@ -63,22 +61,14 @@ class Clicky_Options_Admin extends Clicky_Options {
 			$this,
 			'support_text'
 		), 'clicky' );
-
-		add_settings_section( 'clicky-advanced', __( 'Advanced Settings', 'clicky' ), null, 'clicky-advanced' );
-	}
-
-
-	/**
-	 * Create a "plugin like" box.
-	 */
-	public function like_text() {
-		require 'views/like_box.php';
 	}
 
 	/**
 	 * Register the separate advanced settings screen
 	 */
-	private function register_advanced_settings_screen() {
+	private function register_advanced_settings() {
+		add_settings_section( 'clicky-advanced', __( 'Advanced Settings', 'clicky' ), null, 'clicky-advanced' );
+
 		$advanced_settings = array(
 			'disable_stats'   => array(
 				'label' => __( 'Disable Admin Bar stats', 'clicky' ),
@@ -92,8 +82,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 				'label' => __( 'Disable cookies', 'clicky' ),
 				'desc'  => __( 'If you don\'t want Clicky to use cookies on your site, check this button. By doing so, uniques will instead be determined based on their IP address.', 'clicky' ),
 			),
-			'track_names' => array(
-				'label'   => __( 'Track names of commenters', 'clicky' ),
+			'track_names'     => array(
+				'label' => __( 'Track names of commenters', 'clicky' ),
 			)
 		);
 		foreach ( $advanced_settings as $key => $arr ) {
@@ -106,7 +96,12 @@ class Clicky_Options_Admin extends Clicky_Options {
 				'desc'  => isset( $arr['desc'] ) ? $arr['desc'] : '',
 			) );
 		}
+	}
 
+	/**
+	 * Register the outbound links settings section
+	 */
+	private function register_outbound_settings() {
 		add_settings_section( 'clicky-outbound', __( 'Outbound Links', 'clicky' ), array( $this, 'outbound_explanation' ), 'clicky-advanced' );
 
 		add_settings_field( 'outbound_pattern', __( 'Outbound Link Pattern', 'clicky' ), array( $this, 'input_text' ), 'clicky-advanced', 'clicky-outbound', array(
@@ -114,6 +109,13 @@ class Clicky_Options_Admin extends Clicky_Options {
 			'value' => $this->options['outbound_pattern'],
 			'desc'  => __( 'For instance: <code>/out/,/go/</code>', 'clicky' ),
 		) );
+	}
+
+	/**
+	 * Create a "plugin like" box.
+	 */
+	public function like_text() {
+		require 'views/like_box.php';
 	}
 
 	/**

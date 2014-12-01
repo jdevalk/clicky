@@ -36,7 +36,7 @@ class Clicky_Admin {
 		add_action( 'admin_notices', array( $this, 'admin_warnings' ) );
 		add_action( 'admin_menu', array( $this, 'admin_init' ) );
 
-		if ( isset( $_GET['page'] ) && $_GET['page'] == $this->hook ) {
+		if ( filter_input( INPUT_GET, 'page' ) === $this->hook ) {
 			new Clicky_Admin_Page();
 		}
 	}
@@ -137,8 +137,8 @@ class Clicky_Admin {
 	 */
 	public function insert_post( $post_id ) {
 		$clicky_goal = array(
-			'id'    => (int) $_POST['clicky_goal_id'],
-			'value' => floatval( $_POST['clicky_goal_value'] )
+			'id'    => (int) filter_input( INPUT_POST, 'clicky_goal_id' ),
+			'value' => floatval( filter_input( INPUT_POST, 'clicky_goal_value' ) ),
 		);
 		delete_post_meta( $post_id, '_clicky_goal' );
 		add_post_meta( $post_id, '_clicky_goal', $clicky_goal, true );
@@ -153,6 +153,7 @@ class Clicky_Admin {
 			'sitekey' => $this->options['site_key'],
 		);
 		$iframe_url = 'https://clicky.com/stats/wp-iframe?' . http_build_query( $args, '', '&amp;' );
+
 		require 'views/stats_page.php';
 	}
 

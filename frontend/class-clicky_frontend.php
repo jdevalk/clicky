@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Frontend Class the Clicky plugin
  */
@@ -6,17 +7,17 @@ class Clicky_Frontend {
 
 	/**
 	 * Holds the plugin options
-	 * 
+	 *
 	 * @var array
 	 */
 	private $options = array();
-	
+
 	/**
 	 * Class constructor
 	 */
 	public function __construct() {
 		$this->options = Clicky_Options::instance()->get();
-		
+
 		add_action( 'wp_footer', array( $this, 'script' ), 90 );
 
 		add_action( 'comment_post', array( $this, 'track_comment' ), 10, 2 );
@@ -43,21 +44,40 @@ class Clicky_Frontend {
 			require 'views/comment_author_script.php';
 		}
 
-		$clicky_extra = '';
+		$clicky_extra = $this->goal_tracking();
+		$clicky_extra .= $this->outbound_tracking();
+		$clicky_extra .= $this->disable_cookies();
 
-		// Goal tracking
+		require 'views/script.php';
+	}
+
+	/**
+	 * Handles the script generation for goal tracking
+	 *
+	 * @return string Script code
+	 */
+	private function goal_tracking() {
 		if ( is_singular() ) {
 			global $post;
 			$clicky_goal = get_post_meta( $post->ID, '_clicky_goal', true );
 			if ( is_array( $clicky_goal ) && ! empty( $clicky_goal['id'] ) ) {
-				$clicky_extra .= 'var clicky_goal = { id: "' . trim( esc_attr( $clicky_goal['id'] ) ) . '"';
+				$script = 'var clicky_goal = { id: "' . trim( esc_attr( $clicky_goal['id'] ) ) . '"';
 				if ( isset( $clicky_goal['value'] ) && ! empty( $clicky_goal['value'] ) ) {
-					$clicky_extra .= ', revenue: "' . esc_attr( $clicky_goal['value'] ) . '"';
+					$script .= ', revenue: "' . esc_attr( $clicky_goal['value'] ) . '"';
 				}
-				$clicky_extra .= ' };' . "\n";
+				$script .= ' };' . "\n";
+				return $script;
 			}
 		}
+		return '';
+	}
 
+	/**
+	 * Handles the script generation for outbound link tracking
+	 *
+	 * @return string
+	 */
+	private function outbound_tracking() {
 		if ( isset( $this->options['outbound_pattern'] ) && trim( $this->options['outbound_pattern'] ) != '' ) {
 			$patterns = explode( ',', $this->options['outbound_pattern'] );
 			$pattern  = '';
@@ -68,102 +88,27 @@ class Clicky_Frontend {
 				$pat = trim( str_replace( '"', '', str_replace( "'", "", $pat ) ) );
 				$pattern .= "'" . $pat . "'";
 			}
-			$clicky_extra .= 'clicky_custom.outbound_pattern = [' . $pattern . '];' . "\n";
+			return 'clicky_custom.outbound_pattern = [' . $pattern . '];' . "\n";
 		}
-
-		if ( isset( $this->options['cookies_disable'] ) && $this->options['cookies_disable'] ) {
-			$clicky_extra .= "clicky_custom.cookies_disable = 1;\n";
-		}
-
-		require 'views/script.php';
+		return '';
 	}
 
 	/**
-	 * Create the log for clicky
+	 * Determines whether or not we should disable cookie usage
 	 *
-	 * @param array $log_data The array with basic log-data
-	 *
-	 * @return bool Returns true on success or false on failure
+	 * @return string
 	 */
-	private function log( $log_data ) {
-		if ( ! isset( $this->options['site_id'] ) || empty( $this->options['site_id'] ) || ! isset( $this->options['admin_site_key'] ) || empty( $this->options['admin_site_key'] ) ) {
-			return false;
+	private function disable_cookies() {
+		if ( isset( $this->options['cookies_disable'] ) && $this->options['cookies_disable'] ) {
+			return "clicky_custom.cookies_disable = 1;\n";
 		}
-
-		$type = $log_data['type'];
-		if ( ! in_array( $type, array( "pageview", "download", "outbound", "click", "custom", "goal" ) ) ) {
-			$type = "pageview";
-		}
-
-		$file = "https://in.getclicky.com/in.php?site_id=" . $this->options['site_id'] . "&sitekey_admin=" . $this->options['admin_site_key'] . "&type=" . $type;
-
-		# referrer and user agent - will only be logged if this is the very first action of this session
-		if ( $log_data['ref'] ) {
-			$file .= "&ref=" . urlencode( $log_data['ref'] );
-		}
-
-		if ( $log_data['ua'] ) {
-			$file .= "&ua=" . urlencode( $log_data['ua'] );
-		}
-
-		# we need either a session_id or an ip_address...
-		if ( is_numeric( $log_data['session_id'] ) ) {
-			$file .= "&session_id=" . $log_data['session_id'];
-		} else {
-			if ( ! $log_data['ip_address'] ) {
-				$log_data['ip_address'] = $_SERVER['REMOTE_ADDR'];
-			} # automatically grab IP that PHP gives us.
-			if ( ! filter_var( $log_data['ip_address'], FILTER_VALIDATE_IP ) ) {
-				return false;
-			}
-			$file .= "&ip_address=" . $log_data['ip_address'];
-		}
-
-		# goals can come in as integer or array, for convenience
-		if ( $log_data['goal'] ) {
-			if ( is_numeric( $log_data['goal'] ) ) {
-				$file .= "&goal[id]=" . $log_data['goal'];
-			} else {
-				if ( ! is_numeric( $log_data['goal']['id'] ) ) {
-					return false;
-				}
-				foreach ( $log_data['goal'] as $key => $value ) {
-					$file .= "&goal[" . urlencode( $key ) . "]=" . urlencode( $value );
-				}
-			}
-		}
-
-		# custom data, must come in as array of key=>values
-		foreach ( $log_data['custom'] as $key => $value ) {
-			$file .= "&custom[" . urlencode( $key ) . "]=" . urlencode( $value );
-		}
-
-		if ( $type == "goal" || $type == "custom" ) {
-			# dont do anything, data has already been cat'd
-		} else {
-			if ( $type == "outbound" ) {
-				if ( ! preg_match( "`^(https?|telnet|ftp)`", $log_data['href'] ) ) {
-					return false;
-				}
-			} else {
-				# all other action types must start with either a / or a #
-				if ( ! preg_match( "`^(/|#)`", $log_data['href'] ) ) {
-					$log_data['href'] = "/" . $log_data['href'];
-				}
-			}
-			$file .= "&href=" . urlencode( $log_data['href'] );
-			if ( $log_data['title'] ) {
-				$file .= "&title=" . urlencode( $log_data['title'] );
-			}
-		}
-
-		return wp_remote_get( $file ) ? true : false;
+		return '';
 	}
 
 	/**
 	 * Tracks comments that are not spam and not ping- or trackbacks
 	 *
-	 * @param int $commentID      The ID of the comment that needs to be tracked
+	 * @param int $commentID The ID of the comment that needs to be tracked
 	 * @param int $comment_status Status of the comment (e.g. spam)
 	 */
 	public function track_comment( $commentID, $comment_status ) {
@@ -172,20 +117,42 @@ class Clicky_Frontend {
 			$comment = get_comment( $commentID );
 			// Only do this for normal comments, not for pingbacks or trackbacks
 			if ( $comment->comment_type != 'pingback' && $comment->comment_type != 'trackback' ) {
-				$this->log(
-					array(
-						"type"       => "click",
-						"href"       => "/wp-comments-post.php",
-						"title"      => __( "Posted a comment", 'clicky' ),
-						"ua"         => $comment->comment_agent,
-						"ip_address" => $comment->comment_author_IP,
-						"custom"     => array(
-							"username" => $comment->comment_author,
-							"email"    => $comment->comment_author_email,
-						)
-					)
+				$args   = array(
+					"type"       => "click",
+					"href"       => "/wp-comments-post.php",
+					"title"      => __( "Posted a comment", 'clicky' ),
+					"ua"         => $comment->comment_agent,
+					"ip_address" => $comment->comment_author_IP,
 				);
+				$custom = array(
+					"username" => $comment->comment_author,
+					"email"    => $comment->comment_author_email,
+				);
+
+				$this->log_comment( $args, $custom );
 			}
 		}
+	}
+
+	/**
+	 * Create the log for clicky
+	 *
+	 * @param array $log_data The array with basic log-data
+	 * @param array $custom The array with custom log-data for the comment author
+	 *
+	 * @return bool Returns true on success or false on failure
+	 */
+	private function log_comment( $log_data, $custom ) {
+		$log_data['site_id']       = $this->options['site_id'];
+		$log_data['sitekey_admin'] = $this->options['admin_site_key'];
+
+		$file = "https://in.getclicky.com/in.php?" . http_build_query( $log_data );
+
+		# custom data, must come in as array of key=>values
+		foreach ( $custom as $key => $value ) {
+			$file .= "&custom[" . urlencode( $key ) . "]=" . urlencode( $value );
+		}
+
+		return wp_remote_get( $file ) ? true : false;
 	}
 }
