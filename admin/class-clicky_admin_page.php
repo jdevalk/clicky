@@ -1,11 +1,4 @@
 <?php
-
-if ( ! function_exists( 'add_filter' ) ) {
-	header( 'Status: 403 Forbidden' );
-	header( 'HTTP/1.1 403 Forbidden' );
-	exit();
-}
-
 /**
  * Class for the Clicky plugin admin page
  */
@@ -15,9 +8,9 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Class constructor
 	 */
 	public function __construct() {
-		new Clicky_Options_Admin();
+		$options_admin = new Clicky_Options_Admin();
 
-		$this->options = Clicky_Options_Admin::instance()->get();
+		$this->options = $options_admin->get();
 
 		add_action( 'admin_print_scripts', array( $this, 'config_page_scripts' ) );
 		add_action( 'admin_print_styles', array( $this, 'config_page_styles' ) );

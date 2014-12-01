@@ -14,7 +14,7 @@ jQuery(document).ready(function() {
 	var active_tab = window.location.hash.replace('#top#','');
 
 	// default to first tab
-	if ( active_tab == '' || active_tab == '#_=_') {
+	if ( active_tab === '' || active_tab === '#_=_') {
 		active_tab = jQuery('.yoast_tab').attr('id');
 	}
 
