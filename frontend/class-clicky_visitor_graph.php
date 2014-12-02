@@ -6,6 +6,20 @@
 class Clicky_Visitor_Graph {
 
 	/**
+	 * Will hold the visitor values for each hour
+	 *
+	 * @var array
+	 */
+	private $bar_values = array();
+
+	/**
+	 * Holds the generated image
+	 *
+	 * @var resource
+	 */
+	private $img;
+
+	/**
 	 * Width of the generated image
 	 * @var int
 	 */
@@ -94,18 +108,37 @@ class Clicky_Visitor_Graph {
 
 	/**
 	 * Creates the basic rectangle we'll project the bars on
-	 *
-	 * @return resource
 	 */
 	private function create_base_image() {
-		$img = imagecreate( $this->img_width, $this->img_height );
+		$this->img = imagecreate( $this->img_width, $this->img_height );
 
-		$black            = imagecolorallocate( $img, 0, 0, 0 );
-		$background_color = imagecolortransparent( $img, $black );
+		$black            = imagecolorallocate( $this->img, 0, 0, 0 );
+		$background_color = imagecolortransparent( $this->img, $black );
 
-		imagefilledrectangle( $img, 0, 0, $this->img_width, $this->img_height, $background_color );
+		imagefilledrectangle( $this->img, 0, 0, $this->img_width, $this->img_height, $background_color );
+	}
 
-		return $img;
+	/**
+	 * Create the individual bars on the image
+	 */
+	private function add_bars_to_image() {
+		$bar_color  = imagecolorallocate( $this->img, 240, 240, 240 );
+		$total_bars = count( $this->bar_values ); // Normally 48, but less if there's less data
+		$gap        = ( $this->img_width - $total_bars * $this->bar_width ) / ( $total_bars + 1 );
+
+		# ------- Max value is required to adjust the scale	-------
+		$max_value = max( $this->bar_values );
+		if ( $max_value == 0 ) {
+			$max_value = 1;
+		}
+		$ratio = $this->img_height / $max_value;
+
+		foreach( $this->bar_values as $key => $value ) {
+			$x1 = $gap + $key * ( $gap + $this->bar_width );
+			$x2 = $x1 + $this->bar_width;
+			$y1 = $this->img_height - intval( $value * $ratio );
+			imagefilledrectangle( $this->img, $x1, $y1, $x2, $this->img_height, $bar_color );
+		}
 	}
 
 	/**
@@ -116,33 +149,16 @@ class Clicky_Visitor_Graph {
 	 * @return bool|string Returns base64-encoded image on success (String) or fail (boolean) on failure
 	 */
 	private function create_graph() {
-		$values = $this->retrieve_clicky_api_details();
+		$this->retrieve_clicky_api_details();
 
-		if ( ! $values ) {
+		if ( count( $this->bar_values ) < 1 ) {
 			return false;
 		}
 
-		$img = $this->create_base_image();
+		$this->create_base_image();
+		$this->add_bars_to_image();
 
-		$bar_color  = imagecolorallocate( $img, 255, 255, 255 );
-		$total_bars = count( $values ); // Normally 48, but less if there's less data
-		$gap        = ( $this->img_width - $total_bars * $this->bar_width ) / ( $total_bars + 1 );
-
-		# ------- Max value is required to adjust the scale	-------
-		$max_value = max( $values );
-		if ( $max_value == 0 ) {
-			$max_value = 1;
-		}
-		$ratio = $this->img_height / $max_value;
-
-		foreach( $values as $key => $value ) {
-			$x1 = $gap + $key * ( $gap + $this->bar_width );
-			$x2 = $x1 + $this->bar_width;
-			$y1 = $this->img_height - intval( $value * $ratio );
-			imagefilledrectangle( $img, $x1, $y1, $x2, $this->img_height, $bar_color );
-		}
-
-		return $this->build_img( $img );
+		return $this->build_img();
 	}
 
 	/**
@@ -169,9 +185,7 @@ class Clicky_Visitor_Graph {
 			return false;
 		}
 
-		$output = $this->parse_clicky_results( $resp['body'] );
-
-		return $output;
+		$this->bar_values = $this->parse_clicky_results( $resp['body'] );
 	}
 
 	/**
@@ -205,13 +219,11 @@ class Clicky_Visitor_Graph {
 	/**
 	 * Use the image input to build a PNG then returns it as a base64 encoded image usable in a src tag
 	 *
-	 * @param resource $image_res an image resource identifier
-	 *
 	 * @return string
 	 */
-	private function build_img( $image_res ) {
+	private function build_img() {
 		ob_start();
-		imagepng( $image_res );
+		imagepng( $this->img );
 		$image = ob_get_contents();
 		ob_end_clean();
 
