@@ -245,10 +245,11 @@ class Clicky_Visitor_Graph {
 	 * @param int $height
 	 */
 	private function create_bar( $index, $height ) {
-		$x1 = $this->gap + $index * ( $this->gap + $this->bar_width );
-		$x2 = $x1 + $this->bar_width;
-		$y1 = $this->img_height - intval( $height * $this->ratio );
-		imagefilledrectangle( $this->img, $x1, $y1, $x2, $this->img_height, $this->bar_color );
+		$xAxis1 = $this->gap + $index * ( $this->gap + $this->bar_width );
+		$xAxis2 = $xAxis1 + $this->bar_width;
+		$yAxis1 = $this->img_height - intval( $height * $this->ratio );
+		$yAxis2 = $this->img_height;
+		imagefilledrectangle( $this->img, $xAxis1, $yAxis1, $xAxis2, $yAxis2, $this->bar_color );
 	}
 
 	/**
