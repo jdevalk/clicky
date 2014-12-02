@@ -19,7 +19,5 @@ jQuery(document).ready(function() {
 	}
 
 	jQuery('#' + active_tab).addClass('active');
-	jQuery('#' + active_tab + '-tab').addClass('nav-tab-active');
-
-	jQuery('.nav-tab-active').click();
-});	
+	jQuery('#' + active_tab + '-tab').addClass('nav-tab-active').click();
+});

@@ -78,20 +78,25 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	private function rss_news( $feed, $title, $extra_links = '' ) {
 		include_once( ABSPATH . WPINC . '/feed.php' );
 		$rss       = fetch_feed( $feed );
-		$rss_items = $rss->get_items( 0, $rss->get_item_quantity( 3 ) );
-		$content   = '<ul>';
-		if ( ! $rss_items ) {
-			$content .= '<li class="yoast">' . __( 'No news items, feed might be broken...', 'clicky' ) . '</li>';
+
+		if ( is_wp_error( $rss ) ) {
+			$rss = '<li class="yoast">' . __( 'No news items, feed might be broken...', 'clicky' ) . '</li>';
 		} else {
+			$rss_items = $rss->get_items( 0, $rss->get_item_quantity( 3 ) );
+
+			$rss = '';
 			foreach ( $rss_items as $item ) {
 				$url = preg_replace( '/#.*/', '', esc_url( $item->get_permalink(), $protocolls = null, 'display' ) );
-				$content .= '<li class="yoast">';
-				$content .= '<a href="' . $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin">' . esc_html( $item->get_title() ) . '</a> ';
-				$content .= '</li>';
+				$rss .= '<li class="yoast">';
+				$rss .= '<a href="' . $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin">' . esc_html( $item->get_title() ) . '</a> ';
+				$rss .= '</li>';
 			}
-			$content .= '<li class="rss"><a href="' . $feed . '">' . __( 'Subscribe with RSS', 'clicky' ) . '</a></li>';
-			$content .= $extra_links;
 		}
+
+		$content = '<ul>';
+		$content .= $rss;
+		$content .= '<li class="rss"><a href="' . $feed . '">' . __( 'Subscribe with RSS', 'clicky' ) . '</a></li>';
+		$content .= $extra_links;
 		$content .= '</ul>';
 
 		$this->box( $title, $content );
