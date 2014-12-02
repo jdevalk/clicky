@@ -6,31 +6,18 @@
 class Clicky_Visitor_Graph {
 
 	/**
+	 * Will hold the color of bars in our image
+	 *
+	 * @var int
+	 */
+	private $bar_color;
+
+	/**
 	 * Will hold the visitor values for each hour
 	 *
 	 * @var array
 	 */
 	private $bar_values = array();
-
-	/**
-	 * Holds the generated image
-	 *
-	 * @var resource
-	 */
-	private $img;
-
-	/**
-	 * Width of the generated image
-	 * @var int
-	 */
-	private $img_width = 99;
-
-	/**
-	 * Height of the generated image
-	 *
-	 * @var int
-	 */
-	private $img_height = 20;
 
 	/**
 	 * Height of the generated image
@@ -40,11 +27,45 @@ class Clicky_Visitor_Graph {
 	private $bar_width  = 0.02;
 
 	/**
+	 * The width of the gap between two bars
+	 *
+	 * @var int
+	 */
+	private $gap;
+
+	/**
+	 * Holds the generated image
+	 *
+	 * @var resource
+	 */
+	private $img;
+
+	/**
+	 * Height of the generated image
+	 *
+	 * @var int
+	 */
+	private $img_height = 20;
+
+	/**
+	 * Width of the generated image
+	 * @var int
+	 */
+	private $img_width = 99;
+
+	/**
 	 * This holds the plugins options
 	 *
 	 * @var array
 	 */
 	private $options = array();
+
+	/**
+	 * The ratio between a value and the overall image height
+	 *
+	 * @var int
+	 */
+	private $ratio;
 
 	/**
 	 * Class constructor
@@ -107,41 +128,6 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Creates the basic rectangle we'll project the bars on
-	 */
-	private function create_base_image() {
-		$this->img = imagecreate( $this->img_width, $this->img_height );
-
-		$black            = imagecolorallocate( $this->img, 0, 0, 0 );
-		$background_color = imagecolortransparent( $this->img, $black );
-
-		imagefilledrectangle( $this->img, 0, 0, $this->img_width, $this->img_height, $background_color );
-	}
-
-	/**
-	 * Create the individual bars on the image
-	 */
-	private function add_bars_to_image() {
-		$bar_color  = imagecolorallocate( $this->img, 240, 240, 240 );
-		$total_bars = count( $this->bar_values ); // Normally 48, but less if there's less data
-		$gap        = ( $this->img_width - $total_bars * $this->bar_width ) / ( $total_bars + 1 );
-
-		# ------- Max value is required to adjust the scale	-------
-		$max_value = max( $this->bar_values );
-		if ( $max_value == 0 ) {
-			$max_value = 1;
-		}
-		$ratio = $this->img_height / $max_value;
-
-		foreach( $this->bar_values as $key => $value ) {
-			$x1 = $gap + $key * ( $gap + $this->bar_width );
-			$x2 = $x1 + $this->bar_width;
-			$y1 = $this->img_height - intval( $value * $ratio );
-			imagefilledrectangle( $this->img, $x1, $y1, $x2, $this->img_height, $bar_color );
-		}
-	}
-
-	/**
 	 * Creates the graph to be used in the admin bar
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/is_wp_error
@@ -156,6 +142,7 @@ class Clicky_Visitor_Graph {
 		}
 
 		$this->create_base_image();
+		$this->calculate_ratio();
 		$this->add_bars_to_image();
 
 		return $this->build_img();
@@ -196,7 +183,6 @@ class Clicky_Visitor_Graph {
 	 * @return array|bool
 	 */
 	private function parse_clicky_results( $json ) {
-
 		$json = json_decode( $json );
 
 		$hours  = 0;
@@ -214,6 +200,55 @@ class Clicky_Visitor_Graph {
 		$values = array_reverse( $values );
 
 		return $values;
+	}
+
+	/**
+	 * Creates the basic rectangle we'll project the bars on
+	 */
+	private function create_base_image() {
+		$this->img = imagecreate( $this->img_width, $this->img_height );
+
+		$black            = imagecolorallocate( $this->img, 0, 0, 0 );
+		$background_color = imagecolortransparent( $this->img, $black );
+
+		imagefilledrectangle( $this->img, 0, 0, $this->img_width, $this->img_height, $background_color );
+	}
+
+	/**
+	 * Calculate the ratio between the max value of the bar values and the image height to adjust bars length
+	 */
+	private function calculate_ratio() {
+		$max_value = max( $this->bar_values );
+		if ( $max_value == 0 ) {
+			$max_value = 1;
+		}
+		$this->ratio = $this->img_height / $max_value;
+	}
+
+	/**
+	 * Create the individual bars on the image
+	 */
+	private function add_bars_to_image() {
+		$this->bar_color    = imagecolorallocate( $this->img, 240, 240, 240 );
+		$total_bars         = count( $this->bar_values ); // Normally 48, but less if there's less data
+		$this->gap          = ( $this->img_width - $total_bars * $this->bar_width ) / ( $total_bars + 1 );
+
+		foreach( $this->bar_values as $key => $value ) {
+			$this->create_bar( $key, $value );
+		}
+	}
+
+	/**
+	 * Create an individual bar on the iamge
+	 *
+	 * @param int $index
+	 * @param int $height
+	 */
+	private function create_bar( $index, $height ) {
+		$x1 = $this->gap + $index * ( $this->gap + $this->bar_width );
+		$x2 = $x1 + $this->bar_width;
+		$y1 = $this->img_height - intval( $height * $this->ratio );
+		imagefilledrectangle( $this->img, $x1, $y1, $x2, $this->img_height, $this->bar_color );
 	}
 
 	/**
