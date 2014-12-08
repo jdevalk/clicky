@@ -60,6 +60,7 @@ class Clicky_Admin {
 	/**
 	 * Creates the dashboard and options pages
 	 *
+	 * @link https://codex.wordpress.org/Function_Reference/add_options_page
 	 * @link https://codex.wordpress.org/Function_Reference/add_dashboard_page
 	 */
 	private function register_menu_pages() {
@@ -75,8 +76,6 @@ class Clicky_Admin {
 
 	/**
 	 * Creates  warnings for empty fields in the admin
-	 *
-	 * @link https://codex.wordpress.org/Function_Reference/add_action
 	 */
 	public function admin_warnings() {
 		$required_options = array( 'site_id', 'site_key', 'admin_site_key' );
@@ -104,7 +103,7 @@ class Clicky_Admin {
 	/**
 	 * Returns the plugins settings page URL
 	 *
-	 * @return string
+	 * @return string Admin URL to the current plugins settings URL
 	 */
 	private function plugin_options_url() {
 		return admin_url( 'options-general.php?page=' . $this->hook );
@@ -131,17 +130,13 @@ class Clicky_Admin {
 	 * Updates post meta for '_clicky_goal' with goal ID and value
 	 *
 	 * @param int $post_id The post ID
-	 *
-	 * @link https://codex.wordpress.org/Function_Reference/delete_post_meta
-	 * @link https://codex.wordpress.org/Function_Reference/add_post_meta
 	 */
 	public function insert_post( $post_id ) {
 		$clicky_goal = array(
 			'id'    => (int) filter_input( INPUT_POST, 'clicky_goal_id' ),
 			'value' => floatval( filter_input( INPUT_POST, 'clicky_goal_value' ) ),
 		);
-		delete_post_meta( $post_id, '_clicky_goal' );
-		add_post_meta( $post_id, '_clicky_goal', $clicky_goal, true );
+		update_post_meta( $post_id, '_clicky_goal', $clicky_goal );
 	}
 
 	/**

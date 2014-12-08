@@ -70,10 +70,6 @@ class Clicky_Options {
 	/**
 	 * Loads Clicky-options set in WordPress.
 	 * If already set: trim some option. Otherwise load defaults.
-	 *
-	 * @link https://codex.wordpress.org/Function_Reference/get_option
-	 *
-	 * @return array Returns the trimmed/default options for clicky
 	 */
 	private function load_options() {
 		$options = get_option( self::$option_name );

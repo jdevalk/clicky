@@ -130,8 +130,6 @@ class Clicky_Visitor_Graph {
 	/**
 	 * Creates the graph to be used in the admin bar
 	 *
-	 * @link https://codex.wordpress.org/Function_Reference/is_wp_error
-	 *
 	 * @return bool|string Returns base64-encoded image on success (String) or fail (boolean) on failure
 	 */
 	private function create_graph() {
@@ -152,8 +150,6 @@ class Clicky_Visitor_Graph {
 	 * Retrieve the visitor data from the Clicky API
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/wp_remote_get
-	 *
-	 * @return array Array of values
 	 */
 	private function retrieve_clicky_api_details() {
 		$args = array(
@@ -239,7 +235,7 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Create an individual bar on the iamge
+	 * Create an individual bar on the image
 	 *
 	 * @param int $index
 	 * @param int $height

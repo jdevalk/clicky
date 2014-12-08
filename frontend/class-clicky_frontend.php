@@ -19,7 +19,6 @@ class Clicky_Frontend {
 		$this->options = Clicky_Options::instance()->get();
 
 		add_action( 'wp_footer', array( $this, 'script' ), 90 );
-
 		add_action( 'comment_post', array( $this, 'track_comment' ), 10, 2 );
 	}
 
@@ -139,8 +138,6 @@ class Clicky_Frontend {
 	 *
 	 * @param array $log_data The array with basic log-data
 	 * @param array $custom The array with custom log-data for the comment author
-	 *
-	 * @return bool Returns true on success or false on failure
 	 */
 	private function log_comment( $log_data, $custom ) {
 		$log_data['site_id']       = $this->options['site_id'];
@@ -153,6 +150,6 @@ class Clicky_Frontend {
 			$file .= "&custom[" . urlencode( $key ) . "]=" . urlencode( $value );
 		}
 
-		return wp_remote_get( $file ) ? true : false;
+		wp_remote_get( $file );
 	}
 }
