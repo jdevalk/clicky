@@ -47,8 +47,8 @@ before_script:
 script:
 - if [[ "$PHPLINT" == "1" ]]; then find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l; fi
 - if [[ "$PHPLINT" == "1" ]]; then /tmp/wordpress/phpcs/scripts/phpcs -p -s -v -n . --standard=./ruleset.xml --extensions=php; fi
-- if [[ "$PHPLINT" != "1" -a "$WP_VERSION" == "4.0" ]]; then composer install --dev; fi
-- if [[ "$PHPLINT" != "1" -a "$WP_VERSION" == "4.0" ]]; then phpunit -c phpunit.xml --coverage-clover build/logs/clover.xml; else phpunit -c phpunit.xml; fi
+- if [[ "$PHPLINT" != "1" ]]; then if [[ "$WP_VERSION" == "4.0" ]]; then composer install --dev; fi fi
+- if [[ "$PHPLINT" != "1" ]]; then if [[ "$WP_VERSION" == "4.0" ]]; then phpunit -c phpunit.xml --coverage-clover build/logs/clover.xml; else phpunit -c phpunit.xml; fi fi
 
 after_script:
 - CODECLIMATE_REPO_TOKEN=a1ed4996e9da5703ae6483f5a3294cb9c5729dfae8820c453c768f9f31044246 ./vendor/bin/test-reporter
