@@ -4,22 +4,7 @@
  * TestCase base class for convenience methods.
  */
 class Clicky_UnitTestCase extends WP_UnitTestCase {
-
-	/**
-	 * @param string $key
-	 * @param mixed $value
-	 */
-	protected function set_post( $key, $value ) {
-		$_POST[$key] = $_REQUEST[$key] = addslashes( $value );
-	}
-
-	/**
-	 * @param string $key
-	 */
-	protected function unset_post( $key ) {
-		unset( $_POST[$key], $_REQUEST[$key] );
-	}
-
+	
 	/**
 	 * Fake a request to the WP front page
 	 */
