@@ -26,7 +26,7 @@ matrix:
       env: WP_VERSION=master WP_MULTISITE=1 PHPLINT=1
 
 before_script:
- - bin/before.sh
+- bin/before.sh
 
 script:
 - if [[ "$PHPLINT" == "1" ]]; then find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l; fi
@@ -35,4 +35,4 @@ script:
 - if [[ "$PHPLINT" == "1" ]]; then if [[ "$WP_MULTISITE" == "0" ]]; then if [[ "$WP_VERSION" == "master" ]]; then phpunit -c phpunit.xml --coverage-clover build/logs/clover.xml; else phpunit -c phpunit.xml; fi fi fi
 
 after_script:
-  - bin/after.sh
+- bin/after.sh
