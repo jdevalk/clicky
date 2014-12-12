@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/Yoast/clicky/badges/gpa.svg)](https://codeclimate.com/github/Yoast/clicky)
+[![Travis CI Build](https://travis-ci.org/Yoast/clicky.svg)](https://travis-ci.org/Yoast/clicky)
 
 Clicky for WordPress
 ====================
