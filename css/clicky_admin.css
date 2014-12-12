@@ -1,0 +1,126 @@
+/**
+ * Plugin icon
+ */
+#plugin_icon {
+	margin: 0 10px 0 0;
+}
+
+/**
+ * Main wrappers
+ */
+#yoast_wrapper {
+	float: left;
+	max-width: 600px;
+	margin: 0 25px 0 0;
+}
+
+#yoast_sidebar {
+	float: left;
+	max-width: 261px;
+	margin: 0 20px 0 0;
+}
+
+/**
+ * Tab navigation
+ */
+.nav-tab-wrapper {
+	margin-bottom: 0;
+}
+
+.yoast_tab {
+	display: none;
+}
+
+.yoast_tab.active {
+	display: block;
+	padding: 0.5em 0.9em;
+	border: 1px solid #ddd;
+	border-radius: 0 3px 3px 3px;
+	background-color: #fff;
+}
+
+.tabwrapper .yoast_tab {
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+.tabwrapper .yoast_tab h3 {
+	padding: 9px 15px 4px 0;
+	font-size: 23px;
+	font-weight: 400;
+}
+
+/**
+ * Styling for content in tabs
+ */
+.yoast_tab .text,
+.yoast_tab .select {
+	width: 300px;
+}
+
+.yoast_tab li {
+	margin-left: 20px;
+	list-style-type: disc;
+}
+
+/**
+ * Boxes used in the sidebar
+ */
+.yoast_box {
+	margin: 0 0 20px 0;
+	border: 1px solid #ccc;
+	background-color: #fff;
+}
+
+.yoast_box h3 {
+	padding: 0 0 8px 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.yoast_box .inside {
+	padding: 0 10px;
+}
+
+.yoast_box .inside ul li {
+	margin-left: 20px;
+	line-height: 16px;
+	list-style: square;
+}
+
+.yoast_box .inside a {
+	text-decoration: none;
+}
+
+.yoast_box a:hover {
+	text-decoration: underline;
+}
+
+.yoast_box ul li.rss {
+	list-style-image: url(../images/rss.png);
+}
+
+.yoast_box ul li.twitter {
+	list-style-image: url(../images/twitter-icon.png);
+}
+
+.yoast_box ul li.facebook {
+	list-style-image: url(../images/facebook-icon.png);
+}
+
+.yoast_box ul li.email {
+	list-style-image: url(../images/email_sub.png);
+}
+
+.yoast_box ul li.yoast {
+	margin-left: 0;
+	list-style-type: none;
+}
+
+/**
+ * Banner used in the sidebar
+ */
+.yoast_banner {
+	display: block;
+	margin: 0 0 20px 0;
+}

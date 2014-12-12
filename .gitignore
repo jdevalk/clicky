@@ -1,2 +1,4 @@
 .idea/
 .svn/
+node_modules/
+test.sh

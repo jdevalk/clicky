@@ -1,0 +1,302 @@
+# Copyright (C) 2014 Team Yoast
+# This file is distributed under the same license as the Clicky for WordPress package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Clicky for WordPress 1.5\n"
+"Report-Msgid-Bugs-To: https://github.com/yoast/clicky/issues\n"
+"POT-Creation-Date: 2014-12-01 22:07:19+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Yoast Translate Team <translations@yoast.com>\n"
+"Language-Team: Yoast Translate <translations@yoast.com>\n"
+"X-Generator: grunt-wp-i18n 0.4.9\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: admin/class-clicky_admin.php:51
+msgid "Clicky Goal Tracking"
+msgstr ""
+
+#: admin/class-clicky_admin.php:66
+msgid "Clicky settings"
+msgstr ""
+
+#: admin/class-clicky_admin.php:66
+msgid "Clicky"
+msgstr ""
+
+#: admin/class-clicky_admin.php:70
+msgid "Clicky Stats"
+msgstr ""
+
+#: admin/class-clicky_admin.php:98
+msgid "Clicky is almost ready. "
+msgstr ""
+
+#: admin/class-clicky_admin.php:100
+msgid ""
+"You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s "
+"for it to work."
+msgstr ""
+
+#: admin/class-clicky_admin.php:174
+msgid "Settings"
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:67
+#: admin/class-clicky_options_admin.php:180
+msgid ""
+"If you're in need of support with Clicky and / or this plugin, please visit "
+"the %1$sClicky forums%2$s."
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:68
+msgid "Need Support?"
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:84
+msgid "No news items, feed might be broken..."
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:92
+msgid "Subscribe with RSS"
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:104
+msgid "Latest news from Clicky"
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:111
+msgid "Like Yoast on Facebook"
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:112
+msgid "Follow Yoast on Twitter"
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:113
+msgid "Subscribe by email"
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:115
+msgid "Latest news from Yoast"
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:133
+msgid "Get your site reviewed by team Yoast!"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Clicky for WordPress"
+msgstr ""
+
+#: admin/class-clicky_admin_page.php:147
+msgid "Yoast Translate"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:38 admin/views/admin_page.php:12
+msgid "Basic settings"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:44
+msgid "Site ID"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:45
+msgid "Site Key"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:46
+msgid "Admin Site Key"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:55
+msgid "Like this plugin?"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:60
+msgid "Need support?"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:70
+msgid "Advanced Settings"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:74
+msgid "Disable Admin Bar stats"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:75
+msgid "If you don't want to display the stats in your admin menu, check this box."
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:78
+msgid "Ignore Admin users"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:79
+msgid ""
+"If you are using a caching plugin, such as W3 Total Cache or WP-Supercache, "
+"please ensure that you have it configured to NOT use the cache for logged "
+"in users. Otherwise, admin users <em>will still</em> be tracked."
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:82
+msgid "Disable cookies"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:83
+msgid ""
+"If you don't want Clicky to use cookies on your site, check this button. By "
+"doing so, uniques will instead be determined based on their IP address."
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:86
+msgid "Track names of commenters"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:105
+msgid "Outbound Links"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:107
+msgid "Outbound Link Pattern"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:110
+msgid "For instance: <code>/out/,/go/</code>"
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:163
+msgid ""
+"Go to your %1$suser homepage on Clicky%2$s and click "
+"&quot;Preferences&quot; under the name of the domain, you will find the "
+"Site ID, Site Key, Admin Site Key and Database Server under Site "
+"information."
+msgstr ""
+
+#: admin/class-clicky_options_admin.php:172
+msgid ""
+"If your site uses redirects for outbound links, instead of links that point "
+"directly to their external source (this is popular with affiliate links, "
+"for example), then you'll need to use this variable to tell our tracking "
+"code additional patterns to look for when automatically tracking outbound "
+"links. %1$sRead more here%2$s."
+msgstr ""
+
+#: admin/i18n-module/i18n-module.php:170
+msgid ""
+"As you can see, there is a translation of this plugin in %1$s. This "
+"translation is currently %3$d%% complete. We need your help to make it "
+"complete and to fix any errors. Please register at %4$s to help complete "
+"the translation to %1$s!"
+msgstr ""
+
+#: admin/i18n-module/i18n-module.php:172
+msgid ""
+"You're using WordPress in %1$s. While %2$s has been translated to %1$s for "
+"%3$d%%, it's not been shipped with the plugin yet. You can help! Register "
+"at %4$s to help complete the translation to %1$s!"
+msgstr ""
+
+#: admin/i18n-module/i18n-module.php:174
+msgid ""
+"You're using WordPress in a language we don't support yet. We'd love for "
+"%2$s to be translated in that language too, but unfortunately, it isn't "
+"right now. You can change that! Register at %4$s to help translate it!"
+msgstr ""
+
+#: admin/i18n-module/i18n-module.php:194
+msgid "Translation of %s"
+msgstr ""
+
+#: admin/i18n-module/i18n-module.php:199
+msgid "Register now &raquo;"
+msgstr ""
+
+#: admin/views/admin_page.php:3
+msgid "Configuration"
+msgstr ""
+
+#: admin/views/admin_page.php:13
+msgid "Advanced settings"
+msgstr ""
+
+#: admin/views/admin_page.php:25
+msgid "Save Clicky settings"
+msgstr ""
+
+#: admin/views/like_box.php:1
+msgid "Why not do any or all of the following:"
+msgstr ""
+
+#: admin/views/like_box.php:3
+msgid "Link to it so other folks can find out about it."
+msgstr ""
+
+#: admin/views/like_box.php:4
+msgid "Give it a 5 star rating on WordPress.org."
+msgstr ""
+
+#: admin/views/like_box.php:5
+msgid "Let other people know that it works with your WordPress setup."
+msgstr ""
+
+#: admin/views/meta_box.php:2
+msgid ""
+"Clicky can track Goals for you too, %1$syou can create them here%2$s. To be "
+"able to track a goal on this post, you need to specify the goal ID here.\n"
+"    Optionally, you can also provide the goal revenue."
+msgstr ""
+
+#: admin/views/meta_box.php:7
+msgid "Goal ID:"
+msgstr ""
+
+#: admin/views/meta_box.php:11
+msgid "Goal Revenue:"
+msgstr ""
+
+#: frontend/class-clicky_frontend.php:38
+msgid ""
+"Clicky tracking not shown because you're an administrator and you've "
+"configured Clicky to ignore administrators."
+msgstr ""
+
+#: frontend/class-clicky_frontend.php:123
+msgid "Posted a comment"
+msgstr ""
+
+#: frontend/class-clicky_visitor_graph.php:84
+msgid "Visitors over 48 hours. Click for more Clicky Site Stats."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://yoast.com/wordpress/plugins/clicky/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"The Clicky for WordPress plugin by Yoast makes it easy for you to add your "
+"Clicky analytics tracking code to your WordPress install, while also giving "
+"you some advanced tracking options."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Team Yoast"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://yoast.com/"
+msgstr ""

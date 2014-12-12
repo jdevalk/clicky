@@ -1,15 +1,19 @@
+[![Code Climate](https://codeclimate.com/github/Yoast/clicky/badges/gpa.svg)](https://codeclimate.com/github/Yoast/clicky)
+[![Test Coverage](https://codeclimate.com/github/Yoast/clicky/badges/coverage.svg)](https://codeclimate.com/github/Yoast/clicky)
+[![Travis CI Build](https://travis-ci.org/Yoast/clicky.svg)](https://travis-ci.org/Yoast/clicky)
+
 Clicky for WordPress
-==============================
+====================
 
 WordPress plugin for Clicky.com Analytics
 
 
 Welcome to the Clicky for WordPress Github repository
-----------------------------------------------
+-----------------------------------------------------
 
 While the documentation for the [Clicky for WordPress plugin](https://yoast.com/wordpress/plugins/clicky/) can be found on yoast.com, here
 you can browse the source of the project, find and discuss open issues and even
-[contribute yourself](https://github.com/Yoast/google-analytics-for-wordpress/blob/master/CONTRIBUTING.md).
+[contribute yourself](https://github.com/Yoast/clicky/blob/trunk/CONTRIBUTING.md).
 
 Installation
 ------------
@@ -20,7 +24,7 @@ If you want to run the Git version though, you have two options:
 * You can clone the GitHub repository: https://github.com/Yoast/clicky.git
 * Download it directly as a ZIP file: https://github.com/Yoast/clicky/archive/master.zip
 
-This will download the latest development version of Clicky for WordPress by Yoast. While this version is usually stable,
+This will download the latest release version of Clicky for WordPress by Yoast. While this version is usually stable,
 it is not recommended for use in a production environment.
 
 Bugs

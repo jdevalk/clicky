@@ -1,0 +1,3 @@
+[submodule "admin/i18n-module"]
+	path = admin/i18n-module
+	url = https://github.com/Yoast/i18n-module.git
