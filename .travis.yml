@@ -42,8 +42,7 @@ before_script:
 - cd phpcs
 - scripts/phpcs --config-set installed_paths ../wpcs
 - cd "/tmp/wordpress/src/wp-content/plugins/$PLUGIN_SLUG"
-- composer install
-- php composer.phar install --dev
+- composer install --dev
 - phpenv rehash
 
 script:
