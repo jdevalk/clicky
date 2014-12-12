@@ -24,7 +24,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Register the needed option and its settings sections
 	 */
 	public function admin_init() {
-		register_setting( self::$option_group, parent::$option_name, array( $this, 'sanitize_options' ) );
+		register_setting( self::$option_group, parent::$option_name, array( $this, 'sanitize_options_on_save' ) );
 
 		$this->register_basic_settings();
 		$this->register_advanced_settings();
@@ -136,7 +136,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 *
 	 * @return array
 	 */
-	public function sanitize_options( $new_options ) {
+	public function sanitize_options_on_save( $new_options ) {
 		foreach( $new_options as $key => $value ) {
 			switch( self::$option_var_types[$key] ) {
 				case 'string':
