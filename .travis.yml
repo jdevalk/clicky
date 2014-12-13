@@ -22,8 +22,8 @@ matrix:
       env: WP_VERSION=3.9 WP_MULTISITE=0
 
 before_script:
-- bash bin/before.sh $WP_VERSION
+- bash tests/bin/before.sh $WP_VERSION
 
 script:
-- if [[ "$PHPLINT" == "1" ]]; then bash bin/phplint.sh; fi
-- if [[ "$CODE_CLIMATE" == "1" ]]; then bash bin/code_climate.sh; fi
+- if [[ "$PHPLINT" == "1" ]]; then bash tests/bin/phplint.sh; fi
+- if [[ "$CODE_CLIMATE" == "1" ]]; then bash tests/bin/code_climate.sh; fi
