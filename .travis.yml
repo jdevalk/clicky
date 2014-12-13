@@ -6,7 +6,11 @@ php:
 - '5.5'
 
 env:
-- WP_VERSION=master WP_MULTISITE=0 PHPLINT=1
+- WP_VERSION=master
+- WP_MULTISITE=0
+- PHPLINT=1
+- CODE_CLIMATE=0
+- CODECLIMATE_REPO_TOKEN="a1ed4996e9da5703ae6483f5a3294cb9c5729dfae8820c453c768f9f31044246"
 
 matrix:
   include:
@@ -23,7 +27,7 @@ matrix:
     - php: "5.3"
       env: WP_VERSION=3.9 WP_MULTISITE=0
     - php: "5.2"
-      env: WP_VERSION=master WP_MULTISITE=1 PHPLINT=1
+      env: WP_VERSION=master WP_MULTISITE=1 PHPLINT=1 CODE_CLIMATE=1
 
 before_script:
 - PLUGIN_SLUG=$(basename $(pwd))
@@ -47,8 +51,6 @@ before_script:
 script:
 - if [[ "$PHPLINT" == "1" ]]; then find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l; fi
 - if [[ "$PHPLINT" == "1" ]]; then /tmp/wordpress/phpcs/scripts/phpcs -p -s -v -n . --standard=./ruleset.xml --extensions=php; fi
-- if [[ "$PHPLINT" == "1" ]]; then if [[ "$WP_MULTISITE" == "0" ]]; then if [[ "$WP_VERSION" == "master" ]]; then composer install --dev; fi fi fi
-- if [[ "$PHPLINT" == "1" ]]; then if [[ "$WP_MULTISITE" == "0" ]]; then if [[ "$WP_VERSION" == "master" ]]; then phpunit -c phpunit.xml --coverage-clover build/logs/clover.xml; else phpunit -c phpunit.xml; fi fi fi
-
-after_script:
-- bin/after.sh
+- if [[ "$CODE_CLIMATE" == "1" ]]; then composer install --dev; fi
+- if [[ "$CODE_CLIMATE" == "1" ]]; then phpunit -c phpunit.xml --coverage-clover build/logs/clover.xml; else phpunit -c phpunit.xml; fi
+- if [[ "$CODE_CLIMATE" == "1" ]]; then ./bin/test-reporter --stdout > codeclimate.json; curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports; fi
