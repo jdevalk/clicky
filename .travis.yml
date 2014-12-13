@@ -26,4 +26,4 @@ before_script:
 
 script:
 - if [[ "$PHPLINT" == "1" ]]; then bash bin/phplint.sh; fi
-- if [[ "$CODE_CLIMATE" == "1" ]]; then bash bin/clode_climate.sh; fi
+- if [[ "$CODE_CLIMATE" == "1" ]]; then bash bin/code_climate.sh; fi

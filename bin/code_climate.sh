@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 composer require-dev
 phpunit -c phpunit.xml --coverage-clover build/logs/clover.xml
 ./bin/test-reporter --stdout > codeclimate.json
