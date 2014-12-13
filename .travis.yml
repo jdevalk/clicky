@@ -4,6 +4,8 @@ sudo: false
 
 matrix:
   include:
+    - php: '5.2'
+      env: WP_VERSION=master WP_MULTISITE=1 PHPLINT=1 CODE_CLIMATE=1 CODECLIMATE_REPO_TOKEN=a1ed4996e9da5703ae6483f5a3294cb9c5729dfae8820c453c768f9f31044246
     - php: '5.5'
       env: WP_VERSION=master WP_MULTISITE=0 PHPLINT=1
     - php: '5.5'
@@ -18,8 +20,6 @@ matrix:
       env: WP_VERSION=3.9 WP_MULTISITE=1
     - php: "5.3"
       env: WP_VERSION=3.9 WP_MULTISITE=0
-    - php: "5.2"
-      env: WP_VERSION=master WP_MULTISITE=1 PHPLINT=1 CODE_CLIMATE=1 CODECLIMATE_REPO_TOKEN="a1ed4996e9da5703ae6483f5a3294cb9c5729dfae8820c453c768f9f31044246"
 
 before_script:
 - bash bin/before.sh $WP_VERSION
