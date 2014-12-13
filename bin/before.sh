@@ -1,5 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+if [ $# -lt 1 ]; then
+	echo "usage: $0 [wp-version]"
+	exit 1
+fi
+
+WP_VERSION=${1-master}
 PLUGIN_SLUG=$(basename $(pwd))
+
 export WP_DEVELOP_DIR=/tmp/wordpress/
 git clone --depth=50 --branch="$WP_VERSION" git://develop.git.wordpress.org/ /tmp/wordpress
 cd ..
