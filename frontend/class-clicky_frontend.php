@@ -18,6 +18,10 @@ class Clicky_Frontend {
 	public function __construct() {
 		$this->options = Clicky_Options::instance()->get();
 
+		if ( empty( $this->options['site_id'] ) || empty( $this->options['site_key'] ) ) {
+			return;
+		}
+
 		add_action( 'wp_footer', array( $this, 'script' ), 90 );
 		add_action( 'comment_post', array( $this, 'track_comment' ), 10, 2 );
 	}
@@ -78,7 +82,10 @@ class Clicky_Frontend {
 	 */
 	private function outbound_tracking() {
 		if ( isset( $this->options['outbound_pattern'] ) && trim( $this->options['outbound_pattern'] ) != '' ) {
-			$patterns = explode( ',', $this->options['outbound_pattern'] );
+
+			$patterns = preg_replace( '~[^\/a-zA-Z0-9,]+~', '', $this->options['outbound_pattern']);
+
+			$patterns = explode( ',', $patterns );
 			$pattern  = '';
 			foreach ( $patterns as $pat ) {
 				if ( $pattern != '' ) {
