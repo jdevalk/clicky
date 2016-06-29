@@ -81,6 +81,10 @@ class Clicky_Visitor_Graph {
 
 		$this->options = Clicky_Options::instance()->get();
 
+		if ( empty( $this->options['site_id'] ) || empty( $this->options['site_key'] ) ) {
+			return;
+		}
+
 		if ( isset( $this->options['disable_stats'] ) && $this->options['disable_stats'] ) {
 			return;
 		}
@@ -113,14 +117,16 @@ class Clicky_Visitor_Graph {
 	 */
 	public function stats_admin_bar_menu( $wp_admin_bar ) {
 		$img_src = $this->create_graph();
+		if ( false === $img_src ) {
+			return;
+		}
 
 		$url = 'https://secure.getclicky.com/stats/?site_id=' . $this->options['site_id'];
-
 		$title = __( 'Visitors over 48 hours. Click for more Clicky Site Stats.', 'clicky' );
 
 		$menu = array(
 			'id'    => 'clickystats',
-			'title' => "<img width='99' height='20' src='" . $img_src . "' alt='" . $title . "' title='" . $title . "' />",
+			'title' => "<img width='99' height='20' src='" . esc_url( $img_src ) . "' alt='" . esc_attr( $title ) . "' title='" . esc_attr( $title ) . "' />",
 			'href'  => $url
 		);
 
@@ -133,7 +139,10 @@ class Clicky_Visitor_Graph {
 	 * @return bool|string Returns base64-encoded image on success (String) or fail (boolean) on failure
 	 */
 	private function create_graph() {
-		$this->retrieve_clicky_api_details();
+		$result = $this->retrieve_clicky_api_details();
+		if ( false === $result ) {
+			return false;
+		}
 
 		if ( count( $this->bar_values ) < 1 ) {
 			return false;
@@ -168,7 +177,13 @@ class Clicky_Visitor_Graph {
 			return false;
 		}
 
-		$this->bar_values = $this->parse_clicky_results( $resp['body'] );
+		$results = $this->parse_clicky_results( $resp['body'] );
+		if ( ! is_array( $results ) ) {
+			return false;
+		}
+
+		$this->bar_values = $results;
+		return true;
 	}
 
 	/**
@@ -180,6 +195,14 @@ class Clicky_Visitor_Graph {
 	 */
 	private function parse_clicky_results( $json ) {
 		$json = json_decode( $json );
+
+		if ( empty( $json ) ) {
+			return false;
+		}
+
+		if ( isset( $json[0]->error ) ) {
+			return false;
+		}
 
 		$hours  = 0;
 		$values = array();

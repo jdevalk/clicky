@@ -138,16 +138,31 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 */
 	public function sanitize_options_on_save( $new_options ) {
 		foreach( $new_options as $key => $value ) {
-			switch( self::$option_var_types[$key] ) {
+			switch ( self::$option_var_types[ $key ] ) {
 				case 'string':
-					$new_options[$key] = $this->sanitize_string( $new_options[ $key ] );
+					$new_options[ $key ] = $this->sanitize_string( $new_options[ $key ] );
 					break;
 				case 'bool':
-					if ( isset( $new_options[$key] ) ) {
+					if ( isset( $new_options[ $key ] ) ) {
 						$new_options[ $key ] = true;
-					} else {
+					}
+					else {
 						$new_options[ $key ] = false;
 					}
+					break;
+			}
+
+			switch ( $key ) {
+				case 'site_id':
+					$new_options[ $key ] = (int) $new_options[ $key ];
+					if ( $new_options[ $key ] === 0 ) {
+						$new_options[ $key ] = '';
+					}
+					break;
+
+				case 'site_key':
+				case 'admin_site_key':
+					$new_options[ $key ] = preg_replace( '~[^a-zA-Z0-9]+~', '', $new_options[ $key ] );
 					break;
 			}
 		}
