@@ -126,7 +126,7 @@ class Clicky_Visitor_Graph {
 
 		$menu = array(
 			'id'    => 'clickystats',
-			'title' => "<img width='99' height='20' src='" . esc_url( $img_src ) . "' alt='" . esc_attr( $title ) . "' title='" . esc_attr( $title ) . "' />",
+			'title' => "<img width='99' height='20' src='" . $img_src . "' alt='" . esc_attr( $title ) . "' title='" . esc_attr( $title ) . "' />",
 			'href'  => $url
 		);
 
