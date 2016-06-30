@@ -50,6 +50,7 @@ Released June 30th, 2016
 Other improvements:
 	* Only load the resources when required settings are entered.
 	* Properly handle erroneous request responses.
+	* Updated translations.
 
 = 1.5 =
 
