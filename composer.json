@@ -1,24 +1,49 @@
 {
-    "name": "yoast/clicky",
-    "description": "Clicky tracking",
-    "keywords": [
-        "tracking",
-        "clicky"
-    ],
-    "homepage": "https://yoast.com/wordpress/plugins/clicky/",
-    "license": "GPL-2.0+",
-    "authors": [
-        {
-            "name": "Joost de Valk",
-            "email": "support@yoast.com",
-            "homepage": "https://yoast.com"
-        }
-    ],
-    "type": "wordpress-plugin",
-    "require": {
-        "composer/installers": "~1.0"
-    },
-    "require-dev": {
-        "codeclimate/php-test-reporter": "dev-master"
+  "name": "yoast/clicky",
+  "description": "Clicky tracking",
+  "keywords": [
+    "tracking",
+    "clicky"
+  ],
+  "homepage": "https://yoast.com/wordpress/plugins/clicky/",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Joost de Valk",
+      "email": "support@yoast.com",
+      "homepage": "https://yoast.com"
     }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "composer/installers": "~1.0",
+    "yoast/i18n-module": "^1.0",
+    "xrstf/composer-php52": "^1.0"
+  },
+  "require-dev": {
+    "codeclimate/php-test-reporter": "dev-master",
+    "yoast/yoastcs": "^0.3.0"
+  },
+  "autoload": {
+    "classmap": [
+      "admin/",
+      "frontend/",
+      "includes/"
+    ]
+  },
+  "scripts": {
+    "config-yoastcs": [
+      "\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/wp-coding-standards/wpcs,../../../vendor/yoast/yoastcs",
+      "\"vendor/bin/phpcs\" --config-set default_standard Yoast"
+    ],
+    "post-install-cmd": [
+      "xrstf\\Composer52\\Generator::onPostInstallCmd"
+    ],
+    "post-update-cmd": [
+      "xrstf\\Composer52\\Generator::onPostInstallCmd"
+    ],
+    "post-autoload-dump": [
+      "xrstf\\Composer52\\Generator::onPostInstallCmd"
+    ]
+  }
 }

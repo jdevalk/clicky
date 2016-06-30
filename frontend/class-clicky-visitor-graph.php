@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Yoast\Clicky\FrontEnd
+ */
 
 /**
  * Backend Class the Clicky plugin
@@ -24,7 +27,7 @@ class Clicky_Visitor_Graph {
 	 *
 	 * @var float
 	 */
-	private $bar_width  = 0.02;
+	private $bar_width = 0.02;
 
 	/**
 	 * The width of the gap between two bars
@@ -49,6 +52,7 @@ class Clicky_Visitor_Graph {
 
 	/**
 	 * Width of the generated image
+	 *
 	 * @var int
 	 */
 	private $img_width = 99;
@@ -121,13 +125,13 @@ class Clicky_Visitor_Graph {
 			return;
 		}
 
-		$url = 'https://secure.getclicky.com/stats/?site_id=' . $this->options['site_id'];
+		$url   = 'https://secure.getclicky.com/stats/?site_id=' . $this->options['site_id'];
 		$title = __( 'Visitors over 48 hours. Click for more Clicky Site Stats.', 'clicky' );
 
 		$menu = array(
 			'id'    => 'clickystats',
 			'title' => "<img width='99' height='20' src='" . $img_src . "' alt='" . esc_attr( $title ) . "' title='" . esc_attr( $title ) . "' />",
-			'href'  => $url
+			'href'  => $url,
 		);
 
 		$wp_admin_bar->add_menu( $menu );
@@ -167,9 +171,9 @@ class Clicky_Visitor_Graph {
 			'type'    => 'visitors',
 			'hourly'  => 1,
 			'date'    => 'last-3-days',
-			'output'  => 'json'
+			'output'  => 'json',
 		);
-		$url  = "https://api.getclicky.com/api/stats/4?" . http_build_query( $args );
+		$url  = 'https://api.getclicky.com/api/stats/4?' . http_build_query( $args );
 
 		$resp = wp_remote_get( $url );
 
@@ -183,13 +187,14 @@ class Clicky_Visitor_Graph {
 		}
 
 		$this->bar_values = $results;
+
 		return true;
 	}
 
 	/**
 	 * Parse the Clicky results into a usable array
 	 *
-	 * @param array $json JSON encoded object of results
+	 * @param array $json JSON encoded object of results.
 	 *
 	 * @return array|bool
 	 */
@@ -238,21 +243,21 @@ class Clicky_Visitor_Graph {
 	 */
 	private function calculate_ratio() {
 		$max_value = max( $this->bar_values );
-		if ( $max_value == 0 ) {
+		if ( $max_value === 0 ) {
 			$max_value = 1;
 		}
-		$this->ratio = $this->img_height / $max_value;
+		$this->ratio = ( $this->img_height / $max_value );
 	}
 
 	/**
 	 * Create the individual bars on the image
 	 */
 	private function add_bars_to_image() {
-		$this->bar_color    = imagecolorallocate( $this->img, 240, 240, 240 );
-		$total_bars         = count( $this->bar_values ); // Normally 48, but less if there's less data
-		$this->gap          = ( $this->img_width - $total_bars * $this->bar_width ) / ( $total_bars + 1 );
+		$this->bar_color = imagecolorallocate( $this->img, 240, 240, 240 );
+		$total_bars      = count( $this->bar_values ); // Normally 48, but less if there's less data.
+		$this->gap       = ( ( $this->img_width - $total_bars * $this->bar_width ) / ( $total_bars + 1 ) );
 
-		foreach( $this->bar_values as $key => $value ) {
+		foreach ( $this->bar_values as $key => $value ) {
 			$this->create_bar( $key, $value );
 		}
 	}
@@ -260,13 +265,13 @@ class Clicky_Visitor_Graph {
 	/**
 	 * Create an individual bar on the image
 	 *
-	 * @param int $index
-	 * @param int $height
+	 * @param int $index  Offset.
+	 * @param int $height Height.
 	 */
 	private function create_bar( $index, $height ) {
-		$xAxis1 = $this->gap + $index * ( $this->gap + $this->bar_width );
-		$xAxis2 = $xAxis1 + $this->bar_width;
-		$yAxis1 = $this->img_height - intval( $height * $this->ratio );
+		$xAxis1 = ( $this->gap + $index * ( $this->gap + $this->bar_width ) );
+		$xAxis2 = ( $xAxis1 + $this->bar_width );
+		$yAxis1 = ( $this->img_height - intval( $height * $this->ratio ) );
 		$yAxis2 = $this->img_height;
 		imagefilledrectangle( $this->img, $xAxis1, $yAxis1, $xAxis2, $yAxis2, $this->bar_color );
 	}

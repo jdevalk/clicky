@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Yoast\Clicky\Admin
+ */
 
 /**
  * Backend Class the Clicky plugin
@@ -50,7 +53,7 @@ class Clicky_Admin {
 		foreach ( $public_post_types as $post_type ) {
 			add_meta_box( 'clicky', __( 'Clicky Goal Tracking', 'clicky' ), array(
 				$this,
-				'meta_box_content'
+				'meta_box_content',
 			), $post_type, 'side' );
 		}
 
@@ -66,11 +69,11 @@ class Clicky_Admin {
 	private function register_menu_pages() {
 		add_options_page( __( 'Clicky settings', 'clicky' ), __( 'Clicky', 'clicky' ), 'manage_options', $this->hook, array(
 			new Clicky_Admin_Page,
-			'config_page'
+			'config_page',
 		) );
 		add_dashboard_page( __( 'Clicky Stats', 'clicky' ), __( 'Clicky Stats', 'clicky' ), 'manage_options', 'clicky_stats', array(
 			$this,
-			'dashboard_page'
+			'dashboard_page',
 		) );
 	}
 
@@ -95,9 +98,9 @@ class Clicky_Admin {
 	private function setup_warning() {
 		echo "<div class='updated'><p><strong>";
 		_e( 'Clicky is almost ready. ', 'clicky' );
-		echo "</strong>";
-		printf( __( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ), "<a href='" . $this->plugin_options_url() . "'>", "</a>" );
-		echo "</p></div>";
+		echo '</strong>';
+		printf( __( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ), "<a href='" . $this->plugin_options_url() . "'>", '</a>' );
+		echo '</p></div>';
 	}
 
 	/**
@@ -123,13 +126,13 @@ class Clicky_Admin {
 
 		$clicky_goal = get_post_meta( $post->ID, '_clicky_goal', true );
 
-		require 'views/meta_box.php';
+		require 'views/meta-box.php';
 	}
 
 	/**
 	 * Updates post meta for '_clicky_goal' with goal ID and value
 	 *
-	 * @param int $post_id The post ID
+	 * @param int $post_id The post ID.
 	 */
 	public function insert_post( $post_id ) {
 		$clicky_goal = array(
@@ -149,14 +152,14 @@ class Clicky_Admin {
 		);
 		$iframe_url = 'https://clicky.com/stats/wp-iframe?' . http_build_query( $args, '', '&amp;' );
 
-		require 'views/stats_page.php';
+		require 'views/stats-page.php';
 	}
 
 	/**
 	 * Add a link to the settings page to the plugins list
 	 *
-	 * @param array $links
-	 * @param string $file
+	 * @param array  $links Links to add.
+	 * @param string $file  Plugin file name.
 	 *
 	 * @return array
 	 */
@@ -172,5 +175,4 @@ class Clicky_Admin {
 
 		return $links;
 	}
-
 }
