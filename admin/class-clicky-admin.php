@@ -38,10 +38,6 @@ class Clicky_Admin {
 		add_action( 'publish_post', array( $this, 'insert_post' ) );
 		add_action( 'admin_notices', array( $this, 'admin_warnings' ) );
 		add_action( 'admin_menu', array( $this, 'admin_init' ) );
-
-		if ( filter_input( INPUT_GET, 'page' ) === $this->hook ) {
-			new Clicky_Admin_Page();
-		}
 	}
 
 	/**
