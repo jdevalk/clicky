@@ -44,13 +44,14 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 Released June 30th, 2016
 
 * Minor security improvements:
-	* Only allow expected characters in user settings.
+	* Only allow expected characters in user settings thanks to a report by [Netsparker](https://netsparker.com).
 	* Proper escaping of translated string in image attributes.
 
 Other improvements:
 	* Only load the resources when required settings are entered.
 	* Properly handle erroneous request responses.
 	* Updated translations.
+	* Updated i18n module.
 
 = 1.5 =
 
