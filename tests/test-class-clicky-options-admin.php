@@ -46,7 +46,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 */
 	public function test_like_text() {
 		ob_start();
-		require( 'admin/views/like_box.php' );
+		require( 'admin/views/like-box.php' );
 		$output = ob_get_clean();
 
 		$this->expectOutputString( $output );

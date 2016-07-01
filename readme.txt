@@ -1,9 +1,9 @@
 === Clicky by Yoast ===
 Contributors: joostdevalk
 Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Joost de Valk, Yoast
-Requires at least: 3.5
-Tested up to: 4.0
-Stable tag: 1.5
+Requires at least: 4.0
+Tested up to: 4.5
+Stable tag: 1.6
 Text Domain: clicky
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
@@ -38,6 +38,20 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 3. The stats indicator on the WordPress Toolbar.
 
 == Changelog ==
+
+= 1.6 =
+
+Released June 30th, 2016
+
+* Minor security improvements:
+	* Only allow expected characters in user settings thanks to a report by [Netsparker](https://netsparker.com).
+	* Proper escaping of translated string in image attributes.
+
+Other improvements:
+	* Only load the resources when required settings are entered.
+	* Properly handle erroneous request responses.
+	* Updated translations.
+	* Updated i18n module.
 
 = 1.5 =
 

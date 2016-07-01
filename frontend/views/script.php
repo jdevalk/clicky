@@ -1,9 +1,14 @@
-<script type="text/javascript">
+<?php
+/**
+ * @package Yoast/Clicky/View
+ */
+
+?><script type="text/javascript">
 	<?php
-		if ( ! empty( $clicky_extra ) ) {
-			echo 'var clicky_custom = clicky_custom || {}; ';
-			echo $clicky_extra;
-		} ?>
+	if ( ! empty( $clicky_extra ) ) {
+		echo 'var clicky_custom = clicky_custom || {}; ';
+		echo $clicky_extra;
+	} ?>
 	var clicky = { log : function () { return true;	}, goal: function () { return true;	} };
 	var clicky_site_id = <?php echo $this->options['site_id']; ?>;
 	(function () {

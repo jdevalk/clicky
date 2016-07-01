@@ -1,5 +1,9 @@
 <?php
 /**
+ * @package Yoast/Clicky/Options
+ */
+
+/**
  * Options Class for the Clicky plugin
  *
  * @since 1.5
@@ -19,7 +23,7 @@ class Clicky_Options {
 		'ignore_admin'     => false,        // While ignoring an admin by default would make sense, it leads to admins thinking the plugin doesn't work.
 		'track_names'      => false,        // Tracking the names of commenters makes sense, but might be illegal in some countries, so we default to off.
 		'cookies_disable'  => false,        // No need to disable cookies by default as it severely impacts the quality of tracking.
-		'disable_stats'    => false         // The stats on the frontend are often found useful, but some people might want to disable them.
+		'disable_stats'    => false,// The stats on the frontend are often found useful, but some people might want to disable them.
 	);
 
 	/**
@@ -35,7 +39,7 @@ class Clicky_Options {
 		'ignore_admin'     => 'bool',
 		'track_names'      => 'bool',
 		'cookies_disable'  => 'bool',
-		'disable_stats'    => 'bool'
+		'disable_stats'    => 'bool',
 	);
 
 	/**
@@ -76,7 +80,8 @@ class Clicky_Options {
 		if ( ! is_array( $options ) ) {
 			$this->options = self::$option_defaults;
 			update_option( self::$option_name, $this->options );
-		} else  {
+		}
+		else {
 			$this->options = array_merge( self::$option_defaults, $options );
 		}
 	}
@@ -85,13 +90,13 @@ class Clicky_Options {
 	 * Forces all options to be of the type we expect them to be of.
 	 */
 	private function sanitize_options() {
-		foreach( $this->options as $key => $value ) {
-			switch ( self::$option_var_types[$key] ) {
+		foreach ( $this->options as $key => $value ) {
+			switch ( self::$option_var_types[ $key ] ) {
 				case 'string':
-					$this->options[$key] = (string) $value;
+					$this->options[ $key ] = (string) $value;
 					break;
 				case 'bool':
-					$this->options[$key] = (bool) $value;
+					$this->options[ $key ] = (bool) $value;
 			}
 		}
 	}

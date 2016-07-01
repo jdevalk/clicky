@@ -1,5 +1,9 @@
 <?php
 /**
+ * @package Yoast\Clicky\Admin
+ */
+
+/**
  * Backend Class for the Clicky plugin options
  */
 class Clicky_Options_Admin extends Clicky_Options {
@@ -37,7 +41,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	private function register_basic_settings() {
 		add_settings_section( 'basic-settings', __( 'Basic settings', 'clicky' ), array(
 			$this,
-			'basic_settings_intro'
+			'basic_settings_intro',
 		), 'clicky' );
 
 		$clicky_settings = array(
@@ -54,12 +58,12 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 		add_settings_section( 'clicky-like', __( 'Like this plugin?', 'clicky' ), array(
 			$this,
-			'like_text'
+			'like_text',
 		), 'clicky' );
 
 		add_settings_section( 'clicky-support', __( 'Need support?', 'clicky' ), array(
 			$this,
-			'support_text'
+			'support_text',
 		), 'clicky' );
 	}
 
@@ -84,12 +88,12 @@ class Clicky_Options_Admin extends Clicky_Options {
 			),
 			'track_names'     => array(
 				'label' => __( 'Track names of commenters', 'clicky' ),
-			)
+			),
 		);
 		foreach ( $advanced_settings as $key => $arr ) {
 			add_settings_field( $key, $arr['label'], array(
 				$this,
-				'input_checkbox'
+				'input_checkbox',
 			), 'clicky-advanced', 'clicky-advanced', array(
 				'name'  => $key,
 				'value' => isset( $this->options[ $key ] ) ? $this->options[ $key ] : false,
@@ -115,13 +119,13 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Create a "plugin like" box.
 	 */
 	public function like_text() {
-		require 'views/like_box.php';
+		require 'views/like-box.php';
 	}
 
 	/**
 	 * Sanitizes and trims a string
 	 *
-	 * @param string $string
+	 * @param string $string String to sanitize.
 	 *
 	 * @return string
 	 */
@@ -132,12 +136,12 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Sanitize options
 	 *
-	 * @param array $new_options
+	 * @param array $new_options Options to sanitize.
 	 *
 	 * @return array
 	 */
 	public function sanitize_options_on_save( $new_options ) {
-		foreach( $new_options as $key => $value ) {
+		foreach ( $new_options as $key => $value ) {
 			switch ( self::$option_var_types[ $key ] ) {
 				case 'string':
 					$new_options[ $key ] = $this->sanitize_string( $new_options[ $key ] );
@@ -198,7 +202,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Output an optional input description
 	 *
-	 * @param array $args
+	 * @param array $args Arguments to get data from.
 	 */
 	private function input_desc( $args ) {
 		if ( isset( $args['desc'] ) ) {
@@ -209,7 +213,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Create a text input
 	 *
-	 * @param array $args
+	 * @param array $args Arguments to get data from.
 	 */
 	public function input_text( $args ) {
 		echo '<input type="text" class="text" name="' . esc_attr( $args['name'] ) . '" value="' . esc_attr( $args['value'] ) . '"/>';
@@ -219,12 +223,11 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Create a checkbox input
 	 *
-	 * @param array $args
+	 * @param array $args Arguments to get data from.
 	 */
 	public function input_checkbox( $args ) {
 		$option = isset( $this->options[ $args['name'] ] ) ? $this->options[ $args['name'] ] : false;
 		echo '<input class="checkbox" type="checkbox" ' . checked( $option, true, false ) . ' name="clicky[' . esc_attr( $args['name'] ) . ']"/>';
 		$this->input_desc( $args );
 	}
-
 }

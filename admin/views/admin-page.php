@@ -1,6 +1,11 @@
-<div class="wrap">
+<?php
+/**
+ * @package Yoast/Clicky/View
+ */
+
+?><div class="wrap">
 	<h2>
-		<img id="plugin_icon" src="<?php echo CLICKY_PLUGIN_DIR_URL; ?>images/clicky-32x32.png" class="alignleft" /> Clicky <?php _e( "Configuration", 'clicky' ); ?>
+		<img id="plugin_icon" src="<?php echo CLICKY_PLUGIN_DIR_URL; ?>images/clicky-32x32.png" class="alignleft" /> Clicky <?php _e( 'Configuration', 'clicky' ); ?>
 	</h2>
 
 	<form action="<?php echo admin_url( 'options.php' ); ?>" method="post">

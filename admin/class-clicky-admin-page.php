@@ -1,5 +1,9 @@
 <?php
 /**
+ * @package Yoast\Clicky\Admin
+ */
+
+/**
  * Class for the Clicky plugin admin page
  */
 class Clicky_Admin_Page extends Clicky_Admin {
@@ -21,7 +25,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	/**
 	 * Determine whether or not to send the minified version
 	 *
-	 * @param string $ext
+	 * @param string $ext Extension to use for asset.
 	 *
 	 * @return string
 	 */
@@ -47,14 +51,14 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Creates the configuration page
 	 */
 	public function config_page() {
-		require 'views/admin_page.php';
+		require 'views/admin-page.php';
 	}
 
 	/**
 	 * Create a postbox widget
 	 *
-	 * @param string $title
-	 * @param string $content
+	 * @param string $title   Title to display.
+	 * @param string $content Content to display.
 	 */
 	private function box( $title, $content ) {
 		echo '<div class="yoast_box"><h3>' . $title . '</h3><div class="inside">' . $content . '</div></div>';
@@ -71,17 +75,18 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	/**
 	 * Generate an RSS box.
 	 *
-	 * @param string $feed        Feed URL to parse
-	 * @param string $title       Title of the box
-	 * @param string $extra_links Additional links to add to the output, after the RSS subscribe link
+	 * @param string $feed        Feed URL to parse.
+	 * @param string $title       Title of the box.
+	 * @param string $extra_links Additional links to add to the output, after the RSS subscribe link.
 	 */
 	private function rss_news( $feed, $title, $extra_links = '' ) {
 		include_once( ABSPATH . WPINC . '/feed.php' );
-		$rss       = fetch_feed( $feed );
+		$rss = fetch_feed( $feed );
 
 		if ( is_wp_error( $rss ) ) {
 			$rss = '<li class="yoast">' . __( 'No news items, feed might be broken...', 'clicky' ) . '</li>';
-		} else {
+		}
+		else {
 			$rss_items = $rss->get_items( 0, $rss->get_item_quantity( 3 ) );
 
 			$rss = '';
@@ -123,9 +128,9 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	/**
 	 * Prints a banner image
 	 *
-	 * @param string $img
-	 * @param string $url
-	 * @param string $alt
+	 * @param string $img Image to show.
+	 * @param string $url URL to use.
+	 * @param string $alt Alt to add.
 	 */
 	private function banner( $img, $url, $alt ) {
 		printf( '<a class="yoast_banner" href="%1$s" title="%3$s"><img src="%2$s" width="261" alt="%3$s"/></a>', $url, $img, $alt );
