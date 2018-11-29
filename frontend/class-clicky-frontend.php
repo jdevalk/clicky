@@ -25,12 +25,12 @@ class Clicky_Frontend {
 			return;
 		}
 
-		add_action( 'wp_footer', array( $this, 'script' ), 90 );
+		add_action( 'wp_head', array( $this, 'script' ), 90 );
 		add_action( 'comment_post', array( $this, 'track_comment' ), 10, 2 );
 	}
 
 	/**
-	 * Add Clicky scripts to footer
+	 * Add Clicky scripts to header
 	 */
 	public function script() {
 		if ( is_preview() ) {
