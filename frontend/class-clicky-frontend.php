@@ -30,7 +30,7 @@ class Clicky_Frontend {
 	}
 
 	/**
-	 * Add Clicky scripts to header
+	 * Add Clicky scripts to header.
 	 */
 	public function script() {
 		if ( is_preview() ) {
