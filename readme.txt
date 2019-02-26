@@ -54,7 +54,7 @@ Released June 30th, 2016
 	* Only allow expected characters in user settings thanks to a report by [Netsparker](https://netsparker.com).
 	* Proper escaping of translated string in image attributes.
 
-Other improvements:
+* Other improvements:
 	* Only load the resources when required settings are entered.
 	* Properly handle erroneous request responses.
 	* Updated translations.
