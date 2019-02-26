@@ -43,8 +43,8 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 
 Released February 26th, 2019
 
-Other improvements:
- * Updates the Clicky tracking code to support the new format. Props to [drkskwlkr](https://github.com/drkskwlkr).
+* Other improvements:
+ 	* Updates the Clicky tracking code to support the new format. Props to [drkskwlkr](https://github.com/drkskwlkr).
 
 = 1.6 =
 
