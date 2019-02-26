@@ -60,7 +60,6 @@ Released June 30th, 2016
 	* Updated translations.
 	* Updated i18n module.
 
-
 = 1.5 =
 
 Released November 22nd, 2014
