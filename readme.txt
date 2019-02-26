@@ -43,8 +43,8 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 
 Released February 26th, 2019
 
-Other improvements:
- * Updates the Clicky tracking code to support the new format. Props to [drkskwlkr](https://github.com/drkskwlkr).
+* Other improvements:
+ 	* Updates the Clicky tracking code to support the new format. Props to [drkskwlkr](https://github.com/drkskwlkr).
 
 = 1.6 =
 
@@ -54,11 +54,12 @@ Released June 30th, 2016
 	* Only allow expected characters in user settings thanks to a report by [Netsparker](https://netsparker.com).
 	* Proper escaping of translated string in image attributes.
 
-Other improvements:
+* Other improvements:
 	* Only load the resources when required settings are entered.
 	* Properly handle erroneous request responses.
 	* Updated translations.
 	* Updated i18n module.
+
 
 = 1.5 =
 
