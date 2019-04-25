@@ -12,7 +12,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 *
 	 * @var array
 	 */
-	var $test_args = array(
+	public $test_args = array(
 		'name'  => 'testname',
 		'value' => 'testvalue'
 	);
