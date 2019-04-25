@@ -11,14 +11,14 @@ WordPress plugin for Clicky.com Analytics
 Welcome to the Clicky for WordPress Github repository
 -----------------------------------------------------
 
-While the documentation for the [Clicky for WordPress plugin](https://yoast.com/wordpress/plugins/clicky/) can be found on yoast.com, here
+While the documentation for the [Clicky for WordPress plugin](https://yoast.com/wordpress/plugins/clicky-2/) can be found on yoast.com, here
 you can browse the source of the project, find and discuss open issues and even
 [contribute yourself](https://github.com/Yoast/clicky/blob/trunk/CONTRIBUTING.md).
 
 Installation
 ------------
 
-Here's a [guide on how to install Clicky in your WordPress site](https://yoast.com/wordpress/plugins/clicky/).
+Here's a [guide on how to install Clicky in your WordPress site](https://yoast.com/wordpress/plugins/clicky-2/).
 If you want to run the Git version though, you have two options:
 
 * You can clone the GitHub repository: https://github.com/Yoast/clicky.git

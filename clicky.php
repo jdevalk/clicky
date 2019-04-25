@@ -4,7 +4,7 @@
  *
  * Plugin Name: Clicky for WordPress
  * Version: 1.7
- * Plugin URI: https://yoast.com/wordpress/plugins/clicky/
+ * Plugin URI: https://yoast.com/wordpress/plugins/clicky-2/
  * Description: The Clicky for WordPress plugin by Yoast makes it easy for you to add your Clicky analytics tracking code to your WordPress install, while also giving you some advanced tracking options.
  * Author: Team Yoast
  * Author URI: https://yoast.com/
