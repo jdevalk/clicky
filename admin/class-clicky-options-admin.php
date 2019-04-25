@@ -119,7 +119,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Create a "plugin like" box.
 	 */
 	public function like_text() {
-		require 'views/like-box.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/like-box.php';
 	}
 
 	/**
