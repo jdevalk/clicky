@@ -54,9 +54,9 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
-	 * @covers Clicky_Options_Admin::basic_settings_intro
+	 * Makes sure there is output and makes sure our affiliate link is in it.
 	 *
-	 * Makes sure there is output and makes sure our affiliate link is in it
+	 * @covers Clicky_Options_Admin::basic_settings_intro
 	 */
 	public function test_basic_settings_intro() {
 		ob_start();
@@ -68,9 +68,9 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
-	 * @covers Clicky_Options_Admin::outbound_explanation
+	 * Makes sure there is output.
 	 *
-	 * Makes sure there is output
+	 * @covers Clicky_Options_Admin::outbound_explanation
 	 */
 	public function test_outbound_explanation() {
 		ob_start();
@@ -81,9 +81,9 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
-	 * @covers Clicky_Options_Admin::support_text
+	 * Makes sure link to the forums is in the text.
 	 *
-	 * Makes sure link to the forums is in the text
+	 * @covers Clicky_Options_Admin::support_text
 	 */
 	public function test_support_text() {
 		ob_start();
@@ -95,9 +95,9 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
-	 * @covers Clicky_Options_Admin::input_text
+	 * Tests whether a proper input field is generated.
 	 *
-	 * Tests whether a proper input field is generated
+	 * @covers Clicky_Options_Admin::input_text
 	 */
 	public function test_input_text() {
 		$this->expectOutputString( '<input type="text" class="text" name="testname" value="testvalue"/>' );
@@ -106,9 +106,9 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
-	 * @covers Clicky_Options_Admin::input_checkbox
+	 * Tests whether a proper checkbox input field is generated.
 	 *
-	 * Tests whether a proper checkbox input field is generated
+	 * @covers Clicky_Options_Admin::input_checkbox
 	 */
 	public function test_input_checkbox() {
 		$this->expectOutputString( '<input class="checkbox" type="checkbox"  name="clicky[testname]"/>' );
@@ -117,9 +117,9 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
-	 * @covers Clicky_Options_Admin::input_text
+	 * Tests whether a proper checked input field is generated when the setting is true.
 	 *
-	 * Tests whether a proper checked input field is generated when the setting is true
+	 * @covers Clicky_Options_Admin::input_text
 	 */
 	public function test_input_checkbox_checked() {
 		$this->expectOutputString( '<input class="checkbox" type="checkbox"  checked=\'checked\' name="clicky[testname]"/>' );
