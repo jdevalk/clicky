@@ -68,6 +68,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Info box with link to the bug tracker.
 	 */
 	private function plugin_support() {
+		/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
 		$content = '<p>' . sprintf( __( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ), "<a href='https://clicky.com/forums/'>", '</a>' ) . '</p>';
 		$this->box( __( 'Need Support?', 'clicky' ), $content );
 	}
