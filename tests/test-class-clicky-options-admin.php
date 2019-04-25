@@ -13,7 +13,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	private static $class_instance;
 
 	/**
-	 * Used for testing input fields
+	 * Used for testing input fields.
 	 *
 	 * @var array
 	 */

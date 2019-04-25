@@ -11,7 +11,7 @@
 class Clicky_UnitTestCase extends WP_UnitTestCase {
 
 	/**
-	 * Fake a request to the WP front page
+	 * Fake a request to the WP front page.
 	 */
 	protected function go_to_home() {
 		$this->go_to( home_url( '/' ) );

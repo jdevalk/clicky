@@ -6,19 +6,19 @@
  */
 
 /**
- * Backend Class the Clicky plugin
+ * Backend Class the Clicky plugin.
  */
 class Clicky_Admin {
 
 	/**
-	 * This holds the plugins options
+	 * This holds the plugins options.
 	 *
 	 * @var array
 	 */
 	public $options = array();
 
 	/**
-	 * Menu slug for WordPress admin
+	 * Menu slug for WordPress admin.
 	 *
 	 * @access private
 	 * @var string
@@ -26,7 +26,7 @@ class Clicky_Admin {
 	public $hook = 'clicky';
 
 	/**
-	 * Construct of class Clicky_admin
+	 * Construct of class Clicky_admin.
 	 *
 	 * @access private
 	 * @link   https://codex.wordpress.org/Function_Reference/add_action
@@ -43,7 +43,7 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Initialize needed actions
+	 * Initialize needed actions.
 	 */
 	public function admin_init() {
 		$public_post_types = get_post_types( array( 'public' => true ) );
@@ -59,7 +59,7 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Creates the dashboard and options pages
+	 * Creates the dashboard and options pages.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/add_options_page
 	 * @link https://codex.wordpress.org/Function_Reference/add_dashboard_page
@@ -76,7 +76,7 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Creates  warnings for empty fields in the admin
+	 * Creates warnings for empty fields in the admin.
 	 */
 	public function admin_warnings() {
 		$required_options = array( 'site_id', 'site_key', 'admin_site_key' );
@@ -91,7 +91,7 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Outputs a warning
+	 * Outputs a warning.
 	 */
 	private function setup_warning() {
 		echo "<div class='updated'><p><strong>";
@@ -103,16 +103,16 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Returns the plugins settings page URL
+	 * Returns the plugins settings page URL.
 	 *
-	 * @return string Admin URL to the current plugins settings URL
+	 * @return string Admin URL to the current plugins settings URL.
 	 */
 	private function plugin_options_url() {
 		return admin_url( 'options-general.php?page=' . $this->hook );
 	}
 
 	/**
-	 * Add meta box for entering specific goals
+	 * Add meta box for entering specific goals.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/get_post_meta
 	 */
@@ -129,7 +129,7 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Updates post meta for '_clicky_goal' with goal ID and value
+	 * Updates post meta for '_clicky_goal' with goal ID and value.
 	 *
 	 * @param int $post_id The post ID.
 	 */
@@ -142,7 +142,7 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Loads (external) stats page in an iframe
+	 * Loads (external) stats page in an iframe.
 	 */
 	public function dashboard_page() {
 		$args       = array(
@@ -155,7 +155,7 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Add a link to the settings page to the plugins list
+	 * Add a link to the settings page to the plugins list.
 	 *
 	 * @param array  $links Links to add.
 	 * @param string $file  Plugin file name.
