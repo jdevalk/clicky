@@ -136,7 +136,12 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $alt Alt to add.
 	 */
 	private function banner( $img, $url, $alt ) {
-		printf( '<a class="yoast_banner" href="%1$s" title="%3$s"><img src="%2$s" width="261" alt="%3$s"/></a>', $url, $img, $alt );
+		printf(
+			'<a class="yoast_banner" href="%1$s" title="%3$s"><img src="%2$s" width="261" alt="%3$s"/></a>',
+			esc_url( $url ),
+			esc_url( $img ),
+			esc_attr( $alt )
+		);
 	}
 
 	/**
