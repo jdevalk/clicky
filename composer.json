@@ -6,7 +6,7 @@
     "clicky"
   ],
   "homepage": "https://yoast.com/wordpress/plugins/clicky/",
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Joost de Valk",
