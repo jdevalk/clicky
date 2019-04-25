@@ -1,4 +1,9 @@
 <?php
+/**
+ * Clicky for WordPress plugin test file.
+ *
+ * @package Yoast/Clicky/Tests
+ */
 
 class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 

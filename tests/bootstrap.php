@@ -1,4 +1,9 @@
 <?php
+/**
+ * Clicky for WordPress plugin test file.
+ *
+ * @package Yoast/Clicky/Tests
+ */
 
 // disable xdebug backtrace
 if ( function_exists( 'xdebug_disable' ) ) {
