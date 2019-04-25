@@ -5,6 +5,9 @@
  * @package Yoast/Clicky/Tests
  */
 
+/**
+ * Test class to test the Clicky_Admin_Page class.
+ */
 class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 
 	/**
