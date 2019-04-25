@@ -4,7 +4,7 @@
  * TestCase base class for convenience methods.
  */
 class Clicky_UnitTestCase extends WP_UnitTestCase {
-	
+
 	/**
 	 * Fake a request to the WP front page
 	 */
@@ -21,5 +21,4 @@ class Clicky_UnitTestCase extends WP_UnitTestCase {
 		ob_clean();
 		$this->assertEquals( $output, $string );
 	}
-
 }

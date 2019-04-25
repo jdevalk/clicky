@@ -8,7 +8,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	private static $class_instance;
 
 	public static function setUpBeforeClass() {
-		self::$class_instance = new Clicky_Admin;
+		self::$class_instance = new Clicky_Admin();
 	}
 
 	/**
@@ -19,7 +19,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 		$this->assertEquals( 10, has_filter( 'plugin_action_links', array(
 			self::$class_instance,
-			'add_action_link'
+			'add_action_link',
 		) ) );
 
 		$this->assertEquals( 10, has_action( 'publish_post', array( self::$class_instance, 'insert_post' ) ) );
@@ -58,7 +58,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 		self::$class_instance->options['site_key']       = 1;
 		self::$class_instance->options['admin_site_key'] = 1;
 
-		$this->expectOutputString( "" );
+		$this->expectOutputString( '' );
 		self::$class_instance->admin_warnings();
 	}
 
@@ -75,7 +75,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 		$clicky_goal = array(
 			'id'    => 1,
-			'value' => 0.5
+			'value' => 0.5,
 		);
 		update_post_meta( $post_id, '_clicky_goal', $clicky_goal );
 
@@ -99,7 +99,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 		$expected = array(
 			'id'    => 0,
-			'value' => 0.0
+			'value' => 0.0,
 		);
 
 		$this->assertEquals( $expected, $goal );
@@ -114,7 +114,8 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 		$expected = '<br/>
 <iframe style="margin-left: 20px; width: 100%; height: 1000px;"
-        src="https://clicky.com/stats/wp-iframe?site_id=1&amp;sitekey=2"></iframe>';
+		src="https://clicky.com/stats/wp-iframe?site_id=1&amp;sitekey=2"></iframe>
+';
 
 		$this->expectOutputString( $expected );
 

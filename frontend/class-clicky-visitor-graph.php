@@ -218,7 +218,7 @@ class Clicky_Visitor_Graph {
 					break 2;
 				}
 				$values[] = $item->value;
-				$hours ++;
+				$hours++;
 			}
 		}
 		$values = array_reverse( $values );
