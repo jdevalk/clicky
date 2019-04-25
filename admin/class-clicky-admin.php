@@ -49,10 +49,13 @@ class Clicky_Admin {
 		$public_post_types = get_post_types( array( 'public' => true ) );
 
 		foreach ( $public_post_types as $post_type ) {
-			add_meta_box( 'clicky', __( 'Clicky Goal Tracking', 'clicky' ), array(
-				$this,
-				'meta_box_content',
-			), $post_type, 'side' );
+			add_meta_box(
+				'clicky',
+				__( 'Clicky Goal Tracking', 'clicky' ),
+				array( $this, 'meta_box_content' ),
+				$post_type,
+				'side'
+			);
 		}
 
 		$this->register_menu_pages();
@@ -65,14 +68,21 @@ class Clicky_Admin {
 	 * @link https://codex.wordpress.org/Function_Reference/add_dashboard_page
 	 */
 	private function register_menu_pages() {
-		add_options_page( __( 'Clicky settings', 'clicky' ), __( 'Clicky', 'clicky' ), 'manage_options', $this->hook, array(
-			new Clicky_Admin_Page(),
-			'config_page',
-		) );
-		add_dashboard_page( __( 'Clicky Stats', 'clicky' ), __( 'Clicky Stats', 'clicky' ), 'manage_options', 'clicky_stats', array(
-			$this,
-			'dashboard_page',
-		) );
+		add_options_page(
+			__( 'Clicky settings', 'clicky' ),
+			__( 'Clicky', 'clicky' ),
+			'manage_options',
+			$this->hook,
+			array( new Clicky_Admin_Page(), 'config_page' )
+		);
+
+		add_dashboard_page(
+			__( 'Clicky Stats', 'clicky' ),
+			__( 'Clicky Stats', 'clicky' ),
+			'manage_options',
+			'clicky_stats',
+			array( $this, 'dashboard_page' )
+		);
 	}
 
 	/**
