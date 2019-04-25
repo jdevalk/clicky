@@ -177,7 +177,7 @@ class Clicky_Visitor_Graph {
 
 		$resp = wp_remote_get( $url );
 
-		if ( is_wp_error( $resp ) || ! isset( $resp['response']['code'] ) || $resp['response']['code'] != 200 ) {
+		if ( is_wp_error( $resp ) || ! isset( $resp['response']['code'] ) || (int) $resp['response']['code'] !== 200 ) {
 			return false;
 		}
 
