@@ -141,7 +141,7 @@ Released July 3rd, 2014.
 * No more unneeded JavaScript being loaded on the admin pages.
 * Made the Goal Tracking box work for all post types and made it smaller.
 * Removed some code that was no longer used.
-* Removed dashboard widget, added Yoast news widget to settings page.
+* Removed dashboard widget, added Yoast news widget to the settings page.
 * Added a small stats indicator of visitors in the last 48 to the WordPress toolbar.
 
 = 1.3 =
