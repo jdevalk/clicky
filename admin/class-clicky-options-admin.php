@@ -84,7 +84,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 			),
 			'cookies_disable' => array(
 				'label' => __( 'Disable cookies', 'clicky' ),
-				'desc'  => __( 'If you don\'t want Clicky to use cookies on your site, check this button. By doing so, uniques will instead be determined based on their IP address.', 'clicky' ),
+				'desc'  => __( 'If you don\'t want Clicky to use cookies on your site, check this button. By doing so, uniqueness will instead be determined based on their IP address.', 'clicky' ),
 			),
 			'track_names'     => array(
 				'label' => __( 'Track names of commenters', 'clicky' ),
