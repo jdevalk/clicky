@@ -119,7 +119,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 		$expected = '<br/>
 <iframe style="margin-left: 20px; width: 100%; height: 1000px;"
-		src="https://clicky.com/stats/wp-iframe?site_id=1&amp;sitekey=2"></iframe>
+		src="https://clicky.com/stats/wp-iframe?site_id=1&#038;sitekey=2"></iframe>
 ';
 
 		$this->expectOutputString( $expected );
