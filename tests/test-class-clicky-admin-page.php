@@ -28,17 +28,17 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 	 * @covers Clicky_Admin_Page::__construct
 	 */
 	public function test___construct() {
-		$this->assertEquals( self::$class_instance->options, Clicky_Options::$option_defaults );
+		$this->assertSame( self::$class_instance->options, Clicky_Options::$option_defaults );
 
-		$this->assertEquals( 10, has_action( 'admin_print_scripts', array( self::$class_instance, 'config_page_scripts' ) ) );
-		$this->assertEquals( 10, has_action( 'admin_print_styles', array( self::$class_instance, 'config_page_styles' ) ) );
-		$this->assertEquals( 10, has_action( 'admin_head', array( self::$class_instance, 'i18n_module' ) ) );
+		$this->assertSame( 10, has_action( 'admin_print_scripts', array( self::$class_instance, 'config_page_scripts' ) ) );
+		$this->assertSame( 10, has_action( 'admin_print_styles', array( self::$class_instance, 'config_page_styles' ) ) );
+		$this->assertSame( 10, has_action( 'admin_head', array( self::$class_instance, 'i18n_module' ) ) );
 	}
 
 	public function test_config_page_styles() {
 		self::$class_instance->config_page_styles();
 
 		global $wp_styles;
-		$this->assertEquals( 'clicky-admin-css', $wp_styles->registered['clicky-admin-css']->handle );
+		$this->assertSame( 'clicky-admin-css', $wp_styles->registered['clicky-admin-css']->handle );
 	}
 }
