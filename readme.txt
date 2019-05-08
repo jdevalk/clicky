@@ -2,7 +2,7 @@
 Contributors: joostdevalk
 Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Joost de Valk, Yoast
 Requires at least: 4.9
-Tested up to: 5.1
+Tested up to: 5.2
 Stable tag: 1.7
 Text Domain: clicky
 
