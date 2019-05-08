@@ -64,7 +64,7 @@ class Clicky_Admin {
 	 */
 	private function register_menu_pages() {
 		add_options_page( __( 'Clicky settings', 'clicky' ), __( 'Clicky', 'clicky' ), 'manage_options', $this->hook, array(
-			new Clicky_Admin_Page,
+			new Clicky_Admin_Page(),
 			'config_page',
 		) );
 		add_dashboard_page( __( 'Clicky Stats', 'clicky' ), __( 'Clicky Stats', 'clicky' ), 'manage_options', 'clicky_stats', array(

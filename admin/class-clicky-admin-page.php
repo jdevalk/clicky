@@ -91,14 +91,14 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 			$rss = '';
 			foreach ( $rss_items as $item ) {
-				$url = preg_replace( '/#.*/', '', esc_url( $item->get_permalink(), $protocolls = null, 'display' ) );
+				$url  = preg_replace( '/#.*/', '', esc_url( $item->get_permalink(), $protocolls = null, 'display' ) );
 				$rss .= '<li class="yoast">';
 				$rss .= '<a href="' . $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin">' . esc_html( $item->get_title() ) . '</a> ';
 				$rss .= '</li>';
 			}
 		}
 
-		$content = '<ul>';
+		$content  = '<ul>';
 		$content .= $rss;
 		$content .= '<li class="rss"><a href="' . $feed . '">' . __( 'Subscribe with RSS', 'clicky' ) . '</a></li>';
 		$content .= $extra_links;
@@ -118,7 +118,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Box with latest news from Yoast.com for sidebar
 	 */
 	private function yoast_news() {
-		$extra_links = '<li class="facebook"><a href="https://www.facebook.com/yoast">' . __( 'Like Yoast on Facebook', 'clicky' ) . '</a></li>';
+		$extra_links  = '<li class="facebook"><a href="https://www.facebook.com/yoast">' . __( 'Like Yoast on Facebook', 'clicky' ) . '</a></li>';
 		$extra_links .= '<li class="twitter"><a href="https://twitter.com/yoast">' . __( 'Follow Yoast on Twitter', 'clicky' ) . '</a></li>';
 		$extra_links .= '<li class="email"><a href="https://yoast.com/newsletter/">' . __( 'Subscribe by email', 'clicky' ) . '</a></li>';
 

@@ -8,7 +8,7 @@ class Clicky_Options_Test extends Clicky_UnitTestCase {
 	private static $class_instance;
 
 	public static function setUpBeforeClass() {
-		self::$class_instance = new Clicky_Options;
+		self::$class_instance = new Clicky_Options();
 	}
 
 	/**

@@ -14,11 +14,11 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 */
 	var $test_args = array(
 		'name'  => 'testname',
-		'value' => 'testvalue'
+		'value' => 'testvalue',
 	);
 
 	public static function setUpBeforeClass() {
-		self::$class_instance = new Clicky_Options_Admin;
+		self::$class_instance = new Clicky_Options_Admin();
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		$output = ob_get_clean();
 
 		$this->assertTrue( strlen( $output ) > 0 );
-		$this->assertTrue( is_int ( strpos( $output, 'clicky.com/forums' ) ) );
+		$this->assertTrue( is_int( strpos( $output, 'clicky.com/forums' ) ) );
 	}
 
 	/**

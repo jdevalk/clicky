@@ -3,7 +3,8 @@
  * @package Yoast/Clicky/View
  */
 
-?><script type='text/javascript'>
+?>
+<script type='text/javascript'>
 	function clicky_gc(name) {
 		var ca = document.cookie.split(';');
 		for (var i in ca) {

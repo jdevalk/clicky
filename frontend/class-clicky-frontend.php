@@ -50,7 +50,7 @@ class Clicky_Frontend {
 			require 'views/comment-author-script.php';
 		}
 
-		$clicky_extra = $this->goal_tracking();
+		$clicky_extra  = $this->goal_tracking();
 		$clicky_extra .= $this->outbound_tracking();
 		$clicky_extra .= $this->disable_cookies();
 
@@ -96,7 +96,7 @@ class Clicky_Frontend {
 				if ( $pattern != '' ) {
 					$pattern .= ',';
 				}
-				$pat = trim( str_replace( '"', '', str_replace( "'", '', $pat ) ) );
+				$pat      = trim( str_replace( '"', '', str_replace( "'", '', $pat ) ) );
 				$pattern .= "'" . $pat . "'";
 			}
 
