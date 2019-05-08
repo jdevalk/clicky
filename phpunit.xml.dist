@@ -19,4 +19,13 @@
 			<directory prefix="test-" suffix=".php">./tests/</directory>
 		</testsuite>
 	</testsuites>
+
+	<filter>
+		<whitelist>
+			<file>./clicky.php</file>
+			<directory>./admin</directory>
+			<directory>./frontend</directory>
+			<directory>./includes</directory>
+		</whitelist>
+	</filter>
 </phpunit>
