@@ -31,6 +31,9 @@ matrix:
       dist: precise
       env: WP_VERSION=3.9 WP_MULTISITE=0
 
+before_install:
+- if [[ "$CODE_CLIMATE" != "1" ]]; then phpenv config-rm xdebug.ini || echo 'No xdebug config.'; fi
+
 before_script:
 - bash tests/bin/before.sh $WP_VERSION
 
