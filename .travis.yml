@@ -1,29 +1,73 @@
 language: php
-
+dist: trusty
 sudo: false
 
+cache:
+  directories:
+    - vendor
+    # Cache directory for older Composer versions.
+    - $HOME/.composer/cache/files
+    # Cache directory for more recent Composer versions.
+    - $HOME/.cache/composer/files
+
+branches:
+  only:
+    - master
+    - trunk
+    - /^release\/\d+\.\d+(\.\d+)?(-\S*)?$/
+    - /^hotfix\/\d+\.\d+(\.\d+)?(-\S*)?$/
+
 matrix:
+  fast_finish: true
   include:
-    - php: '5.2'
+    - php: 7.3
       env: WP_VERSION=master WP_MULTISITE=1 PHPLINT=1 CODE_CLIMATE=1 CODECLIMATE_REPO_TOKEN=33af926f948ae958e14a3ecdc85c24e16a42a91f2a57a9c59bfb118c71a971e2
-    - php: '5.5'
-      env: WP_VERSION=master WP_MULTISITE=0 PHPLINT=1
-    - php: '5.5'
-      env: WP_VERSION=4.0 WP_MULTISITE=1
-    - php: '5.4'
-      env: WP_VERSION=4.0 WP_MULTISITE=0
-    - php: '5.4'
-      env: WP_VERSION=4.0 WP_MULTISITE=1
-    - php: '5.5'
-      env: WP_VERSION=4.0 WP_MULTISITE=0
-    - php: "5.5"
-      env: WP_VERSION=3.9 WP_MULTISITE=1
-    - php: "5.3"
-      env: WP_VERSION=3.9 WP_MULTISITE=0
+    - php: 7.2
+      env: WP_VERSION=4.9 WP_MULTISITE=0
+    - php: 7.0
+      env: WP_VERSION=5.2 WP_MULTISITE=1
+    - php: 5.6
+      env: WP_VERSION=5.0 WP_MULTISITE=0
+    - php: 5.2
+      dist: precise
+      env: PHPLINT=1 WP_VERSION=5.1 WP_MULTISITE=0
+    - php: "7.4snapshot"
+      env: WP_VERSION=master WP_MULTISITE=0
+
+  allow_failures:
+    # Allow failures for unstable builds.
+    - php: "7.4snapshot"
+
+before_install:
+- if [[ "$CODE_CLIMATE" != "1" ]]; then phpenv config-rm xdebug.ini || echo 'No xdebug config.'; fi
+- export WP_DEVELOP_DIR=/tmp/wordpress/
+
+install:
+- |
+  if [[ "$CODE_CLIMATE" == "1" ]]; then
+    composer require --dev phpunit/phpunit ^5.7
+  elif [[ ${TRAVIS_PHP_VERSION:0:3} > "7.1" ]]; then
+    composer require --update-no-dev --no-interaction phpunit/phpunit ^5.7
+  else
+    if [[ $TRAVIS_PHP_VERSION == "5.2" ]]; then phpenv local 5.6.13; fi
+    composer install --no-dev --no-interaction
+    phpenv local --unset
+  fi
 
 before_script:
 - bash tests/bin/before.sh $WP_VERSION
 
 script:
 - if [[ "$PHPLINT" == "1" ]]; then bash tests/bin/phplint.sh; fi
-- if [[ "$CODE_CLIMATE" == "1" ]]; then bash tests/bin/code_climate.sh; fi
+- |
+  if [[ "$CODE_CLIMATE" == "1" ]]; then
+    bash tests/bin/code_climate.sh
+  elif [[ ${TRAVIS_PHP_VERSION:0:3} > "7.1" ]]; then
+    vendor/bin/phpunit
+  else
+    phpunit
+  fi
+
+# Validate the composer.json file.
+# @link https://getcomposer.org/doc/03-cli.md#validate
+- if [[ $TRAVIS_PHP_VERSION == "5.6" || $TRAVIS_PHP_VERSION == "7.3" ]]; then composer validate --no-check-all; fi

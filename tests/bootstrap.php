@@ -25,6 +25,3 @@ else {
 
 // Include unit test base class.
 require_once dirname( __FILE__ ) . '/framework/class-clicky-unit-test-case.php';
-
-// This shouldn't have to be here.. but why do we need to? @todo fix.. JM
-require_once dirname( dirname( __FILE__ ) ) . '/clicky.php';
