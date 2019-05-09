@@ -13,7 +13,7 @@ cache:
 branches:
   only:
     - master
-    - trunk
+    - develop
     - /^release\/\d+\.\d+(\.\d+)?(-\S*)?$/
     - /^hotfix\/\d+\.\d+(\.\d+)?(-\S*)?$/
 
