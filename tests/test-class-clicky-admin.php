@@ -48,9 +48,9 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
-	 * @covers Clicky_Admin::setup_warning
+	 * Test whether no warnings are generated when the required keys are set.
 	 *
-	 * Test whether no warnings are generated when the required keys are set
+	 * @covers Clicky_Admin::setup_warning
 	 */
 	public function test_setup_warning_false() {
 		// Set the required variables to a value
