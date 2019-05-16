@@ -16,14 +16,14 @@ class Clicky_Options {
 	 * @var array
 	 */
 	public static $option_defaults = array(
-		'site_id'          => '',           // There is no default site ID as we don't know it...
-		'site_key'         => '',           // There is no default site key as we don't know it...
-		'admin_site_key'   => '',           // There is no default admin site key as we don't know it...
-		'outbound_pattern' => '',           // By defaulting to an empty string here, we disable this functionality until it's set.
-		'ignore_admin'     => false,        // While ignoring an admin by default would make sense, it leads to admins thinking the plugin doesn't work.
-		'track_names'      => false,        // Tracking the names of commenters makes sense, but might be illegal in some countries, so we default to off.
-		'cookies_disable'  => false,        // No need to disable cookies by default as it severely impacts the quality of tracking.
-		'disable_stats'    => false,// The stats on the frontend are often found useful, but some people might want to disable them.
+		'site_id'          => '',    // There is no default site ID as we don't know it...
+		'site_key'         => '',    // There is no default site key as we don't know it...
+		'admin_site_key'   => '',    // There is no default admin site key as we don't know it...
+		'outbound_pattern' => '',    // By defaulting to an empty string here, we disable this functionality until it's set.
+		'ignore_admin'     => false, // While ignoring an admin by default would make sense, it leads to admins thinking the plugin doesn't work.
+		'track_names'      => false, // Tracking the names of commenters makes sense, but might be illegal in some countries, so we default to off.
+		'cookies_disable'  => false, // No need to disable cookies by default as it severely impacts the quality of tracking.
+		'disable_stats'    => false, // The stats on the frontend are often found useful, but some people might want to disable them.
 	);
 
 	/**
