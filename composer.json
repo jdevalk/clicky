@@ -22,7 +22,8 @@
   },
   "require-dev": {
     "codeclimate/php-test-reporter": "dev-master",
-    "yoast/yoastcs": "^0.3.0"
+    "yoast/yoastcs": "^0.3.0",
+    "phpunit/phpunit": "^4.5 || ^5.7 || ^6.0 || ^7.0"
   },
   "autoload": {
     "classmap": [
