@@ -15,6 +15,7 @@ module.exports = function(grunt) {
 			images: 'images/',
 			js: 'js/',
 			languages: 'languages/',
+			logs: 'logs/',
 			vendor: 'vendor/'
 		},
 		files: {
