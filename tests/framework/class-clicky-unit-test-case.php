@@ -1,4 +1,9 @@
 <?php
+/**
+ * Clicky for WordPress plugin test file.
+ *
+ * @package Yoast/Clicky/Tests
+ */
 
 /**
  * TestCase base class for convenience methods.
