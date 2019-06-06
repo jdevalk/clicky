@@ -1,5 +1,7 @@
 <?php
 /**
+ * Clicky plugin file.
+ *
  * @package Yoast/Clicky
  *
  * Plugin Name: Clicky for WordPress
@@ -18,6 +20,7 @@ if ( ! function_exists( 'add_filter' ) ) {
 }
 
 define( 'CLICKY_PLUGIN_FILE', __FILE__ );
+define( 'CLICKY_PLUGIN_VERSION', '1.7' );
 define( 'CLICKY_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'CLICKY_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 

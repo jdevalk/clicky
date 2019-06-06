@@ -1,5 +1,7 @@
 <?php
 /**
+ * Clicky plugin file.
+ *
  * @package Yoast\Clicky\Admin
  */
 
@@ -37,14 +39,14 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Enqueue the styles for the admin page
 	 */
 	public function config_page_styles() {
-		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/clicky_admin' . $this->file_ext( '.css' ) );
+		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/clicky_admin' . $this->file_ext( '.css' ), null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
 	 * Enqueue the scripts for the admin page
 	 */
 	public function config_page_scripts() {
-		wp_enqueue_script( 'yoast_ga_admin', CLICKY_PLUGIN_DIR_URL . 'js/admin' . $this->file_ext( '.js' ) );
+		wp_enqueue_script( 'yoast_ga_admin', CLICKY_PLUGIN_DIR_URL . 'js/admin' . $this->file_ext( '.js' ), null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
@@ -61,13 +63,14 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $content Content to display.
 	 */
 	private function box( $title, $content ) {
-		echo '<div class="yoast_box"><h3>' . $title . '</h3><div class="inside">' . $content . '</div></div>';
+		echo '<div class="yoast_box"><h3>' . esc_html( $title ) . '</h3><div class="inside">' . esc_html( $content ) . '</div></div>';
 	}
 
 	/**
 	 * Info box with link to the bug tracker.
 	 */
 	private function plugin_support() {
+		// translators: %1$s and %2$s expand to a link to the Clicky forums.
 		$content = '<p>' . sprintf( __( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ), "<a href='https://clicky.com/forums/'>", '</a>' ) . '</p>';
 		$this->box( __( 'Need Support?', 'clicky' ), $content );
 	}
@@ -133,7 +136,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $alt Alt to add.
 	 */
 	private function banner( $img, $url, $alt ) {
-		printf( '<a class="yoast_banner" href="%1$s" title="%3$s"><img src="%2$s" width="261" alt="%3$s"/></a>', $url, $img, $alt );
+		printf( '<a class="yoast_banner" href="%1$s" title="%3$s"><img src="%2$s" width="261" alt="%3$s"/></a>', esc_url( $url ), esc_url( $img ), esc_attr( $alt ) );
 	}
 
 	/**

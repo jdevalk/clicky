@@ -5,13 +5,12 @@ module.exports = {
 	},
 	plugin: {
 		options: {
-			standard: 'ruleset.xml',
-			reportFile: '<%= paths.logs %>phpcs.log',
+			bin: '<%= paths.vendor %>squizlabs/php_codesniffer/bin/phpcs',
+			standard: 'phpcs.xml',
 			extensions: 'php'
 		},
 		dir: [
-			'<%= files.php %>',
-			'!admin/license-manager/**'
+			'<%= files.php %>'
 		]
 	}
 };

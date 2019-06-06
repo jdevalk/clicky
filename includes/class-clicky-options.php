@@ -1,5 +1,7 @@
 <?php
 /**
+ * Clicky plugin file.
+ *
  * @package Yoast/Clicky/Options
  */
 

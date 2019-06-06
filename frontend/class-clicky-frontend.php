@@ -1,5 +1,7 @@
 <?php
 /**
+ * Clicky plugin file.
+ *
  * @package Yoast\Clicky\FrontEnd
  */
 
@@ -41,7 +43,7 @@ class Clicky_Frontend {
 
 		// Bail early if current user is admin and ignore admin is true.
 		if ( $this->options['ignore_admin'] && current_user_can( 'manage_options' ) ) {
-			echo "\n<!-- " . __( "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators.", 'clicky' ) . " -->\n";
+			echo "\n<!-- " . esc_html( __( "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators.", 'clicky' ) ) . " -->\n";
 
 			return;
 		}
@@ -122,13 +124,13 @@ class Clicky_Frontend {
 	/**
 	 * Tracks comments that are not spam and not ping- or trackbacks
 	 *
-	 * @param int $commentID      The ID of the comment that needs to be tracked.
+	 * @param int $comment_id     The ID of the comment that needs to be tracked.
 	 * @param int $comment_status Status of the comment (e.g. spam).
 	 */
-	public function track_comment( $commentID, $comment_status ) {
+	public function track_comment( $comment_id, $comment_status ) {
 		// Make sure to only track the comment if it's not spam (but do it for moderated comments).
 		if ( $comment_status != 'spam' ) {
-			$comment = get_comment( $commentID );
+			$comment = get_comment( $comment_id );
 			// Only do this for normal comments, not for pingbacks or trackbacks.
 			if ( $comment->comment_type != 'pingback' && $comment->comment_type != 'trackback' ) {
 				$args   = array(

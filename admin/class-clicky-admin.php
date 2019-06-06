@@ -1,5 +1,7 @@
 <?php
 /**
+ * Clicky plugin file.
+ *
  * @package Yoast\Clicky\Admin
  */
 
@@ -47,10 +49,16 @@ class Clicky_Admin {
 		$public_post_types = get_post_types( array( 'public' => true ) );
 
 		foreach ( $public_post_types as $post_type ) {
-			add_meta_box( 'clicky', __( 'Clicky Goal Tracking', 'clicky' ), array(
-				$this,
-				'meta_box_content',
-			), $post_type, 'side' );
+			add_meta_box(
+				'clicky',
+				__( 'Clicky Goal Tracking', 'clicky' ),
+				array(
+					$this,
+					'meta_box_content',
+				),
+				$post_type,
+				'side'
+			);
 		}
 
 		$this->register_menu_pages();
@@ -63,14 +71,26 @@ class Clicky_Admin {
 	 * @link https://codex.wordpress.org/Function_Reference/add_dashboard_page
 	 */
 	private function register_menu_pages() {
-		add_options_page( __( 'Clicky settings', 'clicky' ), __( 'Clicky', 'clicky' ), 'manage_options', $this->hook, array(
-			new Clicky_Admin_Page(),
-			'config_page',
-		) );
-		add_dashboard_page( __( 'Clicky Stats', 'clicky' ), __( 'Clicky Stats', 'clicky' ), 'manage_options', 'clicky_stats', array(
-			$this,
-			'dashboard_page',
-		) );
+		add_options_page(
+			__( 'Clicky settings', 'clicky' ),
+			__( 'Clicky', 'clicky' ),
+			'manage_options',
+			$this->hook,
+			array(
+				new Clicky_Admin_Page(),
+				'config_page',
+			)
+		);
+		add_dashboard_page(
+			__( 'Clicky Stats', 'clicky' ),
+			__( 'Clicky Stats', 'clicky' ),
+			'manage_options',
+			'clicky_stats',
+			array(
+				$this,
+				'dashboard_page',
+			)
+		);
 	}
 
 	/**
@@ -93,9 +113,10 @@ class Clicky_Admin {
 	 */
 	private function setup_warning() {
 		echo "<div class='updated'><p><strong>";
-		_e( 'Clicky is almost ready. ', 'clicky' );
+		esc_html_e( 'Clicky is almost ready. ', 'clicky' );
 		echo '</strong>';
-		printf( __( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ), "<a href='" . $this->plugin_options_url() . "'>", '</a>' );
+		// translators: %1$s and %2$s expand to a link to the clicky plugin's settings.
+		printf( esc_html( __( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ) ), "<a href='" . esc_url( $this->plugin_options_url() ) . "'>", '</a>' );
 		echo '</p></div>';
 	}
 
