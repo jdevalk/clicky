@@ -490,11 +490,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-clean-css@~2.2.0:
-  version "2.2.23"
-  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-2.2.23.tgz#0590b5478b516c4903edc2d89bd3fdbdd286328c"
+clean-css@~4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
   dependencies:
-    commander "2.2.x"
+    source-map "~0.6.0"
 
 cli@0.6.x:
   version "0.6.6"
@@ -579,10 +579,6 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
 commander@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.0.0.tgz#d1b86f901f8b64bd941bdeadaf924530393be928"
-
-commander@2.2.x:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.2.0.tgz#175ad4b9317f3ff615f201c1e57224f55a3e91df"
 
 commander@^2.19.0:
   version "2.19.0"
@@ -957,6 +953,10 @@ download@^7.1.0:
 duplexer3@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
+
+duplexer@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
@@ -1600,13 +1600,13 @@ grunt-contrib-clean@~0.6.0:
   dependencies:
     rimraf "~2.2.1"
 
-grunt-contrib-cssmin@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/grunt-contrib-cssmin/-/grunt-contrib-cssmin-0.10.0.tgz#e05f341e753a9674b2b1070220fdcbac22079418"
+grunt-contrib-cssmin@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/grunt-contrib-cssmin/-/grunt-contrib-cssmin-3.0.0.tgz#1767c0a062f4b7353c5adcadc52dcff7197d4d89"
   dependencies:
-    chalk "~0.4.0"
-    clean-css "~2.2.0"
-    maxmin "~0.2.0"
+    chalk "^2.4.1"
+    clean-css "~4.2.1"
+    maxmin "^2.1.0"
 
 grunt-contrib-imagemin@^3.1.0:
   version "3.1.0"
@@ -1840,19 +1840,18 @@ grunt@^0.4.5, grunt@~0.4.1, grunt@~0.4.2:
     underscore.string "~2.2.1"
     which "~1.0.5"
 
-gzip-size@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-0.2.0.tgz#e3a2a191205fe56ee326f5c271435dfaecfb3e1c"
-  dependencies:
-    browserify-zlib "^0.1.4"
-    concat-stream "^1.4.1"
-
 gzip-size@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-1.0.0.tgz#66cf8b101047227b95bace6ea1da0c177ed5c22f"
   dependencies:
     browserify-zlib "^0.1.4"
     concat-stream "^1.4.1"
+
+gzip-size@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-3.0.0.tgz#546188e9bdc337f673772f81660464b389dce520"
+  dependencies:
+    duplexer "^0.1.1"
 
 har-schema@^2.0.0:
   version "2.0.0"
@@ -2562,14 +2561,14 @@ maxmin@^1.0.0:
     gzip-size "^1.0.0"
     pretty-bytes "^1.0.0"
 
-maxmin@~0.2.0:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/maxmin/-/maxmin-0.2.2.tgz#a36ced8cc22e3abcd108cfb797a3a4b40275593f"
+maxmin@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/maxmin/-/maxmin-2.1.0.tgz#4d3b220903d95eee7eb7ac7fa864e72dc09a3166"
   dependencies:
-    chalk "^0.5.0"
+    chalk "^1.0.0"
     figures "^1.0.1"
-    gzip-size "^0.2.0"
-    pretty-bytes "^0.1.0"
+    gzip-size "^3.0.0"
+    pretty-bytes "^3.0.0"
 
 mdn-data@~1.1.0:
   version "1.1.4"
@@ -3045,16 +3044,18 @@ prepend-http@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
 
-pretty-bytes@^0.1.0:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-0.1.2.tgz#cd90294d58a1ca4e8a5d0fb9c8225998881acf00"
-
 pretty-bytes@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-1.0.4.tgz#0a22e8210609ad35542f8c8d5d2159aff0751c84"
   dependencies:
     get-stdin "^4.0.1"
     meow "^3.1.0"
+
+pretty-bytes@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-3.0.1.tgz#27d0008d778063a0b4811bb35c79f1bd5d5fbccf"
+  dependencies:
+    number-is-nan "^1.0.0"
 
 pretty-bytes@^5.1.0:
   version "5.2.0"
@@ -3419,6 +3420,10 @@ source-map@~0.1.40:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.1.43.tgz#c24bc146ca517c1471f5dacbe2571b2b7f9e3346"
   dependencies:
     amdefine ">=0.0.4"
+
+source-map@~0.6.0:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
 spdx-correct@^3.0.0:
   version "3.1.0"
