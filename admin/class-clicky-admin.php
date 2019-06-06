@@ -124,7 +124,7 @@ class Clicky_Admin {
 
 		$clicky_goal = get_post_meta( $post->ID, '_clicky_goal', true );
 
-		require 'views/meta-box.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/meta-box.php';
 	}
 
 	/**
@@ -150,7 +150,7 @@ class Clicky_Admin {
 		);
 		$iframe_url = 'https://clicky.com/stats/wp-iframe?' . http_build_query( $args, '', '&amp;' );
 
-		require 'views/stats-page.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/stats-page.php';
 	}
 
 	/**

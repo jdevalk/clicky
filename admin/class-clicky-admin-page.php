@@ -53,7 +53,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Creates the configuration page
 	 */
 	public function config_page() {
-		require 'views/admin-page.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/admin-page.php';
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $extra_links Additional links to add to the output, after the RSS subscribe link.
 	 */
 	private function rss_news( $feed, $title, $extra_links = '' ) {
-		include_once( ABSPATH . WPINC . '/feed.php' );
+		include_once ABSPATH . WPINC . '/feed.php';
 		$rss = fetch_feed( $feed );
 
 		if ( is_wp_error( $rss ) ) {

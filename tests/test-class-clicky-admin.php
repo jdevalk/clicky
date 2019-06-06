@@ -80,7 +80,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 		update_post_meta( $post_id, '_clicky_goal', $clicky_goal );
 
 		ob_start();
-		require( 'admin/views/meta-box.php' );
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/meta-box.php';
 		$output = ob_get_clean();
 
 		$this->expectOutputString( $output );

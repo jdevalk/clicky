@@ -49,14 +49,14 @@ class Clicky_Frontend {
 		}
 
 		if ( $this->options['track_names'] ) {
-			require 'views/comment-author-script.php';
+			require CLICKY_PLUGIN_DIR_PATH . 'admin/views/comment-author-script.php';
 		}
 
 		$clicky_extra  = $this->goal_tracking();
 		$clicky_extra .= $this->outbound_tracking();
 		$clicky_extra .= $this->disable_cookies();
 
-		require 'views/script.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/script.php';
 	}
 
 	/**
