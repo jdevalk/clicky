@@ -116,7 +116,7 @@ class Clicky_Admin {
 		esc_html_e( 'Clicky is almost ready. ', 'clicky' );
 		echo '</strong>';
 		/* translators: 1: link open tag to the plugin settings page; 2: link close tag. */
-		printf( __( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ), "<a href='" . $this->plugin_options_url() . "'>", '</a>' );
+		printf( esc_html( __( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ) ), "<a href='" . esc_url( $this->plugin_options_url() ) . "'>", '</a>' );
 		echo '</p></div>';
 	}
 

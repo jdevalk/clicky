@@ -63,7 +63,8 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $content Content to display.
 	 */
 	private function box( $title, $content ) {
-		echo '<div class="yoast_box"><h3>' . esc_html( $title ) . '</h3><div class="inside">' . esc_html( $content ) . '</div></div>';
+		// @codingStandardsIgnoreLine
+		echo '<div class="yoast_box"><h3>' . esc_html( $title ) . '</h3><div class="inside">' . $content . '</div></div>';
 	}
 
 	/**
@@ -96,7 +97,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 			foreach ( $rss_items as $item ) {
 				$url  = preg_replace( '/#.*/', '', esc_url( $item->get_permalink(), $protocolls = null, 'display' ) );
 				$rss .= '<li class="yoast">';
-				$rss .= '<a href="' . $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin">' . esc_html( $item->get_title() ) . '</a> ';
+				$rss .= '<a href="' . $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin">' . $item->get_title() . '</a> ';
 				$rss .= '</li>';
 			}
 		}
