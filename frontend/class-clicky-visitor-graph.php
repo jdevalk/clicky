@@ -1,6 +1,6 @@
 <?php
 /**
- * Clicky plugin file.
+ * Clicky for WordPress plugin file.
  *
  * @package Yoast\Clicky\FrontEnd
  */
@@ -179,7 +179,7 @@ class Clicky_Visitor_Graph {
 
 		$resp = wp_remote_get( $url );
 
-		if ( is_wp_error( $resp ) || ! isset( $resp['response']['code'] ) || $resp['response']['code'] != 200 ) {
+		if ( is_wp_error( $resp ) || ! isset( $resp['response']['code'] ) || (int) $resp['response']['code'] !== 200 ) {
 			return false;
 		}
 
@@ -271,11 +271,11 @@ class Clicky_Visitor_Graph {
 	 * @param int $height Height.
 	 */
 	private function create_bar( $index, $height ) {
-		$x_axis1 = ( $this->gap + $index * ( $this->gap + $this->bar_width ) );
-		$x_axis2 = ( $x_axis1 + $this->bar_width );
-		$y_axis1 = ( $this->img_height - intval( $height * $this->ratio ) );
-		$y_axis2 = $this->img_height;
-		imagefilledrectangle( $this->img, $x_axis1, $y_axis1, $x_axis2, $y_axis2, $this->bar_color );
+		$x_axis_1 = ( $this->gap + $index * ( $this->gap + $this->bar_width ) );
+		$x_axis_2 = ( $x_axis_1 + $this->bar_width );
+		$y_axis_1 = ( $this->img_height - intval( $height * $this->ratio ) );
+		$y_axis_2 = $this->img_height;
+		imagefilledrectangle( $this->img, $x_axis_1, $y_axis_1, $x_axis_2, $y_axis_2, $this->bar_color );
 	}
 
 	/**

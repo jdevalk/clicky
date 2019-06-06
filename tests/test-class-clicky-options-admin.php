@@ -12,7 +12,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 *
 	 * @var array
 	 */
-	var $test_args = array(
+	public $test_args = array(
 		'name'  => 'testname',
 		'value' => 'testvalue',
 	);
@@ -46,7 +46,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 */
 	public function test_like_text() {
 		ob_start();
-		require( 'admin/views/like-box.php' );
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/like-box.php';
 		$output = ob_get_clean();
 
 		$this->expectOutputString( $output );

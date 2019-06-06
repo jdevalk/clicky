@@ -1,6 +1,6 @@
 <?php
 /**
- * Clicky plugin file.
+ * Clicky for WordPress plugin file.
  *
  * @package Yoast\Clicky\FrontEnd
  */
@@ -49,14 +49,14 @@ class Clicky_Frontend {
 		}
 
 		if ( $this->options['track_names'] ) {
-			require 'views/comment-author-script.php';
+			require CLICKY_PLUGIN_DIR_PATH . 'admin/views/comment-author-script.php';
 		}
 
 		$clicky_extra  = $this->goal_tracking();
 		$clicky_extra .= $this->outbound_tracking();
 		$clicky_extra .= $this->disable_cookies();
 
-		require 'views/script.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/script.php';
 	}
 
 	/**
@@ -88,14 +88,14 @@ class Clicky_Frontend {
 	 * @return string
 	 */
 	private function outbound_tracking() {
-		if ( isset( $this->options['outbound_pattern'] ) && trim( $this->options['outbound_pattern'] ) != '' ) {
+		if ( isset( $this->options['outbound_pattern'] ) && trim( $this->options['outbound_pattern'] ) !== '' ) {
 
 			$patterns = preg_replace( '~[^\/a-zA-Z0-9,]+~', '', $this->options['outbound_pattern'] );
 
 			$patterns = explode( ',', $patterns );
 			$pattern  = '';
 			foreach ( $patterns as $pat ) {
-				if ( $pattern != '' ) {
+				if ( $pattern !== '' ) {
 					$pattern .= ',';
 				}
 				$pat      = trim( str_replace( '"', '', str_replace( "'", '', $pat ) ) );
@@ -129,10 +129,10 @@ class Clicky_Frontend {
 	 */
 	public function track_comment( $comment_id, $comment_status ) {
 		// Make sure to only track the comment if it's not spam (but do it for moderated comments).
-		if ( $comment_status != 'spam' ) {
+		if ( $comment_status !== 'spam' ) {
 			$comment = get_comment( $comment_id );
 			// Only do this for normal comments, not for pingbacks or trackbacks.
-			if ( $comment->comment_type != 'pingback' && $comment->comment_type != 'trackback' ) {
+			if ( $comment->comment_type !== 'pingback' && $comment->comment_type !== 'trackback' ) {
 				$args   = array(
 					'type'       => 'click',
 					'href'       => '/wp-comments-post.php',

@@ -1,6 +1,6 @@
 <?php
 /**
- * Clicky plugin file.
+ * Clicky for WordPress plugin file.
  *
  * @package Yoast/Clicky/View
  */

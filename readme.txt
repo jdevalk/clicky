@@ -4,7 +4,6 @@ Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analy
 Requires at least: 4.9
 Tested up to: 5.2
 Stable tag: 1.7
-Text Domain: clicky
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
 

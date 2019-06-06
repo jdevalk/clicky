@@ -1,6 +1,6 @@
 <?php
 /**
- * Clicky plugin file.
+ * Clicky for WordPress plugin file.
  *
  * @package Yoast\Clicky\Admin
  */
@@ -115,8 +115,8 @@ class Clicky_Admin {
 		echo "<div class='updated'><p><strong>";
 		esc_html_e( 'Clicky is almost ready. ', 'clicky' );
 		echo '</strong>';
-		// translators: %1$s and %2$s expand to a link to the clicky plugin's settings.
-		printf( esc_html( __( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ) ), "<a href='" . esc_url( $this->plugin_options_url() ) . "'>", '</a>' );
+		/* translators: 1: link open tag to the plugin settings page; 2: link close tag. */
+		printf( __( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ), "<a href='" . $this->plugin_options_url() . "'>", '</a>' );
 		echo '</p></div>';
 	}
 
@@ -143,7 +143,7 @@ class Clicky_Admin {
 
 		$clicky_goal = get_post_meta( $post->ID, '_clicky_goal', true );
 
-		require 'views/meta-box.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/meta-box.php';
 	}
 
 	/**
@@ -169,7 +169,7 @@ class Clicky_Admin {
 		);
 		$iframe_url = 'https://clicky.com/stats/wp-iframe?' . http_build_query( $args, '', '&amp;' );
 
-		require 'views/stats-page.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/stats-page.php';
 	}
 
 	/**

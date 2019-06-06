@@ -1,6 +1,6 @@
 <?php
 /**
- * Clicky plugin file.
+ * Clicky for WordPress plugin file.
  *
  * @package Yoast\Clicky\Admin
  */
@@ -53,7 +53,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Creates the configuration page
 	 */
 	public function config_page() {
-		require 'views/admin-page.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/admin-page.php';
 	}
 
 	/**
@@ -70,7 +70,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Info box with link to the bug tracker.
 	 */
 	private function plugin_support() {
-		// translators: %1$s and %2$s expand to a link to the Clicky forums.
+		/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
 		$content = '<p>' . sprintf( __( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ), "<a href='https://clicky.com/forums/'>", '</a>' ) . '</p>';
 		$this->box( __( 'Need Support?', 'clicky' ), $content );
 	}
@@ -83,7 +83,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $extra_links Additional links to add to the output, after the RSS subscribe link.
 	 */
 	private function rss_news( $feed, $title, $extra_links = '' ) {
-		include_once( ABSPATH . WPINC . '/feed.php' );
+		include_once ABSPATH . WPINC . '/feed.php';
 		$rss = fetch_feed( $feed );
 
 		if ( is_wp_error( $rss ) ) {

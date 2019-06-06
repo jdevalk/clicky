@@ -1,6 +1,6 @@
 <?php
 /**
- * Clicky plugin file.
+ * Clicky for WordPress plugin file.
  *
  * @package Yoast\Clicky\Admin
  */
@@ -57,16 +57,17 @@ class Clicky_Options_Admin extends Clicky_Options {
 			'admin_site_key' => __( 'Admin Site Key', 'clicky' ),
 		);
 		foreach ( $clicky_settings as $key => $label ) {
+			$args = array(
+				'name'  => 'clicky[' . $key . ']',
+				'value' => $this->options[ $key ],
+			);
 			add_settings_field(
 				$key,
 				$label,
 				array( $this, 'input_text' ),
 				'clicky',
 				'basic-settings',
-				array(
-					'name'  => 'clicky[' . $key . ']',
-					'value' => $this->options[ $key ],
-				)
+				$args
 			);
 		}
 
@@ -108,27 +109,25 @@ class Clicky_Options_Admin extends Clicky_Options {
 			),
 			'cookies_disable' => array(
 				'label' => __( 'Disable cookies', 'clicky' ),
-				'desc'  => __( 'If you don\'t want Clicky to use cookies on your site, check this button. By doing so, uniques will instead be determined based on their IP address.', 'clicky' ),
+				'desc'  => __( 'If you don\'t want Clicky to use cookies on your site, check this button. By doing so, uniqueness will instead be determined based on their IP address.', 'clicky' ),
 			),
 			'track_names'     => array(
 				'label' => __( 'Track names of commenters', 'clicky' ),
 			),
 		);
 		foreach ( $advanced_settings as $key => $arr ) {
+			$args = array(
+				'name'  => $key,
+				'value' => isset( $this->options[ $key ] ) ? $this->options[ $key ] : false,
+				'desc'  => isset( $arr['desc'] ) ? $arr['desc'] : '',
+			);
 			add_settings_field(
 				$key,
 				$arr['label'],
-				array(
-					$this,
-					'input_checkbox',
-				),
+				array( $this, 'input_checkbox' ),
 				'clicky-advanced',
 				'clicky-advanced',
-				array(
-					'name'  => $key,
-					'value' => isset( $this->options[ $key ] ) ? $this->options[ $key ] : false,
-					'desc'  => isset( $arr['desc'] ) ? $arr['desc'] : '',
-				)
+				$args
 			);
 		}
 	}
@@ -139,17 +138,18 @@ class Clicky_Options_Admin extends Clicky_Options {
 	private function register_outbound_settings() {
 		add_settings_section( 'clicky-outbound', __( 'Outbound Links', 'clicky' ), array( $this, 'outbound_explanation' ), 'clicky-advanced' );
 
+		$args = array(
+			'name'  => 'clicky[outbound_pattern]',
+			'value' => $this->options['outbound_pattern'],
+			'desc'  => __( 'For instance: <code>/out/,/go/</code>', 'clicky' ),
+		);
 		add_settings_field(
 			'outbound_pattern',
 			__( 'Outbound Link Pattern', 'clicky' ),
 			array( $this, 'input_text' ),
 			'clicky-advanced',
 			'clicky-outbound',
-			array(
-				'name'  => 'clicky[outbound_pattern]',
-				'value' => $this->options['outbound_pattern'],
-				'desc'  => __( 'For instance: <code>/out/,/go/</code>', 'clicky' ),
-			)
+			$args
 		);
 	}
 
@@ -157,7 +157,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Create a "plugin like" box.
 	 */
 	public function like_text() {
-		require 'views/like-box.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/like-box.php';
 	}
 
 	/**
@@ -217,8 +217,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 */
 	public function basic_settings_intro() {
 		echo '<p>';
-		// translators: %1$s and %2$s expand to a link to the user's homepage on Clicky.
-		printf( esc_html( __( 'Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information.', 'clicky' ) ), '<a href="http://clicky.com/145844">', '</a>' );
+		/* translators: 1: link open tag to the clicky user homepage; 2: link close tag. */
+		printf( __( 'Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information.', 'clicky' ), '<a href="http://clicky.com/145844">', '</a>' );
 		echo '</p>';
 	}
 
@@ -227,8 +227,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 */
 	public function outbound_explanation() {
 		echo '<p>';
-		// translators: %1$s and %2$s expand to a link to a help page on Clicky's site.
-		printf( esc_html( __( 'If your site uses redirects for outbound links, instead of links that point directly to their external source (this is popular with affiliate links, for example), then you\'ll need to use this variable to tell our tracking code additional patterns to look for when automatically tracking outbound links. %1$sRead more here%2$s.', 'clicky' ) ), '<a href="https://secure.getclicky.com/helpy?type=customization#outbound_pattern">', '</a>' );
+		/* translators: 1: link open tag to the clicky knowledge base article; 2: link close tag. */
+		printf( __( 'If your site uses redirects for outbound links, instead of links that point directly to their external source (this is popular with affiliate links, for example), then you\'ll need to use this variable to tell our tracking code additional patterns to look for when automatically tracking outbound links. %1$sRead more here%2$s.', 'clicky' ), '<a href="https://secure.getclicky.com/helpy?type=customization#outbound_pattern">', '</a>' );
 		echo '</p>';
 	}
 
@@ -236,8 +236,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Text for the support box
 	 */
 	public function support_text() {
-		// translators: %1$s and %2$s expand to a link to the Clicky forums.
-		echo '<p>' . sprintf( esc_html( __( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ) ), "<a href='https://clicky.com/forums/'>", '</a>' ) . '</p>';
+		/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
+		echo '<p>' . sprintf( __( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ), "<a href='https://clicky.com/forums/'>", '</a>' ) . '</p>';
 	}
 
 	/**
