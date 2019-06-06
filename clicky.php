@@ -1,13 +1,18 @@
 <?php
 /**
- * @package Yoast/Clicky
+ * Clicky for WordPress Plugin.
  *
+ * @package   Yoast/Clicky
+ * @copyright Copyright (C) 2012-2019 Yoast BV - support@yoast.com
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2 or higher
+ *
+ * @wordpress-plugin
  * Plugin Name: Clicky for WordPress
- * Version: 1.7
- * Plugin URI: https://yoast.com/wordpress/plugins/clicky/
+ * Version:     1.7
+ * Plugin URI:  https://yoast.com/wordpress/plugins/clicky/
  * Description: The Clicky for WordPress plugin by Yoast makes it easy for you to add your Clicky analytics tracking code to your WordPress install, while also giving you some advanced tracking options.
- * Author: Team Yoast
- * Author URI: https://yoast.com/
+ * Author:      Team Yoast
+ * Author URI:  https://yoast.com/
  * Text Domain: clicky
  */
 
