@@ -52,10 +52,18 @@ class Clicky_Options_Admin extends Clicky_Options {
 			'admin_site_key' => __( 'Admin Site Key', 'clicky' ),
 		);
 		foreach ( $clicky_settings as $key => $label ) {
-			add_settings_field( $key, $label, array( $this, 'input_text' ), 'clicky', 'basic-settings', array(
+			$args = array(
 				'name'  => 'clicky[' . $key . ']',
 				'value' => $this->options[ $key ],
-			) );
+			);
+			add_settings_field(
+				$key,
+				$label,
+				array( $this, 'input_text' ),
+				'clicky',
+				'basic-settings',
+				$args
+			);
 		}
 
 		add_settings_section( 'clicky-like', __( 'Like this plugin?', 'clicky' ), array(
@@ -93,14 +101,19 @@ class Clicky_Options_Admin extends Clicky_Options {
 			),
 		);
 		foreach ( $advanced_settings as $key => $arr ) {
-			add_settings_field( $key, $arr['label'], array(
-				$this,
-				'input_checkbox',
-			), 'clicky-advanced', 'clicky-advanced', array(
+			$args = array(
 				'name'  => $key,
 				'value' => isset( $this->options[ $key ] ) ? $this->options[ $key ] : false,
 				'desc'  => isset( $arr['desc'] ) ? $arr['desc'] : '',
-			) );
+			);
+			add_settings_field(
+				$key,
+				$arr['label'],
+				array( $this, 'input_checkbox' ),
+				'clicky-advanced',
+				'clicky-advanced',
+				$args
+			);
 		}
 	}
 
@@ -110,11 +123,19 @@ class Clicky_Options_Admin extends Clicky_Options {
 	private function register_outbound_settings() {
 		add_settings_section( 'clicky-outbound', __( 'Outbound Links', 'clicky' ), array( $this, 'outbound_explanation' ), 'clicky-advanced' );
 
-		add_settings_field( 'outbound_pattern', __( 'Outbound Link Pattern', 'clicky' ), array( $this, 'input_text' ), 'clicky-advanced', 'clicky-outbound', array(
+		$args = array(
 			'name'  => 'clicky[outbound_pattern]',
 			'value' => $this->options['outbound_pattern'],
 			'desc'  => __( 'For instance: <code>/out/,/go/</code>', 'clicky' ),
-		) );
+		);
+		add_settings_field(
+			'outbound_pattern',
+			__( 'Outbound Link Pattern', 'clicky' ),
+			array( $this, 'input_text' ),
+			'clicky-advanced',
+			'clicky-outbound',
+			$args
+		);
 	}
 
 	/**
