@@ -7,7 +7,8 @@ build:
   - 'build:i18n'
 # Build CSS from SCSS to production
 'build:css':
-  - 'autoprefixer'
+  - 'postcss:build'
+  - 'rtlcss'
   - 'cssmin'
 # Optimise images from source to production
 'build:images':
@@ -17,9 +18,6 @@ build:
   - 'addtextdomain'
   - 'makepot'
   - 'glotpress_download'
-# Build JavaScript from assets to production
-'build:js':
-  - 'uglify'
 # Check health of the project
 check:
   - 'phplint'

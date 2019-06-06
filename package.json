@@ -17,7 +17,6 @@
    },
    "devDependencies": {
       "@yoast/grunt-plugin-tasks": "https://github.com/Yoast/plugin-grunt-tasks#develop",
-      "grunt-autoprefixer": "^1.0.1",
       "grunt-jsbeautifier": "^0.2.13",
       "grunt-jscs": "^0.8.1",
       "grunt-jsonlint": "^1.0.4",
