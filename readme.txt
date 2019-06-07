@@ -42,6 +42,7 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 
 * Lots of code style and escaping improvements.
 * Removed banner for the Yoast website review service as it's no longer offered.
+* Added RTL stylesheets.
 
 = 1.7 =
 
