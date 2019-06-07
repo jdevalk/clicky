@@ -6,19 +6,19 @@
  */
 
 /**
- * Backend Class for the Clicky plugin options
+ * Backend Class for the Clicky plugin options.
  */
 class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
-	 * The option group name
+	 * The option group name.
 	 *
 	 * @var string
 	 */
 	public static $option_group = 'clicky_options';
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -27,7 +27,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Register the needed option and its settings sections
+	 * Register the needed option and its settings sections.
 	 */
 	public function admin_init() {
 		register_setting( self::$option_group, parent::$option_name, array( $this, 'sanitize_options_on_save' ) );
@@ -38,16 +38,13 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Register the basic settings
+	 * Register the basic settings.
 	 */
 	private function register_basic_settings() {
 		add_settings_section(
 			'basic-settings',
 			__( 'Basic settings', 'clicky' ),
-			array(
-				$this,
-				'basic_settings_intro',
-			),
+			array( $this, 'basic_settings_intro' ),
 			'clicky'
 		);
 
@@ -74,26 +71,20 @@ class Clicky_Options_Admin extends Clicky_Options {
 		add_settings_section(
 			'clicky-like',
 			__( 'Like this plugin?', 'clicky' ),
-			array(
-				$this,
-				'like_text',
-			),
+			array( $this, 'like_text' ),
 			'clicky'
 		);
 
 		add_settings_section(
 			'clicky-support',
 			__( 'Need support?', 'clicky' ),
-			array(
-				$this,
-				'support_text',
-			),
+			array( $this, 'support_text' ),
 			'clicky'
 		);
 	}
 
 	/**
-	 * Register the separate advanced settings screen
+	 * Register the separate advanced settings screen.
 	 */
 	private function register_advanced_settings() {
 		add_settings_section( 'clicky-advanced', __( 'Advanced Settings', 'clicky' ), null, 'clicky-advanced' );
@@ -133,10 +124,15 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Register the outbound links settings section
+	 * Register the outbound links settings section.
 	 */
 	private function register_outbound_settings() {
-		add_settings_section( 'clicky-outbound', __( 'Outbound Links', 'clicky' ), array( $this, 'outbound_explanation' ), 'clicky-advanced' );
+		add_settings_section(
+			'clicky-outbound',
+			__( 'Outbound Links', 'clicky' ),
+			array( $this, 'outbound_explanation' ),
+			'clicky-advanced'
+		);
 
 		$args = array(
 			'name'  => 'clicky[outbound_pattern]',
@@ -161,7 +157,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Sanitizes and trims a string
+	 * Sanitizes and trims a string.
 	 *
 	 * @param string $string String to sanitize.
 	 *
@@ -172,7 +168,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Sanitize options
+	 * Sanitize options.
 	 *
 	 * @param array $new_options Options to sanitize.
 	 *
@@ -213,35 +209,49 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Intro for the basic settings screen
+	 * Intro for the basic settings screen.
 	 */
 	public function basic_settings_intro() {
 		echo '<p>';
-		/* translators: 1: link open tag to the clicky user homepage; 2: link close tag. */
-		printf( esc_html( __( 'Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information.', 'clicky' ) ), '<a href="http://clicky.com/145844">', '</a>' );
+		printf(
+			/* translators: 1: link open tag to the clicky user homepage; 2: link close tag. */
+			esc_html__( 'Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information.', 'clicky' ),
+			'<a href="http://clicky.com/145844">',
+			'</a>'
+		);
 		echo '</p>';
 	}
 
 	/**
-	 * Intro for the the outbound links section
+	 * Intro for the the outbound links section.
 	 */
 	public function outbound_explanation() {
 		echo '<p>';
-		/* translators: 1: link open tag to the clicky knowledge base article; 2: link close tag. */
-		printf( esc_html( __( 'If your site uses redirects for outbound links, instead of links that point directly to their external source (this is popular with affiliate links, for example), then you\'ll need to use this variable to tell our tracking code additional patterns to look for when automatically tracking outbound links. %1$sRead more here%2$s.', 'clicky' ) ), '<a href="https://secure.getclicky.com/helpy?type=customization#outbound_pattern">', '</a>' );
+		printf(
+			/* translators: 1: link open tag to the clicky knowledge base article; 2: link close tag. */
+			esc_html__( 'If your site uses redirects for outbound links, instead of links that point directly to their external source (this is popular with affiliate links, for example), then you\'ll need to use this variable to tell our tracking code additional patterns to look for when automatically tracking outbound links. %1$sRead more here%2$s.', 'clicky' ),
+			'<a href="https://secure.getclicky.com/helpy?type=customization#outbound_pattern">',
+			'</a>'
+		);
 		echo '</p>';
 	}
 
 	/**
-	 * Text for the support box
+	 * Text for the support box.
 	 */
 	public function support_text() {
-		/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
-		echo '<p>' . sprintf( esc_html( __( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ) ), "<a href='https://clicky.com/forums/'>", '</a>' ) . '</p>';
+		echo '<p>';
+		printf(
+			/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
+			esc_html__( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ),
+			"<a href='https://clicky.com/forums/'>",
+			'</a>'
+		);
+		echo '</p>';
 	}
 
 	/**
-	 * Output an optional input description
+	 * Output an optional input description.
 	 *
 	 * @param array $args Arguments to get data from.
 	 */
@@ -252,7 +262,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Create a text input
+	 * Create a text input.
 	 *
 	 * @param array $args Arguments to get data from.
 	 */
@@ -262,7 +272,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Create a checkbox input
+	 * Create a checkbox input.
 	 *
 	 * @param array $args Arguments to get data from.
 	 */

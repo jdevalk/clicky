@@ -6,19 +6,19 @@
  */
 
 /**
- * Backend Class the Clicky plugin
+ * Backend Class the Clicky plugin.
  */
 class Clicky_Admin {
 
 	/**
-	 * This holds the plugins options
+	 * This holds the plugins options.
 	 *
 	 * @var array
 	 */
 	public $options = array();
 
 	/**
-	 * Menu slug for WordPress admin
+	 * Menu slug for WordPress admin.
 	 *
 	 * @access private
 	 * @var string
@@ -26,7 +26,7 @@ class Clicky_Admin {
 	public $hook = 'clicky';
 
 	/**
-	 * Construct of class Clicky_admin
+	 * Construct of class Clicky_admin.
 	 *
 	 * @access private
 	 * @link   https://codex.wordpress.org/Function_Reference/add_action
@@ -43,7 +43,7 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Initialize needed actions
+	 * Initialize needed actions.
 	 */
 	public function admin_init() {
 		$public_post_types = get_post_types( array( 'public' => true ) );
@@ -52,10 +52,7 @@ class Clicky_Admin {
 			add_meta_box(
 				'clicky',
 				__( 'Clicky Goal Tracking', 'clicky' ),
-				array(
-					$this,
-					'meta_box_content',
-				),
+				array( $this, 'meta_box_content' ),
 				$post_type,
 				'side'
 			);
@@ -65,7 +62,7 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Creates the dashboard and options pages
+	 * Creates the dashboard and options pages.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/add_options_page
 	 * @link https://codex.wordpress.org/Function_Reference/add_dashboard_page
@@ -76,25 +73,20 @@ class Clicky_Admin {
 			__( 'Clicky', 'clicky' ),
 			'manage_options',
 			$this->hook,
-			array(
-				new Clicky_Admin_Page(),
-				'config_page',
-			)
+			array( new Clicky_Admin_Page(), 'config_page' )
 		);
+
 		add_dashboard_page(
 			__( 'Clicky Stats', 'clicky' ),
 			__( 'Clicky Stats', 'clicky' ),
 			'manage_options',
 			'clicky_stats',
-			array(
-				$this,
-				'dashboard_page',
-			)
+			array( $this, 'dashboard_page' )
 		);
 	}
 
 	/**
-	 * Creates  warnings for empty fields in the admin
+	 * Creates warnings for empty fields in the admin.
 	 */
 	public function admin_warnings() {
 		$required_options = array( 'site_id', 'site_key', 'admin_site_key' );
@@ -109,28 +101,32 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Outputs a warning
+	 * Outputs a warning.
 	 */
 	private function setup_warning() {
 		echo "<div class='updated'><p><strong>";
 		esc_html_e( 'Clicky is almost ready. ', 'clicky' );
 		echo '</strong>';
-		/* translators: 1: link open tag to the plugin settings page; 2: link close tag. */
-		printf( esc_html( __( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ) ), "<a href='" . esc_url( $this->plugin_options_url() ) . "'>", '</a>' );
+		printf(
+			/* translators: 1: link open tag to the plugin settings page; 2: link close tag. */
+			esc_html__( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ),
+			"<a href='" . esc_url( $this->plugin_options_url() ) . "'>",
+			'</a>'
+		);
 		echo '</p></div>';
 	}
 
 	/**
-	 * Returns the plugins settings page URL
+	 * Returns the plugins settings page URL.
 	 *
-	 * @return string Admin URL to the current plugins settings URL
+	 * @return string Admin URL to the current plugins settings URL.
 	 */
 	private function plugin_options_url() {
 		return admin_url( 'options-general.php?page=' . $this->hook );
 	}
 
 	/**
-	 * Add meta box for entering specific goals
+	 * Add meta box for entering specific goals.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/get_post_meta
 	 */
@@ -147,7 +143,7 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Updates post meta for '_clicky_goal' with goal ID and value
+	 * Updates post meta for '_clicky_goal' with goal ID and value.
 	 *
 	 * @param int $post_id The post ID.
 	 */
@@ -160,20 +156,20 @@ class Clicky_Admin {
 	}
 
 	/**
-	 * Loads (external) stats page in an iframe
+	 * Loads (external) stats page in an iframe.
 	 */
 	public function dashboard_page() {
 		$args       = array(
 			'site_id' => $this->options['site_id'],
 			'sitekey' => $this->options['site_key'],
 		);
-		$iframe_url = 'https://clicky.com/stats/wp-iframe?' . http_build_query( $args, '', '&amp;' );
+		$iframe_url = add_query_arg( $args, 'https://clicky.com/stats/wp-iframe?' );
 
 		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/stats-page.php';
 	}
 
 	/**
-	 * Add a link to the settings page to the plugins list
+	 * Add a link to the settings page to the plugins list.
 	 *
 	 * @param array  $links Links to add.
 	 * @param string $file  Plugin file name.

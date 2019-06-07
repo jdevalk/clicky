@@ -11,15 +11,15 @@
 class Clicky_UnitTestCase extends WP_UnitTestCase {
 
 	/**
-	 * Fake a request to the WP front page
+	 * Fake a request to the WP front page.
 	 */
 	protected function go_to_home() {
 		$this->go_to( home_url( '/' ) );
 	}
 
 	/**
-	 * @param string $string
-	 * @param mixed $function
+	 * @param string $string   Expected output.
+	 * @param mixed  $function Unused.
 	 */
 	protected function expectOutput( $string, $function = null ) {
 		$output = ob_get_contents();

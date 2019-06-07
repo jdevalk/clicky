@@ -6,19 +6,19 @@
  */
 
 /**
- * Frontend Class the Clicky plugin
+ * Frontend Class the Clicky plugin.
  */
 class Clicky_Frontend {
 
 	/**
-	 * Holds the plugin options
+	 * Holds the plugin options.
 	 *
 	 * @var array
 	 */
 	private $options = array();
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$this->options = Clicky_Options::instance()->get();
@@ -43,7 +43,7 @@ class Clicky_Frontend {
 
 		// Bail early if current user is admin and ignore admin is true.
 		if ( $this->options['ignore_admin'] && current_user_can( 'manage_options' ) ) {
-			echo "\n<!-- " . esc_html( __( "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators.", 'clicky' ) ) . " -->\n";
+			echo "\n<!-- " . esc_html__( "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators.", 'clicky' ) . " -->\n";
 
 			return;
 		}
@@ -60,9 +60,9 @@ class Clicky_Frontend {
 	}
 
 	/**
-	 * Handles the script generation for goal tracking
+	 * Handles the script generation for goal tracking.
 	 *
-	 * @return string Script code
+	 * @return string Script code.
 	 */
 	private function goal_tracking() {
 		if ( is_singular() ) {
@@ -83,7 +83,7 @@ class Clicky_Frontend {
 	}
 
 	/**
-	 * Handles the script generation for outbound link tracking
+	 * Handles the script generation for outbound link tracking.
 	 *
 	 * @return string
 	 */
@@ -109,7 +109,7 @@ class Clicky_Frontend {
 	}
 
 	/**
-	 * Determines whether or not we should disable cookie usage
+	 * Determines whether or not we should disable cookie usage.
 	 *
 	 * @return string
 	 */
@@ -122,7 +122,7 @@ class Clicky_Frontend {
 	}
 
 	/**
-	 * Tracks comments that are not spam and not ping- or trackbacks
+	 * Tracks comments that are not spam and not ping- or trackbacks.
 	 *
 	 * @param int $comment_id     The ID of the comment that needs to be tracked.
 	 * @param int $comment_status Status of the comment (e.g. spam).
@@ -151,7 +151,7 @@ class Clicky_Frontend {
 	}
 
 	/**
-	 * Create the log for clicky
+	 * Create the log for clicky.
 	 *
 	 * @param array $log_data The array with basic log-data.
 	 * @param array $custom   The array with custom log-data for the comment author.

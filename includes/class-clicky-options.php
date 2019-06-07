@@ -6,14 +6,14 @@
  */
 
 /**
- * Options Class for the Clicky plugin
+ * Options Class for the Clicky plugin.
  *
  * @since 1.5
  */
 class Clicky_Options {
 
 	/**
-	 * The default options for the Clicky plugin
+	 * The default options for the Clicky plugin.
 	 *
 	 * @var array
 	 */
@@ -45,28 +45,28 @@ class Clicky_Options {
 	);
 
 	/**
-	 * Name of the option we're using
+	 * Name of the option we're using.
 	 *
 	 * @var string
 	 */
 	public static $option_name = 'clicky';
 
 	/**
-	 * Saving instance of it's own in this static var
+	 * Saving active instance of this class in this static var.
 	 *
 	 * @var object
 	 */
 	private static $instance;
 
 	/**
-	 * Holds the actual options
+	 * Holds the actual options.
 	 *
 	 * @var array
 	 */
 	public $options = array();
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$this->load_options();
@@ -117,7 +117,7 @@ class Clicky_Options {
 	}
 
 	/**
-	 * Returns the Clicky options
+	 * Returns the Clicky options.
 	 *
 	 * @return array
 	 */

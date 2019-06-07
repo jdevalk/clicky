@@ -6,12 +6,12 @@
  */
 
 /**
- * Class for the Clicky plugin admin page
+ * Class for the Clicky plugin admin page.
  */
 class Clicky_Admin_Page extends Clicky_Admin {
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$options_admin = new Clicky_Options_Admin();
@@ -25,7 +25,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	}
 
 	/**
-	 * Determine whether or not to send the minified version
+	 * Determine whether or not to send the minified version.
 	 *
 	 * @param string $ext Extension to use for asset.
 	 *
@@ -36,28 +36,28 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	}
 
 	/**
-	 * Enqueue the styles for the admin page
+	 * Enqueue the styles for the admin page.
 	 */
 	public function config_page_styles() {
 		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/clicky_admin' . $this->file_ext( '.css' ), null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
-	 * Enqueue the scripts for the admin page
+	 * Enqueue the scripts for the admin page.
 	 */
 	public function config_page_scripts() {
 		wp_enqueue_script( 'yoast_ga_admin', CLICKY_PLUGIN_DIR_URL . 'js/admin' . $this->file_ext( '.js' ), null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
-	 * Creates the configuration page
+	 * Creates the configuration page.
 	 */
 	public function config_page() {
 		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/admin-page.php';
 	}
 
 	/**
-	 * Create a postbox widget
+	 * Create a postbox widget.
 	 *
 	 * @param string $title   Title to display.
 	 * @param string $content Content to display.
@@ -112,14 +112,14 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	}
 
 	/**
-	 * Box with latest news from Clicky
+	 * Box with latest news from Clicky.
 	 */
 	private function clicky_news() {
 		$this->rss_news( 'http://clicky.com/blog/rss', __( 'Latest news from Clicky', 'clicky' ) );
 	}
 
 	/**
-	 * Box with latest news from Yoast.com for sidebar
+	 * Box with latest news from Yoast.com for sidebar.
 	 */
 	private function yoast_news() {
 		$extra_links  = '<li class="facebook"><a href="https://www.facebook.com/yoast">' . __( 'Like Yoast on Facebook', 'clicky' ) . '</a></li>';
@@ -130,18 +130,23 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	}
 
 	/**
-	 * Prints a banner image
+	 * Prints a banner image.
 	 *
 	 * @param string $img Image to show.
 	 * @param string $url URL to use.
 	 * @param string $alt Alt to add.
 	 */
 	private function banner( $img, $url, $alt ) {
-		printf( '<a class="yoast_banner" href="%1$s" title="%3$s"><img src="%2$s" width="261" alt="%3$s"/></a>', esc_url( $url ), esc_url( $img ), esc_attr( $alt ) );
+		printf(
+			'<a class="yoast_banner" href="%1$s" title="%3$s"><img src="%2$s" width="261" alt="%3$s"/></a>',
+			esc_url( $url ),
+			esc_url( $img ),
+			esc_attr( $alt )
+		);
 	}
 
 	/**
-	 * Instantiate the i18n module
+	 * Instantiate the i18n module.
 	 */
 	public function i18n_module() {
 		new yoast_i18n(

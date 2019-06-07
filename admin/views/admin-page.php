@@ -7,7 +7,7 @@
 
 ?><div class="wrap">
 	<h2>
-		<img id="plugin_icon" src="<?php echo esc_url( CLICKY_PLUGIN_DIR_URL ); ?>images/clicky-32x32.png" class="alignleft" /> Clicky <?php esc_html_e( 'Configuration', 'clicky' ); ?>
+		<img id="plugin_icon" src="<?php echo CLICKY_PLUGIN_DIR_URL; ?>images/clicky-32x32.png" class="alignleft" /> Clicky <?php esc_html_e( 'Configuration', 'clicky' ); ?>
 	</h2>
 
 	<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" method="post">

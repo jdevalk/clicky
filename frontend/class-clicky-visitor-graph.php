@@ -6,75 +6,75 @@
  */
 
 /**
- * Backend Class the Clicky plugin
+ * Backend Class the Clicky plugin.
  */
 class Clicky_Visitor_Graph {
 
 	/**
-	 * Will hold the color of bars in our image
+	 * Will hold the color of bars in our image.
 	 *
 	 * @var int
 	 */
 	private $bar_color;
 
 	/**
-	 * Will hold the visitor values for each hour
+	 * Will hold the visitor values for each hour.
 	 *
 	 * @var array
 	 */
 	private $bar_values = array();
 
 	/**
-	 * Height of the generated image
+	 * Height of the generated image.
 	 *
 	 * @var float
 	 */
 	private $bar_width = 0.02;
 
 	/**
-	 * The width of the gap between two bars
+	 * The width of the gap between two bars.
 	 *
 	 * @var int
 	 */
 	private $gap;
 
 	/**
-	 * Holds the generated image
+	 * Holds the generated image.
 	 *
 	 * @var resource
 	 */
 	private $img;
 
 	/**
-	 * Height of the generated image
+	 * Height of the generated image.
 	 *
 	 * @var int
 	 */
 	private $img_height = 20;
 
 	/**
-	 * Width of the generated image
+	 * Width of the generated image.
 	 *
 	 * @var int
 	 */
 	private $img_width = 99;
 
 	/**
-	 * This holds the plugins options
+	 * This holds the plugins options.
 	 *
 	 * @var array
 	 */
 	private $options = array();
 
 	/**
-	 * The ratio between a value and the overall image height
+	 * The ratio between a value and the overall image height.
 	 *
 	 * @var int
 	 */
 	private $ratio;
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		if ( ! function_exists( 'imagecreate' ) ) {
@@ -100,7 +100,7 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Creates (CSS for) head for the admin menu bar
+	 * Creates (CSS for) head for the admin menu bar.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/add_action
 	 */
@@ -109,13 +109,13 @@ class Clicky_Visitor_Graph {
 
 		echo "\n";
 		echo "<style type='text/css'>\n";
-		readfile( CLICKY_PLUGIN_DIR_PATH . '/css/adminbar' . $ext );
+		include CLICKY_PLUGIN_DIR_PATH . '/css/adminbar' . $ext;
 		echo "\n";
 		echo "</style>\n";
 	}
 
 	/**
-	 * Adds Clicky (graph) to the admin bar of the website
+	 * Adds Clicky (graph) to the admin bar of the website.
 	 *
 	 * @param object $wp_admin_bar Class that contains all information for the admin bar. Passed by reference.
 	 *
@@ -140,9 +140,9 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Creates the graph to be used in the admin bar
+	 * Creates the graph to be used in the admin bar.
 	 *
-	 * @return bool|string Returns base64-encoded image on success (String) or fail (boolean) on failure
+	 * @return bool|string Returns base64-encoded image on success (string) or false on failure.
 	 */
 	private function create_graph() {
 		$result = $this->retrieve_clicky_api_details();
@@ -162,7 +162,7 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Retrieve the visitor data from the Clicky API
+	 * Retrieve the visitor data from the Clicky API.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/wp_remote_get
 	 */
@@ -194,7 +194,7 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Parse the Clicky results into a usable array
+	 * Parse the Clicky results into a usable array.
 	 *
 	 * @param string $json JSON encoded object of results.
 	 *
@@ -229,7 +229,7 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Creates the basic rectangle we'll project the bars on
+	 * Creates the basic rectangle we'll project the bars on.
 	 */
 	private function create_base_image() {
 		$this->img = imagecreate( $this->img_width, $this->img_height );
@@ -241,7 +241,7 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Calculate the ratio between the max value of the bar values and the image height to adjust bars length
+	 * Calculate the ratio between the max value of the bar values and the image height to adjust bars length.
 	 */
 	private function calculate_ratio() {
 		$max_value = max( $this->bar_values );
@@ -252,7 +252,7 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Create the individual bars on the image
+	 * Create the individual bars on the image.
 	 */
 	private function add_bars_to_image() {
 		$this->bar_color = imagecolorallocate( $this->img, 240, 240, 240 );
@@ -265,7 +265,7 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Create an individual bar on the image
+	 * Create an individual bar on the image.
 	 *
 	 * @param int $index  Offset.
 	 * @param int $height Height.
@@ -279,7 +279,7 @@ class Clicky_Visitor_Graph {
 	}
 
 	/**
-	 * Use the image input to build a PNG then returns it as a base64 encoded image usable in a src tag
+	 * Use the image input to build a PNG then returns it as a base64 encoded image usable in a src tag.
 	 *
 	 * @return string
 	 */

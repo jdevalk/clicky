@@ -5,13 +5,21 @@
  * @package Yoast/Clicky/Tests
  */
 
+/**
+ * Test class to test the Clicky_Admin_Page class.
+ */
 class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 
 	/**
+	 * Instance of the class being tested.
+	 *
 	 * @var Clicky_Admin
 	 */
 	private static $class_instance;
 
+	/**
+	 * Set up the class instance to be tested.
+	 */
 	public static function setUpBeforeClass() {
 		self::$class_instance = new Clicky_Admin_Page();
 	}

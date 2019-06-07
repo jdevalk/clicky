@@ -5,13 +5,21 @@
  * @package Yoast/Clicky/Tests
  */
 
+/**
+ * Test class to test the Clicky_Admin class.
+ */
 class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 	/**
+	 * Instance of the class being tested.
+	 *
 	 * @var Clicky_Admin
 	 */
 	private static $class_instance;
 
+	/**
+	 * Set up the class instance to be tested.
+	 */
 	public static function setUpBeforeClass() {
 		self::$class_instance = new Clicky_Admin();
 	}
@@ -22,10 +30,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	public function test___construct() {
 		$this->assertEquals( self::$class_instance->options, Clicky_Options::$option_defaults );
 
-		$this->assertEquals( 10, has_filter( 'plugin_action_links', array(
-			self::$class_instance,
-			'add_action_link',
-		) ) );
+		$this->assertEquals( 10, has_filter( 'plugin_action_links', array( self::$class_instance, 'add_action_link' ) ) );
 
 		$this->assertEquals( 10, has_action( 'publish_post', array( self::$class_instance, 'insert_post' ) ) );
 		$this->assertEquals( 10, has_action( 'admin_notices', array( self::$class_instance, 'admin_warnings' ) ) );
@@ -58,7 +63,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * @covers Clicky_Admin::setup_warning
 	 */
 	public function test_setup_warning_false() {
-		// Set the required variables to a value
+		// Set the required variables to a value.
 		self::$class_instance->options['site_id']        = 1;
 		self::$class_instance->options['site_key']       = 1;
 		self::$class_instance->options['admin_site_key'] = 1;
@@ -119,7 +124,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 		$expected = '<br/>
 <iframe style="margin-left: 20px; width: 100%; height: 1000px;"
-		src="https://clicky.com/stats/wp-iframe?site_id=1&amp;sitekey=2"></iframe>
+		src="https://clicky.com/stats/wp-iframe?site_id=1&#038;sitekey=2"></iframe>
 ';
 
 		$this->expectOutputString( $expected );

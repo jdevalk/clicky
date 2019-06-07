@@ -5,13 +5,21 @@
  * @package Yoast/Clicky/Tests
  */
 
+/**
+ * Test class to test the Clicky_Options class.
+ */
 class Clicky_Options_Test extends Clicky_UnitTestCase {
 
 	/**
+	 * Instance of the class being tested.
+	 *
 	 * @var Clicky_Options
 	 */
 	private static $class_instance;
 
+	/**
+	 * Set up the class instance to be tested.
+	 */
 	public static function setUpBeforeClass() {
 		self::$class_instance = new Clicky_Options();
 	}

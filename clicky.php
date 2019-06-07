@@ -32,12 +32,12 @@ if ( file_exists( CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload_52.php' ) ) {
 }
 
 /**
- * Class Yoast Clicky base class
+ * Class Yoast Clicky base class.
  */
 class Yoast_Clicky {
 
 	/**
-	 * Initialize the plugin settings
+	 * Initialize the plugin settings.
 	 */
 	public function __construct() {
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
@@ -48,7 +48,7 @@ class Yoast_Clicky {
 	}
 
 	/**
-	 * Initialize the whole plugin
+	 * Initialize the whole plugin.
 	 */
 	public function init() {
 		load_plugin_textdomain( 'clicky', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );

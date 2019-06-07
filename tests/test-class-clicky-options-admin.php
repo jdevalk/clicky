@@ -5,15 +5,20 @@
  * @package Yoast/Clicky/Tests
  */
 
+/**
+ * Test class to test the Clicky_Options_Admin class.
+ */
 class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 
 	/**
+	 * Instance of the class being tested.
+	 *
 	 * @var Clicky_Options_Admin
 	 */
 	private static $class_instance;
 
 	/**
-	 * Used for testing input fields
+	 * Used for testing input fields.
 	 *
 	 * @var array
 	 */
@@ -22,6 +27,9 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		'value' => 'testvalue',
 	);
 
+	/**
+	 * Set up the class instance to be tested.
+	 */
 	public static function setUpBeforeClass() {
 		self::$class_instance = new Clicky_Options_Admin();
 	}
