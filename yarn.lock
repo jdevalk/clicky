@@ -41,9 +41,10 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
 
-"@yoast/grunt-plugin-tasks@https://github.com/Yoast/plugin-grunt-tasks#develop":
-  version "1.0.0"
-  resolved "https://github.com/Yoast/plugin-grunt-tasks#9720a9b8b269a9e9c096e3c68ef64e4abf7b9e1e"
+"@yoast/grunt-plugin-tasks@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@yoast/grunt-plugin-tasks/-/grunt-plugin-tasks-1.1.0.tgz#963593d9d817fd9db6842eb8704546106640c735"
+  integrity sha512-ec/ACD2NsEqmQh0Mp43962DMKq+nBtanlblmFLnb3NFeOZQUHDSmZ1kJhKU/gCrk1vtlOganrJOscQkg1PnTEw==
   dependencies:
     autoprefixer "^6.3.1"
     grunt "^1.0.4"
@@ -331,14 +332,6 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autoprefixer-core@^3.0.0:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/autoprefixer-core/-/autoprefixer-core-3.1.2.tgz#ade5ce9e2d9d71bb7ffc31d696fa5e87aebeb634"
-  integrity sha1-reXOni2dcbt//DHWlvpeh66+tjQ=
-  dependencies:
-    caniuse-db "^1.0.30000006"
-    postcss "~2.2.5"
-
 autoprefixer@^6.3.1:
   version "6.7.7"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-6.7.7.tgz#1dbd1c835658e35ce3f9984099db00585c782014"
@@ -598,7 +591,7 @@ camelcase@^3.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
   integrity sha1-MvxLn82vhF/N9+c7uXysImHwqwo=
 
-caniuse-db@^1.0.30000006, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
+caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
   version "1.0.30000974"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000974.tgz#ffc887e57e7db7067da203b102071a1d2477c5c8"
   integrity sha512-zeXkn1hbjMvXdadcyUELZnGu7OjlW3HK0956DWczM7ZJqGV4jFaPi8CidB8QiAj5xl5O9I+f7j9F0AFmXmGTpg==
@@ -618,7 +611,7 @@ caw@^2.0.0, caw@^2.0.1:
     tunnel-agent "^0.6.0"
     url-to-options "^1.0.1"
 
-chalk@^0.5.0, chalk@~0.5.0:
+chalk@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-0.5.1.tgz#663b3a648b68b55d04690d49167aa837858f2174"
   integrity sha1-Zjs6ZItotV0EaQ1JFnqoN4WPIXQ=
@@ -1181,11 +1174,6 @@ diff@^2.0.2:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/diff/-/diff-2.2.3.tgz#60eafd0d28ee906e4e8ff0a52c1229521033bf99"
   integrity sha1-YOr9DSjukG5Oj/ClLBIpUhAzv5k=
-
-diff@~1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/diff/-/diff-1.0.8.tgz#343276308ec991b7bc82267ed55bc1411f971666"
-  integrity sha1-NDJ2MI7Jkbe8giZ+1VvBQR+XFmY=
 
 dir-glob@2.0.0:
   version "2.0.0"
@@ -2141,15 +2129,6 @@ graceful-fs@^4.1.0, graceful-fs@^4.1.10, graceful-fs@^4.1.2, graceful-fs@^4.1.4:
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
   integrity sha1-TK+tdrxi8C+gObL5Tpo906ORpyU=
 
-grunt-autoprefixer@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/grunt-autoprefixer/-/grunt-autoprefixer-1.0.1.tgz#4d0db047e4a7488d71e5bda98a18435aee0b4446"
-  integrity sha1-TQ2wR+SnSI1x5b2pihhDWu4LREY=
-  dependencies:
-    autoprefixer-core "^3.0.0"
-    chalk "~0.5.0"
-    diff "~1.0.8"
-
 grunt-checktextdomain@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/grunt-checktextdomain/-/grunt-checktextdomain-1.0.1.tgz#b254d01e1de913005d4db1c5303d9023b983e19b"
@@ -2980,11 +2959,6 @@ js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.5.1.tgz#1efa39ef2c5f7980bb1784ade4a8af2de3291121"
   integrity sha512-M7kLczedRMYX4L8Mdh4MzyAMM9O5osx+4FcOQuTvr3A9F2D9S5JXheN0ewNbrvK2UatkTRhL5ejGmGSjNMiZuw==
-
-js-base64@~2.1.5:
-  version "2.1.9"
-  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
-  integrity sha1-8OgK4DmkvWVLXygfyT8EqRSn/M4=
 
 js-beautify@>=1.4.2:
   version "1.10.0"
@@ -3991,14 +3965,6 @@ postcss@^6.0.14:
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
-postcss@~2.2.5:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-2.2.6.tgz#c04344e2449e4586b955fbe4a74f77080d84571f"
-  integrity sha1-wENE4kSeRYa5Vfvkp093CA2EVx8=
-  dependencies:
-    js-base64 "~2.1.5"
-    source-map "~0.1.40"
-
 prebuild-install@^2.3.0:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/prebuild-install/-/prebuild-install-2.5.3.tgz#9f65f242782d370296353710e9bc843490c19f69"
@@ -4633,13 +4599,6 @@ source-map@^0.6.1, source-map@~0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
-
-source-map@~0.1.40:
-  version "0.1.43"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.1.43.tgz#c24bc146ca517c1471f5dacbe2571b2b7f9e3346"
-  integrity sha1-wkvBRspRfBRx9drL4lcbK3+eM0Y=
-  dependencies:
-    amdefine ">=0.0.4"
 
 spdx-correct@^3.0.0:
   version "3.1.0"
