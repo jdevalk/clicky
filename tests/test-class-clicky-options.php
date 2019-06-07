@@ -5,6 +5,9 @@
  * @package Yoast/Clicky/Tests
  */
 
+/**
+ * Test class to test the Clicky_Options class.
+ */
 class Clicky_Options_Test extends Clicky_UnitTestCase {
 
 	/**
