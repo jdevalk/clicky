@@ -150,7 +150,7 @@ class Clicky_Admin {
 	public function insert_post( $post_id ) {
 		$clicky_goal = array(
 			'id'    => (int) filter_input( INPUT_POST, 'clicky_goal_id' ),
-			'value' => floatval( filter_input( INPUT_POST, 'clicky_goal_value' ) ),
+			'value' => (float) filter_input( INPUT_POST, 'clicky_goal_value' ),
 		);
 		update_post_meta( $post_id, '_clicky_goal', $clicky_goal );
 	}
