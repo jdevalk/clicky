@@ -8,6 +8,8 @@
 class Clicky_Options_Test extends Clicky_UnitTestCase {
 
 	/**
+	 * Instance of the class being tested.
+	 *
 	 * @var Clicky_Options
 	 */
 	private static $class_instance;
