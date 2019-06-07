@@ -30,10 +30,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	public function test___construct() {
 		$this->assertEquals( self::$class_instance->options, Clicky_Options::$option_defaults );
 
-		$this->assertEquals( 10, has_filter( 'plugin_action_links', array(
-			self::$class_instance,
-			'add_action_link',
-		) ) );
+		$this->assertEquals( 10, has_filter( 'plugin_action_links', array( self::$class_instance, 'add_action_link' ) ) );
 
 		$this->assertEquals( 10, has_action( 'publish_post', array( self::$class_instance, 'insert_post' ) ) );
 		$this->assertEquals( 10, has_action( 'admin_notices', array( self::$class_instance, 'admin_warnings' ) ) );
