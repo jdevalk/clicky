@@ -43,7 +43,9 @@ module.exports = function(grunt) {
 			get changelog() {
 				return project.paths.theme + 'changelog.txt';
 			},
-			grunt: 'Gruntfile.js'
+			grunt: 'Gruntfile.js',
+			artifact: "artifact",
+			artifactComposer: "artifact-composer"
 		},
 		pkg: grunt.file.readJSON( 'package.json' )
 	};

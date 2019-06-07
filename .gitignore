@@ -1,5 +1,6 @@
 .idea/
 .svn/
+artifact/
 node_modules/
 vendor/
 test.sh
