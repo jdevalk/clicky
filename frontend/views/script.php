@@ -16,7 +16,7 @@
 	?>
 
 	var clicky_site_ids = clicky_site_ids || [];
-	clicky_site_ids.push(<?php echo esc_attr( $this->options['site_id'] ); ?>);
+	clicky_site_ids.push(<?php echo wp_json_encode( $this->options['site_id'] ); ?>);
 </script>
 <?php
 // @codingStandardsIgnoreLine WordPress.WP.EnqueuedResources.NonEnqueuedScript
