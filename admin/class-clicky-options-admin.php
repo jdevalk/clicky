@@ -41,10 +41,12 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Register the basic settings.
 	 */
 	private function register_basic_settings() {
-		add_settings_section( 'basic-settings', __( 'Basic settings', 'clicky' ), array(
-			$this,
-			'basic_settings_intro',
-		), 'clicky' );
+		add_settings_section(
+			'basic-settings',
+			__( 'Basic settings', 'clicky' ),
+			array( $this, 'basic_settings_intro' ),
+			'clicky'
+		);
 
 		$clicky_settings = array(
 			'site_id'        => __( 'Site ID', 'clicky' ),
@@ -66,15 +68,19 @@ class Clicky_Options_Admin extends Clicky_Options {
 			);
 		}
 
-		add_settings_section( 'clicky-like', __( 'Like this plugin?', 'clicky' ), array(
-			$this,
-			'like_text',
-		), 'clicky' );
+		add_settings_section(
+			'clicky-like',
+			__( 'Like this plugin?', 'clicky' ),
+			array( $this, 'like_text' ),
+			'clicky'
+		);
 
-		add_settings_section( 'clicky-support', __( 'Need support?', 'clicky' ), array(
-			$this,
-			'support_text',
-		), 'clicky' );
+		add_settings_section(
+			'clicky-support',
+			__( 'Need support?', 'clicky' ),
+			array( $this, 'support_text' ),
+			'clicky'
+		);
 	}
 
 	/**
@@ -121,7 +127,12 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Register the outbound links settings section.
 	 */
 	private function register_outbound_settings() {
-		add_settings_section( 'clicky-outbound', __( 'Outbound Links', 'clicky' ), array( $this, 'outbound_explanation' ), 'clicky-advanced' );
+		add_settings_section(
+			'clicky-outbound',
+			__( 'Outbound Links', 'clicky' ),
+			array( $this, 'outbound_explanation' ),
+			'clicky-advanced'
+		);
 
 		$args = array(
 			'name'  => 'clicky[outbound_pattern]',
