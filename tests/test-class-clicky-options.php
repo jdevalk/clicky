@@ -28,13 +28,13 @@ class Clicky_Options_Test extends Clicky_UnitTestCase {
 	 * @covers Clicky_Options::get
 	 */
 	public function test_get() {
-		$this->assertSame( self::$class_instance->get(), Clicky_Options::$option_defaults );
+		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->get() );
 	}
 
 	/**
 	 * @covers Clicky_Options::__construct
 	 */
 	public function test___construct() {
-		$this->assertSame( self::$class_instance->options, Clicky_Options::$option_defaults );
+		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );
 	}
 }

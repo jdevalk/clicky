@@ -28,7 +28,7 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 	 * @covers Clicky_Admin_Page::__construct
 	 */
 	public function test___construct() {
-		$this->assertSame( self::$class_instance->options, Clicky_Options::$option_defaults );
+		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );
 
 		$this->assertSame( 10, has_action( 'admin_print_scripts', array( self::$class_instance, 'config_page_scripts' ) ) );
 		$this->assertSame( 10, has_action( 'admin_print_styles', array( self::$class_instance, 'config_page_styles' ) ) );

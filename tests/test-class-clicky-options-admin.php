@@ -38,7 +38,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * @covers Clicky_Options_Admin::__construct
 	 */
 	public function test___construct() {
-		$this->assertSame( self::$class_instance->options, Clicky_Options::$option_defaults );
+		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );
 	}
 
 	/**
