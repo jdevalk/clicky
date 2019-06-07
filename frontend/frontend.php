@@ -164,6 +164,7 @@ class Clicky_Frontend {
 
 		// Custom data, must come in as array of key=>values.
 		foreach ( $custom as $key => $value ) {
+			// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.urlencode_urlencode -- Correct encoding for query vars.
 			$file .= '&custom[' . urlencode( $key ) . ']=' . urlencode( $value );
 		}
 
