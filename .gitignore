@@ -1,5 +1,6 @@
 .idea/
 .svn/
+css/dist/*
 artifact/
 node_modules/
 vendor/

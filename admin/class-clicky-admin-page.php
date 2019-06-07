@@ -39,14 +39,14 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Enqueue the styles for the admin page.
 	 */
 	public function config_page_styles() {
-		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/clicky_admin' . $this->file_ext( '.css' ), null, CLICKY_PLUGIN_VERSION );
+		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/dist/clicky_admin.css', null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
 	 * Enqueue the scripts for the admin page.
 	 */
 	public function config_page_scripts() {
-		wp_enqueue_script( 'yoast_ga_admin', CLICKY_PLUGIN_DIR_URL . 'js/admin' . $this->file_ext( '.js' ), null, CLICKY_PLUGIN_VERSION );
+		wp_enqueue_script( 'clicky-admin-js', CLICKY_PLUGIN_DIR_URL . 'js/admin' . $this->file_ext( '.js' ), null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
@@ -127,22 +127,6 @@ class Clicky_Admin_Page extends Clicky_Admin {
 		$extra_links .= '<li class="email"><a href="https://yoast.com/newsletter/">' . __( 'Subscribe by email', 'clicky' ) . '</a></li>';
 
 		$this->rss_news( 'https://yoast.com/feed/', __( 'Latest news from Yoast', 'clicky' ), $extra_links );
-	}
-
-	/**
-	 * Prints a banner image.
-	 *
-	 * @param string $img Image to show.
-	 * @param string $url URL to use.
-	 * @param string $alt Alt to add.
-	 */
-	private function banner( $img, $url, $alt ) {
-		printf(
-			'<a class="yoast_banner" href="%1$s" title="%3$s"><img src="%2$s" width="261" alt="%3$s"/></a>',
-			esc_url( $url ),
-			esc_url( $img ),
-			esc_attr( $alt )
-		);
 	}
 
 	/**

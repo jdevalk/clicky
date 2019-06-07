@@ -1,10 +1,10 @@
-var autoprefixer = require( "autoprefixer" );
-
 // https://github.com/nDmitry/grunt-postcss
 module.exports = {
 	options: {
+		map: true,
 		processors: [
-			autoprefixer( { browsers: "last 2 versions, IE >= 9" } ),
+			require( "autoprefixer" )( { browsers: "last 2 versions, IE >= 9" } ),
+			require( "cssnano" )(),
 		],
 	},
 	build: {

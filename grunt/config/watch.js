@@ -39,7 +39,7 @@ module.exports = {
 	},
 	css: {
 		files: [
-			'css/*css'
+			'<%= paths.sass %>'
 		],
 		tasks: [
 			'build:css'

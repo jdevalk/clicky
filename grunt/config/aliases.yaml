@@ -7,9 +7,10 @@ build:
   - 'build:i18n'
 # Build CSS from SCSS to production
 'build:css':
+  - 'clean:build-assets-css'
+  - 'sass:build'
   - 'postcss:build'
   - 'rtlcss'
-  - 'cssmin'
 # Optimise images from source to production
 'build:images':
   - 'imagemin'

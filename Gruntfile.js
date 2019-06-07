@@ -10,7 +10,8 @@ module.exports = function(grunt) {
 			get config() {
 				return this.grunt + 'config/';
 			},
-			css: 'css/',
+			css: 'css/dist/',
+			sass: 'css/src/',
 			grunt: 'grunt/',
 			images: 'images/',
 			js: 'js/',
@@ -20,8 +21,8 @@ module.exports = function(grunt) {
 		},
 		files: {
 			css: [
-				'css/*.css',
-				'!css/*.min.css'
+				'css/dist/*.css',
+				'!css/dist/*.min.css'
 			],
 			images: [
 				'images/*'

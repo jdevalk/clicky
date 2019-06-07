@@ -15,7 +15,7 @@ module.exports = {
 		"js/dist/*.js",
 	],
 	"build-assets-css": [
-		"<%= paths.css %>/*.css",
+		"<%= paths.css %>*.css",
 	],
 	artifact: [
 		"<%= files.artifact %>",
