@@ -63,7 +63,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * @covers Clicky_Admin::setup_warning
 	 */
 	public function test_setup_warning_false() {
-		// Set the required variables to a value
+		// Set the required variables to a value.
 		self::$class_instance->options['site_id']        = 1;
 		self::$class_instance->options['site_key']       = 1;
 		self::$class_instance->options['admin_site_key'] = 1;

@@ -6,19 +6,19 @@
  */
 
 /**
- * Backend Class for the Clicky plugin options
+ * Backend Class for the Clicky plugin options.
  */
 class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
-	 * The option group name
+	 * The option group name.
 	 *
 	 * @var string
 	 */
 	public static $option_group = 'clicky_options';
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -27,7 +27,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Register the needed option and its settings sections
+	 * Register the needed option and its settings sections.
 	 */
 	public function admin_init() {
 		register_setting( self::$option_group, parent::$option_name, array( $this, 'sanitize_options_on_save' ) );
@@ -38,7 +38,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Register the basic settings
+	 * Register the basic settings.
 	 */
 	private function register_basic_settings() {
 		add_settings_section( 'basic-settings', __( 'Basic settings', 'clicky' ), array(
@@ -78,7 +78,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Register the separate advanced settings screen
+	 * Register the separate advanced settings screen.
 	 */
 	private function register_advanced_settings() {
 		add_settings_section( 'clicky-advanced', __( 'Advanced Settings', 'clicky' ), null, 'clicky-advanced' );
@@ -118,7 +118,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Register the outbound links settings section
+	 * Register the outbound links settings section.
 	 */
 	private function register_outbound_settings() {
 		add_settings_section( 'clicky-outbound', __( 'Outbound Links', 'clicky' ), array( $this, 'outbound_explanation' ), 'clicky-advanced' );
@@ -146,7 +146,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Sanitizes and trims a string
+	 * Sanitizes and trims a string.
 	 *
 	 * @param string $string String to sanitize.
 	 *
@@ -157,7 +157,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Sanitize options
+	 * Sanitize options.
 	 *
 	 * @param array $new_options Options to sanitize.
 	 *
@@ -198,7 +198,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Intro for the basic settings screen
+	 * Intro for the basic settings screen.
 	 */
 	public function basic_settings_intro() {
 		echo '<p>';
@@ -208,7 +208,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Intro for the the outbound links section
+	 * Intro for the the outbound links section.
 	 */
 	public function outbound_explanation() {
 		echo '<p>';
@@ -218,7 +218,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Text for the support box
+	 * Text for the support box.
 	 */
 	public function support_text() {
 		/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
@@ -226,7 +226,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Output an optional input description
+	 * Output an optional input description.
 	 *
 	 * @param array $args Arguments to get data from.
 	 */
@@ -237,7 +237,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Create a text input
+	 * Create a text input.
 	 *
 	 * @param array $args Arguments to get data from.
 	 */
@@ -247,7 +247,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	}
 
 	/**
-	 * Create a checkbox input
+	 * Create a checkbox input.
 	 *
 	 * @param array $args Arguments to get data from.
 	 */
