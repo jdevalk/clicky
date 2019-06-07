@@ -22,6 +22,9 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		'value' => 'testvalue',
 	);
 
+	/**
+	 * Set up the class instance to be tested.
+	 */
 	public static function setUpBeforeClass() {
 		self::$class_instance = new Clicky_Options_Admin();
 	}

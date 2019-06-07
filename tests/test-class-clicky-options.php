@@ -12,6 +12,9 @@ class Clicky_Options_Test extends Clicky_UnitTestCase {
 	 */
 	private static $class_instance;
 
+	/**
+	 * Set up the class instance to be tested.
+	 */
 	public static function setUpBeforeClass() {
 		self::$class_instance = new Clicky_Options();
 	}
