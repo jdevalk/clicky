@@ -202,8 +202,12 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 */
 	public function basic_settings_intro() {
 		echo '<p>';
-		/* translators: 1: link open tag to the clicky user homepage; 2: link close tag. */
-		printf( __( 'Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information.', 'clicky' ), '<a href="http://clicky.com/145844">', '</a>' );
+		printf(
+			/* translators: 1: link open tag to the clicky user homepage; 2: link close tag. */
+			esc_html__( 'Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information.', 'clicky' ),
+			'<a href="http://clicky.com/145844">',
+			'</a>'
+		);
 		echo '</p>';
 	}
 
@@ -212,8 +216,12 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 */
 	public function outbound_explanation() {
 		echo '<p>';
-		/* translators: 1: link open tag to the clicky knowledge base article; 2: link close tag. */
-		printf( __( 'If your site uses redirects for outbound links, instead of links that point directly to their external source (this is popular with affiliate links, for example), then you\'ll need to use this variable to tell our tracking code additional patterns to look for when automatically tracking outbound links. %1$sRead more here%2$s.', 'clicky' ), '<a href="https://secure.getclicky.com/helpy?type=customization#outbound_pattern">', '</a>' );
+		printf(
+			/* translators: 1: link open tag to the clicky knowledge base article; 2: link close tag. */
+			esc_html__( 'If your site uses redirects for outbound links, instead of links that point directly to their external source (this is popular with affiliate links, for example), then you\'ll need to use this variable to tell our tracking code additional patterns to look for when automatically tracking outbound links. %1$sRead more here%2$s.', 'clicky' ),
+			'<a href="https://secure.getclicky.com/helpy?type=customization#outbound_pattern">',
+			'</a>'
+		);
 		echo '</p>';
 	}
 
@@ -221,8 +229,14 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Text for the support box.
 	 */
 	public function support_text() {
-		/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
-		echo '<p>' . sprintf( __( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ), "<a href='https://clicky.com/forums/'>", '</a>' ) . '</p>';
+		echo '<p>';
+		printf(
+			/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
+			esc_html__( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ),
+			"<a href='https://clicky.com/forums/'>",
+			'</a>'
+		);
+		echo '</p>';
 	}
 
 	/**
