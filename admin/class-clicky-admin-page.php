@@ -141,13 +141,6 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	}
 
 	/**
-	 * Print a website review banner
-	 */
-	private function website_review_banner() {
-		$this->banner( CLICKY_PLUGIN_DIR_URL . 'images/banner-website-review.png', 'https://yoast.com/hire-us/website-review/#utm_source=clicky-config&utm_medium=banner&utm_campaign=website-review-banner', __( 'Get your site reviewed by team Yoast!', 'clicky' ) );
-	}
-
-	/**
 	 * Instantiate the i18n module
 	 */
 	public function i18n_module() {

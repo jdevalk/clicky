@@ -38,7 +38,6 @@
 	<div id="yoast_sidebar">
 		<?php
 			$this->yoast_news();
-			$this->website_review_banner();
 			$this->clicky_news();
 		?>
 	</div>
