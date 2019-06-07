@@ -88,7 +88,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 		$rss = fetch_feed( $feed );
 
 		if ( is_wp_error( $rss ) ) {
-			$rss = '<li class="yoast">' . __( 'No news items, feed might be broken...', 'clicky' ) . '</li>';
+			$rss = '<li class="yoast">' . esc_html__( 'No news items, feed might be broken...', 'clicky' ) . '</li>';
 		}
 		else {
 			$rss_items = $rss->get_items( 0, $rss->get_item_quantity( 3 ) );
@@ -104,7 +104,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 		$content  = '<ul>';
 		$content .= $rss;
-		$content .= '<li class="rss"><a href="' . $feed . '">' . __( 'Subscribe with RSS', 'clicky' ) . '</a></li>';
+		$content .= '<li class="rss"><a href="' . esc_url( $feed ) . '">' . esc_html__( 'Subscribe with RSS', 'clicky' ) . '</a></li>';
 		$content .= $extra_links;
 		$content .= '</ul>';
 
@@ -122,9 +122,9 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Box with latest news from Yoast.com for sidebar.
 	 */
 	private function yoast_news() {
-		$extra_links  = '<li class="facebook"><a href="https://www.facebook.com/yoast">' . __( 'Like Yoast on Facebook', 'clicky' ) . '</a></li>';
-		$extra_links .= '<li class="twitter"><a href="https://twitter.com/yoast">' . __( 'Follow Yoast on Twitter', 'clicky' ) . '</a></li>';
-		$extra_links .= '<li class="email"><a href="https://yoast.com/newsletter/">' . __( 'Subscribe by email', 'clicky' ) . '</a></li>';
+		$extra_links  = '<li class="facebook"><a href="https://www.facebook.com/yoast">' . esc_html__( 'Like Yoast on Facebook', 'clicky' ) . '</a></li>';
+		$extra_links .= '<li class="twitter"><a href="https://twitter.com/yoast">' . esc_html__( 'Follow Yoast on Twitter', 'clicky' ) . '</a></li>';
+		$extra_links .= '<li class="email"><a href="https://yoast.com/newsletter/">' . esc_html__( 'Subscribe by email', 'clicky' ) . '</a></li>';
 
 		$this->rss_news( 'https://yoast.com/feed/', __( 'Latest news from Yoast', 'clicky' ), $extra_links );
 	}
