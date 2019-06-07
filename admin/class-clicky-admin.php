@@ -95,7 +95,7 @@ class Clicky_Admin {
 	 */
 	private function setup_warning() {
 		echo "<div class='updated'><p><strong>";
-		_e( 'Clicky is almost ready. ', 'clicky' );
+		esc_html_e( 'Clicky is almost ready. ', 'clicky' );
 		echo '</strong>';
 		printf(
 			/* translators: 1: link open tag to the plugin settings page; 2: link close tag. */
