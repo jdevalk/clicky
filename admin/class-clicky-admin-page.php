@@ -39,14 +39,14 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Enqueue the styles for the admin page.
 	 */
 	public function config_page_styles() {
-		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/clicky_admin' . $this->file_ext( '.css' ) );
+		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/clicky_admin' . $this->file_ext( '.css' ), null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
 	 * Enqueue the scripts for the admin page.
 	 */
 	public function config_page_scripts() {
-		wp_enqueue_script( 'yoast_ga_admin', CLICKY_PLUGIN_DIR_URL . 'js/admin' . $this->file_ext( '.js' ) );
+		wp_enqueue_script( 'yoast_ga_admin', CLICKY_PLUGIN_DIR_URL . 'js/admin' . $this->file_ext( '.js' ), null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
@@ -63,7 +63,8 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $content Content to display.
 	 */
 	private function box( $title, $content ) {
-		echo '<div class="yoast_box"><h3>' . $title . '</h3><div class="inside">' . $content . '</div></div>';
+		// @codingStandardsIgnoreLine
+		echo '<div class="yoast_box"><h3>' . esc_html( $title ) . '</h3><div class="inside">' . $content . '</div></div>';
 	}
 
 	/**
@@ -96,7 +97,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 			foreach ( $rss_items as $item ) {
 				$url  = preg_replace( '/#.*/', '', esc_url( $item->get_permalink(), $protocolls = null, 'display' ) );
 				$rss .= '<li class="yoast">';
-				$rss .= '<a href="' . $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin">' . esc_html( $item->get_title() ) . '</a> ';
+				$rss .= '<a href="' . $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin">' . $item->get_title() . '</a> ';
 				$rss .= '</li>';
 			}
 		}
@@ -142,13 +143,6 @@ class Clicky_Admin_Page extends Clicky_Admin {
 			esc_url( $img ),
 			esc_attr( $alt )
 		);
-	}
-
-	/**
-	 * Print a website review banner.
-	 */
-	private function website_review_banner() {
-		$this->banner( CLICKY_PLUGIN_DIR_URL . 'images/banner-website-review.png', 'https://yoast.com/hire-us/website-review/#utm_source=clicky-config&utm_medium=banner&utm_campaign=website-review-banner', __( 'Get your site reviewed by team Yoast!', 'clicky' ) );
 	}
 
 	/**

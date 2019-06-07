@@ -16,6 +16,6 @@
 		}
 		return '';
 	}
-	var username_check = clicky_gc('comment_author_<?php echo md5( get_option( 'siteurl' ) ); ?>');
+	var username_check = clicky_gc('comment_author_<?php echo esc_attr( md5( get_option( 'siteurl' ) ) ); ?>');
 	if (username_check) var clicky_custom_session = {username: username_check};
 </script>

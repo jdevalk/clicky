@@ -196,7 +196,7 @@ class Clicky_Visitor_Graph {
 	/**
 	 * Parse the Clicky results into a usable array.
 	 *
-	 * @param array $json JSON encoded object of results.
+	 * @param string $json JSON encoded object of results.
 	 *
 	 * @return array|bool
 	 */
@@ -245,7 +245,7 @@ class Clicky_Visitor_Graph {
 	 */
 	private function calculate_ratio() {
 		$max_value = max( $this->bar_values );
-		if ( $max_value === 0 ) {
+		if ( ! is_int( $max_value ) || $max_value === 0 ) {
 			$max_value = 1;
 		}
 		$this->ratio = ( $this->img_height / $max_value );
