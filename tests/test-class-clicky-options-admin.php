@@ -38,7 +38,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * @covers Clicky_Options_Admin::__construct
 	 */
 	public function test___construct() {
-		$this->assertEquals( self::$class_instance->options, Clicky_Options::$option_defaults );
+		$this->assertSame( self::$class_instance->options, Clicky_Options::$option_defaults );
 	}
 
 	/**
@@ -50,8 +50,8 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 
 		global $wp_settings_sections, $wp_settings_fields;
 
-		$this->assertTrue( array_key_exists( 'clicky', $wp_settings_sections ) );
-		$this->assertTrue( array_key_exists( 'clicky', $wp_settings_fields ) );
+		$this->assertArrayHasKey( 'clicky', $wp_settings_sections );
+		$this->assertArrayHasKey( 'clicky', $wp_settings_fields );
 	}
 
 	/**
@@ -76,7 +76,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		self::$class_instance->basic_settings_intro();
 		$output = ob_get_clean();
 
-		$this->assertTrue( strlen( $output ) > 0 );
+		$this->assertGreaterThan( 0, strlen( $output ) );
 		$this->assertTrue( is_int( strpos( $output, '//clicky.com/145844' ) ) );
 	}
 
@@ -90,7 +90,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		self::$class_instance->outbound_explanation();
 		$output = ob_get_clean();
 
-		$this->assertTrue( strlen( $output ) > 0 );
+		$this->assertGreaterThan( 0, strlen( $output ) );
 	}
 
 	/**
@@ -103,7 +103,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		self::$class_instance->support_text();
 		$output = ob_get_clean();
 
-		$this->assertTrue( strlen( $output ) > 0 );
+		$this->assertGreaterThan( 0, strlen( $output ) );
 		$this->assertTrue( is_int( strpos( $output, 'clicky.com/forums' ) ) );
 	}
 
