@@ -1,9 +1,9 @@
 === Clicky by Yoast ===
-Contributors: joostdevalk
-Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Joost de Valk, Yoast
-Requires at least: 4.9
+Contributors: joostdevalk, yoast
+Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Yoast
+Requires at least: 5.1
 Tested up to: 5.2
-Stable tag: 1.7
+Stable tag: 1.8
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
 
@@ -37,6 +37,11 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 3. The stats indicator on the WordPress Toolbar.
 
 == Changelog ==
+
+= 1.8 =
+
+* Lots of code style and escaping improvements.
+* Removed banner for the Yoast website review service as it's no longer offered.
 
 = 1.7 =
 
