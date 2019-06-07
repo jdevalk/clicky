@@ -149,7 +149,7 @@ class Clicky_Admin {
 			'site_id' => $this->options['site_id'],
 			'sitekey' => $this->options['site_key'],
 		);
-		$iframe_url = 'https://clicky.com/stats/wp-iframe?' . http_build_query( $args, '', '&amp;' );
+		$iframe_url = add_query_arg( $args, 'https://clicky.com/stats/wp-iframe?' );
 
 		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/stats-page.php';
 	}
