@@ -182,7 +182,7 @@ class Clicky_Admin {
 			$this_plugin = CLICKY_PLUGIN_FILE;
 		}
 		if ( $file === $this_plugin ) {
-			$settings_link = '<a href="' . $this->plugin_options_url() . '">' . __( 'Settings', 'clicky' ) . '</a>';
+			$settings_link = '<a href="' . esc_url( $this->plugin_options_url() ) . '">' . esc_html__( 'Settings', 'clicky' ) . '</a>';
 			array_unshift( $links, $settings_link );
 		}
 
