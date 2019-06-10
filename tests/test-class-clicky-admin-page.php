@@ -35,6 +35,9 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 		$this->assertSame( 10, has_action( 'admin_head', array( self::$class_instance, 'i18n_module' ) ) );
 	}
 
+	/**
+	 * @covers Clicky_Admin_Page::config_page_styles
+	 */
 	public function test_config_page_styles() {
 		self::$class_instance->config_page_styles();
 
