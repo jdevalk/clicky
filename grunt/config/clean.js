@@ -11,11 +11,9 @@ module.exports = {
 		"<%= paths.languages %>*.po",
 		"<%= paths.languages %>*.pot",
 	],
-	"build-assets-js": [
-		"js/dist/*.js",
-	],
 	"build-assets-css": [
 		"<%= paths.css %>*.css",
+		"<%= paths.css %>*.map",
 	],
 	artifact: [
 		"<%= files.artifact %>",

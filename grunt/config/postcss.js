@@ -1,13 +1,14 @@
 // https://github.com/nDmitry/grunt-postcss
+/* global developmentBuild */
 module.exports = {
-	options: {
-		map: true,
-		processors: [
-			require( "autoprefixer" )( { browsers: "last 2 versions, IE >= 9" } ),
-			require( "cssnano" )(),
-		],
-	},
 	build: {
+		options: {
+			map: developmentBuild,
+			processors: [
+				require( "autoprefixer" )( { browsers: "last 2 versions, IE >= 9" } ),
+				require( "cssnano" )(),
+			],
+		},
 		src: "<%= files.css %>",
 	},
 };

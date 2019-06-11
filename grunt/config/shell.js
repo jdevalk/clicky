@@ -1,5 +1,3 @@
-const path = require( "path" );
-
 // See https://github.com/sindresorhus/grunt-shell
 module.exports = function( grunt ) {
 	return {
@@ -23,10 +21,6 @@ module.exports = function( grunt ) {
 			options: {
 				failOnError: false,
 			},
-		},
-
-		"production-prefix-dependencies": {
-			command: "composer install",
 		},
 
 		"php-lint": {

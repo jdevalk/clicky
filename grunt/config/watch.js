@@ -3,20 +3,6 @@ module.exports = {
 	options: {
 		livereload: true
 	},
-	grunt: {
-		options: {
-			reload: true
-		},
-		files: [
-			'<%= files.grunt %>',
-			'<%= files.config %>'
-		],
-		tasks: [
-			'jshint:grunt',
-			'jsvalidate:grunt',
-			'jscs:grunt'
-		]
-	},
 	php: {
 		files: [
 			'<%= files.php %>'

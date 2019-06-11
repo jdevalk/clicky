@@ -7,7 +7,7 @@ module.exports = {
 				cwd: ".",
 				src: [
 					"admin/**",
-					"css/**/*.min.css",
+					"css/**/*.css",
 					"frontend/**",
 					"images/**",
 					"includes/**",
