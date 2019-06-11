@@ -1,7 +1,9 @@
 .idea/
 .svn/
-css/dist/*
+.wordpress-svn/
+css/dist/*css
 artifact/
+artifact.zip
 node_modules/
 vendor/
 test.sh
