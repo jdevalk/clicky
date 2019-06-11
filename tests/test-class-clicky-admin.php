@@ -28,7 +28,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * @covers Clicky_Admin::__construct
 	 */
 	public function test___construct() {
-		$this->assertSame( self::$class_instance->options, Clicky_Options::$option_defaults );
+		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );
 
 		$this->assertSame( 10, has_filter( 'plugin_action_links', array( self::$class_instance, 'add_action_link' ) ) );
 
