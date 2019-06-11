@@ -12,17 +12,6 @@ module.exports = {
 			'phpcs'
 		]
 	},
-	js: {
-		files: [
-			'<%= files.js %>'
-		],
-		tasks: [
-			'build:js',
-			'jshint:plugin',
-			'jsvalidate:plugin',
-			'jscs:plugin'
-		]
-	},
 	css: {
 		files: [
 			'<%= paths.sass %>'
