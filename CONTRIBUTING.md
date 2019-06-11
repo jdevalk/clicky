@@ -17,16 +17,18 @@ For localization, please refer to [translate.yoast.com](http://translate.yoast.c
 
 ## Making Changes
 
-* Fork the repository on GitHub
-* Make the changes to your forked repository
+* Fork the repository on GitHub.
+* Run `composer install`, then `yarn install` and `grunt build` to get a working plugin.
+* Make the changes to your forked repository.
   * Ensure you stick to the [WordPress Coding Standards](http://codex.wordpress.org/WordPress_Coding_Standards) and have properly documented any new functions.
+  * Running `grunt check` to check for coding standards issues.
 * When committing, reference your issue (if present) and include a note about the fix.
 * Push the changes to your fork and submit a pull request to the 'master' branch of the Clicky for WordPress repository.
 
 ## Code Documentation
 
 * We ensure that every Clicky for WordPress function is documented well and follows the standards set by phpDoc.
-* An example function can be found [here](https://gist.github.com/jdevalk/5574677)
+* An example function can be found [here](https://gist.github.com/jdevalk/5574677).
 * Please make sure that every function is documented so that when we update our API Documentation things don't go awry!
 * Finally, please use tabs and not spaces. The tab indent size should be 8 for all Clicky for WordPress code.
 
