@@ -77,7 +77,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		$output = ob_get_clean();
 
 		$this->assertGreaterThan( 0, strlen( $output ) );
-		$this->assertTrue( is_int( strpos( $output, '//clicky.com/145844' ) ) );
+		$this->assertContains( '//clicky.com/145844', $output );
 	}
 
 	/**
@@ -104,7 +104,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		$output = ob_get_clean();
 
 		$this->assertGreaterThan( 0, strlen( $output ) );
-		$this->assertTrue( is_int( strpos( $output, 'clicky.com/forums' ) ) );
+		$this->assertContains( 'clicky.com/forums', $output );
 	}
 
 	/**
