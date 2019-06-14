@@ -1,34 +1,5 @@
 # Grunt aliases
 ---
-# Build everything
-build:
-  - 'build:images'
-  - 'build:css'
-  - 'build:i18n'
-
-# Build CSS from SCSS to production
-'build:css':
-  - 'clean:build-assets-css'
-  - 'sass:build'
-  - 'postcss:build'
-  - 'rtlcss:build'
-
-# Optimise images from source to production
-'build:images':
-  - 'imagemin'
-
-# Build internationalisation features
-'build:i18n':
-  - 'addtextdomain'
-  - 'makepot'
-  - 'glotpress_download'
-
-# Check health of the project
-check:
-  - 'shell:php-lint'
-  - 'phpcs'
-  - 'checktextdomain'
-
 # Build a distribution zip file
 'artifact':
   - 'shell:composer-install-production'
@@ -48,10 +19,9 @@ check:
   - 'update-version:initializer'
 
 # Get the project ready for release
+# Note that using this command triggers some global variables to be different than if you use simply `build`
 release:
-  - 'build:images'
-  - 'build:css'
-  - 'build:i18n'
+  - build
 
 # Deploy current state to WordPress.org trunk
 'deploy:trunk':

@@ -25,17 +25,6 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	}
 
 	/**
-	 * Determine whether or not to send the minified version.
-	 *
-	 * @param string $ext Extension to use for asset.
-	 *
-	 * @return string
-	 */
-	private function file_ext( $ext ) {
-		return ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? $ext : '.min' . $ext;
-	}
-
-	/**
 	 * Enqueue the styles for the admin page.
 	 */
 	public function config_page_styles() {
@@ -46,7 +35,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Enqueue the scripts for the admin page.
 	 */
 	public function config_page_scripts() {
-		wp_enqueue_script( 'clicky-admin-js', CLICKY_PLUGIN_DIR_URL . 'js/admin' . $this->file_ext( '.js' ), null, CLICKY_PLUGIN_VERSION );
+		wp_enqueue_script( 'clicky-admin-js', CLICKY_PLUGIN_DIR_URL . 'js/admin.min.js', null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**

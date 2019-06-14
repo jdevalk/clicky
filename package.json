@@ -1,27 +1,24 @@
 {
-   "name": "clicky",
-   "description": "Development files for the Clicky WordPress plugin",
-   "plugin": {
-      "glotpress": "https://translate.yoast.com",
-      "glotpress_path": "clicky-wordpress-plugin",
-      "textdomain": "clicky"
-   },
-   "pot": {
-      "reportmsgidbugsto": "https://github.com/yoast/clicky/issues",
-      "languageteam": "Yoast Translate <translations@yoast.com>",
-      "lasttranslator": "Yoast Translate Team <translations@yoast.com>"
-   },
-   "repository": {
-      "type": "git",
-      "url": "https://github.com/Yoast/clicky"
-   },
-   "devDependencies": {
-      "@yoast/grunt-plugin-tasks": "^1.1.0",
-      "grunt-jsbeautifier": "^0.2.13",
-      "cssnano": "^4.1.10",
-      "request": "^2.88.0"
-   },
-   "yoast": {
-      "pluginVersion": "1.8"
-   }
+  "name": "clicky",
+  "description": "Development files for the Clicky WordPress plugin",
+  "plugin": {
+    "glotpress": "https://translate.yoast.com",
+    "glotpress_path": "clicky-wordpress-plugin",
+    "textdomain": "clicky"
+  },
+  "pot": {
+    "reportmsgidbugsto": "https://github.com/yoast/clicky/issues",
+    "languageteam": "Yoast Translate <translations@yoast.com>",
+    "lasttranslator": "Yoast Translate Team <translations@yoast.com>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yoast/clicky"
+  },
+  "devDependencies": {
+    "@yoast/grunt-plugin-tasks": "https://github.com/Yoast/plugin-grunt-tasks.git#develop"
+  },
+  "yoast": {
+    "pluginVersion": "1.8"
+  }
 }

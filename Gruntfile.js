@@ -1,10 +1,11 @@
-developmentBuild = true;
+var path = require( "path" );
+var loadGruntConfig = require( "load-grunt-config" );
+var timeGrunt = require( "time-grunt" );
+global.developmentBuild = true;
 
-/* global developmentBuild, require, process, development_build */
-module.exports = function(grunt) {
-	'use strict';
-
-	require('time-grunt')(grunt);
+/* global global, require, process */
+module.exports = function( grunt ) {
+	timeGrunt( grunt );
 
 	const pkg = grunt.file.readJSON( "package.json" );
 	const pluginVersion = pkg.yoast.pluginVersion;
@@ -14,69 +15,94 @@ module.exports = function(grunt) {
 		pluginVersion: pluginVersion,
 		pluginSlug: "clicky",
 		pluginMainFile: "clicky.php",
+		pluginVersionConstant: "CLICKY_PLUGIN_VERSION",
 		paths: {
+			/**
+			 * Get config path.
+			 *
+			 * @returns {string} config path.
+			 */
 			get config() {
-				return this.grunt + 'config/';
+				return this.grunt + "config/";
 			},
-			css: 'css/dist/',
-			sass: 'css/src/',
-			grunt: 'grunt/',
-			images: 'images/',
-			js: 'js/',
-			languages: 'languages/',
-			logs: 'logs/',
-			vendor: 'vendor/',
+			css: "css/dist/",
+			sass: "css/src/",
+			grunt: "grunt/",
+			images: "images/",
+			assets: "svn-assets/",
+			js: "js/",
+			languages: "languages/",
+			logs: "logs/",
+			vendor: "vendor/",
 			svnCheckoutDir: ".wordpress-svn",
 		},
 		files: {
 			css: [
-				'css/dist/*.css',
-				'!css/dist/*.min.css'
+				"css/dist/*.css",
+				"!css/dist/*.min.css",
+			],
+			sass: [
+				"css/src/*.scss",
 			],
 			images: [
-				'images/*'
+				"images/*",
 			],
 			js: [
-				'js/*.js',
-				'!js/*.min.js'
+				"js/*.js",
+				"!js/*.min.js",
 			],
 			php: [
-				'*.php',
-				'admin/**/*.php',
-				'frontend/**/*.php',
-				'includes/**/*.php'
+				"*.php",
+				"admin/**/*.php",
+				"frontend/**/*.php",
+				"includes/**/*.php",
 			],
-			phptests: 'tests/**/*.php',
+			phptests: "tests/**/*.php",
+			/**
+			 * Gets config path glob.
+			 *
+			 * @returns {string} Config path glob.
+			 */
 			get config() {
-				return project.paths.config + '*.js';
+				return project.paths.config + "*.js";
 			},
+			/**
+			 * Gets changelog path.
+			 *
+			 * @returns {string} Changelog path.
+			 */
 			get changelog() {
-				return project.paths.theme + 'changelog.txt';
+				return project.paths.theme + "changelog.txt";
 			},
-			grunt: 'Gruntfile.js',
-			artifact: 'artifact',
-			artifactComposer: 'artifact-composer',
+			grunt: "Gruntfile.js",
+			artifact: "artifact",
+			artifactComposer: "artifact-composer",
 		},
-		pkg: pkg
+		sassFiles: {
+			"css/dist/adminbar.css": "css/src/adminbar.scss",
+			"css/dist/clicky_admin.css": "css/src/clicky_admin.scss",
+		},
+		pkg: pkg,
 	};
 
 	// Used to switch between development and release builds
-	if ( [ 'release', 'artifact', 'deploy:trunk', 'deploy:master' ].includes( process.argv[2] ) ) {
-		developmentBuild = false;
+	if ( [ "release", "artifact", "deploy:trunk", "deploy:master" ].includes( process.argv[ 2 ] ) ) {
+		global.developmentBuild = false;
 	}
 
 	// Load Grunt configurations and tasks
-	require( 'load-grunt-config' )(grunt, {
-		configPath: require( 'path' ).join( process.cwd(), project.paths.config ),
+	loadGruntConfig( grunt, {
+		configPath: path.join( process.cwd(), "node_modules/@yoast/grunt-plugin-tasks/config/" ),
+		overridePath: path.join( process.cwd(), project.paths.config ),
 		data: project,
 		jitGrunt: {
 			staticMappings: {
-				addtextdomain: 'grunt-wp-i18n',
-				makepot: 'grunt-wp-i18n',
-				glotpress_download: 'grunt-glotpress',
+				addtextdomain: "grunt-wp-i18n",
+				makepot: "grunt-wp-i18n",
+				glotpress_download: "grunt-glotpress",
 				"update-version": "@yoast/grunt-plugin-tasks",
 				"set-version": "@yoast/grunt-plugin-tasks",
-			}
-		}
-	});
+			},
+		},
+	} );
 };
