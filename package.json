@@ -16,7 +16,7 @@
     "url": "https://github.com/Yoast/clicky"
   },
   "devDependencies": {
-    "@yoast/grunt-plugin-tasks": "https://github.com/Yoast/plugin-grunt-tasks.git#develop"
+    "@yoast/grunt-plugin-tasks": "1.3.0"
   },
   "yoast": {
     "pluginVersion": "1.8"
