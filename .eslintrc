@@ -1,0 +1,10 @@
+extends: yoast
+
+parser: babel-eslint
+
+rules:
+  camelcase: 1
+
+settings:
+  react:
+    version: "16.3"
