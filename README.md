@@ -15,6 +15,8 @@ While the documentation for the [Clicky for WordPress plugin](https://yoast.com/
 you can browse the source of the project, find and discuss open issues and even
 [contribute yourself](https://github.com/Yoast/clicky/blob/trunk/CONTRIBUTING.md).
 
+This repository uses [the Yoast grunt tasks plugin](https://github.com/Yoast/plugin-grunt-tasks).
+
 Installation
 ------------
 
