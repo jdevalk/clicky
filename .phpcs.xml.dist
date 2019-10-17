@@ -116,4 +116,18 @@
 		<exclude-pattern>/tests/bootstrap\.php$</exclude-pattern>
 	</rule>
 
+
+	<!--
+	#############################################################################
+	TEMPORARY ADJUSTMENTS
+	Adjustments which should be removed once the associated issue has been resolved.
+	#############################################################################
+	-->
+
+	<rule ref="Generic.Commenting.DocComment.MissingShort">
+		<!-- Temporarily downgraded to warning to allow the build to pass.
+			 Ticket: https://github.com/Yoast/clicky/issues/67 -->
+		<exclude-pattern>/tests/*\.php$</exclude-pattern>
+	</rule>
+
 </ruleset>

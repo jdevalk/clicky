@@ -38,7 +38,7 @@
       "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --config-set default_standard Yoast"
     ],
     "check-cs": [
-      "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
+      "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set ignore_warnings_on_exit 1"
     ],
     "fix-cs": [
       "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
