@@ -52,8 +52,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $content Content to display.
 	 */
 	private function box( $title, $content ) {
-		// @codingStandardsIgnoreLine
-		echo '<div class="yoast_box"><h3>' . esc_html( $title ) . '</h3><div class="inside">' . $content . '</div></div>';
+		echo '<div class="yoast_box"><h3>' . esc_html( $title ) . '</h3><div class="inside">' . wp_kses_post( $content ) . '</div></div>';
 	}
 
 	/**
