@@ -289,6 +289,7 @@ class Clicky_Visitor_Graph {
 		$image = ob_get_contents();
 		ob_end_clean();
 
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- Valid use of base64_encode.
 		$image = 'data:image/png;base64,' . base64_encode( $image );
 
 		return $image;
