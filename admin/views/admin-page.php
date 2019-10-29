@@ -31,7 +31,19 @@
 		<?php
 			submit_button( __( 'Save Clicky settings', 'clicky' ) );
 
-			do_action( 'clicky_admin_footer' );
+			/**
+			 * Allow for adding content to the Yoast Clicky admin page footer.
+			 *
+			 * @deprecated 1.10.0. Use the {@see 'Yoast\WP\Clicky\admin_footer'} action instead.
+			 */
+			do_action_deprecated( 'clicky_admin_footer', array(), 'Yoast Clicky 1.10.0', 'Yoast\WP\Clicky\admin_footer' );
+
+			/**
+			 * Allow for adding content to the Yoast Clicky admin page footer.
+			 *
+			 * @since 1.10.0
+			 */
+			do_action( 'Yoast\WP\Clicky\admin_footer' );
 		?>
 	</div>
 	</form>

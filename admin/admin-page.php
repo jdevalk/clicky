@@ -126,7 +126,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 				'textdomain'     => 'clicky',
 				'project_slug'   => 'clicky-wordpress-plugin',
 				'plugin_name'    => __( 'Clicky for WordPress', 'clicky' ),
-				'hook'           => 'clicky_admin_footer',
+				'hook'           => 'Yoast\WP\Clicky\admin_footer',
 				'glotpress_url'  => 'http://translate.yoast.com',
 				'glotpress_name' => __( 'Yoast Translate', 'clicky' ),
 				'glotpress_logo' => 'https://cdn.yoast.com/wp-content/uploads/i18n-images/Yoast_Translate.svg',
