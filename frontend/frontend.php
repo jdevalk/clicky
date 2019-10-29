@@ -15,7 +15,7 @@ class Clicky_Frontend {
 	 *
 	 * @var array
 	 */
-	private $options = array();
+	private $options = [];
 
 	/**
 	 * Class constructor.
@@ -27,8 +27,8 @@ class Clicky_Frontend {
 			return;
 		}
 
-		add_action( 'wp_head', array( $this, 'script' ), 90 );
-		add_action( 'comment_post', array( $this, 'track_comment' ), 10, 2 );
+		add_action( 'wp_head', [ $this, 'script' ], 90 );
+		add_action( 'comment_post', [ $this, 'track_comment' ], 10, 2 );
 	}
 
 	/**
@@ -133,17 +133,17 @@ class Clicky_Frontend {
 			$comment = get_comment( $comment_id );
 			// Only do this for normal comments, not for pingbacks or trackbacks.
 			if ( $comment->comment_type !== 'pingback' && $comment->comment_type !== 'trackback' ) {
-				$args   = array(
+				$args   = [
 					'type'       => 'click',
 					'href'       => '/wp-comments-post.php',
 					'title'      => __( 'Posted a comment', 'clicky' ),
 					'ua'         => $comment->comment_agent,
 					'ip_address' => $comment->comment_author_IP,
-				);
-				$custom = array(
+				];
+				$custom = [
 					'username' => $comment->comment_author,
 					'email'    => $comment->comment_author_email,
-				);
+				];
 
 				$this->log_comment( $args, $custom );
 			}

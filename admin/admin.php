@@ -15,7 +15,7 @@ class Clicky_Admin {
 	 *
 	 * @var array
 	 */
-	public $options = array();
+	public $options = [];
 
 	/**
 	 * Menu slug for WordPress admin.
@@ -35,24 +35,24 @@ class Clicky_Admin {
 	public function __construct() {
 		$this->options = Clicky_Options::instance()->get();
 
-		add_filter( 'plugin_action_links', array( $this, 'add_action_link' ), 10, 2 );
+		add_filter( 'plugin_action_links', [ $this, 'add_action_link' ], 10, 2 );
 
-		add_action( 'publish_post', array( $this, 'insert_post' ) );
-		add_action( 'admin_notices', array( $this, 'admin_warnings' ) );
-		add_action( 'admin_menu', array( $this, 'admin_init' ) );
+		add_action( 'publish_post', [ $this, 'insert_post' ] );
+		add_action( 'admin_notices', [ $this, 'admin_warnings' ] );
+		add_action( 'admin_menu', [ $this, 'admin_init' ] );
 	}
 
 	/**
 	 * Initialize needed actions.
 	 */
 	public function admin_init() {
-		$public_post_types = get_post_types( array( 'public' => true ) );
+		$public_post_types = get_post_types( [ 'public' => true ] );
 
 		foreach ( $public_post_types as $post_type ) {
 			add_meta_box(
 				'clicky',
 				__( 'Clicky Goal Tracking', 'clicky' ),
-				array( $this, 'meta_box_content' ),
+				[ $this, 'meta_box_content' ],
 				$post_type,
 				'side'
 			);
@@ -73,7 +73,7 @@ class Clicky_Admin {
 			__( 'Clicky', 'clicky' ),
 			'manage_options',
 			$this->hook,
-			array( new Clicky_Admin_Page(), 'config_page' )
+			[ new Clicky_Admin_Page(), 'config_page' ]
 		);
 
 		add_dashboard_page(
@@ -81,7 +81,7 @@ class Clicky_Admin {
 			__( 'Clicky Stats', 'clicky' ),
 			'manage_options',
 			'clicky_stats',
-			array( $this, 'dashboard_page' )
+			[ $this, 'dashboard_page' ]
 		);
 	}
 
@@ -89,7 +89,7 @@ class Clicky_Admin {
 	 * Creates warnings for empty fields in the admin.
 	 */
 	public function admin_warnings() {
-		$required_options = array( 'site_id', 'site_key', 'admin_site_key' );
+		$required_options = [ 'site_id', 'site_key', 'admin_site_key' ];
 
 		foreach ( $required_options as $option ) {
 			if ( empty( $this->options[ $option ] ) ) {
@@ -148,10 +148,10 @@ class Clicky_Admin {
 	 * @param int $post_id The post ID.
 	 */
 	public function insert_post( $post_id ) {
-		$clicky_goal = array(
+		$clicky_goal = [
 			'id'    => (int) filter_input( INPUT_POST, 'clicky_goal_id' ),
 			'value' => (float) filter_input( INPUT_POST, 'clicky_goal_value' ),
-		);
+		];
 		update_post_meta( $post_id, '_clicky_goal', $clicky_goal );
 	}
 
@@ -159,10 +159,10 @@ class Clicky_Admin {
 	 * Loads (external) stats page in an iframe.
 	 */
 	public function dashboard_page() {
-		$args       = array(
+		$args       = [
 			'site_id' => $this->options['site_id'],
 			'sitekey' => $this->options['site_key'],
-		);
+		];
 		$iframe_url = add_query_arg( $args, 'https://clicky.com/stats/wp-iframe?' );
 
 		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/stats-page.php';

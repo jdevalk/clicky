@@ -30,11 +30,11 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	public function test___construct() {
 		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );
 
-		$this->assertSame( 10, has_filter( 'plugin_action_links', array( self::$class_instance, 'add_action_link' ) ) );
+		$this->assertSame( 10, has_filter( 'plugin_action_links', [ self::$class_instance, 'add_action_link' ] ) );
 
-		$this->assertSame( 10, has_action( 'publish_post', array( self::$class_instance, 'insert_post' ) ) );
-		$this->assertSame( 10, has_action( 'admin_notices', array( self::$class_instance, 'admin_warnings' ) ) );
-		$this->assertSame( 10, has_action( 'admin_menu', array( self::$class_instance, 'admin_init' ) ) );
+		$this->assertSame( 10, has_action( 'publish_post', [ self::$class_instance, 'insert_post' ] ) );
+		$this->assertSame( 10, has_action( 'admin_notices', [ self::$class_instance, 'admin_warnings' ] ) );
+		$this->assertSame( 10, has_action( 'admin_menu', [ self::$class_instance, 'admin_init' ] ) );
 	}
 
 	/**
@@ -83,10 +83,10 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 		global $post;
 		$post = get_post( $post_id );
 
-		$clicky_goal = array(
+		$clicky_goal = [
 			'id'    => 1,
 			'value' => 0.5,
-		);
+		];
 		update_post_meta( $post_id, '_clicky_goal', $clicky_goal );
 
 		ob_start();
@@ -101,16 +101,16 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * @covers Clicky_Admin::insert_post
 	 */
 	public function test_insert_post() {
-		add_action( 'wp_insert_post', array( self::$class_instance, 'insert_post' ) );
+		add_action( 'wp_insert_post', [ self::$class_instance, 'insert_post' ] );
 
 		$post_id = $this->factory->post->create();
 
 		$goal = get_post_meta( $post_id, '_clicky_goal', true );
 
-		$expected = array(
+		$expected = [
 			'id'    => 0,
 			'value' => 0.0,
-		);
+		];
 
 		$this->assertSame( $expected, $goal );
 	}
@@ -136,7 +136,7 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * @covers Clicky_Admin::add_action_link
 	 */
 	public function test_add_action_link() {
-		$output   = self::$class_instance->add_action_link( array(), CLICKY_PLUGIN_FILE );
+		$output   = self::$class_instance->add_action_link( [], CLICKY_PLUGIN_FILE );
 		$expected = '<a href="' . admin_url( 'options-general.php?page=clicky' ) . '">Settings</a>';
 
 		$this->assertSame( $expected, $output[0] );

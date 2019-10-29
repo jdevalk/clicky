@@ -21,9 +21,9 @@ if ( false !== getenv( 'WP_PLUGIN_DIR' ) ) {
 	define( 'WP_PLUGIN_DIR', getenv( 'WP_PLUGIN_DIR' ) );
 }
 
-$GLOBALS['wp_tests_options'] = array(
-	'active_plugins' => array( 'clicky/clicky.php' ),
-);
+$GLOBALS['wp_tests_options'] = [
+	'active_plugins' => [ 'clicky/clicky.php' ],
+];
 
 if ( defined( 'WP_DEVELOP_DIR' ) ) {
 	if ( file_exists( WP_DEVELOP_DIR . 'tests/phpunit/includes/bootstrap.php' ) ) {

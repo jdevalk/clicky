@@ -36,7 +36,7 @@
 			 *
 			 * @deprecated 1.10.0. Use the {@see 'Yoast\WP\Clicky\admin_footer'} action instead.
 			 */
-			do_action_deprecated( 'clicky_admin_footer', array(), 'Yoast Clicky 1.10.0', 'Yoast\WP\Clicky\admin_footer' );
+			do_action_deprecated( 'clicky_admin_footer', [], 'Yoast Clicky 1.10.0', 'Yoast\WP\Clicky\admin_footer' );
 
 			/**
 			 * Allow for adding content to the Yoast Clicky admin page footer.

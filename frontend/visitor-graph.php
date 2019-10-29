@@ -22,7 +22,7 @@ class Clicky_Visitor_Graph {
 	 *
 	 * @var array
 	 */
-	private $bar_values = array();
+	private $bar_values = [];
 
 	/**
 	 * Height of the generated image.
@@ -64,7 +64,7 @@ class Clicky_Visitor_Graph {
 	 *
 	 * @var array
 	 */
-	private $options = array();
+	private $options = [];
 
 	/**
 	 * The ratio between a value and the overall image height.
@@ -95,8 +95,8 @@ class Clicky_Visitor_Graph {
 			return;
 		}
 
-		add_action( 'wp_head', array( $this, 'stats_css' ) );
-		add_action( 'admin_bar_menu', array( $this, 'stats_admin_bar_menu' ), 100 );
+		add_action( 'wp_head', [ $this, 'stats_css' ] );
+		add_action( 'admin_bar_menu', [ $this, 'stats_admin_bar_menu' ], 100 );
 	}
 
 	/**
@@ -130,11 +130,11 @@ class Clicky_Visitor_Graph {
 		$url   = 'https://secure.getclicky.com/stats/?site_id=' . $this->options['site_id'];
 		$title = __( 'Visitors over 48 hours. Click for more Clicky Site Stats.', 'clicky' );
 
-		$menu = array(
+		$menu = [
 			'id'    => 'clickystats',
 			'title' => "<img width='99' height='20' src='" . $img_src . "' alt='" . esc_attr( $title ) . "' title='" . esc_attr( $title ) . "' />",
 			'href'  => $url,
-		);
+		];
 
 		$wp_admin_bar->add_menu( $menu );
 	}
@@ -167,14 +167,14 @@ class Clicky_Visitor_Graph {
 	 * @link https://codex.wordpress.org/Function_Reference/wp_remote_get
 	 */
 	private function retrieve_clicky_api_details() {
-		$args = array(
+		$args = [
 			'site_id' => $this->options['site_id'],
 			'sitekey' => $this->options['site_key'],
 			'type'    => 'visitors',
 			'hourly'  => 1,
 			'date'    => 'last-3-days',
 			'output'  => 'json',
-		);
+		];
 		$url  = 'https://api.getclicky.com/api/stats/4?' . http_build_query( $args );
 
 		$resp = wp_remote_get( $url );
@@ -212,7 +212,7 @@ class Clicky_Visitor_Graph {
 		}
 
 		$hours  = 0;
-		$values = array();
+		$values = [];
 
 		foreach ( $json[0]->dates as $date ) {
 			foreach ( $date->items as $item ) {
