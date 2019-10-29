@@ -1,8 +1,8 @@
 === Clicky by Yoast ===
 Contributors: joostdevalk, yoast
 Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Yoast
-Requires at least: 5.1
-Tested up to: 5.2
+Requires at least: 5.2
+Tested up to: 5.3
 Stable tag: 1.8
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
