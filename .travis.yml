@@ -60,7 +60,7 @@ script:
 - if [[ "$PHPCS" == "1" ]]; then composer check-cs;fi
 - |
   if [[ "$CODE_CLIMATE" == "1" ]]; then
-    bash tests/bin/code_climate.sh
+    vendor/bin/phpunit --coverage-clover build/logs/clover.xml
   elif [[ ${TRAVIS_PHP_VERSION:0:3} > "7.1" ]]; then
     vendor/bin/phpunit
   else
@@ -70,3 +70,10 @@ script:
 # Validate the composer.json file.
 # @link https://getcomposer.org/doc/03-cli.md#validate
 - if [[ $TRAVIS_PHP_VERSION == "5.6" || $TRAVIS_PHP_VERSION == "7.3" ]]; then composer validate --no-check-all; fi
+
+after_script:
+- |
+  if [[ "$CODE_CLIMATE" == "1" ]]; then
+    vendor/bin/test-reporter --stdout > codeclimate.json
+    curl -X POST -d @codeclimate.json -H "Content-Type\: application/json" -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports
+  fi
