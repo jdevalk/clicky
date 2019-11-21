@@ -107,7 +107,7 @@ class Clicky_Visitor_Graph {
 
 		echo "\n";
 		echo "<style type='text/css'>\n";
-		readfile( CLICKY_PLUGIN_DIR_PATH . '/css/adminbar' . $ext );
+		readfile( CLICKY_PLUGIN_DIR_PATH . 'css/adminbar' . $ext );
 		echo "\n";
 		echo "</style>\n";
 	}
