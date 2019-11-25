@@ -1,9 +1,12 @@
 === Clicky by Yoast ===
 Contributors: joostdevalk, yoast
-Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Yoast
-Requires at least: 5.1
-Tested up to: 5.2
-Stable tag: 1.8
+Tags: analytics, statistics, clicky, getclicky, affiliate
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl.html
+Requires at least: 5.2
+Tested up to: 5.3
+Requires PHP: 5.6.20
+Stable tag: 1.9
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
 
@@ -37,6 +40,12 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 3. The stats indicator on the WordPress Toolbar.
 
 == Changelog ==
+
+= 1.9 =
+
+* Updated required PHP version to 5.6.
+* Lots of code style and escaping improvements.
+* Fixes a PHP warning for a file that's not found in some setups, props [Miller Media](https://github.com/Miller-Media). 
 
 = 1.8 =
 
