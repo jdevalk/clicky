@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/7.5/phpunit.xsd"
+		backupGlobals="false"
+		backupStaticAttributes="false"
+		bootstrap="tests/bootstrap.php"
+		colors="true"
+		convertErrorsToExceptions="true"
+		convertNoticesToExceptions="true"
+		convertWarningsToExceptions="true"
+		processIsolation="false"
+		stopOnError="false"
+		stopOnFailure="false"
+		stopOnIncomplete="false"
+		stopOnSkipped="false"
+		verbose="true"
+	>
+	<testsuites>
+		<testsuite name="clicky">
+			<directory prefix="test-" suffix=".php">./tests/</directory>
+		</testsuite>
+	</testsuites>
+
+	<filter>
+		<whitelist>
+			<file>./clicky.php</file>
+			<directory>./admin</directory>
+			<directory>./frontend</directory>
+			<directory>./includes</directory>
+		</whitelist>
+	</filter>
+</phpunit>

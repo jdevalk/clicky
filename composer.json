@@ -6,7 +6,7 @@
     "clicky"
   ],
   "homepage": "https://yoast.com/wordpress/plugins/clicky/",
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Joost de Valk",
@@ -22,7 +22,8 @@
   },
   "require-dev": {
     "codeclimate/php-test-reporter": "dev-master",
-    "yoast/yoastcs": "^0.3.0"
+    "yoast/yoastcs": "^1.2.2",
+    "phpunit/phpunit": "^4.5 || ^5.7 || ^6.0 || ^7.0"
   },
   "autoload": {
     "classmap": [
@@ -35,6 +36,9 @@
     "config-yoastcs": [
       "\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/wp-coding-standards/wpcs,../../../vendor/yoast/yoastcs",
       "\"vendor/bin/phpcs\" --config-set default_standard Yoast"
+    ],
+    "fix-cs": [
+      "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
     ],
     "post-install-cmd": [
       "xrstf\\Composer52\\Generator::onPostInstallCmd"

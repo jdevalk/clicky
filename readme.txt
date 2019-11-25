@@ -1,10 +1,9 @@
 === Clicky by Yoast ===
-Contributors: joostdevalk
-Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Joost de Valk, Yoast
-Requires at least: 4.9
-Tested up to: 5.1
-Stable tag: 1.7
-Text Domain: clicky
+Contributors: joostdevalk, yoast
+Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Yoast
+Requires at least: 5.1
+Tested up to: 5.2
+Stable tag: 1.8
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
 
@@ -38,6 +37,12 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 3. The stats indicator on the WordPress Toolbar.
 
 == Changelog ==
+
+= 1.8 =
+
+* Lots of code style and escaping improvements.
+* Removed banner for the Yoast website review service as it's no longer offered.
+* Added RTL stylesheets.
 
 = 1.7 =
 
@@ -141,7 +146,7 @@ Released July 3rd, 2014.
 * No more unneeded JavaScript being loaded on the admin pages.
 * Made the Goal Tracking box work for all post types and made it smaller.
 * Removed some code that was no longer used.
-* Removed dashboard widget, added Yoast news widget to settings page.
+* Removed dashboard widget, added Yoast news widget to the settings page.
 * Added a small stats indicator of visitors in the last 48 to the WordPress toolbar.
 
 = 1.3 =

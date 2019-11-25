@@ -1,5 +1,13 @@
 .idea/
 .svn/
+.wordpress-svn/
+css/dist/*.css
+css/dist/*.map
+js/*.map
+js/*.min.css
+artifact/
+artifact.zip
 node_modules/
 vendor/
 test.sh
+phpunit.xml

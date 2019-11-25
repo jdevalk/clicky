@@ -1,22 +1,24 @@
 <?php
 /**
+ * Clicky for WordPress plugin file.
+ *
  * @package Yoast\Clicky\FrontEnd
  */
 
 /**
- * Frontend Class the Clicky plugin
+ * Frontend Class the Clicky plugin.
  */
 class Clicky_Frontend {
 
 	/**
-	 * Holds the plugin options
+	 * Holds the plugin options.
 	 *
 	 * @var array
 	 */
 	private $options = array();
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$this->options = Clicky_Options::instance()->get();
@@ -41,26 +43,26 @@ class Clicky_Frontend {
 
 		// Bail early if current user is admin and ignore admin is true.
 		if ( $this->options['ignore_admin'] && current_user_can( 'manage_options' ) ) {
-			echo "\n<!-- " . __( "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators.", 'clicky' ) . " -->\n";
+			echo "\n<!-- " . esc_html__( "Clicky tracking not shown because you're an administrator and you've configured Clicky to ignore administrators.", 'clicky' ) . " -->\n";
 
 			return;
 		}
 
 		if ( $this->options['track_names'] ) {
-			require 'views/comment-author-script.php';
+			require CLICKY_PLUGIN_DIR_PATH . 'frontend/views/comment-author-script.php';
 		}
 
-		$clicky_extra = $this->goal_tracking();
+		$clicky_extra  = $this->goal_tracking();
 		$clicky_extra .= $this->outbound_tracking();
 		$clicky_extra .= $this->disable_cookies();
 
-		require 'views/script.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'frontend/views/script.php';
 	}
 
 	/**
-	 * Handles the script generation for goal tracking
+	 * Handles the script generation for goal tracking.
 	 *
-	 * @return string Script code
+	 * @return string Script code.
 	 */
 	private function goal_tracking() {
 		if ( is_singular() ) {
@@ -81,22 +83,22 @@ class Clicky_Frontend {
 	}
 
 	/**
-	 * Handles the script generation for outbound link tracking
+	 * Handles the script generation for outbound link tracking.
 	 *
 	 * @return string
 	 */
 	private function outbound_tracking() {
-		if ( isset( $this->options['outbound_pattern'] ) && trim( $this->options['outbound_pattern'] ) != '' ) {
+		if ( isset( $this->options['outbound_pattern'] ) && trim( $this->options['outbound_pattern'] ) !== '' ) {
 
 			$patterns = preg_replace( '~[^\/a-zA-Z0-9,]+~', '', $this->options['outbound_pattern'] );
 
 			$patterns = explode( ',', $patterns );
 			$pattern  = '';
 			foreach ( $patterns as $pat ) {
-				if ( $pattern != '' ) {
+				if ( $pattern !== '' ) {
 					$pattern .= ',';
 				}
-				$pat = trim( str_replace( '"', '', str_replace( "'", '', $pat ) ) );
+				$pat      = trim( str_replace( '"', '', str_replace( "'", '', $pat ) ) );
 				$pattern .= "'" . $pat . "'";
 			}
 
@@ -107,7 +109,7 @@ class Clicky_Frontend {
 	}
 
 	/**
-	 * Determines whether or not we should disable cookie usage
+	 * Determines whether or not we should disable cookie usage.
 	 *
 	 * @return string
 	 */
@@ -120,17 +122,17 @@ class Clicky_Frontend {
 	}
 
 	/**
-	 * Tracks comments that are not spam and not ping- or trackbacks
+	 * Tracks comments that are not spam and not ping- or trackbacks.
 	 *
-	 * @param int $commentID      The ID of the comment that needs to be tracked.
+	 * @param int $comment_id     The ID of the comment that needs to be tracked.
 	 * @param int $comment_status Status of the comment (e.g. spam).
 	 */
-	public function track_comment( $commentID, $comment_status ) {
+	public function track_comment( $comment_id, $comment_status ) {
 		// Make sure to only track the comment if it's not spam (but do it for moderated comments).
-		if ( $comment_status != 'spam' ) {
-			$comment = get_comment( $commentID );
+		if ( $comment_status !== 'spam' ) {
+			$comment = get_comment( $comment_id );
 			// Only do this for normal comments, not for pingbacks or trackbacks.
-			if ( $comment->comment_type != 'pingback' && $comment->comment_type != 'trackback' ) {
+			if ( $comment->comment_type !== 'pingback' && $comment->comment_type !== 'trackback' ) {
 				$args   = array(
 					'type'       => 'click',
 					'href'       => '/wp-comments-post.php',
@@ -149,7 +151,7 @@ class Clicky_Frontend {
 	}
 
 	/**
-	 * Create the log for clicky
+	 * Create the log for clicky.
 	 *
 	 * @param array $log_data The array with basic log-data.
 	 * @param array $custom   The array with custom log-data for the comment author.

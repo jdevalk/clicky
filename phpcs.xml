@@ -12,7 +12,6 @@
     <arg value="nsp" />
 
     <rule ref="Yoast">
-        <exclude name="WordPress.CSRF.NonceVerification.NoNonceVerification" /><!-- TODO audit and fix nonces -->
-        <exclude name="WordPress.WP.PreparedSQL.NotPrepared" /><!-- TODO audit raw queries -->
+        <exclude name="Yoast.Files.FileName.InvalidClassFileName" />
     </rule>
 </ruleset>

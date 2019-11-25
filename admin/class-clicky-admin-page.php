@@ -1,15 +1,17 @@
 <?php
 /**
+ * Clicky for WordPress plugin file.
+ *
  * @package Yoast\Clicky\Admin
  */
 
 /**
- * Class for the Clicky plugin admin page
+ * Class for the Clicky plugin admin page.
  */
 class Clicky_Admin_Page extends Clicky_Admin {
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$options_admin = new Clicky_Options_Admin();
@@ -23,51 +25,42 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	}
 
 	/**
-	 * Determine whether or not to send the minified version
-	 *
-	 * @param string $ext Extension to use for asset.
-	 *
-	 * @return string
-	 */
-	private function file_ext( $ext ) {
-		return ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? $ext : '.min' . $ext;
-	}
-
-	/**
-	 * Enqueue the styles for the admin page
+	 * Enqueue the styles for the admin page.
 	 */
 	public function config_page_styles() {
-		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/clicky_admin' . $this->file_ext( '.css' ) );
+		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/dist/clicky_admin.css', null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
-	 * Enqueue the scripts for the admin page
+	 * Enqueue the scripts for the admin page.
 	 */
 	public function config_page_scripts() {
-		wp_enqueue_script( 'yoast_ga_admin', CLICKY_PLUGIN_DIR_URL . 'js/admin' . $this->file_ext( '.js' ) );
+		wp_enqueue_script( 'clicky-admin-js', CLICKY_PLUGIN_DIR_URL . 'js/admin.min.js', null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
-	 * Creates the configuration page
+	 * Creates the configuration page.
 	 */
 	public function config_page() {
-		require 'views/admin-page.php';
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/admin-page.php';
 	}
 
 	/**
-	 * Create a postbox widget
+	 * Create a postbox widget.
 	 *
 	 * @param string $title   Title to display.
 	 * @param string $content Content to display.
 	 */
 	private function box( $title, $content ) {
-		echo '<div class="yoast_box"><h3>' . $title . '</h3><div class="inside">' . $content . '</div></div>';
+		// @codingStandardsIgnoreLine
+		echo '<div class="yoast_box"><h3>' . esc_html( $title ) . '</h3><div class="inside">' . $content . '</div></div>';
 	}
 
 	/**
 	 * Info box with link to the bug tracker.
 	 */
 	private function plugin_support() {
+		/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
 		$content = '<p>' . sprintf( __( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ), "<a href='https://clicky.com/forums/'>", '</a>' ) . '</p>';
 		$this->box( __( 'Need Support?', 'clicky' ), $content );
 	}
@@ -80,27 +73,27 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $extra_links Additional links to add to the output, after the RSS subscribe link.
 	 */
 	private function rss_news( $feed, $title, $extra_links = '' ) {
-		include_once( ABSPATH . WPINC . '/feed.php' );
+		include_once ABSPATH . WPINC . '/feed.php';
 		$rss = fetch_feed( $feed );
 
 		if ( is_wp_error( $rss ) ) {
-			$rss = '<li class="yoast">' . __( 'No news items, feed might be broken...', 'clicky' ) . '</li>';
+			$rss = '<li class="yoast">' . esc_html__( 'No news items, feed might be broken...', 'clicky' ) . '</li>';
 		}
 		else {
 			$rss_items = $rss->get_items( 0, $rss->get_item_quantity( 3 ) );
 
 			$rss = '';
 			foreach ( $rss_items as $item ) {
-				$url = preg_replace( '/#.*/', '', esc_url( $item->get_permalink(), $protocolls = null, 'display' ) );
+				$url  = preg_replace( '/#.*/', '', esc_url( $item->get_permalink(), $protocolls = null, 'display' ) );
 				$rss .= '<li class="yoast">';
-				$rss .= '<a href="' . $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin">' . esc_html( $item->get_title() ) . '</a> ';
+				$rss .= '<a href="' . esc_url( $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin' ) . '">' . $item->get_title() . '</a> ';
 				$rss .= '</li>';
 			}
 		}
 
-		$content = '<ul>';
+		$content  = '<ul>';
 		$content .= $rss;
-		$content .= '<li class="rss"><a href="' . $feed . '">' . __( 'Subscribe with RSS', 'clicky' ) . '</a></li>';
+		$content .= '<li class="rss"><a href="' . esc_url( $feed ) . '">' . esc_html__( 'Subscribe with RSS', 'clicky' ) . '</a></li>';
 		$content .= $extra_links;
 		$content .= '</ul>';
 
@@ -108,43 +101,25 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	}
 
 	/**
-	 * Box with latest news from Clicky
+	 * Box with latest news from Clicky.
 	 */
 	private function clicky_news() {
 		$this->rss_news( 'http://clicky.com/blog/rss', __( 'Latest news from Clicky', 'clicky' ) );
 	}
 
 	/**
-	 * Box with latest news from Yoast.com for sidebar
+	 * Box with latest news from Yoast.com for sidebar.
 	 */
 	private function yoast_news() {
-		$extra_links = '<li class="facebook"><a href="https://www.facebook.com/yoast">' . __( 'Like Yoast on Facebook', 'clicky' ) . '</a></li>';
-		$extra_links .= '<li class="twitter"><a href="https://twitter.com/yoast">' . __( 'Follow Yoast on Twitter', 'clicky' ) . '</a></li>';
-		$extra_links .= '<li class="email"><a href="https://yoast.com/newsletter/">' . __( 'Subscribe by email', 'clicky' ) . '</a></li>';
+		$extra_links  = '<li class="facebook"><a href="https://www.facebook.com/yoast">' . esc_html__( 'Like Yoast on Facebook', 'clicky' ) . '</a></li>';
+		$extra_links .= '<li class="twitter"><a href="https://twitter.com/yoast">' . esc_html__( 'Follow Yoast on Twitter', 'clicky' ) . '</a></li>';
+		$extra_links .= '<li class="email"><a href="https://yoast.com/newsletter/">' . esc_html__( 'Subscribe by email', 'clicky' ) . '</a></li>';
 
 		$this->rss_news( 'https://yoast.com/feed/', __( 'Latest news from Yoast', 'clicky' ), $extra_links );
 	}
 
 	/**
-	 * Prints a banner image
-	 *
-	 * @param string $img Image to show.
-	 * @param string $url URL to use.
-	 * @param string $alt Alt to add.
-	 */
-	private function banner( $img, $url, $alt ) {
-		printf( '<a class="yoast_banner" href="%1$s" title="%3$s"><img src="%2$s" width="261" alt="%3$s"/></a>', $url, $img, $alt );
-	}
-
-	/**
-	 * Print a website review banner
-	 */
-	private function website_review_banner() {
-		$this->banner( CLICKY_PLUGIN_DIR_URL . 'images/banner-website-review.png', 'https://yoast.com/hire-us/website-review/#utm_source=clicky-config&utm_medium=banner&utm_campaign=website-review-banner', __( 'Get your site reviewed by team Yoast!', 'clicky' ) );
-	}
-
-	/**
-	 * Instantiate the i18n module
+	 * Instantiate the i18n module.
 	 */
 	public function i18n_module() {
 		new yoast_i18n(

@@ -1,30 +1,40 @@
 <?php
+/**
+ * Clicky for WordPress plugin test file.
+ *
+ * @package Yoast/Clicky/Tests
+ */
 
+/**
+ * Test class to test the Clicky_Admin class.
+ */
 class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 	/**
+	 * Instance of the class being tested.
+	 *
 	 * @var Clicky_Admin
 	 */
 	private static $class_instance;
 
+	/**
+	 * Set up the class instance to be tested.
+	 */
 	public static function setUpBeforeClass() {
-		self::$class_instance = new Clicky_Admin;
+		self::$class_instance = new Clicky_Admin();
 	}
 
 	/**
 	 * @covers Clicky_Admin::__construct
 	 */
 	public function test___construct() {
-		$this->assertEquals( self::$class_instance->options, Clicky_Options::$option_defaults );
+		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );
 
-		$this->assertEquals( 10, has_filter( 'plugin_action_links', array(
-			self::$class_instance,
-			'add_action_link'
-		) ) );
+		$this->assertSame( 10, has_filter( 'plugin_action_links', array( self::$class_instance, 'add_action_link' ) ) );
 
-		$this->assertEquals( 10, has_action( 'publish_post', array( self::$class_instance, 'insert_post' ) ) );
-		$this->assertEquals( 10, has_action( 'admin_notices', array( self::$class_instance, 'admin_warnings' ) ) );
-		$this->assertEquals( 10, has_action( 'admin_menu', array( self::$class_instance, 'admin_init' ) ) );
+		$this->assertSame( 10, has_action( 'publish_post', array( self::$class_instance, 'insert_post' ) ) );
+		$this->assertSame( 10, has_action( 'admin_notices', array( self::$class_instance, 'admin_warnings' ) ) );
+		$this->assertSame( 10, has_action( 'admin_menu', array( self::$class_instance, 'admin_init' ) ) );
 	}
 
 	/**
@@ -35,8 +45,8 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 		self::$class_instance->admin_init();
 
 		global $wp_meta_boxes;
-		$this->assertEquals( 'clicky', $wp_meta_boxes['post']['side']['default']['clicky']['id'] );
-		$this->assertEquals( 'clicky', $wp_meta_boxes['page']['side']['default']['clicky']['id'] );
+		$this->assertSame( 'clicky', $wp_meta_boxes['post']['side']['default']['clicky']['id'] );
+		$this->assertSame( 'clicky', $wp_meta_boxes['page']['side']['default']['clicky']['id'] );
 	}
 
 	/**
@@ -48,17 +58,17 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
-	 * @covers Clicky_Admin::setup_warning
+	 * Test whether no warnings are generated when the required keys are set.
 	 *
-	 * Test whether no warnings are generated when the required keys are set
+	 * @covers Clicky_Admin::setup_warning
 	 */
 	public function test_setup_warning_false() {
-		// Set the required variables to a value
+		// Set the required variables to a value.
 		self::$class_instance->options['site_id']        = 1;
 		self::$class_instance->options['site_key']       = 1;
 		self::$class_instance->options['admin_site_key'] = 1;
 
-		$this->expectOutputString( "" );
+		$this->expectOutputString( '' );
 		self::$class_instance->admin_warnings();
 	}
 
@@ -75,12 +85,12 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 		$clicky_goal = array(
 			'id'    => 1,
-			'value' => 0.5
+			'value' => 0.5,
 		);
 		update_post_meta( $post_id, '_clicky_goal', $clicky_goal );
 
 		ob_start();
-		require( 'admin/views/meta-box.php' );
+		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/meta-box.php';
 		$output = ob_get_clean();
 
 		$this->expectOutputString( $output );
@@ -99,10 +109,10 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 		$expected = array(
 			'id'    => 0,
-			'value' => 0.0
+			'value' => 0.0,
 		);
 
-		$this->assertEquals( $expected, $goal );
+		$this->assertSame( $expected, $goal );
 	}
 
 	/**
@@ -114,7 +124,8 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 		$expected = '<br/>
 <iframe style="margin-left: 20px; width: 100%; height: 1000px;"
-        src="https://clicky.com/stats/wp-iframe?site_id=1&amp;sitekey=2"></iframe>';
+		src="https://clicky.com/stats/wp-iframe?site_id=1&#038;sitekey=2"></iframe>
+';
 
 		$this->expectOutputString( $expected );
 
@@ -128,6 +139,6 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 		$output   = self::$class_instance->add_action_link( array(), CLICKY_PLUGIN_FILE );
 		$expected = '<a href="' . admin_url( 'options-general.php?page=clicky' ) . '">Settings</a>';
 
-		$this->assertEquals( $expected, $output[0] );
+		$this->assertSame( $expected, $output[0] );
 	}
 }

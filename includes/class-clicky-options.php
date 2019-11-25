@@ -1,29 +1,31 @@
 <?php
 /**
+ * Clicky for WordPress plugin file.
+ *
  * @package Yoast/Clicky/Options
  */
 
 /**
- * Options Class for the Clicky plugin
+ * Options Class for the Clicky plugin.
  *
  * @since 1.5
  */
 class Clicky_Options {
 
 	/**
-	 * The default options for the Clicky plugin
+	 * The default options for the Clicky plugin.
 	 *
 	 * @var array
 	 */
 	public static $option_defaults = array(
-		'site_id'          => '',           // There is no default site ID as we don't know it...
-		'site_key'         => '',           // There is no default site key as we don't know it...
-		'admin_site_key'   => '',           // There is no default admin site key as we don't know it...
-		'outbound_pattern' => '',           // By defaulting to an empty string here, we disable this functionality until it's set.
-		'ignore_admin'     => false,        // While ignoring an admin by default would make sense, it leads to admins thinking the plugin doesn't work.
-		'track_names'      => false,        // Tracking the names of commenters makes sense, but might be illegal in some countries, so we default to off.
-		'cookies_disable'  => false,        // No need to disable cookies by default as it severely impacts the quality of tracking.
-		'disable_stats'    => false,// The stats on the frontend are often found useful, but some people might want to disable them.
+		'site_id'          => '',    // There is no default site ID as we don't know it...
+		'site_key'         => '',    // There is no default site key as we don't know it...
+		'admin_site_key'   => '',    // There is no default admin site key as we don't know it...
+		'outbound_pattern' => '',    // By defaulting to an empty string here, we disable this functionality until it's set.
+		'ignore_admin'     => false, // While ignoring an admin by default would make sense, it leads to admins thinking the plugin doesn't work.
+		'track_names'      => false, // Tracking the names of commenters makes sense, but might be illegal in some countries, so we default to off.
+		'cookies_disable'  => false, // No need to disable cookies by default as it severely impacts the quality of tracking.
+		'disable_stats'    => false, // The stats on the frontend are often found useful, but some people might want to disable them.
 	);
 
 	/**
@@ -43,28 +45,28 @@ class Clicky_Options {
 	);
 
 	/**
-	 * Name of the option we're using
+	 * Name of the option we're using.
 	 *
 	 * @var string
 	 */
 	public static $option_name = 'clicky';
 
 	/**
-	 * Saving instance of it's own in this static var
+	 * Saving active instance of this class in this static var.
 	 *
 	 * @var object
 	 */
 	private static $instance;
 
 	/**
-	 * Holds the actual options
+	 * Holds the actual options.
 	 *
 	 * @var array
 	 */
 	public $options = array();
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$this->load_options();
@@ -115,7 +117,7 @@ class Clicky_Options {
 	}
 
 	/**
-	 * Returns the Clicky options
+	 * Returns the Clicky options.
 	 *
 	 * @return array
 	 */
