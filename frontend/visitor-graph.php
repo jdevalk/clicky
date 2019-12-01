@@ -123,7 +123,7 @@ class Clicky_Visitor_Graph {
 	 */
 	public function stats_admin_bar_menu( $wp_admin_bar ) {
 		$img_src = $this->create_graph();
-		if ( false === $img_src ) {
+		if ( $img_src === false ) {
 			return;
 		}
 
@@ -146,7 +146,7 @@ class Clicky_Visitor_Graph {
 	 */
 	private function create_graph() {
 		$result = $this->retrieve_clicky_api_details();
-		if ( false === $result ) {
+		if ( result === false ) {
 			return false;
 		}
 

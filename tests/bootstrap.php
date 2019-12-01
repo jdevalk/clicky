@@ -13,11 +13,11 @@ if ( function_exists( 'xdebug_disable' ) ) {
 echo 'Welcome to the Clicky Test Suite' . PHP_EOL;
 echo 'Version: 1.0' . PHP_EOL . PHP_EOL;
 
-if ( false !== getenv( 'WP_DEVELOP_DIR' ) ) {
+if ( getenv( 'WP_DEVELOP_DIR' ) !== false ) {
 	define( 'WP_DEVELOP_DIR', getenv( 'WP_DEVELOP_DIR' ) );
 }
 
-if ( false !== getenv( 'WP_PLUGIN_DIR' ) ) {
+if ( getenv( 'WP_PLUGIN_DIR' ) !== false ) {
 	define( 'WP_PLUGIN_DIR', getenv( 'WP_PLUGIN_DIR' ) );
 }
 
