@@ -3,7 +3,10 @@ Contributors: joostdevalk, yoast
 Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Yoast
 Requires at least: 5.2
 Tested up to: 5.3
+License: GPLv2
+License URI: http://www.gnu.org/licenses/gpl.html
 Stable tag: 1.8
+Requires PHP: 5.6.20
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
 
