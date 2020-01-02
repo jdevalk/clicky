@@ -13,17 +13,17 @@ if ( function_exists( 'xdebug_disable' ) ) {
 echo 'Welcome to the Clicky Test Suite' . PHP_EOL;
 echo 'Version: 1.0' . PHP_EOL . PHP_EOL;
 
-if ( false !== getenv( 'WP_DEVELOP_DIR' ) ) {
+if ( getenv( 'WP_DEVELOP_DIR' ) !== false ) {
 	define( 'WP_DEVELOP_DIR', getenv( 'WP_DEVELOP_DIR' ) );
 }
 
-if ( false !== getenv( 'WP_PLUGIN_DIR' ) ) {
+if ( getenv( 'WP_PLUGIN_DIR' ) !== false ) {
 	define( 'WP_PLUGIN_DIR', getenv( 'WP_PLUGIN_DIR' ) );
 }
 
-$GLOBALS['wp_tests_options'] = array(
-	'active_plugins' => array( 'clicky/clicky.php' ),
-);
+$GLOBALS['wp_tests_options'] = [
+	'active_plugins' => [ 'clicky/clicky.php' ],
+];
 
 if ( defined( 'WP_DEVELOP_DIR' ) ) {
 	if ( file_exists( WP_DEVELOP_DIR . 'tests/phpunit/includes/bootstrap.php' ) ) {

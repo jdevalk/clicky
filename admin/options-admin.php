@@ -21,7 +21,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_init', [ $this, 'admin_init' ] );
 
 		parent::__construct();
 	}
@@ -30,7 +30,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 * Register the needed option and its settings sections.
 	 */
 	public function admin_init() {
-		register_setting( self::$option_group, parent::$option_name, array( $this, 'sanitize_options_on_save' ) );
+		register_setting( self::$option_group, parent::$option_name, [ $this, 'sanitize_options_on_save' ] );
 
 		$this->register_basic_settings();
 		$this->register_advanced_settings();
@@ -44,24 +44,24 @@ class Clicky_Options_Admin extends Clicky_Options {
 		add_settings_section(
 			'basic-settings',
 			__( 'Basic settings', 'clicky' ),
-			array( $this, 'basic_settings_intro' ),
+			[ $this, 'basic_settings_intro' ],
 			'clicky'
 		);
 
-		$clicky_settings = array(
+		$clicky_settings = [
 			'site_id'        => __( 'Site ID', 'clicky' ),
 			'site_key'       => __( 'Site Key', 'clicky' ),
 			'admin_site_key' => __( 'Admin Site Key', 'clicky' ),
-		);
+		];
 		foreach ( $clicky_settings as $key => $label ) {
-			$args = array(
+			$args = [
 				'name'  => 'clicky[' . $key . ']',
 				'value' => $this->options[ $key ],
-			);
+			];
 			add_settings_field(
 				$key,
 				$label,
-				array( $this, 'input_text' ),
+				[ $this, 'input_text' ],
 				'clicky',
 				'basic-settings',
 				$args
@@ -71,14 +71,14 @@ class Clicky_Options_Admin extends Clicky_Options {
 		add_settings_section(
 			'clicky-like',
 			__( 'Like this plugin?', 'clicky' ),
-			array( $this, 'like_text' ),
+			[ $this, 'like_text' ],
 			'clicky'
 		);
 
 		add_settings_section(
 			'clicky-support',
 			__( 'Need support?', 'clicky' ),
-			array( $this, 'support_text' ),
+			[ $this, 'support_text' ],
 			'clicky'
 		);
 	}
@@ -89,33 +89,33 @@ class Clicky_Options_Admin extends Clicky_Options {
 	private function register_advanced_settings() {
 		add_settings_section( 'clicky-advanced', __( 'Advanced Settings', 'clicky' ), null, 'clicky-advanced' );
 
-		$advanced_settings = array(
-			'disable_stats'   => array(
+		$advanced_settings = [
+			'disable_stats'   => [
 				'label' => __( 'Disable Admin Bar stats', 'clicky' ),
 				'desc'  => __( 'If you don\'t want to display the stats in your admin menu, check this box.', 'clicky' ),
-			),
-			'ignore_admin'    => array(
+			],
+			'ignore_admin'    => [
 				'label' => __( 'Ignore Admin users', 'clicky' ),
 				'desc'  => __( 'If you are using a caching plugin, such as W3 Total Cache or WP-Supercache, please ensure that you have it configured to NOT use the cache for logged in users. Otherwise, admin users <em>will still</em> be tracked.', 'clicky' ),
-			),
-			'cookies_disable' => array(
+			],
+			'cookies_disable' => [
 				'label' => __( 'Disable cookies', 'clicky' ),
 				'desc'  => __( 'If you don\'t want Clicky to use cookies on your site, check this button. By doing so, uniqueness will instead be determined based on their IP address.', 'clicky' ),
-			),
-			'track_names'     => array(
+			],
+			'track_names'     => [
 				'label' => __( 'Track names of commenters', 'clicky' ),
-			),
-		);
+			],
+		];
 		foreach ( $advanced_settings as $key => $arr ) {
-			$args = array(
+			$args = [
 				'name'  => $key,
 				'value' => isset( $this->options[ $key ] ) ? $this->options[ $key ] : false,
 				'desc'  => isset( $arr['desc'] ) ? $arr['desc'] : '',
-			);
+			];
 			add_settings_field(
 				$key,
 				$arr['label'],
-				array( $this, 'input_checkbox' ),
+				[ $this, 'input_checkbox' ],
 				'clicky-advanced',
 				'clicky-advanced',
 				$args
@@ -130,19 +130,19 @@ class Clicky_Options_Admin extends Clicky_Options {
 		add_settings_section(
 			'clicky-outbound',
 			__( 'Outbound Links', 'clicky' ),
-			array( $this, 'outbound_explanation' ),
+			[ $this, 'outbound_explanation' ],
 			'clicky-advanced'
 		);
 
-		$args = array(
+		$args = [
 			'name'  => 'clicky[outbound_pattern]',
 			'value' => $this->options['outbound_pattern'],
 			'desc'  => __( 'For instance: <code>/out/,/go/</code>', 'clicky' ),
-		);
+		];
 		add_settings_field(
 			'outbound_pattern',
 			__( 'Outbound Link Pattern', 'clicky' ),
-			array( $this, 'input_text' ),
+			[ $this, 'input_text' ],
 			'clicky-advanced',
 			'clicky-outbound',
 			$args

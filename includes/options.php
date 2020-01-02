@@ -17,7 +17,7 @@ class Clicky_Options {
 	 *
 	 * @var array
 	 */
-	public static $option_defaults = array(
+	public static $option_defaults = [
 		'site_id'          => '',    // There is no default site ID as we don't know it...
 		'site_key'         => '',    // There is no default site key as we don't know it...
 		'admin_site_key'   => '',    // There is no default admin site key as we don't know it...
@@ -26,14 +26,14 @@ class Clicky_Options {
 		'track_names'      => false, // Tracking the names of commenters makes sense, but might be illegal in some countries, so we default to off.
 		'cookies_disable'  => false, // No need to disable cookies by default as it severely impacts the quality of tracking.
 		'disable_stats'    => false, // The stats on the frontend are often found useful, but some people might want to disable them.
-	);
+	];
 
 	/**
 	 * Holds the type of variable that each option is, so we can cast it to that.
 	 *
 	 * @var array
 	 */
-	public static $option_var_types = array(
+	public static $option_var_types = [
 		'site_id'          => 'string',
 		'site_key'         => 'string',
 		'admin_site_key'   => 'string',
@@ -42,7 +42,7 @@ class Clicky_Options {
 		'track_names'      => 'bool',
 		'cookies_disable'  => 'bool',
 		'disable_stats'    => 'bool',
-	);
+	];
 
 	/**
 	 * Name of the option we're using.
@@ -63,7 +63,7 @@ class Clicky_Options {
 	 *
 	 * @var array
 	 */
-	public $options = array();
+	public $options = [];
 
 	/**
 	 * Class constructor.

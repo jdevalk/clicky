@@ -23,7 +23,7 @@
   },
   "require-dev": {
     "codeclimate/php-test-reporter": "dev-master",
-    "yoast/yoastcs": "^1.3.0",
+    "yoast/yoastcs": "^2.0.0",
     "phpunit/phpunit": "^5.7 || ^6.0 || ^7.0"
   },
   "autoload": {
@@ -39,7 +39,7 @@
       "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --config-set default_standard Yoast"
     ],
     "check-cs": [
-      "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set ignore_warnings_on_exit 1"
+      "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
     ],
     "fix-cs": [
       "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"

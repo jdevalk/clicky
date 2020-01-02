@@ -22,10 +22,10 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 *
 	 * @var array
 	 */
-	public $test_args = array(
+	public $test_args = [
 		'name'  => 'testname',
 		'value' => 'testvalue',
-	);
+	];
 
 	/**
 	 * Set up the class instance to be tested.

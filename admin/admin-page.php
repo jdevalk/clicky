@@ -18,10 +18,10 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 		$this->options = $options_admin->get();
 
-		add_action( 'admin_print_scripts', array( $this, 'config_page_scripts' ) );
-		add_action( 'admin_print_styles', array( $this, 'config_page_styles' ) );
+		add_action( 'admin_print_scripts', [ $this, 'config_page_scripts' ] );
+		add_action( 'admin_print_styles', [ $this, 'config_page_styles' ] );
 
-		add_action( 'admin_head', array( $this, 'i18n_module' ) );
+		add_action( 'admin_head', [ $this, 'i18n_module' ] );
 	}
 
 	/**
@@ -122,16 +122,16 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 */
 	public function i18n_module() {
 		new yoast_i18n(
-			array(
+			[
 				'textdomain'     => 'clicky',
 				'project_slug'   => 'clicky-wordpress-plugin',
 				'plugin_name'    => __( 'Clicky for WordPress', 'clicky' ),
-				'hook'           => 'clicky_admin_footer',
+				'hook'           => 'Yoast\WP\Clicky\admin_footer',
 				'glotpress_url'  => 'http://translate.yoast.com',
 				'glotpress_name' => __( 'Yoast Translate', 'clicky' ),
 				'glotpress_logo' => 'https://cdn.yoast.com/wp-content/uploads/i18n-images/Yoast_Translate.svg',
 				'register_url '  => 'http://translate.yoast.com/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=clicky-i18n-promo',
-			)
+			]
 		);
 	}
 }
