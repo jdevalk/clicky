@@ -146,7 +146,7 @@ class Clicky_Visitor_Graph {
 	 */
 	private function create_graph() {
 		$result = $this->retrieve_clicky_api_details();
-		if ( result === false ) {
+		if ( $result === false ) {
 			return false;
 		}
 
