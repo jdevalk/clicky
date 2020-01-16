@@ -83,7 +83,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 			$rss = '';
 			foreach ( $rss_items as $item ) {
-				$url  = preg_replace( '/#.*/', '', esc_url( $item->get_permalink(), $protocolls = null, 'display' ) );
+				$url  = preg_replace( '/#.*/', '', esc_url( $item->get_permalink() ) );
 				$rss .= '<li class="yoast">';
 				$rss .= '<a href="' . esc_url( $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin' ) . '">' . $item->get_title() . '</a> ';
 				$rss .= '</li>';
