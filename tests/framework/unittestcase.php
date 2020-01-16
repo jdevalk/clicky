@@ -19,7 +19,7 @@ class Clicky_UnitTestCase extends WP_UnitTestCase {
 
 	/**
 	 * @param string $string   Expected output.
-	 * @param mixed  $function Unused.
+	 * @param null   $function Unused.
 	 */
 	protected function expectOutput( $string, $function = null ) {
 		$output = ob_get_contents();
