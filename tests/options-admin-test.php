@@ -20,7 +20,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	/**
 	 * Used for testing input fields.
 	 *
-	 * @var array
+	 * @var string[]
 	 */
 	public $test_args = [
 		'name'  => 'testname',

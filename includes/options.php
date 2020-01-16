@@ -31,7 +31,7 @@ class Clicky_Options {
 	/**
 	 * Holds the type of variable that each option is, so we can cast it to that.
 	 *
-	 * @var array
+	 * @var string[]
 	 */
 	public static $option_var_types = [
 		'site_id'          => 'string',
@@ -106,7 +106,7 @@ class Clicky_Options {
 	/**
 	 * Getting instance of this object. If instance doesn't exists it will be created.
 	 *
-	 * @return object|Clicky_Options
+	 * @return Clicky_Options
 	 */
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
