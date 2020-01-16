@@ -42,7 +42,7 @@ else {
 	exit( 1 );
 }
 
-if ( file_exists( dirname( dirname( __FILE__ ) ) . '/vendor/autoload_52.php' ) === false ) {
+if ( file_exists( dirname( __DIR__ ) . '/vendor/autoload_52.php' ) === false ) {
 	echo PHP_EOL, 'ERROR: Run `composer install` to generate the autoload files before running the unit tests.', PHP_EOL;
 	exit( 1 );
 }
@@ -53,4 +53,4 @@ if ( ! defined( 'WP_PLUGIN_DIR' ) || file_exists( WP_PLUGIN_DIR . '/clicky/click
 }
 
 // Include unit test base class.
-require_once dirname( __FILE__ ) . '/framework/unittestcase.php';
+require_once __DIR__ . '/framework/unittestcase.php';
