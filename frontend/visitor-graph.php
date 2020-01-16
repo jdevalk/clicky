@@ -117,9 +117,9 @@ class Clicky_Visitor_Graph {
 	/**
 	 * Adds Clicky (graph) to the admin bar of the website.
 	 *
-	 * @param object $wp_admin_bar Class that contains all information for the admin bar. Passed by reference.
-	 *
 	 * @link https://codex.wordpress.org/Class_Reference/WP_Admin_Bar
+	 *
+	 * @param object $wp_admin_bar Class that contains all information for the admin bar. Passed by reference.
 	 */
 	public function stats_admin_bar_menu( $wp_admin_bar ) {
 		$img_src = $this->create_graph();
