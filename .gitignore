@@ -13,3 +13,4 @@ test.sh
 phpunit.xml
 .phpcs.xml
 phpcs.xml
+.cache/phpcs.cache
