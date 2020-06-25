@@ -4,7 +4,7 @@
 css/dist/*.css
 css/dist/*.map
 js/*.map
-js/*.min.css
+js/*.min.js
 artifact/
 artifact.zip
 node_modules/
