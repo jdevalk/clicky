@@ -42,7 +42,9 @@ before_install:
 
 install:
 - |
-  if [[ $TRAVIS_PHP_VERSION != "nightly" ]]; then
+  if [[ $TRAVIS_PHP_VERSION == "nightly" ]]; then
+    composer install --no-interaction --ignore-platform-reqs
+  else
     composer install --no-interaction
   fi
 
@@ -53,7 +55,7 @@ before_script:
   fi
 
 script:
-- if [[ "$PHPLINT" == "1" ]]; then bash tests/bin/phplint.sh; fi
+- if [[ "$PHPLINT" == "1" ]]; then composer lint; fi
 - if [[ "$PHPCS" == "1" ]]; then composer check-cs;fi
 - |
   if [[ "$CODE_CLIMATE" == "1" ]]; then
