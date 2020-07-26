@@ -28,6 +28,9 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Enqueue the styles for the admin page.
 	 */
 	public function config_page_styles( $hook ) {
+		if ( 'settings_page_clicky' !== $hook ) {
+			return;
+		}
 		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/dist/clicky_admin.css', null, CLICKY_PLUGIN_VERSION );
 	}
 
@@ -35,6 +38,9 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Enqueue the scripts for the admin page.
 	 */
 	public function config_page_scripts( $hook ) {
+		if ( 'settings_page_clicky' !== $hook ) {
+			return;
+		}
 		wp_enqueue_script( 'clicky-admin-js', CLICKY_PLUGIN_DIR_URL . 'js/admin.min.js', null, CLICKY_PLUGIN_VERSION, true );
 	}
 
