@@ -16,6 +16,7 @@
 /phpcs.xml.dist export-ignore
 /phpunit.xml export-ignore
 /phpunit.xml.dist export-ignore
+/.cache export-ignore
 /svn-assets export-ignore
 /tests export-ignore
 
