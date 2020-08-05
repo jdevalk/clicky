@@ -1,8 +1,8 @@
 === Clicky by Yoast ===
 Contributors: joostdevalk, yoast
 Tags: analytics, statistics, clicky, getclicky, affiliate, outbound links, analysis, Yoast
-Requires at least: 5.2
-Tested up to: 5.3
+Requires at least: 5.4
+Tested up to: 5.5
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl.html
 Stable tag: 1.8
