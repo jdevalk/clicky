@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bbf970f899ba1e218997634334a67734",
+    "content-hash": "ae66a95f4aaa94ca10ebb19eec92d8ea",
     "packages": [
         {
             "name": "composer/installers",
@@ -199,65 +199,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "codeclimate/php-test-reporter",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/codeclimate/php-test-reporter.git",
-                "reference": "f35752238d994c8894a3c079bdbe2c535e0265af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/f35752238d994c8894a3c079bdbe2c535e0265af",
-                "reference": "f35752238d994c8894a3c079bdbe2c535e0265af",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "padraic/phar-updater": "^1.0",
-                "php": "^5.3 || ^7.0",
-                "psr/log": "^1.0",
-                "satooshi/php-coveralls": "^1.0",
-                "symfony/console": "^2.0 || ^3.0 || ^4.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0.0",
-                "phpunit/phpunit": "^4.8.35 || ^5.7.0 || ^6.0.0"
-            },
-            "bin": [
-                "composer/bin/test-reporter"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "CodeClimate\\PhpTestReporter\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Code Climate",
-                    "email": "hello@codeclimate.com",
-                    "homepage": "https://codeclimate.com"
-                }
-            ],
-            "description": "PHP client for reporting test coverage to Code Climate",
-            "homepage": "https://github.com/codeclimate/php-test-reporter",
-            "keywords": [
-                "codeclimate",
-                "coverage"
-            ],
-            "time": "2018-04-11T15:45:47+00:00"
-        },
         {
             "name": "composer/ca-bundle",
             "version": "1.2.4",
@@ -2951,9 +2892,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "codeclimate/php-test-reporter": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
