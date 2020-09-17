@@ -30,8 +30,8 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 	public function test___construct() {
 		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );
 
-		$this->assertSame( 10, has_action( 'admin_print_scripts', [ self::$class_instance, 'config_page_scripts' ] ) );
-		$this->assertSame( 10, has_action( 'admin_print_styles', [ self::$class_instance, 'config_page_styles' ] ) );
+		$this->assertSame( 10, has_action( 'admin_enqueue_scripts', [ self::$class_instance, 'config_page_scripts' ] ) );
+		$this->assertSame( 10, has_action( 'admin_enqueue_scripts', [ self::$class_instance, 'config_page_styles' ] ) );
 		$this->assertSame( 10, has_action( 'admin_head', [ self::$class_instance, 'i18n_module' ] ) );
 	}
 
