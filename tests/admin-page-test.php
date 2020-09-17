@@ -25,6 +25,8 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests the constructor.
+	 *
 	 * @covers Clicky_Admin_Page::__construct
 	 */
 	public function test___construct() {
@@ -36,10 +38,12 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether the correct style is loaded.
+	 *
 	 * @covers Clicky_Admin_Page::config_page_styles
 	 */
 	public function test_config_page_styles() {
-		self::$class_instance->config_page_styles();
+		self::$class_instance->config_page_styles( 'the_current_page' );
 
 		global $wp_styles;
 		$this->assertSame( 'clicky-admin-css', $wp_styles->registered['clicky-admin-css']->handle );
