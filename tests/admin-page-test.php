@@ -38,14 +38,27 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
-	 * Tests whether the correct style is loaded.
+	 * Tests whether the correct style is loaded on the Clicky settings page.
 	 *
 	 * @covers Clicky_Admin_Page::config_page_styles
 	 */
-	public function test_config_page_styles() {
-		self::$class_instance->config_page_styles( 'the_current_page' );
+	public function test_config_page_styles_page_is_clicky() {
+		self::$class_instance->config_page_styles( 'settings_page_clicky' );
 
 		global $wp_styles;
 		$this->assertSame( 'clicky-admin-css', $wp_styles->registered['clicky-admin-css']->handle );
+		unset( $wp_styles->registered['clicky-admin-css'] );
+	}
+
+	/**
+	 * Tests whether the Clicky styles are not loaded when we're not on the Clicky settings page.
+	 *
+	 * @covers Clicky_Admin_Page::config_page_styles
+	 */
+	public function test_config_page_styles_page_not_clicky() {
+		self::$class_instance->config_page_styles( 'plugins_page' );
+
+		global $wp_styles;
+		$this->assertFalse( isset( $wp_styles->registered['clicky-admin-css'] ) );
 	}
 }
