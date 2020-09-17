@@ -18,23 +18,33 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 		$this->options = $options_admin->get();
 
-		add_action( 'admin_print_scripts', [ $this, 'config_page_scripts' ] );
-		add_action( 'admin_print_styles', [ $this, 'config_page_styles' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'config_page_scripts' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'config_page_styles' ] );
 
 		add_action( 'admin_head', [ $this, 'i18n_module' ] );
 	}
 
 	/**
 	 * Enqueue the styles for the admin page.
+	 *
+	 * @param string $current_page The current page.
 	 */
-	public function config_page_styles() {
+	public function config_page_styles( $current_page ) {
+		if ( $current_page !== 'settings_page_clicky' ) {
+			return;
+		}
 		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/dist/clicky_admin.css', null, CLICKY_PLUGIN_VERSION );
 	}
 
 	/**
 	 * Enqueue the scripts for the admin page.
+	 *
+	 * @param string $current_page The current page.
 	 */
-	public function config_page_scripts() {
+	public function config_page_scripts( $current_page ) {
+		if ( $current_page !== 'settings_page_clicky' ) {
+			return;
+		}
 		wp_enqueue_script( 'clicky-admin-js', CLICKY_PLUGIN_DIR_URL . 'js/admin.min.js', null, CLICKY_PLUGIN_VERSION, true );
 	}
 
