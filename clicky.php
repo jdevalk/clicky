@@ -7,13 +7,15 @@
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2 or higher
  *
  * @wordpress-plugin
- * Plugin Name: Clicky for WordPress
- * Version:     1.9
- * Plugin URI:  https://yoast.com/wordpress/plugins/clicky/
- * Description: The Clicky for WordPress plugin by Yoast makes it easy for you to add your Clicky analytics tracking code to your WordPress install, while also giving you some advanced tracking options.
- * Author:      Team Yoast
- * Author URI:  https://yoast.com/
- * Text Domain: clicky
+ * Plugin Name:       Clicky for WordPress
+ * Version:           1.9
+ * Plugin URI:        https://yoast.com/wordpress/plugins/clicky/
+ * Description:       The Clicky for WordPress plugin by Yoast makes it easy for you to add your Clicky analytics tracking code to your WordPress install, while also giving you some advanced tracking options.
+ * Author:            Team Yoast
+ * Requires PHP:      5.6
+ * Requires at least: 5.0
+ * Author URI:        https://yoast.com/
+ * Text Domain:       clicky
  */
 
 if ( ! function_exists( 'add_filter' ) ) {
@@ -27,8 +29,8 @@ define( 'CLICKY_PLUGIN_VERSION', '1.9' );
 define( 'CLICKY_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'CLICKY_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 
-if ( file_exists( CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload_52.php' ) ) {
-	require CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload_52.php';
+if ( file_exists( CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload.php' ) ) {
+	require CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload.php';
 }
 
 /**
