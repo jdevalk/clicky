@@ -20,7 +20,6 @@ class Clicky_Admin {
 	/**
 	 * Menu slug for WordPress admin.
 	 *
-	 * @access private
 	 * @var string
 	 */
 	public $hook = 'clicky';
@@ -28,7 +27,6 @@ class Clicky_Admin {
 	/**
 	 * Construct of class Clicky_admin.
 	 *
-	 * @access private
 	 * @link   https://codex.wordpress.org/Function_Reference/add_action
 	 * @link   https://codex.wordpress.org/Function_Reference/add_filter
 	 */
