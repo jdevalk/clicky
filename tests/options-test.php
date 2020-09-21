@@ -25,6 +25,8 @@ class Clicky_Options_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether our getter works.
+	 *
 	 * @covers Clicky_Options::get
 	 */
 	public function test_get() {
@@ -32,6 +34,8 @@ class Clicky_Options_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether our constructor works as expected.
+	 *
 	 * @covers Clicky_Options::__construct
 	 */
 	public function test___construct() {

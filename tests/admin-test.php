@@ -25,6 +25,8 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests class constructor.
+	 *
 	 * @covers Clicky_Admin::__construct
 	 */
 	public function test___construct() {
@@ -38,6 +40,8 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether metaboxes are set up correctly.
+	 *
 	 * @covers Clicky_Admin::admin_init
 	 */
 	public function test_admin_init() {
@@ -50,6 +54,8 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests our warning for new installs.
+	 *
 	 * @covers Clicky_Admin::setup_warning
 	 */
 	public function test_setup_warning() {
@@ -73,6 +79,8 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether our metabox has the output we expect.
+	 *
 	 * @covers Clicky_Admin::meta_box_content
 	 */
 	public function test_meta_box_content() {
@@ -98,6 +106,8 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether clicky data is properly inserted on post insert.
+	 *
 	 * @covers Clicky_Admin::insert_post
 	 */
 	public function test_insert_post() {
@@ -116,6 +126,8 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether the dashboard page is loading as expected.
+	 *
 	 * @covers Clicky_Admin::dashboard_page
 	 */
 	public function test_dashboard_page() {
@@ -133,6 +145,8 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether the plugin action link on the plugins page is added.
+	 *
 	 * @covers Clicky_Admin::add_action_link
 	 */
 	public function test_add_action_link() {

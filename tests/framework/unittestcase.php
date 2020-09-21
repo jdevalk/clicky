@@ -18,6 +18,8 @@ class Clicky_UnitTestCase extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether output contains an expected string.
+	 *
 	 * @param string $string   Expected output.
 	 * @param null   $function Unused.
 	 */

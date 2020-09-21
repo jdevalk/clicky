@@ -35,6 +35,8 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests the options constructor.
+	 *
 	 * @covers Clicky_Options_Admin::__construct
 	 */
 	public function test___construct() {
@@ -42,6 +44,8 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether the plugin properly initializes on admin.
+	 *
 	 * @covers Clicky_Options_Admin::admin_init
 	 */
 	public function test_admin_init() {
@@ -55,6 +59,8 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests whether the like box is loading.
+	 *
 	 * @covers Clicky_Options_Admin::like_text
 	 */
 	public function test_like_text() {
