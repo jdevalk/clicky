@@ -49,7 +49,7 @@ class Yoast_Clicky {
 			require_once CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload.php';
 		}
 
-		add_action( 'plugins_loaded', [ $this, 'init' ] );
+		add_action( 'init', [ $this, 'init' ] );
 	}
 
 	/**
@@ -70,4 +70,6 @@ class Yoast_Clicky {
 	}
 }
 
-new Yoast_Clicky();
+add_action( 'plugins_loaded', function() {
+	new Yoast_Clicky();
+} );
