@@ -30,7 +30,7 @@ define( 'CLICKY_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'CLICKY_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 
 if ( file_exists( CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload.php' ) ) {
-	require CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload.php';
+	require_once CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload.php';
 }
 
 /**
@@ -42,7 +42,10 @@ class Yoast_Clicky {
 	 * Initialize the plugin settings.
 	 */
 	public function __construct() {
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		if (
+			( defined( 'DOING_AJAX' ) && DOING_AJAX ) ||
+			( defined( 'WP_CLI' ) && WP_CLI ) ||
+			( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 			return;
 		}
 
@@ -57,12 +60,12 @@ class Yoast_Clicky {
 
 		if ( is_admin() ) {
 			new Clicky_Admin();
+			return;
 		}
-		else {
-			new Clicky_Frontend();
-			if ( current_user_can( 'manage_options' ) ) {
-				new Clicky_Visitor_Graph();
-			}
+
+		new Clicky_Frontend();
+		if ( current_user_can( 'manage_options' ) ) {
+			new Clicky_Visitor_Graph();
 		}
 	}
 }
