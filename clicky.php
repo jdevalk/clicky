@@ -29,10 +29,6 @@ define( 'CLICKY_PLUGIN_VERSION', '1.9' );
 define( 'CLICKY_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'CLICKY_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 
-if ( file_exists( CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload.php' ) ) {
-	require_once CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload.php';
-}
-
 /**
  * Class Yoast Clicky base class.
  */
@@ -47,6 +43,10 @@ class Yoast_Clicky {
 			( defined( 'WP_CLI' ) && WP_CLI ) ||
 			( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 			return;
+		}
+
+		if ( file_exists( CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload.php' ) ) {
+			require_once CLICKY_PLUGIN_DIR_PATH . 'vendor/autoload.php';
 		}
 
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
