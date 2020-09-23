@@ -63,7 +63,7 @@ script:
 - if [[ "$PHPCS" == "1" ]]; then composer check-cs;fi
 - |
   if [[ $TRAVIS_PHP_VERSION != "nightly" ]]; then
-    composer test
+    vendor/bin/phpunit -c phpunit.xml.dist
   fi
 
 # Validate the composer.json file.
