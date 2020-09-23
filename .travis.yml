@@ -8,11 +8,7 @@ services:
 cache:
   directories:
     - .cache
-    - vendor
-    # Cache directory for older Composer versions.
-    - $HOME/.composer/cache/files
-    # Cache directory for more recent Composer versions.
-    - $HOME/.cache/composer/files
+    - $HOME/.composer/cache
 
 branches:
   only:
