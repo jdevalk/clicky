@@ -42,11 +42,6 @@ else {
 	exit( 1 );
 }
 
-if ( file_exists( dirname( __DIR__ ) . '/vendor/autoload_52.php' ) === false ) {
-	echo PHP_EOL, 'ERROR: Run `composer install` to generate the autoload files before running the unit tests.', PHP_EOL;
-	exit( 1 );
-}
-
 if ( ! defined( 'WP_PLUGIN_DIR' ) || file_exists( WP_PLUGIN_DIR . '/clicky/clicky.php' ) === false ) {
 	echo PHP_EOL, 'ERROR: Please check whether the WP_PLUGIN_DIR environment variable is set and set to the correct value. The unit test suite won\'t be able to run without it.', PHP_EOL;
 	exit( 1 );
