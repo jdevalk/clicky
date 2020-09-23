@@ -56,10 +56,10 @@ before_script:
 
 script:
 - if [[ "$PHPLINT" == "1" ]]; then composer lint; fi
-- if [[ "$PHPCS" == "1" ]]; then composer check-cs;fi
+- if [[ "$PHPCS" == "1" ]]; then composer check-cs; fi
 - |
   if [[ $TRAVIS_PHP_VERSION != "nightly" ]]; then
-    vendor/bin/phpunit -c phpunit.xml.dist
+    composer test
   fi
 
 # Validate the composer.json file.
