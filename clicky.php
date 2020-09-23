@@ -60,6 +60,7 @@ class Yoast_Clicky {
 
 		if ( is_admin() ) {
 			new Clicky_Admin();
+
 			return;
 		}
 
@@ -70,6 +71,9 @@ class Yoast_Clicky {
 	}
 }
 
-add_action( 'plugins_loaded', function() {
-	new Yoast_Clicky();
-} );
+add_action(
+	'plugins_loaded',
+	function () {
+		new Yoast_Clicky();
+	}
+);
