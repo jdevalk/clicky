@@ -109,7 +109,7 @@ class Clicky_Visitor_Graph {
 
 		echo "\n";
 		echo "<style type='text/css'>\n";
-		include CLICKY_PLUGIN_DIR_PATH . 'css/adminbar' . $ext;
+		include CLICKY_PLUGIN_DIR_PATH . 'css/dist/adminbar' . $ext;
 		echo "\n";
 		echo "</style>\n";
 	}

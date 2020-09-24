@@ -87,6 +87,10 @@
 		</properties>
 	</rule>
 
+	<rule ref="Yoast.Files.FileName.InvalidFunctionsFileName">
+		<exclude-pattern>/tests/bootstrap\.php</exclude-pattern>
+	</rule>
+
 
 	<!--
 	#############################################################################

@@ -11,46 +11,56 @@ if ( function_exists( 'xdebug_disable' ) ) {
 }
 
 echo 'Welcome to the Clicky Test Suite' . PHP_EOL;
-echo 'Version: 1.0' . PHP_EOL . PHP_EOL;
+echo 'Version: 2.0' . PHP_EOL . PHP_EOL;
 
-if ( getenv( 'WP_DEVELOP_DIR' ) !== false ) {
-	define( 'WP_DEVELOP_DIR', getenv( 'WP_DEVELOP_DIR' ) );
+// Determine the WP_TEST_DIR.
+if ( getenv( 'WP_TESTS_DIR' ) !== false ) {
+	$_tests_dir = getenv( 'WP_TESTS_DIR' );
 }
 
-if ( getenv( 'WP_PLUGIN_DIR' ) !== false ) {
-	define( 'WP_PLUGIN_DIR', getenv( 'WP_PLUGIN_DIR' ) );
+// Fall back on the WP_DEVELOP_DIR environment variable.
+if ( empty( $_tests_dir ) && getenv( 'WP_DEVELOP_DIR' ) !== false ) {
+	$_tests_dir = rtrim( getenv( 'WP_DEVELOP_DIR' ), '/' ) . '/tests/phpunit';
 }
 
-$GLOBALS['wp_tests_options'] = [
-	'active_plugins' => [ 'clicky/clicky.php' ],
-];
+// Give access to tests_add_filter() function.
+require_once rtrim( $_tests_dir, '/' ) . '/includes/functions.php';
 
-if ( defined( 'WP_DEVELOP_DIR' ) ) {
-	if ( file_exists( WP_DEVELOP_DIR . 'tests/phpunit/includes/bootstrap.php' ) ) {
-		require WP_DEVELOP_DIR . 'tests/phpunit/includes/bootstrap.php';
+/**
+ * Manually load the plugin being tested.
+ */
+function _manually_load_plugin() {
+	require dirname( __DIR__ ) . '/clicky.php';
+}
+
+/**
+ * Filter the plugins URL to pretend the plugin is installed in the test environment.
+ *
+ * @param string $url    The complete URL to the plugins directory including scheme and path.
+ * @param string $path   Path relative to the URL to the plugins directory. Blank string
+ *                       if no path is specified.
+ * @param string $plugin The plugin file path to be relative to. Blank string if no plugin
+ *                       is specified.
+ *
+ * @return string
+ */
+function _plugins_url( $url, $path, $plugin ) {
+	$plugin_dir = dirname( __DIR__ );
+	if ( $plugin === $plugin_dir . '/clicky.php' ) {
+		$url = str_replace( dirname( $plugin_dir ), '', $url );
 	}
-	else {
-		echo PHP_EOL, 'ERROR: Please check the WP_DEVELOP_DIR environment variable. Based on the current value ', WP_DEVELOP_DIR, ' the WordPress native unit test bootstrap file could not be found.', PHP_EOL;
-		exit( 1 );
-	}
-}
-elseif ( file_exists( '../../../../tests/phpunit/includes/bootstrap.php' ) ) {
-	require '../../../../tests/phpunit/includes/bootstrap.php';
-}
-else {
-	echo PHP_EOL, 'ERROR: The WordPress native unit test bootstrap file could not be found. Please set the WP_DEVELOP_DIR environment variable either in your OS or in a custom phpunit.xml file.', PHP_EOL;
-	exit( 1 );
+
+	return $url;
 }
 
-if ( file_exists( dirname( __DIR__ ) . '/vendor/autoload_52.php' ) === false ) {
-	echo PHP_EOL, 'ERROR: Run `composer install` to generate the autoload files before running the unit tests.', PHP_EOL;
-	exit( 1 );
-}
+// Add plugin to active mu-plugins - to make sure it gets loaded.
+tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
-if ( ! defined( 'WP_PLUGIN_DIR' ) || file_exists( WP_PLUGIN_DIR . '/clicky/clicky.php' ) === false ) {
-	echo PHP_EOL, 'ERROR: Please check whether the WP_PLUGIN_DIR environment variable is set and set to the correct value. The unit test suite won\'t be able to run without it.', PHP_EOL;
-	exit( 1 );
-}
+// Overwrite the plugin URL to not include the full path.
+tests_add_filter( 'plugins_url', '_plugins_url', 10, 3 );
+
+// Start up the WP testing environment.
+require $_tests_dir . '/includes/bootstrap.php';
 
 // Include unit test base class.
 require_once __DIR__ . '/framework/unittestcase.php';
