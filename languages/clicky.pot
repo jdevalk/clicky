@@ -1,14 +1,14 @@
-# Copyright (C) 2019 Team Yoast
+# Copyright (C) 2020 Team Yoast
 # This file is distributed under the same license as the Clicky for WordPress package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Clicky for WordPress 1.9\n"
 "Report-Msgid-Bugs-To: https://github.com/yoast/clicky/issues\n"
-"POT-Creation-Date: 2019-11-25 12:26:38+00:00\n"
+"POT-Creation-Date: 2020-09-24 06:50:48+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Yoast Translate Team <translations@yoast.com>\n"
 "Language-Team: Yoast Translate <translations@yoast.com>\n"
 "Language: en\n"
@@ -24,43 +24,42 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: admin/class-clicky-admin-page.php:64
-#: admin/class-clicky-options-admin.php:246
+#: admin/admin-page.php:73 admin/options-admin.php:246
 #. translators: 1: link open tag to clicky forum website; 2: link close tag.
 msgid ""
 "If you're in need of support with Clicky and / or this plugin, please visit "
 "the %1$sClicky forums%2$s."
 msgstr ""
 
-#: admin/class-clicky-admin-page.php:65
+#: admin/admin-page.php:74
 msgid "Need Support?"
 msgstr ""
 
-#: admin/class-clicky-admin-page.php:80
+#: admin/admin-page.php:89
 msgid "No news items, feed might be broken..."
 msgstr ""
 
-#: admin/class-clicky-admin-page.php:96
+#: admin/admin-page.php:105
 msgid "Subscribe with RSS"
 msgstr ""
 
-#: admin/class-clicky-admin-page.php:107
+#: admin/admin-page.php:116
 msgid "Latest news from Clicky"
 msgstr ""
 
-#: admin/class-clicky-admin-page.php:114
+#: admin/admin-page.php:123
 msgid "Like Yoast on Facebook"
 msgstr ""
 
-#: admin/class-clicky-admin-page.php:115
+#: admin/admin-page.php:124
 msgid "Follow Yoast on Twitter"
 msgstr ""
 
-#: admin/class-clicky-admin-page.php:116
+#: admin/admin-page.php:125
 msgid "Subscribe by email"
 msgstr ""
 
-#: admin/class-clicky-admin-page.php:118
+#: admin/admin-page.php:127
 msgid "Latest news from Yoast"
 msgstr ""
 
@@ -68,31 +67,31 @@ msgstr ""
 msgid "Clicky for WordPress"
 msgstr ""
 
-#: admin/class-clicky-admin-page.php:132
+#: admin/admin-page.php:141
 msgid "Yoast Translate"
 msgstr ""
 
-#: admin/class-clicky-admin.php:54
+#: admin/admin.php:52
 msgid "Clicky Goal Tracking"
 msgstr ""
 
-#: admin/class-clicky-admin.php:72
+#: admin/admin.php:70
 msgid "Clicky settings"
 msgstr ""
 
-#: admin/class-clicky-admin.php:73
+#: admin/admin.php:71
 msgid "Clicky"
 msgstr ""
 
-#: admin/class-clicky-admin.php:80 admin/class-clicky-admin.php:81
+#: admin/admin.php:78 admin/admin.php:79
 msgid "Clicky Stats"
 msgstr ""
 
-#: admin/class-clicky-admin.php:108
+#: admin/admin.php:106
 msgid "Clicky is almost ready. "
 msgstr ""
 
-#: admin/class-clicky-admin.php:112
+#: admin/admin.php:110
 #. translators: 1: link open tag to the plugin settings page; 2: link close
 #. tag.
 msgid ""
@@ -100,84 +99,84 @@ msgid ""
 "for it to work."
 msgstr ""
 
-#: admin/class-clicky-admin.php:185
+#: admin/admin.php:183
 msgid "Settings"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:46 admin/views/admin-page.php:19
+#: admin/options-admin.php:46 admin/views/admin-page.php:19
 msgid "Basic settings"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:52
+#: admin/options-admin.php:52
 msgid "Site ID"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:53
+#: admin/options-admin.php:53
 msgid "Site Key"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:54
+#: admin/options-admin.php:54
 msgid "Admin Site Key"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:73
+#: admin/options-admin.php:73
 msgid "Like this plugin?"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:80
+#: admin/options-admin.php:80
 msgid "Need support?"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:90
+#: admin/options-admin.php:90
 msgid "Advanced Settings"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:94
+#: admin/options-admin.php:94
 msgid "Disable Admin Bar stats"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:95
+#: admin/options-admin.php:95
 msgid "If you don't want to display the stats in your admin menu, check this box."
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:98
+#: admin/options-admin.php:98
 msgid "Ignore Admin users"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:99
+#: admin/options-admin.php:99
 msgid ""
 "If you are using a caching plugin, such as W3 Total Cache or WP-Supercache, "
 "please ensure that you have it configured to NOT use the cache for logged "
 "in users. Otherwise, admin users <em>will still</em> be tracked."
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:102
+#: admin/options-admin.php:102
 msgid "Disable cookies"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:103
+#: admin/options-admin.php:103
 msgid ""
 "If you don't want Clicky to use cookies on your site, check this button. By "
 "doing so, uniqueness will instead be determined based on their IP address."
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:106
+#: admin/options-admin.php:106
 msgid "Track names of commenters"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:132
+#: admin/options-admin.php:132
 msgid "Outbound Links"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:140
+#: admin/options-admin.php:140
 msgid "For instance: <code>/out/,/go/</code>"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:144
+#: admin/options-admin.php:144
 msgid "Outbound Link Pattern"
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:218
+#: admin/options-admin.php:218
 #. translators: 1: link open tag to the clicky user homepage; 2: link close
 #. tag.
 msgid ""
@@ -187,7 +186,7 @@ msgid ""
 "information."
 msgstr ""
 
-#: admin/class-clicky-options-admin.php:232
+#: admin/options-admin.php:232
 #. translators: 1: link open tag to the clicky knowledge base article; 2: link
 #. close tag.
 msgid ""
@@ -243,17 +242,17 @@ msgstr ""
 msgid "Goal Revenue:"
 msgstr ""
 
-#: frontend/class-clicky-frontend.php:46
+#: frontend/frontend.php:46
 msgid ""
 "Clicky tracking not shown because you're an administrator and you've "
 "configured Clicky to ignore administrators."
 msgstr ""
 
-#: frontend/class-clicky-frontend.php:139
+#: frontend/frontend.php:139
 msgid "Posted a comment"
 msgstr ""
 
-#: frontend/class-clicky-visitor-graph.php:131
+#: frontend/visitor-graph.php:131
 msgid "Visitors over 48 hours. Click for more Clicky Site Stats."
 msgstr ""
 
