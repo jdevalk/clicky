@@ -39,9 +39,9 @@ class Yoast_Clicky {
 	 */
 	public function __construct() {
 		if (
-			( defined( 'DOING_AJAX' ) && DOING_AJAX ) ||
-			( defined( 'WP_CLI' ) && WP_CLI ) ||
-			( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+			( defined( 'DOING_AJAX' ) && DOING_AJAX )
+			|| ( defined( 'WP_CLI' ) && WP_CLI )
+			|| ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 			return;
 		}
 
@@ -73,7 +73,7 @@ class Yoast_Clicky {
 
 add_action(
 	'plugins_loaded',
-	function () {
+	static function () {
 		new Yoast_Clicky();
 	}
 );
