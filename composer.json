@@ -44,7 +44,7 @@
       "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
     ],
     "test": [
-      "@php ./vendor/bin/phpunit"
+      "@php ./vendor/phpunit/phpunit/phpunit"
     ]
   }
 }

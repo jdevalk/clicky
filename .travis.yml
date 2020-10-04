@@ -31,7 +31,7 @@ jobs:
     - php: 7.4
       env: PHPLINT=1 WP_VERSION=5.5 WP_MULTISITE=0
     - php: "nightly"
-      env: PHPLINT=1
+      env: WP_VERSION=master PHPLINT=1
 
   allow_failures:
     # Allow failures for unstable builds.
@@ -43,24 +43,19 @@ before_install:
 install:
 - |
   if [[ $TRAVIS_PHP_VERSION == "nightly" ]]; then
-    composer install --no-interaction --ignore-platform-reqs
+    # Update the locked-in PHPUnit version to allow for testing on PHP 8.
+    travis_retry composer require --dev phpunit/phpunit:"^7.5" --update-with-dependencies --no-interaction --ignore-platform-reqs
   else
-    composer install --no-interaction
+    travis_retry composer install --no-interaction
   fi
 
 before_script:
-- |
-  if [[ $TRAVIS_PHP_VERSION != "nightly" ]]; then
-    bash tests/bin/before.sh $WP_VERSION
-  fi
+- bash tests/bin/before.sh $WP_VERSION
 
 script:
 - if [[ "$PHPLINT" == "1" ]]; then composer lint; fi
 - if [[ "$PHPCS" == "1" ]]; then composer check-cs; fi
-- |
-  if [[ $TRAVIS_PHP_VERSION != "nightly" ]]; then
-    composer test
-  fi
+- composer test
 
 # Validate the composer.json file.
 # @link https://getcomposer.org/doc/03-cli.md#validate
