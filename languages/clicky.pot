@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Clicky for WordPress 1.9\n"
 "Report-Msgid-Bugs-To: https://github.com/yoast/clicky/issues\n"
-"POT-Creation-Date: 2020-09-24 06:50:48+00:00\n"
+"POT-Creation-Date: 2020-10-13 14:45:27+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -252,7 +252,7 @@ msgstr ""
 msgid "Posted a comment"
 msgstr ""
 
-#: frontend/visitor-graph.php:131
+#: frontend/visitor-graph.php:129
 msgid "Visitors over 48 hours. Click for more Clicky Site Stats."
 msgstr ""
 
