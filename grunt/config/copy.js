@@ -15,6 +15,8 @@ module.exports = {
 					"languages/**",
 					"vendor/**",
 					"index.php",
+					"css/**/index.php",
+					"js/**/index.php",
 					"readme.txt",
 					"clicky.php",
 					"!vendor/bin/**",
