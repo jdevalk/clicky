@@ -7,7 +7,7 @@ module.exports = {
 				cwd: ".",
 				src: [
 					"admin/**",
-					"css/**/*.css",
+					"css/dist/*.css",
 					"frontend/**",
 					"images/**",
 					"includes/**",
@@ -15,6 +15,8 @@ module.exports = {
 					"languages/**",
 					"vendor/**",
 					"index.php",
+					"css/**/index.php",
+					"js/**/index.php",
 					"readme.txt",
 					"clicky.php",
 					"!vendor/bin/**",

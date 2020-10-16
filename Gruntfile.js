@@ -83,6 +83,9 @@ module.exports = function( grunt ) {
 			"css/dist/clicky_admin.css": "css/src/clicky_admin.scss",
 		},
 		pkg: pkg,
+		get developmentBuild () {
+			return ! ( [ "release", "artifact", "deploy:trunk", "deploy:master" ].includes( process.argv[ 2 ] ) );
+		}
 	};
 
 	// Used to switch between development and release builds

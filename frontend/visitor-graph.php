@@ -105,11 +105,9 @@ class Clicky_Visitor_Graph {
 	 * @link https://codex.wordpress.org/Function_Reference/add_action
 	 */
 	public function stats_css() {
-		$ext = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '.css' : '.min.css';
-
 		echo "\n";
 		echo "<style type='text/css'>\n";
-		include CLICKY_PLUGIN_DIR_PATH . 'css/dist/adminbar' . $ext;
+		include CLICKY_PLUGIN_DIR_PATH . 'css/dist/adminbar.css';
 		echo "\n";
 		echo "</style>\n";
 	}
