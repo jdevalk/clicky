@@ -41,13 +41,25 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 
 == Changelog ==
 
+= 2.0 =
+
+* Loads the admin-side scripts on the Clicky settings page only. Props to [erommel](https://github.com/erommel).
+* Deprecates the `clicky_admin_footer` action hook in favour of the `Yoast\WP\Clicky\admin_footer` hook.
+* Fixes a frontend CSS bug.
+* Fixes a bug where the visitor graph in the admin bar would be shown even if the site information was invalid.
+* Stops explicit support for PHP < 5.6 / WP < 5.2.
+
 = 1.9 =
+
+Released November 25th, 2019
 
 * Updated required PHP version to 5.6.
 * Lots of code style and escaping improvements.
 * Fixes a PHP warning for a file that's not found in some setups, props [Miller Media](https://github.com/Miller-Media). 
 
 = 1.8 =
+
+Released November 25th, 2019
 
 * Lots of code style and escaping improvements.
 * Removed banner for the Yoast website review service as it's no longer offered.
