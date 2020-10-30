@@ -113,7 +113,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Box with latest news from Clicky.
 	 */
 	private function clicky_news() {
-		$this->rss_news( 'http://clicky.com/blog/rss', __( 'Latest news from Clicky', 'clicky' ) );
+		$this->rss_news( 'https://blog.clicky.com/feed/', __( 'Latest news from Clicky', 'clicky' ) );
 	}
 
 	/**
