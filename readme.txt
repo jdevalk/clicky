@@ -47,6 +47,7 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 * Deprecates the `clicky_admin_footer` action hook in favour of the `Yoast\WP\Clicky\admin_footer` hook.
 * Fixes a frontend CSS bug.
 * Fixes a bug where the visitor graph in the admin bar would be shown even if the site information was invalid.
+* Fixes a bug where the Clicky blog feed wasn't retrieved properly.
 * Stops explicit support for PHP < 5.6 / WP < 5.2.
 
 = 1.9 =
