@@ -38,7 +38,6 @@ jobs:
     - php: "nightly"
 
 before_install:
-- composer self-update 1.10.16
 - export WP_DEVELOP_DIR=/tmp/wordpress/
 
 install:

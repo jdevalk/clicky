@@ -33,7 +33,13 @@ class Clicky_Admin_Page extends Clicky_Admin {
 		if ( $current_page !== 'settings_page_clicky' ) {
 			return;
 		}
-		wp_enqueue_style( 'clicky-admin-css', CLICKY_PLUGIN_DIR_URL . 'css/dist/clicky_admin.css', null, CLICKY_PLUGIN_VERSION );
+
+		wp_enqueue_style(
+			'clicky-admin-css',
+			CLICKY_PLUGIN_DIR_URL . 'css/dist/clicky_admin.css',
+			null,
+			CLICKY_PLUGIN_VERSION
+		);
 	}
 
 	/**
@@ -45,7 +51,14 @@ class Clicky_Admin_Page extends Clicky_Admin {
 		if ( $current_page !== 'settings_page_clicky' ) {
 			return;
 		}
-		wp_enqueue_script( 'clicky-admin-js', CLICKY_PLUGIN_DIR_URL . 'js/admin.min.js', null, CLICKY_PLUGIN_VERSION, true );
+
+		wp_enqueue_script(
+			'clicky-admin-js',
+			CLICKY_PLUGIN_DIR_URL . 'js/admin.min.js',
+			null,
+			CLICKY_PLUGIN_VERSION,
+			true
+		);
 	}
 
 	/**
