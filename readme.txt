@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Requires at least: 5.4
 Tested up to: 5.5
 Requires PHP: 5.6.20
-Stable tag: 2.0-RC1
+Stable tag: 2.0
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
 
@@ -42,6 +42,8 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 == Changelog ==
 
 = 2.0 =
+
+Released November 12th, 2020
 
 * Loads the admin-side scripts on the Clicky settings page only. Props to [erommel](https://github.com/erommel).
 * Deprecates the `clicky_admin_footer` action hook in favour of the `Yoast\WP\Clicky\admin_footer` hook.
