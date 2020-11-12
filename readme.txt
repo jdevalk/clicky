@@ -43,6 +43,8 @@ Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics
 
 = 2.0 =
 
+Released November 12th, 2020
+
 * Loads the admin-side scripts on the Clicky settings page only. Props to [erommel](https://github.com/erommel).
 * Deprecates the `clicky_admin_footer` action hook in favour of the `Yoast\WP\Clicky\admin_footer` hook.
 * Fixes a frontend CSS bug.
