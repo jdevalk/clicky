@@ -61,6 +61,3 @@ tests_add_filter( 'plugins_url', '_plugins_url', 10, 3 );
 
 // Start up the WP testing environment.
 require $_tests_dir . '/includes/bootstrap.php';
-
-// Include unit test base class.
-require_once __DIR__ . '/framework/unittestcase.php';
