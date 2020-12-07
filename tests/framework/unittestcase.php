@@ -5,27 +5,9 @@
  * @package Yoast/Clicky/Tests
  */
 
+use Yoast\WPTestUtils\WPIntegration\TestCase;
+
 /**
- * TestCase base class for convenience methods.
+ * TestCase base class.
  */
-class Clicky_UnitTestCase extends WP_UnitTestCase {
-
-	/**
-	 * Fake a request to the WP front page.
-	 */
-	protected function go_to_home() {
-		$this->go_to( home_url( '/' ) );
-	}
-
-	/**
-	 * Tests whether output contains an expected string.
-	 *
-	 * @param string $string   Expected output.
-	 * @param null   $function Unused.
-	 */
-	protected function expectOutput( $string, $function = null ) {
-		$output = ob_get_contents();
-		ob_clean();
-		$this->assertSame( $string, $output );
-	}
-}
+abstract class Clicky_UnitTestCase extends TestCase {}
