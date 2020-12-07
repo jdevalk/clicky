@@ -9,6 +9,7 @@
 		convertErrorsToExceptions="true"
 		convertNoticesToExceptions="true"
 		convertWarningsToExceptions="true"
+		forceCoversAnnotation="true"
 		processIsolation="false"
 		stopOnError="false"
 		stopOnFailure="false"
@@ -23,7 +24,7 @@
 	</testsuites>
 
 	<filter>
-		<whitelist>
+		<whitelist addUncoveredFilesFromWhitelist="true" processUncoveredFilesFromWhitelist="false">
 			<file>./clicky.php</file>
 			<directory>./admin</directory>
 			<directory>./frontend</directory>
