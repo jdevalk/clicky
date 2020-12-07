@@ -83,7 +83,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		$output = ob_get_clean();
 
 		$this->assertGreaterThan( 0, strlen( $output ) );
-		$this->assertContains( '//clicky.com/145844', $output );
+		$this->assertStringContainsString( '//clicky.com/145844', $output );
 	}
 
 	/**
@@ -110,7 +110,7 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		$output = ob_get_clean();
 
 		$this->assertGreaterThan( 0, strlen( $output ) );
-		$this->assertContains( 'clicky.com/forums', $output );
+		$this->assertStringContainsString( 'clicky.com/forums', $output );
 	}
 
 	/**
