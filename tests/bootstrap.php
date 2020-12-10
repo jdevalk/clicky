@@ -5,6 +5,8 @@
  * @package Yoast/Clicky/Tests
  */
 
+use Yoast\WPTestUtils\WPIntegration;
+
 // Disable xdebug backtrace.
 if ( function_exists( 'xdebug_disable' ) ) {
 	xdebug_disable();
@@ -13,15 +15,10 @@ if ( function_exists( 'xdebug_disable' ) ) {
 echo 'Welcome to the Clicky Test Suite' . PHP_EOL;
 echo 'Version: 2.0' . PHP_EOL . PHP_EOL;
 
-// Determine the WP_TEST_DIR.
-if ( getenv( 'WP_TESTS_DIR' ) !== false ) {
-	$_tests_dir = getenv( 'WP_TESTS_DIR' );
-}
+require_once dirname( __DIR__ ) . '/vendor/yoast/wp-test-utils/src/WPIntegration/bootstrap-functions.php';
 
-// Fall back on the WP_DEVELOP_DIR environment variable.
-if ( empty( $_tests_dir ) && getenv( 'WP_DEVELOP_DIR' ) !== false ) {
-	$_tests_dir = rtrim( getenv( 'WP_DEVELOP_DIR' ), '/' ) . '/tests/phpunit';
-}
+// Determine the WP_TEST_DIR.
+$_tests_dir = WPIntegration\get_path_to_wp_test_dir();
 
 // Give access to tests_add_filter() function.
 require_once rtrim( $_tests_dir, '/' ) . '/includes/functions.php';
@@ -59,8 +56,7 @@ tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 // Overwrite the plugin URL to not include the full path.
 tests_add_filter( 'plugins_url', '_plugins_url', 10, 3 );
 
-// Start up the WP testing environment.
-require $_tests_dir . '/includes/bootstrap.php';
-
-// Include unit test base class.
-require_once __DIR__ . '/framework/unittestcase.php';
+/*
+ * Load WordPress, which will load the Composer autoload file, and load the MockObject autoloader after that.
+ */
+WPIntegration\bootstrap_it();
