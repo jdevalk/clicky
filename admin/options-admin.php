@@ -159,12 +159,12 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Sanitizes and trims a string.
 	 *
-	 * @param string $string String to sanitize.
+	 * @param string $text_string String to sanitize.
 	 *
 	 * @return string
 	 */
-	private function sanitize_string( $string ) {
-		return (string) trim( sanitize_text_field( $string ) );
+	private function sanitize_string( $text_string ) {
+		return (string) trim( sanitize_text_field( $text_string ) );
 	}
 
 	/**
