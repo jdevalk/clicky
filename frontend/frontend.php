@@ -18,6 +18,27 @@ class Clicky_Frontend {
 	private $options = [];
 
 	/**
+	 * Inline script to output on the frontend.
+	 *
+	 * @var string
+	 */
+	private $inline_script;
+
+	/**
+	 * Nonce to use for our inline "extra" script.
+	 *
+	 * @var false|string
+	 */
+	private $extra_nonce;
+
+	/**
+	 * Nonce to use for our inline "names" script.
+	 *
+	 * @var false|string
+	 */
+	private $names_nonce;
+
+	/**
 	 * Class constructor.
 	 */
 	public function __construct() {
@@ -27,8 +48,38 @@ class Clicky_Frontend {
 			return;
 		}
 
+		add_action( 'send_headers', [ $this, 'send_headers' ], 10 );
 		add_action( 'wp_head', [ $this, 'script' ], 90 );
 		add_action( 'comment_post', [ $this, 'track_comment' ], 10, 2 );
+	}
+
+	/**
+	 * Prepares our script tags. Needed to figure out if we need to send out CSP headers.
+	 */
+	private function prepare_script() {
+		if ( is_preview() ) {
+			return;
+		}
+
+		$this->inline_script  = $this->goal_tracking();
+		$this->inline_script .= $this->outbound_tracking();
+		$this->inline_script .= $this->disable_cookies();
+	}
+
+	/**
+	 * Sends CSP headers when needed.
+	 */
+	public function send_headers() {
+		$this->prepare_script();
+
+		if ( $this->options['track_names'] ) {
+			$this->names_nonce = wp_create_nonce( 'clicky_names_script_nonce' );
+			header( "Content-Security-Policy: script-src 'nonce-" . $this->names_nonce . "'" );
+		}
+		if ( ! empty( $this->inline_script ) ) {
+			$this->extra_nonce = wp_create_nonce( 'clicky_script_nonce' );
+			header( "Content-Security-Policy: script-src 'nonce-" . $this->extra_nonce . "'" );
+		}
 	}
 
 	/**
@@ -39,7 +90,7 @@ class Clicky_Frontend {
 			return;
 		}
 
-		echo '<!-- Clicky Web Analytics - https://clicky.com, WordPress Plugin by Yoast - https://yoast.com/wordpress/plugins/clicky/ -->';
+		echo '<!-- Clicky Web Analytics - https://clicky.com, WordPress Plugin by Yoast - https://yoast.com/wordpress/plugins/clicky/ -->' . "\n";
 
 		// Bail early if current user is admin and ignore admin is true.
 		if ( $this->options['ignore_admin'] && current_user_can( 'manage_options' ) ) {
@@ -49,12 +100,13 @@ class Clicky_Frontend {
 		}
 
 		if ( $this->options['track_names'] ) {
+			$names_nonce = $this->names_nonce;
+
 			require CLICKY_PLUGIN_DIR_PATH . 'frontend/views/comment-author-script.php';
 		}
 
-		$clicky_extra  = $this->goal_tracking();
-		$clicky_extra .= $this->outbound_tracking();
-		$clicky_extra .= $this->disable_cookies();
+		$clicky_extra       = $this->inline_script;
+		$clicky_extra_nonce = $this->extra_nonce;
 
 		require CLICKY_PLUGIN_DIR_PATH . 'frontend/views/script.php';
 	}

@@ -5,8 +5,14 @@
  * @package Yoast/Clicky/View
  */
 
+/**
+ * Global for CSP nonce.
+ *
+ * @var string $names_nonce
+ */
+
 ?>
-<script type='text/javascript'>
+<script type='text/javascript' nonce='<?php echo esc_attr( $names_nonce ); ?>'>
 	function clicky_gc(name) {
 		var ca = document.cookie.split(';');
 		for (var i in ca) {
