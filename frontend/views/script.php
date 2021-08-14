@@ -24,4 +24,4 @@ if ( ! empty( $clicky_extra ) ) {
 }
 
 // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript
-echo '<script async src="//static.getclicky.com/' . esc_attr( $this->options['site_id'] ) . 'js"></script>' . "\n";
+echo '<script async src="//static.getclicky.com/' . esc_attr( $this->options['site_id'] ) . '.js"></script>' . "\n";
