@@ -23,15 +23,15 @@ jobs:
     - php: 7.3
       env: WP_VERSION=master WP_MULTISITE=1 PHPCS=1
     - php: 7.2
-      env: WP_VERSION=5.5 WP_MULTISITE=0
-    - php: 7.0
       env: WP_VERSION=5.6 WP_MULTISITE=0
+    - php: 7.0
+      env: WP_VERSION=5.8 WP_MULTISITE=0
     - php: 5.6
-      env: PHPLINT=1 WP_VERSION=5.5 WP_MULTISITE=1
+      env: PHPLINT=1 WP_VERSION=5.6 WP_MULTISITE=1
     - php: 7.4
-      env: PHPLINT=1 WP_VERSION=5.6 WP_MULTISITE=0
+      env: PHPLINT=1 WP_VERSION=5.7 WP_MULTISITE=0
     - php: 8.0
-      env: PHPLINT=1 WP_VERSION=5.6 WP_MULTISITE=0
+      env: PHPLINT=1 WP_VERSION=5.8 WP_MULTISITE=0
     - php: "nightly"
       env: PHPLINT=1
 
