@@ -94,7 +94,7 @@ class Clicky_Frontend {
 
 		// Bail early if current user is admin and ignore admin is true.
 		if ( $this->options['ignore_admin'] && current_user_can( 'manage_options' ) ) {
-			echo "\n<!-- " . esc_html__( "Clicky tracking not shown because you are an administrator and you have configured Clicky to ignore administrators.", 'clicky' ) . " -->\n";
+			echo "\n<!-- " . esc_html__( 'Clicky tracking not shown because you are an administrator and you have configured Clicky to ignore administrators.', 'clicky' ) . " -->\n";
 
 			return;
 		}
