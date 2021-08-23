@@ -74,11 +74,11 @@ class Clicky_Frontend {
 
 		if ( $this->options['track_names'] ) {
 			$this->names_nonce = wp_create_nonce( 'clicky_names_script_nonce' );
-			header( "Content-Security-Policy: script-src 'nonce-" . $this->names_nonce . "'" );
+			header( "Content-Security-Policy: script-src 'nonce-" . $this->names_nonce . "'", false );
 		}
 		if ( ! empty( $this->inline_script ) ) {
 			$this->extra_nonce = wp_create_nonce( 'clicky_script_nonce' );
-			header( "Content-Security-Policy: script-src 'nonce-" . $this->extra_nonce . "'" );
+			header( "Content-Security-Policy: script-src 'nonce-" . $this->extra_nonce . "'", false );
 		}
 	}
 
