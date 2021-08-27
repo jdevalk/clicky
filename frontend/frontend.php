@@ -27,14 +27,14 @@ class Clicky_Frontend {
 	/**
 	 * Nonce to use for our inline "extra" script.
 	 *
-	 * @var false|string
+	 * @var string
 	 */
 	private $extra_nonce;
 
 	/**
 	 * Nonce to use for our inline "names" script.
 	 *
-	 * @var false|string
+	 * @var string
 	 */
 	private $names_nonce;
 
@@ -48,7 +48,7 @@ class Clicky_Frontend {
 			return;
 		}
 
-		add_action( 'send_headers', [ $this, 'send_headers' ], 10 );
+		add_action( 'send_headers', [ $this, 'prepare_script' ], 10 );
 		add_action( 'wp_head', [ $this, 'script' ], 90 );
 		add_action( 'comment_post', [ $this, 'track_comment' ], 10, 2 );
 	}
@@ -56,7 +56,7 @@ class Clicky_Frontend {
 	/**
 	 * Prepares our script tags. Needed to figure out if we need to send out CSP headers.
 	 */
-	private function prepare_script() {
+	public function prepare_script() {
 		if ( is_preview() ) {
 			return;
 		}
@@ -64,22 +64,17 @@ class Clicky_Frontend {
 		$this->inline_script  = $this->goal_tracking();
 		$this->inline_script .= $this->outbound_tracking();
 		$this->inline_script .= $this->disable_cookies();
-	}
 
-	/**
-	 * Sends CSP headers when needed.
-	 */
-	public function send_headers() {
-		$this->prepare_script();
+		$this->extra_nonce = wp_create_nonce( 'clicky_extra_script_nonce' );
+		$this->names_nonce = wp_create_nonce( 'clicky_names_script_nonce' );
 
-		if ( $this->options['track_names'] ) {
-			$this->names_nonce = wp_create_nonce( 'clicky_names_script_nonce' );
-			header( "Content-Security-Policy: script-src 'nonce-" . $this->names_nonce . "'", false );
-		}
-		if ( ! empty( $this->inline_script ) ) {
-			$this->extra_nonce = wp_create_nonce( 'clicky_script_nonce' );
-			header( "Content-Security-Policy: script-src 'nonce-" . $this->extra_nonce . "'", false );
-		}
+		/**
+		 * Action: 'yoast/clicky/csp' - Allows CSP developers to easily get the nonces for the inline scripts Clicky outputs.
+		 *
+		 * @param string $extra_nonce The nonce for the script tag Clicky might output.
+		 * @param string $names_nonce The nonce for the track names script.
+		 */
+		do_action( 'yoast/clicky/csp', $this->extra_nonce, $this->names_nonce );
 	}
 
 	/**

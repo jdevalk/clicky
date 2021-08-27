@@ -93,6 +93,10 @@ class Clicky_Options {
 	 */
 	private function sanitize_options() {
 		foreach ( $this->options as $key => $value ) {
+			if ( ! isset( self::$option_var_types[ $key ] ) ) {
+				unset( $this->options[ $key ] );
+				continue;
+			}
 			switch ( self::$option_var_types[ $key ] ) {
 				case 'string':
 					$this->options[ $key ] = (string) $value;
