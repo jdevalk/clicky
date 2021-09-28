@@ -30,7 +30,8 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	/**
 	 * Set up the class instance to be tested.
 	 */
-	public static function setUpBeforeClass() {
+	public static function set_up_before_class() {
+		parent::set_up_before_class();
 		self::$class_instance = new Clicky_Options_Admin();
 	}
 
