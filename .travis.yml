@@ -32,12 +32,6 @@ jobs:
       env: PHPLINT=1 WP_VERSION=5.7 WP_MULTISITE=0
     - php: 8.0
       env: PHPLINT=1 WP_VERSION=5.8 WP_MULTISITE=0
-    - php: "nightly"
-      env: PHPLINT=1
-
-  allow_failures:
-    # Allow failures for unstable builds.
-    - php: "nightly"
 
 before_install:
 - export WP_DEVELOP_DIR=/tmp/wordpress/
