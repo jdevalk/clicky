@@ -22,7 +22,7 @@
   },
   "require-dev": {
     "yoast/yoastcs": "^2.2.0",
-    "yoast/wp-test-utils": "^0.2.0"
+    "yoast/wp-test-utils": "^1.0.0"
   },
   "config": {
     "platform": {
