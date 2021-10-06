@@ -7,7 +7,6 @@ services:
 
 cache:
   directories:
-    - .cache
     - $HOME/.composer/cache
 
 branches:
@@ -21,7 +20,7 @@ jobs:
   fast_finish: true
   include:
     - php: 7.3
-      env: WP_VERSION=master WP_MULTISITE=1 PHPCS=1
+      env: WP_VERSION=master WP_MULTISITE=1
     - php: 7.2
       env: WP_VERSION=5.6 WP_MULTISITE=0
     - php: 7.0
@@ -56,12 +55,7 @@ before_script:
 
 script:
 - if [[ "$PHPLINT" == "1" ]]; then composer lint; fi
-- if [[ "$PHPCS" == "1" ]]; then composer check-cs; fi
 - |
   if [[ $TRAVIS_PHP_VERSION != "nightly" ]]; then
     composer test
   fi
-
-# Validate the composer.json file.
-# @link https://getcomposer.org/doc/03-cli.md#validate
-- if [[ $TRAVIS_PHP_VERSION == "5.6" || $TRAVIS_PHP_VERSION == "7.4" ]]; then composer validate --no-check-all; fi

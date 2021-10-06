@@ -1,3 +1,4 @@
+[![CS](https://github.com/Yoast/clicky/actions/workflows/cs.yml/badge.svg)](https://github.com/Yoast/clicky/actions/workflows/cs.yml)
 [![Travis CI Build](https://travis-ci.org/Yoast/clicky.svg)](https://travis-ci.org/Yoast/clicky)
 
 Clicky for WordPress
