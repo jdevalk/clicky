@@ -26,11 +26,11 @@ jobs:
     - php: 7.0
       env: WP_VERSION=5.8 WP_MULTISITE=0
     - php: 5.6
-      env: PHPLINT=1 WP_VERSION=5.6 WP_MULTISITE=1
+      env: WP_VERSION=5.6 WP_MULTISITE=1
     - php: 7.4
-      env: PHPLINT=1 WP_VERSION=5.7 WP_MULTISITE=0
+      env: WP_VERSION=5.7 WP_MULTISITE=0
     - php: 8.0
-      env: PHPLINT=1 WP_VERSION=5.8 WP_MULTISITE=0
+      env: WP_VERSION=5.8 WP_MULTISITE=0
 
 before_install:
 - export WP_DEVELOP_DIR=/tmp/wordpress/
@@ -54,7 +54,6 @@ before_script:
   fi
 
 script:
-- if [[ "$PHPLINT" == "1" ]]; then composer lint; fi
 - |
   if [[ $TRAVIS_PHP_VERSION != "nightly" ]]; then
     composer test
