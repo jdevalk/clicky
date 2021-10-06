@@ -1,6 +1,6 @@
 [![CS](https://github.com/Yoast/clicky/actions/workflows/cs.yml/badge.svg)](https://github.com/Yoast/clicky/actions/workflows/cs.yml)
 [![Lint](https://github.com/Yoast/clicky/actions/workflows/lint.yml/badge.svg)](https://github.com/Yoast/clicky/actions/workflows/lint.yml)
-[![Travis CI Build](https://travis-ci.org/Yoast/clicky.svg)](https://travis-ci.org/Yoast/clicky)
+[![Test](https://github.com/Yoast/clicky/actions/workflows/test.yml/badge.svg)](https://github.com/Yoast/clicky/actions/workflows/test.yml)
 
 Clicky for WordPress
 ====================
