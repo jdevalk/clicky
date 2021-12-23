@@ -119,18 +119,22 @@ jobs:
           composer-options: "yoast/wp-test-utils --with-dependencies"
 
       ### Install type 2.
-      - name: "Install type 2: conditionally require a higher PHPUnit version"
-        if: ${{ steps.composer_toggle.outputs.TYPE == '2' }}
-        run: composer require --dev phpunit/phpunit:"^7.5" --no-update --ignore-platform-req=php
-
+      # Note: the steps for this type have (temporarily) been changed to get round
+      # a Composer bug: https://github.com/composer/composer/issues/10394
+      # Once that bug has been fixed, it is recommended to revert these steps to the
+      # more optimized version which was previously in place.
       - name: "Install type 2: install Composer dependencies - WP < 5.9 with PHP >= 8.0"
         if: ${{ steps.composer_toggle.outputs.TYPE == '2' }}
+        # This is just a plain install to still be able to use the cache for the most part.
         uses: ramsey/composer-install@v1
-        with:
-          # Force a `composer update` run.
-          dependency-versions: "highest"
-          # But make it selective.
-          composer-options: "yoast/wp-test-utils phpunit/phpunit --with-dependencies --ignore-platform-req=php"
+
+      - name: "Install type 2: remove wp-test-utils (temporary - Composer bug #10394)"
+        if: ${{ steps.composer_toggle.outputs.TYPE == '2' }}
+        run: composer remove --dev yoast/wp-test-utils --no-interaction
+
+      - name: "Install type 2: reinstall wp-test-utils with specific PHPUnit version (temporary - Composer bug #10394)"
+        if: ${{ steps.composer_toggle.outputs.TYPE == '2' }}
+        run: composer require --dev yoast/wp-test-utils:"^1.0.0" phpunit/phpunit:"^7.5" --update-with-dependencies --ignore-platform-reqs --no-interaction
 
       ### Install type 3.
       - name: "Install type 3: install Composer dependencies - WP < 5.9 with PHP < 8.0"
