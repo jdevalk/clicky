@@ -58,7 +58,7 @@ jobs:
     name: "Integration Test: PHP ${{ matrix.php_version }} | WP ${{ matrix.wp_version }} | multisite: ${{ matrix.multisite }}"
 
     # Allow builds to fail on as-of-yet unreleased PHP versions.
-    continue-on-error: ${{ matrix.php_version == '8.1' || matrix.wp_version == 'trunk' }}
+    continue-on-error: ${{ matrix.wp_version == 'trunk' }}
 
     services:
       mysql:
