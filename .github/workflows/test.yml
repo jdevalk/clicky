@@ -111,7 +111,7 @@ jobs:
 
       - name: "Install type 1: install Composer dependencies - WP 5.9 or higher"
         if: ${{ steps.composer_toggle.outputs.TYPE == '1' }}
-        uses: ramsey/composer-install@v1
+        uses: ramsey/composer-install@v2
         with:
           # Force a `composer update` run.
           dependency-versions: "highest"
@@ -126,7 +126,7 @@ jobs:
       - name: "Install type 2: install Composer dependencies - WP < 5.9 with PHP >= 8.0"
         if: ${{ steps.composer_toggle.outputs.TYPE == '2' }}
         # This is just a plain install to still be able to use the cache for the most part.
-        uses: ramsey/composer-install@v1
+        uses: ramsey/composer-install@v2
 
       - name: "Install type 2: remove wp-test-utils (temporary - Composer bug #10394)"
         if: ${{ steps.composer_toggle.outputs.TYPE == '2' }}
@@ -139,7 +139,7 @@ jobs:
       ### Install type 3.
       - name: "Install type 3: install Composer dependencies - WP < 5.9 with PHP < 8.0"
         if: ${{ steps.composer_toggle.outputs.TYPE == '3' }}
-        uses: ramsey/composer-install@v1
+        uses: ramsey/composer-install@v2
 
       - name: Install WP
         run: tests/bin/install-wp-tests.sh wordpress_tests root '' 127.0.0.1:3306 ${{ matrix.wp_version }}
