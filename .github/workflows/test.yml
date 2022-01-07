@@ -55,7 +55,7 @@ jobs:
             wp_version: 'trunk'
             multisite: true
 
-    name: "Integration Test: PHP ${{ matrix.php_version }} | WP ${{ matrix.wp_version }} | multisite: ${{ matrix.multisite }}"
+    name: "Integration Test: PHP ${{ matrix.php_version }} | WP ${{ matrix.wp_version }}${{ matrix.multisite == true && ' (+ ms)' || '' }}"
 
     # Allow builds to fail on as-of-yet unreleased PHP versions.
     continue-on-error: ${{ matrix.wp_version == 'trunk' }}
