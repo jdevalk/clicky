@@ -55,7 +55,7 @@ jobs:
             wp_version: 'trunk'
             multisite: true
 
-    name: "Integration Test: PHP ${{ matrix.php_version }} | WP ${{ matrix.wp_version }} | multisite: ${{ matrix.multisite }}"
+    name: "Integration Test: PHP ${{ matrix.php_version }} | WP ${{ matrix.wp_version }}${{ matrix.multisite == true && ' (+ ms)' || '' }}"
 
     # Allow builds to fail on as-of-yet unreleased PHP versions.
     continue-on-error: ${{ matrix.wp_version == 'trunk' }}
@@ -138,10 +138,10 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: Install WP
+        shell: bash
         run: tests/bin/install-wp-tests.sh wordpress_tests root '' 127.0.0.1:3306 ${{ matrix.wp_version }}
 
       - name: Run unit tests - single site
-        if: ${{ matrix.multisite == false }}
         run: composer test
 
       - name: Run unit tests - multisite
