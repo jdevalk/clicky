@@ -30,7 +30,7 @@ jobs:
             multisite: true
 
           - php_version: '7.0'
-            wp_version: '5.8'
+            wp_version: 'latest'
             multisite: false
 
           - php_version: '7.2'
@@ -52,7 +52,7 @@ jobs:
 
           # WP 5.9 is the earliest version which (sort of) supports PHP 8.1.
           - php_version: '8.1'
-            wp_version: 'trunk'
+            wp_version: 'latest'
             multisite: true
 
     name: "Integration Test: PHP ${{ matrix.php_version }} | WP ${{ matrix.wp_version }}${{ matrix.multisite == true && ' (+ ms)' || '' }}"
@@ -88,7 +88,7 @@ jobs:
       - name: Determine the type of Composer install to use
         id: composer_toggle
         run: |
-          if [[ "${{ matrix.wp_version }}" =~ ^trunk|5\.9|[6789]\.[0-9]$ ]]; then
+          if [[ "${{ matrix.wp_version }}" =~ ^(trunk|latest|5\.9|[6789]\.[0-9])$ ]]; then
             echo '::set-output name=TYPE::1'
           elif [[ "${{ matrix.php_version }}" > "7.4" ]]; then
             echo '::set-output name=TYPE::2'
