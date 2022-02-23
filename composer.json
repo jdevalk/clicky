@@ -21,7 +21,7 @@
     "yoast/i18n-module": "^1.0"
   },
   "require-dev": {
-    "yoast/yoastcs": "^2.2.0",
+    "yoast/yoastcs": "^2.2.1",
     "yoast/wp-test-utils": "^1.0.0"
   },
   "config": {
@@ -47,7 +47,7 @@
   },
   "scripts": {
     "lint": [
-      "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude node_modules --exclude .git"
+      "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude node_modules --exclude .git"
     ],
     "check-cs": [
       "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
