@@ -3,8 +3,8 @@ Contributors: joostdevalk, yoast
 Tags: analytics, statistics, clicky, getclicky, affiliate
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Requires at least: 5.6
-Tested up to: 5.8
+Requires at least: 5.8
+Tested up to: 5.9
 Requires PHP: 5.6.20
 Stable tag: 2.0
 
