@@ -13,7 +13,7 @@
  * Description:       The Clicky for WordPress plugin by Yoast makes it easy for you to add your Clicky analytics tracking code to your WordPress install, while also giving you some advanced tracking options.
  * Author:            Team Yoast
  * Requires PHP:      5.6
- * Requires at least: 5.0
+ * Requires at least: 5.9
  * Author URI:        https://yoast.com/
  * Text Domain:       clicky
  */
