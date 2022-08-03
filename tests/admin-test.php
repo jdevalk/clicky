@@ -18,6 +18,13 @@ class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	private static $class_instance;
 
 	/**
+	 * Temporary storage for admin options for a test.
+	 *
+	 * @var array
+	 */
+	private $options;
+
+	/**
 	 * Set up the class instance to be tested.
 	 */
 	public static function set_up_before_class() {
