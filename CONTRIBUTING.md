@@ -23,7 +23,7 @@ For localization, please refer to [translate.yoast.com](http://translate.yoast.c
   * Ensure you stick to the [WordPress Coding Standards](http://codex.wordpress.org/WordPress_Coding_Standards) and have properly documented any new functions.
   * Running `grunt check` to check for coding standards issues.
 * When committing, reference your issue (if present) and include a note about the fix.
-* Push the changes to your fork and submit a pull request to the 'master' branch of the Clicky for WordPress repository.
+* Push the changes to your fork and submit a pull request to the 'main' branch of the Clicky for WordPress repository.
 
 ## Code Documentation
 
