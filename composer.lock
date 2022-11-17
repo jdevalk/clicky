@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3c3dc9b21cde2217b61d0095c51e38c",
+    "content-hash": "2f0c34f3a1e246f64d308b9c746f862a",
     "packages": [
         {
             "name": "composer/installers",
@@ -2533,16 +2533,16 @@
         },
         {
             "name": "yoast/wp-test-utils",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast/wp-test-utils.git",
-                "reference": "f319edb9c074d2c23f83005e66a86c9441c5040f"
+                "reference": "f955f6a6bd8c625f3ae47b2c19fff1caa648896a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/wp-test-utils/zipball/f319edb9c074d2c23f83005e66a86c9441c5040f",
-                "reference": "f319edb9c074d2c23f83005e66a86c9441c5040f",
+                "url": "https://api.github.com/repos/Yoast/wp-test-utils/zipball/f955f6a6bd8c625f3ae47b2c19fff1caa648896a",
+                "reference": "f955f6a6bd8c625f3ae47b2c19fff1caa648896a",
                 "shasum": ""
             },
             "require": {
@@ -2598,7 +2598,7 @@
                 "issues": "https://github.com/Yoast/wp-test-utils/issues",
                 "source": "https://github.com/Yoast/wp-test-utils"
             },
-            "time": "2022-11-16T23:23:15+00:00"
+            "time": "2022-11-17T14:06:19+00:00"
         },
         {
             "name": "yoast/yoastcs",
