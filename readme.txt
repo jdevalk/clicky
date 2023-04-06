@@ -26,6 +26,10 @@ Integrates the [Clicky web analytics](http://clicky.com/145844) service into you
 
 Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics-review/) if you want to see a bit more of the cool integration this plugin provides.
 
+=== Have you found an issue? ===
+
+If you have bugs to report, please go to [the plugin's GitHub repository](hhttps://github.com/jdevalk/clicky). For security issues, please use our [vulnerability disclosure program](https://patchstack.com/database/vdp/clicky), which is managed by PatchStack. They will assist you with verification, CVE assignment, and, of course, notify us.
+
 == Installation ==
 
 1. Upload the `clicky` folder to the `/wp-content/plugins/` directory
