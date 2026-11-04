@@ -22,7 +22,7 @@ module.exports = {
 					"!vendor/bin/**",
 					"!vendor/composer/installed.json",
 					"!vendor/composer/installers/**",
-					"!vendor/yoast/i18n-module/LICENSE",
+					"!vendor/wpbp/i18n-notice/LICENSE",
 					"!**/composer.json",
 					"!**/README.md",
 				],
