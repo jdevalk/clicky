@@ -101,6 +101,10 @@ jobs:
           # Bust the cache at least once a month - output format: YYYY-MM-DD.
           custom-cache-suffix: $(date -u -d "-0 month -$(($(date +%d)-1)) days" "+%F")
 
+      # The install script uses `svn export`, and Subversion is no longer included on ubuntu-latest.
+      - name: Install Subversion
+        run: sudo apt-get update && sudo apt-get install -y subversion
+
       - name: Install WP
         shell: bash
         run: tests/bin/install-wp-tests.sh wordpress_tests root '' 127.0.0.1:3306 ${{ matrix.wp_version }}
