@@ -5,7 +5,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Requires at least: 5.9
 Tested up to: 6.1
-Requires PHP: 5.6.20
+Requires PHP: 7.1
 Stable tag: 2.0
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.

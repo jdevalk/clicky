@@ -142,9 +142,24 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 	/**
 	 * Instantiate the i18n module.
+	 *
+	 * Only runs on the Clicky settings page and for users who can manage options.
+	 * The module's dismiss handler sets a site-wide transient without a capability
+	 * check, so it must not be reachable for other users or on other admin pages.
 	 */
 	public function i18n_module() {
-		new yoast_i18n(
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$screen = get_current_screen();
+		if ( $screen === null || $screen->id !== 'settings_page_clicky' ) {
+			return;
+		}
+
+		$this->migrate_i18n_promo_dismissal();
+
+		new I18n_Notice(
 			[
 				'textdomain'     => 'clicky',
 				'project_slug'   => 'clicky-wordpress-plugin',
@@ -156,5 +171,21 @@ class Clicky_Admin_Page extends Clicky_Admin {
 				'register_url '  => 'http://translate.yoast.com/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=clicky-i18n-promo',
 			]
 		);
+	}
+
+	/**
+	 * Carries over a promo dismissal stored by the old yoast/i18n-module.
+	 *
+	 * The old module stored the dismissal in a transient; wpbp/i18n-notice stores it in an option.
+	 * Without this, sites that dismissed the promo would see it again.
+	 */
+	private function migrate_i18n_promo_dismissal() {
+		$old_key = 'yoast_i18n_clicky-wordpress-plugin_promo_hide';
+		if ( ! get_transient( $old_key ) ) {
+			return;
+		}
+
+		update_option( 'i18n_notice_clicky-wordpress-plugin_promo_hide', true );
+		delete_transient( $old_key );
 	}
 }
