@@ -75,9 +75,10 @@ No, there is no built-in WooCommerce integration. You can track posts and pages 
 
 == Screenshots ==
 
-1. The Clicky WordPress plugin settings panel.
-2. The Clicky metabox on posts and pages.
-3. The stats indicator on the WordPress Toolbar.
+1. The Clicky settings page: basic settings.
+2. The Clicky settings page: advanced settings and outbound link patterns.
+3. The Clicky metabox on posts and pages.
+4. The stats indicator on the WordPress Toolbar.
 
 == Changelog ==
 
@@ -92,6 +93,7 @@ Released November 6th, 2026
 * Deprecates the `Yoast\WP\Clicky\admin_footer` action hook in favour of the `clicky/admin_footer` hook.
 * Renames the `Yoast_Clicky` class to `Clicky_Plugin`. The old name remains available as an alias.
 * Removes the translation promo module and its unprotected dismiss handler, and links to the plugin's translation project on translate.wordpress.org from the settings page instead.
+* Fixes the setting descriptions on the Advanced settings tab, which showed HTML tags such as `<em>` and `<code>` as text.
 
 = 2.0 =
 

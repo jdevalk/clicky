@@ -157,6 +157,27 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests that a field description renders its allowed HTML, and strips disallowed HTML.
+	 *
+	 * @covers Clicky_Options_Admin::input_text
+	 * @covers Clicky_Options_Admin::input_desc
+	 *
+	 * @return void
+	 */
+	public function test_input_text_description_allows_safe_html() {
+		$args         = $this->test_args;
+		$args['desc'] = 'For instance: <code>/out/</code>, <em>really</em>.<script>alert(1)</script>';
+
+		ob_start();
+		self::$class_instance->input_text( $args );
+		$output = ob_get_clean();
+
+		// What kses leaves of the script tag's contents differs per WordPress version, so only check the tags.
+		$this->assertStringContainsString( '<p class="description">For instance: <code>/out/</code>, <em>really</em>.', $output );
+		$this->assertStringNotContainsString( '<script', $output );
+	}
+
+	/**
 	 * Tests whether a proper checkbox input field is generated.
 	 *
 	 * @covers Clicky_Options_Admin::input_checkbox

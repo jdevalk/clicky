@@ -275,7 +275,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 	 */
 	private function input_desc( $args ) {
 		if ( isset( $args['desc'] ) ) {
-			echo '<p class="description">' . esc_html( $args['desc'] ) . '</p>';
+			echo '<p class="description">' . wp_kses_post( $args['desc'] ) . '</p>';
 		}
 	}
 
