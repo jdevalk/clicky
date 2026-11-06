@@ -37,9 +37,10 @@ If you have bugs to report, please go to [the plugin's GitHub repository](https:
 
 == Screenshots ==
 
-1. The Clicky WordPress plugin settings panel.
-2. The Clicky metabox on posts and pages.
-3. The stats indicator on the WordPress Toolbar.
+1. The Clicky settings page: basic settings.
+2. The Clicky settings page: advanced settings and outbound link patterns.
+3. The Clicky metabox on posts and pages.
+4. The stats indicator on the WordPress Toolbar.
 
 == Changelog ==
 
