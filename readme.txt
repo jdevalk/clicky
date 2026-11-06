@@ -35,6 +35,12 @@ If you have bugs to report, please go to [the plugin's GitHub repository](https:
 1. Enter your Site ID, Key and Admin Key.
 1. You're done, Clicky should start working.
 
+== Frequently Asked Questions ==
+
+= Was this plugin previously called Clicky by Yoast? =
+
+Yes. [Joost de Valk](https://joost.blog) originally wrote this plugin while he was still at Yoast, which is why it was published as Clicky by Yoast. When he left the company, he took the plugin with him. He now maintains it independently, under the name Clicky for WordPress.
+
 == Screenshots ==
 
 1. The Clicky WordPress plugin settings panel.
