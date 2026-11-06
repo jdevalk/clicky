@@ -153,7 +153,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 				'glotpress_url'  => 'http://translate.yoast.com',
 				'glotpress_name' => __( 'Yoast Translate', 'clicky' ),
 				'glotpress_logo' => 'https://cdn.yoast.com/wp-content/uploads/i18n-images/Yoast_Translate.svg',
-				'register_url '  => 'http://translate.yoast.com/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=clicky-i18n-promo',
+				'register_url'   => 'http://translate.yoast.com/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=clicky-i18n-promo',
 			]
 		);
 	}
