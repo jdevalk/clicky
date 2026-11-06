@@ -183,10 +183,10 @@ class Clicky_Admin {
 	/**
 	 * Add a link to the settings page to the plugins list.
 	 *
-	 * @param array<int, string> $links Links to add.
-	 * @param string             $file  Plugin file name.
+	 * @param array<int|string, string> $links Links to add.
+	 * @param string                    $file  Plugin file name.
 	 *
-	 * @return array<int, string>
+	 * @return array<int|string, string>
 	 */
 	public function add_action_link( $links, $file ) {
 		static $this_plugin;

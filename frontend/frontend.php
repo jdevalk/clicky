@@ -126,8 +126,8 @@ class Clicky_Frontend {
 	/**
 	 * Tracks comments that are not spam and not ping- or trackbacks.
 	 *
-	 * @param int $comment_id     The ID of the comment that needs to be tracked.
-	 * @param int $comment_status Status of the comment (e.g. spam).
+	 * @param int        $comment_id     The ID of the comment that needs to be tracked.
+	 * @param int|string $comment_status Status of the comment: 1, 0 or 'spam'.
 	 *
 	 * @return void
 	 */
