@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	name="Yoast Clicky"
+	name="Clicky"
 	xsi:noNamespaceSchemaLocation="./vendor/squizlabs/php_codesniffer/phpcs.xsd">
 
-	<description>Yoast Clicky rules for PHP_CodeSniffer</description>
+	<description>Clicky rules for PHP_CodeSniffer</description>
 
 	<!--
 	#############################################################################
@@ -50,8 +50,7 @@
 
 			<!-- Provide the plugin specific prefixes for all naming related sniffs. -->
 			<property name="prefixes" type="array">
-				<element value="Yoast\WP\Clicky"/>
-				<element value="yoast_clicky"/>
+				<element value="clicky"/>
 			</property>
 		</properties>
 	</rule>
@@ -82,7 +81,6 @@
 			<!-- Remove the following prefixes from the names of object structures. -->
 			<property name="oo_prefixes" type="array">
 				<element value="clicky"/>
-				<element value="yoast_clicky"/>
 			</property>
 		</properties>
 	</rule>
@@ -128,7 +126,7 @@
 
 	<rule ref="Generic.Commenting.DocComment.MissingShort">
 		<!-- Temporarily downgraded to warning to allow the build to pass.
-			 Ticket: https://github.com/Yoast/clicky/issues/67 -->
+			 Ticket: https://github.com/jdevalk/clicky/issues/67 -->
 		<exclude-pattern>/tests/*\.php$</exclude-pattern>
 	</rule>
 

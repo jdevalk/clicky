@@ -2,19 +2,19 @@
 /**
  * Clicky for WordPress Plugin.
  *
- * @package   Yoast/Clicky
- * @copyright Copyright (C) 2012-2019 Yoast BV - support@yoast.com
+ * @package   Clicky
+ * @copyright Copyright (C) 2012-2026 Joost de Valk
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License, version 2 or higher
  *
  * @wordpress-plugin
  * Plugin Name:       Clicky for WordPress
  * Version:           2.0
- * Plugin URI:        https://yoast.com/wordpress/plugins/clicky/
- * Description:       The Clicky for WordPress plugin by Yoast makes it easy for you to add your Clicky analytics tracking code to your WordPress install, while also giving you some advanced tracking options.
- * Author:            Team Yoast
+ * Plugin URI:        https://wordpress.org/plugins/clicky/
+ * Description:       The Clicky for WordPress plugin makes it easy for you to add your Clicky analytics tracking code to your WordPress install, while also giving you some advanced tracking options.
+ * Author:            Joost de Valk
  * Requires PHP:      5.6
  * Requires at least: 5.9
- * Author URI:        https://yoast.com/
+ * Author URI:        https://joost.blog/
  * Text Domain:       clicky
  */
 
@@ -30,9 +30,9 @@ define( 'CLICKY_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'CLICKY_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 
 /**
- * Class Yoast Clicky base class.
+ * Clicky for WordPress base class.
  */
-class Yoast_Clicky {
+class Clicky_Plugin {
 
 	/**
 	 * Initialize the plugin settings.
@@ -71,9 +71,16 @@ class Yoast_Clicky {
 	}
 }
 
+/**
+ * Keep the old class name available for code that checks for it.
+ *
+ * @deprecated 2.1.0 Use Clicky_Plugin instead.
+ */
+class_alias( 'Clicky_Plugin', 'Yoast_Clicky' );
+
 add_action(
 	'plugins_loaded',
 	static function () {
-		new Yoast_Clicky();
+		new Clicky_Plugin();
 	}
 );

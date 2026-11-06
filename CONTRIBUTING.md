@@ -6,12 +6,12 @@ When contributing please ensure you follow the guidelines below so that we can k
 
 __Please Note:__ GitHub is for bug reports and contributions only - if you have a support question or a request for a customisation don't post here, go to our [Support Forum](http://wordpress.org/support/plugin/clicky) instead.
 
-For localization, please refer to [translate.yoast.com](http://translate.yoast.com/projects/clicky-wordpress-plugin), though bugs with strings that can't be translated are welcome here.
+For localization, please refer to [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/clicky/), though bugs with strings that can't be translated are welcome here.
 
 ## Getting Started
 
 * Submit a ticket for your issue, assuming one does not already exist.
-  * Raise it on our [Issue Tracker](https://github.com/Yoast/clicky/issues)
+  * Raise it on our [Issue Tracker](https://github.com/jdevalk/clicky/issues)
   * Clearly describe the issue including steps to reproduce the bug.
   * Make sure you fill in the earliest version that you know has the issue as well as the version of WordPress you're using.
 

@@ -1,17 +1,16 @@
 {
-  "name": "yoast/clicky",
+  "name": "jdevalk/clicky",
   "description": "Clicky tracking",
   "keywords": [
     "tracking",
     "clicky"
   ],
-  "homepage": "https://yoast.com/wordpress/plugins/clicky/",
+  "homepage": "https://wordpress.org/plugins/clicky/",
   "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Joost de Valk",
-      "email": "support@yoast.com",
-      "homepage": "https://yoast.com"
+      "homepage": "https://joost.blog/"
     }
   ],
   "type": "wordpress-plugin",

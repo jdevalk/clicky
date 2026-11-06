@@ -2,7 +2,7 @@
 /**
  * Clicky for WordPress plugin file.
  *
- * @package Yoast/Clicky/View
+ * @package Clicky/View
  */
 
 ?><div class="wrap">
@@ -14,17 +14,17 @@
 	<?php
 		settings_fields( Clicky_Options_Admin::$option_group );
 	?>
-	<div id="yoast_wrapper">
-		<h2 class="nav-tab-wrapper" id="yoast-tabs">
+	<div id="clicky_wrapper">
+		<h2 class="nav-tab-wrapper" id="clicky-tabs">
 			<a class="nav-tab" id="basic-tab" href="#top#basic"><?php esc_html_e( 'Basic settings', 'clicky' ); ?></a>
 			<a class="nav-tab" id="advanced-tab" href="#top#advanced"><?php esc_html_e( 'Advanced settings', 'clicky' ); ?></a>
 		</h2>
 
 		<div class="tabwrapper">
-			<div id="basic" class="yoast_tab">
+			<div id="basic" class="clicky_tab">
 				<?php do_settings_sections( 'clicky' ); ?>
 			</div>
-			<div id="advanced" class="yoast_tab">
+			<div id="advanced" class="clicky_tab">
 				<?php do_settings_sections( 'clicky-advanced' ); ?>
 			</div>
 		</div>
@@ -32,24 +32,31 @@
 			submit_button( __( 'Save Clicky settings', 'clicky' ) );
 
 			/**
-			 * Allow for adding content to the Yoast Clicky admin page footer.
+			 * Allow for adding content to the Clicky admin page footer.
 			 *
-			 * @deprecated 1.10.0. Use the {@see 'Yoast\WP\Clicky\admin_footer'} action instead.
+			 * @deprecated 1.10.0. Use the {@see 'clicky/admin_footer'} action instead.
 			 */
-			do_action_deprecated( 'clicky_admin_footer', [], 'Yoast Clicky 1.10.0', 'Yoast\WP\Clicky\admin_footer' );
+			do_action_deprecated( 'clicky_admin_footer', [], 'Clicky 1.10.0', 'clicky/admin_footer' );
 
 			/**
-			 * Allow for adding content to the Yoast Clicky admin page footer.
+			 * Allow for adding content to the Clicky admin page footer.
 			 *
 			 * @since 1.10.0
+			 * @deprecated 2.1.0. Use the {@see 'clicky/admin_footer'} action instead.
 			 */
-			do_action( 'Yoast\WP\Clicky\admin_footer' );
+			do_action_deprecated( 'Yoast\WP\Clicky\admin_footer', [], 'Clicky 2.1.0', 'clicky/admin_footer' );
+
+			/**
+			 * Allow for adding content to the Clicky admin page footer.
+			 *
+			 * @since 2.1.0
+			 */
+			do_action( 'clicky/admin_footer' );
 		?>
 	</div>
 	</form>
-	<div id="yoast_sidebar">
+	<div id="clicky_sidebar">
 		<?php
-			$this->yoast_news();
 			$this->clicky_news();
 		?>
 	</div>

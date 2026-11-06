@@ -2,7 +2,7 @@
 /**
  * Clicky for WordPress plugin file.
  *
- * @package Yoast\Clicky\FrontEnd
+ * @package Clicky\FrontEnd
  */
 
 /**
@@ -39,7 +39,7 @@ class Clicky_Frontend {
 			return;
 		}
 
-		echo '<!-- Clicky Web Analytics - https://clicky.com, WordPress Plugin by Yoast - https://yoast.com/wordpress/plugins/clicky/ -->';
+		echo '<!-- Clicky Web Analytics - https://clicky.com, WordPress Plugin - https://wordpress.org/plugins/clicky/ -->';
 
 		// Bail early if current user is admin and ignore admin is true.
 		if ( $this->options['ignore_admin'] && current_user_can( 'manage_options' ) ) {

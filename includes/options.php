@@ -2,7 +2,7 @@
 /**
  * Clicky for WordPress plugin file.
  *
- * @package Yoast/Clicky/Options
+ * @package Clicky/Options
  */
 
 /**
