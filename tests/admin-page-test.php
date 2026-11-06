@@ -120,7 +120,57 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 		set_current_screen( $screen_id );
 		delete_transient( 'yoast_i18n_clicky-wordpress-plugin_promo_hide' );
 		delete_option( 'i18n_notice_clicky-wordpress-plugin_promo_hide' );
+		delete_option( 'i18n_notice_clicky-wordpress-plugin_de_DE' );
 		remove_all_actions( 'Yoast\WP\Clicky\admin_footer' );
+	}
+
+	/**
+	 * Tests that the promo gets its stats from translate.wordpress.org and links there.
+	 *
+	 * @covers Clicky_Admin_Page::i18n_module
+	 */
+	public function test_i18n_module_uses_wordpress_org_translations() {
+		$this->set_up_i18n_context( 'administrator', 'settings_page_clicky' );
+
+		$requested_urls = [];
+		$fake_response  = static function ( $preempt, $args, $url ) use ( &$requested_urls ) {
+			$requested_urls[] = $url;
+
+			return [
+				'headers'  => [],
+				'body'     => wp_json_encode(
+					[
+						'translation_sets' => [
+							[
+								'name'               => 'German',
+								'slug'               => 'default',
+								'wp_locale'          => 'de_DE',
+								'percent_translated' => 46,
+							],
+						],
+					]
+				),
+				'response' => [
+					'code'    => 200,
+					'message' => 'OK',
+				],
+				'cookies'  => [],
+				'filename' => null,
+			];
+		};
+		add_filter( 'pre_http_request', $fake_response, 10, 3 );
+
+		self::$class_instance->i18n_module();
+
+		ob_start();
+		do_action( 'Yoast\WP\Clicky\admin_footer' );
+		$output = ob_get_clean();
+
+		remove_filter( 'pre_http_request', $fake_response, 10 );
+
+		$this->assertSame( [ 'https://translate.wordpress.org/api/projects/wp-plugins/clicky/stable/' ], $requested_urls );
+		$this->assertStringContainsString( '46%', $output );
+		$this->assertStringContainsString( 'https://translate.wordpress.org/projects/wp-plugins/clicky/', $output );
 	}
 
 	/**

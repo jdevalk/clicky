@@ -143,9 +143,12 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	/**
 	 * Instantiate the i18n module.
 	 *
+	 * Shows a promo asking for help with the translation when the admin's language is
+	 * incomplete on translate.wordpress.org.
+	 *
 	 * Only runs on the Clicky settings page and for users who can manage options.
-	 * The module's dismiss handler sets a site-wide transient without a capability
-	 * check, so it must not be reachable for other users or on other admin pages.
+	 * Dismissing the promo hides it for the whole site, so it must not be reachable
+	 * for other users or on other admin pages.
 	 */
 	public function i18n_module() {
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -159,16 +162,18 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 		$this->migrate_i18n_promo_dismissal();
 
-		new I18n_Notice(
+		/*
+		 * Translation stats come from https://translate.wordpress.org/api/projects/wp-plugins/clicky/stable/.
+		 * The project slug is only used in the names of the options the module stores, so it is kept
+		 * the same as before to leave existing dismissals in place.
+		 */
+		new I18n_Notice_WordPressOrg(
 			[
 				'textdomain'     => 'clicky',
 				'project_slug'   => 'clicky-wordpress-plugin',
 				'plugin_name'    => __( 'Clicky for WordPress', 'clicky' ),
 				'hook'           => 'Yoast\WP\Clicky\admin_footer',
-				'glotpress_url'  => 'http://translate.yoast.com',
-				'glotpress_name' => __( 'Yoast Translate', 'clicky' ),
-				'glotpress_logo' => 'https://cdn.yoast.com/wp-content/uploads/i18n-images/Yoast_Translate.svg',
-				'register_url '  => 'http://translate.yoast.com/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=clicky-i18n-promo',
+				'glotpress_name' => 'translate.wordpress.org',
 			]
 		);
 	}
