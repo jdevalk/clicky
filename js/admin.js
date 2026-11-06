@@ -1,7 +1,7 @@
 jQuery( document ).ready( function( $ ) {
-	$( "#yoast-tabs" ).find( "a" ).click( function() {
-		$( "#yoast-tabs" ).find( "a" ).removeClass( "nav-tab-active" );
-		$( ".yoast_tab" ).removeClass( "active" );
+	$( "#clicky-tabs" ).find( "a" ).click( function() {
+		$( "#clicky-tabs" ).find( "a" ).removeClass( "nav-tab-active" );
+		$( ".clicky_tab" ).removeClass( "active" );
 
 		var id = $( this ).attr( "id" ).replace( "-tab", "" );
 		$( "#" + id ).addClass( "active" );
@@ -14,7 +14,7 @@ jQuery( document ).ready( function( $ ) {
 
 	// Default to first tab.
 	if ( activeTab === "" || activeTab === "#_=_" ) {
-		activeTab = $( ".yoast_tab" ).attr( "id" );
+		activeTab = $( ".clicky_tab" ).attr( "id" );
 	}
 
 	$( "#" + activeTab ).addClass( "active" );

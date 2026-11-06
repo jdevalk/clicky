@@ -2,7 +2,7 @@
 /**
  * Clicky for WordPress plugin test file.
  *
- * @package Yoast/Clicky/Tests
+ * @package Clicky/Tests
  */
 
 use Yoast\WPTestUtils\WPIntegration;

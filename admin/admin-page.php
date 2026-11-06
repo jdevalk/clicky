@@ -2,7 +2,7 @@
 /**
  * Clicky for WordPress plugin file.
  *
- * @package Yoast\Clicky\Admin
+ * @package Clicky\Admin
  */
 
 /**
@@ -75,7 +75,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $content Content to display.
 	 */
 	private function box( $title, $content ) {
-		echo '<div class="yoast_box"><h3>' . esc_html( $title ) . '</h3><div class="inside">' . wp_kses_post( $content ) . '</div></div>';
+		echo '<div class="clicky_box"><h3>' . esc_html( $title ) . '</h3><div class="inside">' . wp_kses_post( $content ) . '</div></div>';
 	}
 
 	/**
@@ -99,7 +99,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 		$rss = fetch_feed( $feed );
 
 		if ( is_wp_error( $rss ) ) {
-			$rss = '<li class="yoast">' . esc_html__( 'No news items, feed might be broken...', 'clicky' ) . '</li>';
+			$rss = '<li class="news">' . esc_html__( 'No news items, feed might be broken...', 'clicky' ) . '</li>';
 		}
 		else {
 			$rss_items = $rss->get_items( 0, $rss->get_item_quantity( 3 ) );
@@ -107,7 +107,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 			$rss = '';
 			foreach ( $rss_items as $item ) {
 				$url  = preg_replace( '/#.*/', '', esc_url( $item->get_permalink() ) );
-				$rss .= '<li class="yoast">';
+				$rss .= '<li class="news">';
 				$rss .= '<a href="' . esc_url( $url . '#utm_source=wpadmin&utm_medium=sidebarwidget&utm_term=newsitem&utm_campaign=clickywpplugin' ) . '">' . $item->get_title() . '</a> ';
 				$rss .= '</li>';
 			}
@@ -130,17 +130,6 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	}
 
 	/**
-	 * Box with latest news from Yoast.com for sidebar.
-	 */
-	private function yoast_news() {
-		$extra_links  = '<li class="facebook"><a href="https://www.facebook.com/yoast">' . esc_html__( 'Like Yoast on Facebook', 'clicky' ) . '</a></li>';
-		$extra_links .= '<li class="twitter"><a href="https://twitter.com/yoast">' . esc_html__( 'Follow Yoast on Twitter', 'clicky' ) . '</a></li>';
-		$extra_links .= '<li class="email"><a href="https://yoast.com/newsletter/">' . esc_html__( 'Subscribe by email', 'clicky' ) . '</a></li>';
-
-		$this->rss_news( 'https://yoast.com/feed/', __( 'Latest news from Yoast', 'clicky' ), $extra_links );
-	}
-
-	/**
 	 * Instantiate the i18n module.
 	 */
 	public function i18n_module() {
@@ -149,7 +138,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 				'textdomain'     => 'clicky',
 				'project_slug'   => 'clicky-wordpress-plugin',
 				'plugin_name'    => __( 'Clicky for WordPress', 'clicky' ),
-				'hook'           => 'Yoast\WP\Clicky\admin_footer',
+				'hook'           => 'clicky/admin_footer',
 				'glotpress_url'  => 'http://translate.yoast.com',
 				'glotpress_name' => __( 'Yoast Translate', 'clicky' ),
 				'glotpress_logo' => 'https://cdn.yoast.com/wp-content/uploads/i18n-images/Yoast_Translate.svg',

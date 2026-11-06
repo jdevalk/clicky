@@ -17,6 +17,7 @@ jobs:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SLUG: clicky # optional, remove if GitHub repo name matches SVN slug, including capitalization
+          ASSETS_DIR: svn-assets
   build:
     name: Create Release
     runs-on: ubuntu-latest

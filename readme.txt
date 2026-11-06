@@ -1,5 +1,5 @@
-=== Clicky by Yoast ===
-Contributors: joostdevalk, yoast
+=== Clicky for WordPress ===
+Contributors: joostdevalk
 Tags: analytics, statistics, clicky, getclicky, affiliate
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -24,11 +24,9 @@ Integrates the [Clicky web analytics](http://clicky.com/145844) service into you
 * Easily add outbound link pattern matching for affiliate links etc.
 * Adds a small stats indicator of visitors in the last 48 to the WordPress toolbar.
 
-Read the authors [review of Clicky Analytics](https://yoast.com/clicky-analytics-review/) if you want to see a bit more of the cool integration this plugin provides.
-
 === Have you found an issue? ===
 
-If you have bugs to report, please go to [the plugin's GitHub repository](hhttps://github.com/jdevalk/clicky). For security issues, please use our [vulnerability disclosure program](https://patchstack.com/database/vdp/clicky), which is managed by PatchStack. They will assist you with verification, CVE assignment, and, of course, notify us.
+If you have bugs to report, please go to [the plugin's GitHub repository](https://github.com/jdevalk/clicky). For security issues, please use our [vulnerability disclosure program](https://patchstack.com/database/vdp/clicky), which is managed by PatchStack. They will assist you with verification, CVE assignment, and, of course, notify us.
 
 == Installation ==
 
@@ -44,6 +42,15 @@ If you have bugs to report, please go to [the plugin's GitHub repository](hhttps
 3. The stats indicator on the WordPress Toolbar.
 
 == Changelog ==
+
+= 2.1 =
+
+Unreleased
+
+* Rebrands the plugin as Clicky for WordPress, with new plugin artwork.
+* Removes the Yoast news and social links box from the settings page.
+* Deprecates the `Yoast\WP\Clicky\admin_footer` action hook in favour of the `clicky/admin_footer` hook.
+* Renames the `Yoast_Clicky` class to `Clicky_Plugin`. The old name remains available as an alias.
 
 = 2.0 =
 

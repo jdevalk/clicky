@@ -2,7 +2,7 @@
 /**
  * Clicky for WordPress plugin test file.
  *
- * @package Yoast/Clicky/Tests
+ * @package Clicky/Tests
  */
 
 /**
@@ -61,5 +61,67 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 
 		global $wp_styles;
 		$this->assertFalse( isset( $wp_styles->registered['clicky-admin-css'] ) );
+	}
+
+	/**
+	 * Tests that the settings page footer fires the clicky/admin_footer action,
+	 * and the deprecated clicky_admin_footer and Yoast\WP\Clicky\admin_footer actions for backward compatibility.
+	 *
+	 * @covers Clicky_Admin_Page::config_page
+	 */
+	public function test_config_page_fires_footer_actions() {
+		$this->setExpectedDeprecated( 'clicky_admin_footer' );
+		$this->setExpectedDeprecated( 'Yoast\WP\Clicky\admin_footer' );
+
+		// Don't fetch the news feed in the sidebar.
+		add_filter( 'pre_http_request', [ $this, 'block_http_request' ] );
+
+		add_action( 'clicky/admin_footer', [ $this, 'echo_marker_new' ] );
+		add_action( 'clicky_admin_footer', [ $this, 'echo_marker_legacy' ] );
+		add_action( 'Yoast\WP\Clicky\admin_footer', [ $this, 'echo_marker_yoast' ] );
+
+		ob_start();
+		self::$class_instance->config_page();
+		$output = ob_get_clean();
+
+		remove_filter( 'pre_http_request', [ $this, 'block_http_request' ] );
+		remove_action( 'clicky/admin_footer', [ $this, 'echo_marker_new' ] );
+		remove_action( 'clicky_admin_footer', [ $this, 'echo_marker_legacy' ] );
+		remove_action( 'Yoast\WP\Clicky\admin_footer', [ $this, 'echo_marker_yoast' ] );
+
+		$this->assertStringContainsString( 'clicky-footer-new', $output );
+		$this->assertStringContainsString( 'clicky-footer-legacy', $output );
+		$this->assertStringContainsString( 'clicky-footer-yoast', $output );
+		$this->assertStringNotContainsString( 'yoast', strtolower( str_replace( 'clicky-footer-yoast', '', $output ) ) );
+	}
+
+	/**
+	 * Short-circuits HTTP requests during a test.
+	 *
+	 * @return WP_Error
+	 */
+	public function block_http_request() {
+		return new WP_Error( 'http_request_blocked', 'Blocked in tests.' );
+	}
+
+	/**
+	 * Echoes a marker from the clicky/admin_footer action.
+	 */
+	public function echo_marker_new() {
+		echo 'clicky-footer-new';
+	}
+
+	/**
+	 * Echoes a marker from the deprecated clicky_admin_footer action.
+	 */
+	public function echo_marker_legacy() {
+		echo 'clicky-footer-legacy';
+	}
+
+	/**
+	 * Echoes a marker from the deprecated Yoast\WP\Clicky\admin_footer action.
+	 */
+	public function echo_marker_yoast() {
+		echo 'clicky-footer-yoast';
 	}
 }
