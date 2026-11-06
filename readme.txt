@@ -93,6 +93,7 @@ Released November 6th, 2026
 * Deprecates the `Yoast\WP\Clicky\admin_footer` action hook in favour of the `clicky/admin_footer` hook.
 * Renames the `Yoast_Clicky` class to `Clicky_Plugin`. The old name remains available as an alias.
 * Removes the translation promo module and its unprotected dismiss handler, and links to the plugin's translation project on translate.wordpress.org from the settings page instead.
+* Fixes the setting descriptions on the Advanced settings tab, which showed HTML tags such as `<em>` and `<code>` as text.
 
 = 2.0 =
 
