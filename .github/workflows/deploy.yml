@@ -11,6 +11,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
+
+      # The plugin's classes load through the Composer autoloader, and its
+      # admin CSS/JS are build artifacts. None of those files are in git:
+      # vendor/ and the dist files are gitignored. Build them into the
+      # workspace first, or the deploy would sync a broken plugin to
+      # WordPress.org (the action deletes files in SVN that are not in
+      # the build).
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v4
+        with:
+          composer-options: '--no-dev'
+
+      - name: Build admin CSS and JS
+        run: |
+          npx -y esbuild css/src/clicky_admin.css --minify --outfile=css/dist/clicky_admin.css
+          npx -y esbuild css/src/adminbar.css --minify --outfile=css/dist/adminbar.css
+          npx -y esbuild js/admin.js --minify --outfile=js/admin.min.js
+
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
         env:
