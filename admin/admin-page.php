@@ -26,6 +26,8 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Enqueue the styles for the admin page.
 	 *
 	 * @param string $current_page The current page.
+	 *
+	 * @return void
 	 */
 	public function config_page_styles( $current_page ) {
 		if ( $current_page !== 'settings_page_clicky' ) {
@@ -44,6 +46,8 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * Enqueue the scripts for the admin page.
 	 *
 	 * @param string $current_page The current page.
+	 *
+	 * @return void
 	 */
 	public function config_page_scripts( $current_page ) {
 		if ( $current_page !== 'settings_page_clicky' ) {
@@ -61,6 +65,8 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 	/**
 	 * Creates the configuration page.
+	 *
+	 * @return void
 	 */
 	public function config_page() {
 		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/admin-page.php';
@@ -71,6 +77,8 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 *
 	 * @param string $title   Title to display.
 	 * @param string $content Content to display.
+	 *
+	 * @return void
 	 */
 	private function box( $title, $content ) {
 		echo '<div class="clicky_box"><h3>' . esc_html( $title ) . '</h3><div class="inside">' . wp_kses_post( $content ) . '</div></div>';
@@ -78,6 +86,8 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 	/**
 	 * Info box with link to the bug tracker.
+	 *
+	 * @return void
 	 */
 	private function plugin_support() {
 		/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
@@ -91,6 +101,8 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 * @param string $feed        Feed URL to parse.
 	 * @param string $title       Title of the box.
 	 * @param string $extra_links Additional links to add to the output, after the RSS subscribe link.
+	 *
+	 * @return void
 	 */
 	private function rss_news( $feed, $title, $extra_links = '' ) {
 		include_once ABSPATH . WPINC . '/feed.php';
@@ -122,6 +134,8 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 	/**
 	 * Box with latest news from Clicky.
+	 *
+	 * @return void
 	 */
 	private function clicky_news() {
 		$this->rss_news( 'https://blog.clicky.com/feed/', __( 'Latest news from Clicky', 'clicky' ) );

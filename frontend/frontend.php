@@ -13,7 +13,7 @@ class Clicky_Frontend {
 	/**
 	 * Holds the plugin options.
 	 *
-	 * @var array
+	 * @var array<string, bool|string>
 	 */
 	private $options = [];
 
@@ -33,6 +33,8 @@ class Clicky_Frontend {
 
 	/**
 	 * Add Clicky scripts to header.
+	 *
+	 * @return void
 	 */
 	public function script() {
 		if ( is_preview() ) {
@@ -126,6 +128,8 @@ class Clicky_Frontend {
 	 *
 	 * @param int $comment_id     The ID of the comment that needs to be tracked.
 	 * @param int $comment_status Status of the comment (e.g. spam).
+	 *
+	 * @return void
 	 */
 	public function track_comment( $comment_id, $comment_status ) {
 		// Make sure to only track the comment if it's not spam (but do it for moderated comments).
@@ -153,8 +157,10 @@ class Clicky_Frontend {
 	/**
 	 * Create the log for clicky.
 	 *
-	 * @param array $log_data The array with basic log-data.
-	 * @param array $custom   The array with custom log-data for the comment author.
+	 * @param array<string, string> $log_data The array with basic log-data.
+	 * @param array<string, string> $custom   The array with custom log-data for the comment author.
+	 *
+	 * @return void
 	 */
 	private function log_comment( $log_data, $custom ) {
 		$log_data['site_id']       = $this->options['site_id'];

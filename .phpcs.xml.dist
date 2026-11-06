@@ -40,18 +40,6 @@
 		<!-- The Clicky plugin is a stand-alone plugin, so it doesn't have access to YoastSEO functions. -->
 		<exclude name="Yoast.Yoast.JsonEncodeAlternative"/>
 
-		<!-- The Slevomat type hint sniffs, newly pulled in via PHPCSExtra in YoastCS 3,
-			 require item types in docblock annotations (e.g. array<string, mixed>)
-			 throughout. Adding those is a separate documentation pass. -->
-		<exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint"/>
-		<exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint"/>
-		<exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint"/>
-
-		<!-- PHPCS 3.13 started reporting a missing @return tag for void functions.
-			 The codebase's docblocks predate that change; adding @return tags
-			 throughout is a separate documentation pass. -->
-		<exclude name="Squiz.Commenting.FunctionComment.MissingReturn"/>
-
 		<properties>
 			<!-- Set the custom test class whitelist for all sniffs which use it in one go.
 				 Ref: https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#custom-unit-test-classes

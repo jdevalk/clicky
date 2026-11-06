@@ -28,6 +28,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Register the needed option and its settings sections.
+	 *
+	 * @return void
 	 */
 	public function admin_init() {
 		register_setting( self::$option_group, parent::$option_name, [ $this, 'sanitize_options_on_save' ] );
@@ -39,6 +41,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Register the basic settings.
+	 *
+	 * @return void
 	 */
 	private function register_basic_settings() {
 		add_settings_section(
@@ -85,6 +89,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Register the separate advanced settings screen.
+	 *
+	 * @return void
 	 */
 	private function register_advanced_settings() {
 		add_settings_section( 'clicky-advanced', __( 'Advanced Settings', 'clicky' ), null, 'clicky-advanced' );
@@ -125,6 +131,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Register the outbound links settings section.
+	 *
+	 * @return void
 	 */
 	private function register_outbound_settings() {
 		add_settings_section(
@@ -151,6 +159,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Create a "plugin like" box.
+	 *
+	 * @return void
 	 */
 	public function like_text() {
 		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/like-box.php';
@@ -170,9 +180,9 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Sanitize options.
 	 *
-	 * @param array $new_options Options to sanitize.
+	 * @param array<string, string> $new_options Options to sanitize, as submitted by the settings form.
 	 *
-	 * @return array
+	 * @return array<string, bool|int|string>
 	 */
 	public function sanitize_options_on_save( $new_options ) {
 		foreach ( $new_options as $key => $value ) {
@@ -210,6 +220,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Intro for the basic settings screen.
+	 *
+	 * @return void
 	 */
 	public function basic_settings_intro() {
 		echo '<p>';
@@ -224,6 +236,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Intro for the the outbound links section.
+	 *
+	 * @return void
 	 */
 	public function outbound_explanation() {
 		echo '<p>';
@@ -238,6 +252,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Text for the support box.
+	 *
+	 * @return void
 	 */
 	public function support_text() {
 		echo '<p>';
@@ -253,7 +269,9 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Output an optional input description.
 	 *
-	 * @param array $args Arguments to get data from.
+	 * @param array<string, bool|string> $args Arguments to get data from.
+	 *
+	 * @return void
 	 */
 	private function input_desc( $args ) {
 		if ( isset( $args['desc'] ) ) {
@@ -264,7 +282,9 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Create a text input.
 	 *
-	 * @param array $args Arguments to get data from.
+	 * @param array<string, bool|string> $args Arguments to get data from.
+	 *
+	 * @return void
 	 */
 	public function input_text( $args ) {
 		echo '<input type="text" class="text" name="' . esc_attr( $args['name'] ) . '" value="' . esc_attr( $args['value'] ) . '"/>';
@@ -274,7 +294,9 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Create a checkbox input.
 	 *
-	 * @param array $args Arguments to get data from.
+	 * @param array<string, bool|string> $args Arguments to get data from.
+	 *
+	 * @return void
 	 */
 	public function input_checkbox( $args ) {
 		$option = ( $this->options[ $args['name'] ] ?? false );

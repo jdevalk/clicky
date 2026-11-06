@@ -29,6 +29,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 
 	/**
 	 * Set up the class instance to be tested.
+	 *
+	 * @return void
 	 */
 	public static function set_up_before_class() {
 		parent::set_up_before_class();
@@ -39,6 +41,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests the options constructor.
 	 *
 	 * @covers Clicky_Options_Admin::__construct
+	 *
+	 * @return void
 	 */
 	public function test___construct() {
 		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );
@@ -48,6 +52,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests whether the plugin properly initializes on admin.
 	 *
 	 * @covers Clicky_Options_Admin::admin_init
+	 *
+	 * @return void
 	 */
 	public function test_admin_init() {
 
@@ -63,6 +69,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests whether the like box is loading.
 	 *
 	 * @covers Clicky_Options_Admin::like_text
+	 *
+	 * @return void
 	 */
 	public function test_like_text() {
 		ob_start();
@@ -77,6 +85,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests that the like box links to the plugin's translation project on translate.wordpress.org.
 	 *
 	 * @covers Clicky_Options_Admin::like_text
+	 *
+	 * @return void
 	 */
 	public function test_like_text_links_to_translations() {
 		ob_start();
@@ -90,6 +100,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * Makes sure there is output and makes sure our affiliate link is in it.
 	 *
 	 * @covers Clicky_Options_Admin::basic_settings_intro
+	 *
+	 * @return void
 	 */
 	public function test_basic_settings_intro() {
 		ob_start();
@@ -104,6 +116,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * Makes sure there is output.
 	 *
 	 * @covers Clicky_Options_Admin::outbound_explanation
+	 *
+	 * @return void
 	 */
 	public function test_outbound_explanation() {
 		ob_start();
@@ -117,6 +131,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * Makes sure link to the forums is in the text.
 	 *
 	 * @covers Clicky_Options_Admin::support_text
+	 *
+	 * @return void
 	 */
 	public function test_support_text() {
 		ob_start();
@@ -131,6 +147,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests whether a proper input field is generated.
 	 *
 	 * @covers Clicky_Options_Admin::input_text
+	 *
+	 * @return void
 	 */
 	public function test_input_text() {
 		$this->expectOutputString( '<input type="text" class="text" name="testname" value="testvalue"/>' );
@@ -142,6 +160,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests whether a proper checkbox input field is generated.
 	 *
 	 * @covers Clicky_Options_Admin::input_checkbox
+	 *
+	 * @return void
 	 */
 	public function test_input_checkbox() {
 		$this->expectOutputString( '<input class="checkbox" type="checkbox"  name="clicky[testname]"/>' );
@@ -153,6 +173,8 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests whether a proper checked input field is generated when the setting is true.
 	 *
 	 * @covers Clicky_Options_Admin::input_text
+	 *
+	 * @return void
 	 */
 	public function test_input_checkbox_checked() {
 		$this->expectOutputString( '<input class="checkbox" type="checkbox"  checked=\'checked\' name="clicky[testname]"/>' );
