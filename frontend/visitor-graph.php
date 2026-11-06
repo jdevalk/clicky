@@ -20,7 +20,7 @@ class Clicky_Visitor_Graph {
 	/**
 	 * Will hold the visitor values for each hour.
 	 *
-	 * @var array
+	 * @var array<int, int|string>
 	 */
 	private $bar_values = [];
 
@@ -62,7 +62,7 @@ class Clicky_Visitor_Graph {
 	/**
 	 * This holds the plugins options.
 	 *
-	 * @var array
+	 * @var array<string, bool|string>
 	 */
 	private $options = [];
 
@@ -103,6 +103,8 @@ class Clicky_Visitor_Graph {
 	 * Creates (CSS for) head for the admin menu bar.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/add_action
+	 *
+	 * @return void
 	 */
 	public function stats_css() {
 		echo "\n";
@@ -118,6 +120,8 @@ class Clicky_Visitor_Graph {
 	 * @link https://codex.wordpress.org/Class_Reference/WP_Admin_Bar
 	 *
 	 * @param object $wp_admin_bar Class that contains all information for the admin bar. Passed by reference.
+	 *
+	 * @return void
 	 */
 	public function stats_admin_bar_menu( $wp_admin_bar ) {
 		$img_src = $this->create_graph();
@@ -163,6 +167,8 @@ class Clicky_Visitor_Graph {
 	 * Retrieve the visitor data from the Clicky API.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/wp_remote_get
+	 *
+	 * @return bool True when the visitor data could be retrieved and parsed, false otherwise.
 	 */
 	private function retrieve_clicky_api_details() {
 		$args = [
@@ -196,7 +202,7 @@ class Clicky_Visitor_Graph {
 	 *
 	 * @param string $json JSON encoded object of results.
 	 *
-	 * @return array|bool
+	 * @return array<int, int|string>|bool
 	 */
 	private function parse_clicky_results( $json ) {
 		$json = json_decode( $json );
@@ -228,6 +234,8 @@ class Clicky_Visitor_Graph {
 
 	/**
 	 * Creates the basic rectangle we'll project the bars on.
+	 *
+	 * @return void
 	 */
 	private function create_base_image() {
 		$this->img = imagecreate( $this->img_width, $this->img_height );
@@ -240,6 +248,8 @@ class Clicky_Visitor_Graph {
 
 	/**
 	 * Calculate the ratio between the max value of the bar values and the image height to adjust bars length.
+	 *
+	 * @return void
 	 */
 	private function calculate_ratio() {
 		$max_value = max( $this->bar_values );
@@ -251,6 +261,8 @@ class Clicky_Visitor_Graph {
 
 	/**
 	 * Create the individual bars on the image.
+	 *
+	 * @return void
 	 */
 	private function add_bars_to_image() {
 		$this->bar_color = imagecolorallocate( $this->img, 240, 240, 240 );
@@ -267,6 +279,8 @@ class Clicky_Visitor_Graph {
 	 *
 	 * @param int $index  Offset.
 	 * @param int $height Height.
+	 *
+	 * @return void
 	 */
 	private function create_bar( $index, $height ) {
 		$x_axis_1 = ( $this->gap + $index * ( $this->gap + $this->bar_width ) );

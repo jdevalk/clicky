@@ -28,6 +28,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Register the needed option and its settings sections.
+	 *
+	 * @return void
 	 */
 	public function admin_init() {
 		register_setting( self::$option_group, parent::$option_name, [ $this, 'sanitize_options_on_save' ] );
@@ -39,13 +41,15 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Register the basic settings.
+	 *
+	 * @return void
 	 */
 	private function register_basic_settings() {
 		add_settings_section(
 			'basic-settings',
 			__( 'Basic settings', 'clicky' ),
 			[ $this, 'basic_settings_intro' ],
-			'clicky'
+			'clicky',
 		);
 
 		$clicky_settings = [
@@ -64,7 +68,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 				[ $this, 'input_text' ],
 				'clicky',
 				'basic-settings',
-				$args
+				$args,
 			);
 		}
 
@@ -72,19 +76,21 @@ class Clicky_Options_Admin extends Clicky_Options {
 			'clicky-like',
 			__( 'Like this plugin?', 'clicky' ),
 			[ $this, 'like_text' ],
-			'clicky'
+			'clicky',
 		);
 
 		add_settings_section(
 			'clicky-support',
 			__( 'Need support?', 'clicky' ),
 			[ $this, 'support_text' ],
-			'clicky'
+			'clicky',
 		);
 	}
 
 	/**
 	 * Register the separate advanced settings screen.
+	 *
+	 * @return void
 	 */
 	private function register_advanced_settings() {
 		add_settings_section( 'clicky-advanced', __( 'Advanced Settings', 'clicky' ), null, 'clicky-advanced' );
@@ -109,8 +115,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 		foreach ( $advanced_settings as $key => $arr ) {
 			$args = [
 				'name'  => $key,
-				'value' => isset( $this->options[ $key ] ) ? $this->options[ $key ] : false,
-				'desc'  => isset( $arr['desc'] ) ? $arr['desc'] : '',
+				'value' => ( $this->options[ $key ] ?? false ),
+				'desc'  => ( $arr['desc'] ?? '' ),
 			];
 			add_settings_field(
 				$key,
@@ -118,20 +124,22 @@ class Clicky_Options_Admin extends Clicky_Options {
 				[ $this, 'input_checkbox' ],
 				'clicky-advanced',
 				'clicky-advanced',
-				$args
+				$args,
 			);
 		}
 	}
 
 	/**
 	 * Register the outbound links settings section.
+	 *
+	 * @return void
 	 */
 	private function register_outbound_settings() {
 		add_settings_section(
 			'clicky-outbound',
 			__( 'Outbound Links', 'clicky' ),
 			[ $this, 'outbound_explanation' ],
-			'clicky-advanced'
+			'clicky-advanced',
 		);
 
 		$args = [
@@ -145,12 +153,14 @@ class Clicky_Options_Admin extends Clicky_Options {
 			[ $this, 'input_text' ],
 			'clicky-advanced',
 			'clicky-outbound',
-			$args
+			$args,
 		);
 	}
 
 	/**
 	 * Create a "plugin like" box.
+	 *
+	 * @return void
 	 */
 	public function like_text() {
 		require CLICKY_PLUGIN_DIR_PATH . 'admin/views/like-box.php';
@@ -170,9 +180,9 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Sanitize options.
 	 *
-	 * @param array $new_options Options to sanitize.
+	 * @param array<string, string> $new_options Options to sanitize, as submitted by the settings form.
 	 *
-	 * @return array
+	 * @return array<string, bool|int|string>
 	 */
 	public function sanitize_options_on_save( $new_options ) {
 		foreach ( $new_options as $key => $value ) {
@@ -210,6 +220,8 @@ class Clicky_Options_Admin extends Clicky_Options {
 
 	/**
 	 * Intro for the basic settings screen.
+	 *
+	 * @return void
 	 */
 	public function basic_settings_intro() {
 		echo '<p>';
@@ -217,13 +229,15 @@ class Clicky_Options_Admin extends Clicky_Options {
 			/* translators: 1: link open tag to the clicky user homepage; 2: link close tag. */
 			esc_html__( 'Go to your %1$suser homepage on Clicky%2$s and click &quot;Preferences&quot; under the name of the domain, you will find the Site ID, Site Key, Admin Site Key and Database Server under Site information.', 'clicky' ),
 			'<a href="http://clicky.com/145844">',
-			'</a>'
+			'</a>',
 		);
 		echo '</p>';
 	}
 
 	/**
 	 * Intro for the the outbound links section.
+	 *
+	 * @return void
 	 */
 	public function outbound_explanation() {
 		echo '<p>';
@@ -231,13 +245,15 @@ class Clicky_Options_Admin extends Clicky_Options {
 			/* translators: 1: link open tag to the clicky knowledge base article; 2: link close tag. */
 			esc_html__( 'If your site uses redirects for outbound links, instead of links that point directly to their external source (this is popular with affiliate links, for example), then you\'ll need to use this variable to tell our tracking code additional patterns to look for when automatically tracking outbound links. %1$sRead more here%2$s.', 'clicky' ),
 			'<a href="https://secure.getclicky.com/helpy?type=customization#outbound_pattern">',
-			'</a>'
+			'</a>',
 		);
 		echo '</p>';
 	}
 
 	/**
 	 * Text for the support box.
+	 *
+	 * @return void
 	 */
 	public function support_text() {
 		echo '<p>';
@@ -245,7 +261,7 @@ class Clicky_Options_Admin extends Clicky_Options {
 			/* translators: 1: link open tag to clicky forum website; 2: link close tag. */
 			esc_html__( 'If you\'re in need of support with Clicky and / or this plugin, please visit the %1$sClicky forums%2$s.', 'clicky' ),
 			"<a href='https://clicky.com/forums/'>",
-			'</a>'
+			'</a>',
 		);
 		echo '</p>';
 	}
@@ -253,7 +269,9 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Output an optional input description.
 	 *
-	 * @param array $args Arguments to get data from.
+	 * @param array<string, bool|string> $args Arguments to get data from.
+	 *
+	 * @return void
 	 */
 	private function input_desc( $args ) {
 		if ( isset( $args['desc'] ) ) {
@@ -264,7 +282,9 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Create a text input.
 	 *
-	 * @param array $args Arguments to get data from.
+	 * @param array<string, bool|string> $args Arguments to get data from.
+	 *
+	 * @return void
 	 */
 	public function input_text( $args ) {
 		echo '<input type="text" class="text" name="' . esc_attr( $args['name'] ) . '" value="' . esc_attr( $args['value'] ) . '"/>';
@@ -274,10 +294,12 @@ class Clicky_Options_Admin extends Clicky_Options {
 	/**
 	 * Create a checkbox input.
 	 *
-	 * @param array $args Arguments to get data from.
+	 * @param array<string, bool|string> $args Arguments to get data from.
+	 *
+	 * @return void
 	 */
 	public function input_checkbox( $args ) {
-		$option = isset( $this->options[ $args['name'] ] ) ? $this->options[ $args['name'] ] : false;
+		$option = ( $this->options[ $args['name'] ] ?? false );
 		echo '<input class="checkbox" type="checkbox" ' . checked( $option, true, false ) . ' name="clicky[' . esc_attr( $args['name'] ) . ']"/>';
 		$this->input_desc( $args );
 	}
