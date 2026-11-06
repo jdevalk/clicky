@@ -168,9 +168,13 @@ final class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 		$args         = $this->test_args;
 		$args['desc'] = 'For instance: <code>/out/</code>, <em>really</em>.<script>alert(1)</script>';
 
-		$this->expectOutputString( '<input type="text" class="text" name="testname" value="testvalue"/><p class="description">For instance: <code>/out/</code>, <em>really</em>.alert(1)</p>' );
-
+		ob_start();
 		self::$class_instance->input_text( $args );
+		$output = ob_get_clean();
+
+		// What kses leaves of the script tag's contents differs per WordPress version, so only check the tags.
+		$this->assertStringContainsString( '<p class="description">For instance: <code>/out/</code>, <em>really</em>.', $output );
+		$this->assertStringNotContainsString( '<script', $output );
 	}
 
 	/**
