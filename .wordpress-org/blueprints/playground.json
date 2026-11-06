@@ -1,0 +1,15 @@
+{
+    "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+    "landingPage": "/wp-admin/options-general.php?page=clicky",
+    "features": {
+        "networking": true
+    },
+    "plugins": [
+        "clicky"
+    ],
+    "steps": [
+        {
+            "step": "login"
+        }
+    ]
+}
