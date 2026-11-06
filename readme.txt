@@ -5,7 +5,7 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Requires at least: 5.9
 Tested up to: 6.1
-Requires PHP: 5.6.20
+Requires PHP: 7.4
 Stable tag: 2.1
 
 Integrates the Clicky web analytics service into your blog and adds features for comment tracking & more.
@@ -46,6 +46,8 @@ If you have bugs to report, please go to [the plugin's GitHub repository](https:
 = 2.1 =
 
 Released November 6th, 2026
+
+* Drops support for PHP versions below 7.4. The plugin now requires PHP 7.4 or higher.
 
 * Rebrands the plugin as Clicky for WordPress, with new plugin artwork.
 * Removes the Yoast news and social links box from the settings page.

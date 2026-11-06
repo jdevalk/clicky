@@ -8,7 +8,7 @@
 /**
  * Test class to test the Clicky_Admin_Page class.
  */
-class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
+final class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 
 	/**
 	 * Instance of the class being tested.
@@ -19,6 +19,8 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 
 	/**
 	 * Set up the class instance to be tested.
+	 *
+	 * @return void
 	 */
 	public static function set_up_before_class() {
 		parent::set_up_before_class();
@@ -29,6 +31,8 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 	 * Tests the constructor.
 	 *
 	 * @covers Clicky_Admin_Page::__construct
+	 *
+	 * @return void
 	 */
 	public function test___construct() {
 		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );
@@ -41,6 +45,8 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 	 * Tests whether the correct style is loaded on the Clicky settings page.
 	 *
 	 * @covers Clicky_Admin_Page::config_page_styles
+	 *
+	 * @return void
 	 */
 	public function test_config_page_styles_page_is_clicky() {
 		self::$class_instance->config_page_styles( 'settings_page_clicky' );
@@ -54,6 +60,8 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 	 * Tests whether the Clicky styles are not loaded when we're not on the Clicky settings page.
 	 *
 	 * @covers Clicky_Admin_Page::config_page_styles
+	 *
+	 * @return void
 	 */
 	public function test_config_page_styles_page_not_clicky() {
 		self::$class_instance->config_page_styles( 'plugins_page' );
@@ -67,6 +75,8 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 	 * and the deprecated clicky_admin_footer and Yoast\WP\Clicky\admin_footer actions for backward compatibility.
 	 *
 	 * @covers Clicky_Admin_Page::config_page
+	 *
+	 * @return void
 	 */
 	public function test_config_page_fires_footer_actions() {
 		$this->setExpectedDeprecated( 'clicky_admin_footer' );
@@ -105,6 +115,8 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 
 	/**
 	 * Echoes a marker from the clicky/admin_footer action.
+	 *
+	 * @return void
 	 */
 	public function echo_marker_new() {
 		echo 'clicky-footer-new';
@@ -112,6 +124,8 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 
 	/**
 	 * Echoes a marker from the deprecated clicky_admin_footer action.
+	 *
+	 * @return void
 	 */
 	public function echo_marker_legacy() {
 		echo 'clicky-footer-legacy';
@@ -119,6 +133,8 @@ class Clicky_Admin_Page_Test extends Clicky_UnitTestCase {
 
 	/**
 	 * Echoes a marker from the deprecated Yoast\WP\Clicky\admin_footer action.
+	 *
+	 * @return void
 	 */
 	public function echo_marker_yoast() {
 		echo 'clicky-footer-yoast';

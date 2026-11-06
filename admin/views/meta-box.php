@@ -11,7 +11,7 @@
 		/* translators: 1: link open tag to clicky website tracking page; 2: link close tag. */
 		esc_html__( 'Clicky can track Goals for you too, %1$syou can create them here%2$s. To be able to track a goal on this post, you need to specify the goal ID here. Optionally, you can also provide the goal revenue.', 'clicky' ),
 		'<a target="_blank" href="' . esc_url( 'https://clicky.com/stats/goals-setup?site_id=' . $this->options['site_id'] ) . '">',
-		'</a>'
+		'</a>',
 	);
 	?>
 </p>

@@ -15,7 +15,7 @@ class Clicky_Options {
 	/**
 	 * The default options for the Clicky plugin.
 	 *
-	 * @var array
+	 * @var array<string, bool|string>
 	 */
 	public static $option_defaults = [
 		'site_id'          => '',    // There is no default site ID as we don't know it...
@@ -61,7 +61,7 @@ class Clicky_Options {
 	/**
 	 * Holds the actual options.
 	 *
-	 * @var array
+	 * @var array<string, bool|string>
 	 */
 	public $options = [];
 
@@ -76,6 +76,8 @@ class Clicky_Options {
 	/**
 	 * Loads Clicky-options set in WordPress.
 	 * If already set: trim some option. Otherwise load defaults.
+	 *
+	 * @return void
 	 */
 	private function load_options() {
 		$options = get_option( self::$option_name );
@@ -90,6 +92,8 @@ class Clicky_Options {
 
 	/**
 	 * Forces all options to be of the type we expect them to be of.
+	 *
+	 * @return void
 	 */
 	private function sanitize_options() {
 		foreach ( $this->options as $key => $value ) {
@@ -119,7 +123,7 @@ class Clicky_Options {
 	/**
 	 * Returns the Clicky options.
 	 *
-	 * @return array
+	 * @return array<string, bool|string>
 	 */
 	public function get() {
 		return $this->options;

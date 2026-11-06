@@ -13,7 +13,7 @@ class Clicky_Admin {
 	/**
 	 * This holds the plugins options.
 	 *
-	 * @var array
+	 * @var array<string, bool|string>
 	 */
 	public $options = [];
 
@@ -42,6 +42,8 @@ class Clicky_Admin {
 
 	/**
 	 * Initialize needed actions.
+	 *
+	 * @return void
 	 */
 	public function admin_init() {
 		$public_post_types = get_post_types( [ 'public' => true ] );
@@ -52,7 +54,7 @@ class Clicky_Admin {
 				__( 'Clicky Goal Tracking', 'clicky' ),
 				[ $this, 'meta_box_content' ],
 				$post_type,
-				'side'
+				'side',
 			);
 		}
 
@@ -64,6 +66,8 @@ class Clicky_Admin {
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/add_options_page
 	 * @link https://codex.wordpress.org/Function_Reference/add_dashboard_page
+	 *
+	 * @return void
 	 */
 	private function register_menu_pages() {
 		add_options_page(
@@ -71,7 +75,7 @@ class Clicky_Admin {
 			__( 'Clicky', 'clicky' ),
 			'manage_options',
 			$this->hook,
-			[ new Clicky_Admin_Page(), 'config_page' ]
+			[ new Clicky_Admin_Page(), 'config_page' ],
 		);
 
 		add_dashboard_page(
@@ -79,12 +83,14 @@ class Clicky_Admin {
 			__( 'Clicky Stats', 'clicky' ),
 			'manage_options',
 			'clicky_stats',
-			[ $this, 'dashboard_page' ]
+			[ $this, 'dashboard_page' ],
 		);
 	}
 
 	/**
 	 * Creates warnings for empty fields in the admin.
+	 *
+	 * @return void
 	 */
 	public function admin_warnings() {
 		$required_options = [ 'site_id', 'site_key', 'admin_site_key' ];
@@ -100,6 +106,8 @@ class Clicky_Admin {
 
 	/**
 	 * Outputs a warning.
+	 *
+	 * @return void
 	 */
 	private function setup_warning() {
 		echo "<div class='updated'><p><strong>";
@@ -109,7 +117,7 @@ class Clicky_Admin {
 			/* translators: 1: link open tag to the plugin settings page; 2: link close tag. */
 			esc_html__( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ),
 			"<a href='" . esc_url( $this->plugin_options_url() ) . "'>",
-			'</a>'
+			'</a>',
 		);
 		echo '</p></div>';
 	}
@@ -127,6 +135,8 @@ class Clicky_Admin {
 	 * Add meta box for entering specific goals.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/get_post_meta
+	 *
+	 * @return void
 	 */
 	public function meta_box_content() {
 		global $post;
@@ -144,6 +154,8 @@ class Clicky_Admin {
 	 * Updates post meta for '_clicky_goal' with goal ID and value.
 	 *
 	 * @param int $post_id The post ID.
+	 *
+	 * @return void
 	 */
 	public function insert_post( $post_id ) {
 		$clicky_goal = [
@@ -155,6 +167,8 @@ class Clicky_Admin {
 
 	/**
 	 * Loads (external) stats page in an iframe.
+	 *
+	 * @return void
 	 */
 	public function dashboard_page() {
 		$args       = [
@@ -169,10 +183,10 @@ class Clicky_Admin {
 	/**
 	 * Add a link to the settings page to the plugins list.
 	 *
-	 * @param array  $links Links to add.
-	 * @param string $file  Plugin file name.
+	 * @param array<int|string, string> $links Links to add.
+	 * @param string                    $file  Plugin file name.
 	 *
-	 * @return array
+	 * @return array<int|string, string>
 	 */
 	public function add_action_link( $links, $file ) {
 		static $this_plugin;

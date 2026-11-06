@@ -38,7 +38,7 @@
 
 	<rule ref="Yoast">
 		<!-- The Clicky plugin is a stand-alone plugin, so it doesn't have access to YoastSEO functions. -->
-		<exclude name="Yoast.Yoast.AlternativeFunctions"/>
+		<exclude name="Yoast.Yoast.JsonEncodeAlternative"/>
 
 		<properties>
 			<!-- Set the custom test class whitelist for all sniffs which use it in one go.
@@ -105,6 +105,12 @@
 	<!-- Valid usage: For testing purposes, some non-prefixed globals are being created. -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<exclude-pattern>/tests/bootstrap\.php$</exclude-pattern>
+	</rule>
+
+	<!-- The test classes follow the WordPress core test suite conventions and are
+		 deliberately not namespaced, as PHPUnit discovers them by class name. -->
+	<rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+		<exclude-pattern>/tests/*</exclude-pattern>
 	</rule>
 
 
