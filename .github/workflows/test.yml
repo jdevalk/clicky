@@ -29,15 +29,17 @@ jobs:
             wp_version: '5.9'
             multisite: true
 
+          # WP 6.5 is the last version which supports PHP < 7.2.
           - php_version: '7.0'
-            wp_version: 'latest'
+            wp_version: '6.5'
             multisite: false
 
           - php_version: '7.2'
             wp_version: '5.9'
             multisite: false
 
-          - php_version: '7.3'
+          # WP trunk requires PHP 7.4.
+          - php_version: '7.4'
             wp_version: 'trunk'
             multisite: true
 
@@ -92,7 +94,7 @@ jobs:
         run: composer config --unset platform.php
 
       - name: "Install Composer dependencies"
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
         with:
           # Force a `composer update` run.
           dependency-versions: "highest"
@@ -100,6 +102,10 @@ jobs:
           composer-options: "yoast/wp-test-utils --with-dependencies"
           # Bust the cache at least once a month - output format: YYYY-MM-DD.
           custom-cache-suffix: $(date -u -d "-0 month -$(($(date +%d)-1)) days" "+%F")
+
+      # The install script uses `svn export`, and Subversion is no longer included on ubuntu-latest.
+      - name: Install Subversion
+        run: sudo apt-get update && sudo apt-get install -y subversion
 
       - name: Install WP
         shell: bash
