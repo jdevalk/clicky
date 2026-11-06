@@ -19,6 +19,8 @@ final class Clicky_Options_Test extends Clicky_UnitTestCase {
 
 	/**
 	 * Set up the class instance to be tested.
+	 *
+	 * @return void
 	 */
 	public static function set_up_before_class() {
 		parent::set_up_before_class();
@@ -29,6 +31,8 @@ final class Clicky_Options_Test extends Clicky_UnitTestCase {
 	 * Tests whether our getter works.
 	 *
 	 * @covers Clicky_Options::get
+	 *
+	 * @return void
 	 */
 	public function test_get() {
 		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->get() );
@@ -38,6 +42,8 @@ final class Clicky_Options_Test extends Clicky_UnitTestCase {
 	 * Tests whether our constructor works as expected.
 	 *
 	 * @covers Clicky_Options::__construct
+	 *
+	 * @return void
 	 */
 	public function test___construct() {
 		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );

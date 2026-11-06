@@ -20,12 +20,14 @@ final class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	/**
 	 * Temporary storage for admin options for a test.
 	 *
-	 * @var array
+	 * @var array<string, bool|string>
 	 */
 	private $options;
 
 	/**
 	 * Set up the class instance to be tested.
+	 *
+	 * @return void
 	 */
 	public static function set_up_before_class() {
 		parent::set_up_before_class();
@@ -36,6 +38,8 @@ final class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests class constructor.
 	 *
 	 * @covers Clicky_Admin::__construct
+	 *
+	 * @return void
 	 */
 	public function test___construct() {
 		$this->assertSame( Clicky_Options::$option_defaults, self::$class_instance->options );
@@ -51,6 +55,8 @@ final class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests whether metaboxes are set up correctly.
 	 *
 	 * @covers Clicky_Admin::admin_init
+	 *
+	 * @return void
 	 */
 	public function test_admin_init() {
 
@@ -65,6 +71,8 @@ final class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests our warning for new installs.
 	 *
 	 * @covers Clicky_Admin::setup_warning
+	 *
+	 * @return void
 	 */
 	public function test_setup_warning() {
 		$this->expectOutputString( "<div class='updated'><p><strong>Clicky is almost ready. </strong>You must <a href='http://example.org/wp-admin/options-general.php?page=clicky'> enter your Clicky Site ID, Site Key and Admin Site Key</a> for it to work.</p></div>" );
@@ -75,6 +83,8 @@ final class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * Test whether no warnings are generated when the required keys are set.
 	 *
 	 * @covers Clicky_Admin::setup_warning
+	 *
+	 * @return void
 	 */
 	public function test_setup_warning_false() {
 		// Set the required variables to a value.
@@ -90,6 +100,8 @@ final class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests whether our metabox has the output we expect.
 	 *
 	 * @covers Clicky_Admin::meta_box_content
+	 *
+	 * @return void
 	 */
 	public function test_meta_box_content() {
 		$this->options = self::$class_instance->options;
@@ -117,6 +129,8 @@ final class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests whether clicky data is properly inserted on post insert.
 	 *
 	 * @covers Clicky_Admin::insert_post
+	 *
+	 * @return void
 	 */
 	public function test_insert_post() {
 		add_action( 'wp_insert_post', [ self::$class_instance, 'insert_post' ] );
@@ -137,6 +151,8 @@ final class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests whether the dashboard page is loading as expected.
 	 *
 	 * @covers Clicky_Admin::dashboard_page
+	 *
+	 * @return void
 	 */
 	public function test_dashboard_page() {
 		self::$class_instance->options['site_id']  = 1;
@@ -156,6 +172,8 @@ final class Clicky_Admin_Test extends Clicky_UnitTestCase {
 	 * Tests whether the plugin action link on the plugins page is added.
 	 *
 	 * @covers Clicky_Admin::add_action_link
+	 *
+	 * @return void
 	 */
 	public function test_add_action_link() {
 		$output   = self::$class_instance->add_action_link( [], CLICKY_PLUGIN_FILE );

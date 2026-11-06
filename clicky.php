@@ -54,6 +54,8 @@ class Clicky_Plugin {
 
 	/**
 	 * Initialize the whole plugin.
+	 *
+	 * @return void
 	 */
 	public function init() {
 		load_plugin_textdomain( 'clicky', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
