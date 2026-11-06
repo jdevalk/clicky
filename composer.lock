@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11d0d589619f2c6abd4c15e5fe9863fc",
+    "content-hash": "fae6f40421fec53ccbbc954b75f19085",
     "packages": [
         {
             "name": "composer/installers",
@@ -156,48 +156,6 @@
                 }
             ],
             "time": "2021-09-13T08:19:44+00:00"
-        },
-        {
-            "name": "yoast/i18n-module",
-            "version": "1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Yoast/i18n-module.git",
-                "reference": "3bf8ae3ee1bb1cb7d80a78291c6ad3cbd0ee0711"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/i18n-module/zipball/3bf8ae3ee1bb1cb7d80a78291c6ad3cbd0ee0711",
-                "reference": "3bf8ae3ee1bb1cb7d80a78291c6ad3cbd0ee0711",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "i18n-module.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Team Yoast",
-                    "email": "support@yoast.com",
-                    "homepage": "https://yoast.com"
-                }
-            ],
-            "description": "Handle i18n for WordPress plugins.",
-            "homepage": "https://github.com/Yoast/i18n-module",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/Yoast/i18n-module/issues",
-                "source": "https://github.com/Yoast/i18n-module/tree/1.x"
-            },
-            "time": "2017-02-02T09:36:28+00:00"
         }
     ],
     "packages-dev": [
@@ -2658,15 +2616,15 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=5.6"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "5.6.40"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.11.0"
 }

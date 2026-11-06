@@ -74,6 +74,19 @@ class Clicky_Options_Admin_Test extends Clicky_UnitTestCase {
 	}
 
 	/**
+	 * Tests that the like box links to the plugin's translation project on translate.wordpress.org.
+	 *
+	 * @covers Clicky_Options_Admin::like_text
+	 */
+	public function test_like_text_links_to_translations() {
+		ob_start();
+		self::$class_instance->like_text();
+		$output = ob_get_clean();
+
+		$this->assertStringContainsString( '<a href="https://translate.wordpress.org/projects/wp-plugins/clicky/">', $output );
+	}
+
+	/**
 	 * Makes sure there is output and makes sure our affiliate link is in it.
 	 *
 	 * @covers Clicky_Options_Admin::basic_settings_intro

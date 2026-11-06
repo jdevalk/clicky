@@ -20,8 +20,6 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 		add_action( 'admin_enqueue_scripts', [ $this, 'config_page_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'config_page_styles' ] );
-
-		add_action( 'admin_head', [ $this, 'i18n_module' ] );
 	}
 
 	/**
@@ -127,23 +125,5 @@ class Clicky_Admin_Page extends Clicky_Admin {
 	 */
 	private function clicky_news() {
 		$this->rss_news( 'https://blog.clicky.com/feed/', __( 'Latest news from Clicky', 'clicky' ) );
-	}
-
-	/**
-	 * Instantiate the i18n module.
-	 */
-	public function i18n_module() {
-		new yoast_i18n(
-			[
-				'textdomain'     => 'clicky',
-				'project_slug'   => 'clicky-wordpress-plugin',
-				'plugin_name'    => __( 'Clicky for WordPress', 'clicky' ),
-				'hook'           => 'clicky/admin_footer',
-				'glotpress_url'  => 'http://translate.yoast.com',
-				'glotpress_name' => __( 'Yoast Translate', 'clicky' ),
-				'glotpress_logo' => 'https://cdn.yoast.com/wp-content/uploads/i18n-images/Yoast_Translate.svg',
-				'register_url '  => 'http://translate.yoast.com/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=clicky-i18n-promo',
-			]
-		);
 	}
 }
