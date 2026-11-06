@@ -36,7 +36,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 			'clicky-admin-css',
 			CLICKY_PLUGIN_DIR_URL . 'css/dist/clicky_admin.css',
 			null,
-			CLICKY_PLUGIN_VERSION
+			CLICKY_PLUGIN_VERSION,
 		);
 	}
 
@@ -55,7 +55,7 @@ class Clicky_Admin_Page extends Clicky_Admin {
 			CLICKY_PLUGIN_DIR_URL . 'js/admin.min.js',
 			null,
 			CLICKY_PLUGIN_VERSION,
-			true
+			true,
 		);
 	}
 

@@ -12,7 +12,7 @@
  * Plugin URI:        https://wordpress.org/plugins/clicky/
  * Description:       The Clicky for WordPress plugin makes it easy for you to add your Clicky analytics tracking code to your WordPress install, while also giving you some advanced tracking options.
  * Author:            Joost de Valk
- * Requires PHP:      5.6
+ * Requires PHP:      7.4
  * Requires at least: 5.9
  * Author URI:        https://joost.blog/
  * Text Domain:       clicky
@@ -82,5 +82,5 @@ add_action(
 	'plugins_loaded',
 	static function () {
 		new Clicky_Plugin();
-	}
+	},
 );

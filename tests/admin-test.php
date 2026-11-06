@@ -8,7 +8,7 @@
 /**
  * Test class to test the Clicky_Admin class.
  */
-class Clicky_Admin_Test extends Clicky_UnitTestCase {
+final class Clicky_Admin_Test extends Clicky_UnitTestCase {
 
 	/**
 	 * Instance of the class being tested.

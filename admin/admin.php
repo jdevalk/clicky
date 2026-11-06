@@ -52,7 +52,7 @@ class Clicky_Admin {
 				__( 'Clicky Goal Tracking', 'clicky' ),
 				[ $this, 'meta_box_content' ],
 				$post_type,
-				'side'
+				'side',
 			);
 		}
 
@@ -71,7 +71,7 @@ class Clicky_Admin {
 			__( 'Clicky', 'clicky' ),
 			'manage_options',
 			$this->hook,
-			[ new Clicky_Admin_Page(), 'config_page' ]
+			[ new Clicky_Admin_Page(), 'config_page' ],
 		);
 
 		add_dashboard_page(
@@ -79,7 +79,7 @@ class Clicky_Admin {
 			__( 'Clicky Stats', 'clicky' ),
 			'manage_options',
 			'clicky_stats',
-			[ $this, 'dashboard_page' ]
+			[ $this, 'dashboard_page' ],
 		);
 	}
 
@@ -109,7 +109,7 @@ class Clicky_Admin {
 			/* translators: 1: link open tag to the plugin settings page; 2: link close tag. */
 			esc_html__( 'You must %1$s enter your Clicky Site ID, Site Key and Admin Site Key%2$s for it to work.', 'clicky' ),
 			"<a href='" . esc_url( $this->plugin_options_url() ) . "'>",
-			'</a>'
+			'</a>',
 		);
 		echo '</p></div>';
 	}

@@ -8,7 +8,7 @@
 /**
  * Test class to test the Clicky_Options class.
  */
-class Clicky_Options_Test extends Clicky_UnitTestCase {
+final class Clicky_Options_Test extends Clicky_UnitTestCase {
 
 	/**
 	 * Instance of the class being tested.
