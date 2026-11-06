@@ -29,15 +29,17 @@ jobs:
             wp_version: '5.9'
             multisite: true
 
+          # WP 6.5 is the last version which supports PHP < 7.2.
           - php_version: '7.1'
-            wp_version: 'latest'
+            wp_version: '6.5'
             multisite: false
 
           - php_version: '7.2'
             wp_version: '5.9'
             multisite: false
 
-          - php_version: '7.3'
+          # WP trunk requires PHP 7.4.
+          - php_version: '7.4'
             wp_version: 'trunk'
             multisite: true
 
