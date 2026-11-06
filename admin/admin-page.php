@@ -20,8 +20,6 @@ class Clicky_Admin_Page extends Clicky_Admin {
 
 		add_action( 'admin_enqueue_scripts', [ $this, 'config_page_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'config_page_styles' ] );
-
-		add_action( 'admin_head', [ $this, 'i18n_module' ] );
 	}
 
 	/**
@@ -138,59 +136,5 @@ class Clicky_Admin_Page extends Clicky_Admin {
 		$extra_links .= '<li class="email"><a href="https://yoast.com/newsletter/">' . esc_html__( 'Subscribe by email', 'clicky' ) . '</a></li>';
 
 		$this->rss_news( 'https://yoast.com/feed/', __( 'Latest news from Yoast', 'clicky' ), $extra_links );
-	}
-
-	/**
-	 * Instantiate the i18n module.
-	 *
-	 * Shows a promo asking for help with the translation when the admin's language is
-	 * incomplete on translate.wordpress.org.
-	 *
-	 * Only runs on the Clicky settings page and for users who can manage options.
-	 * Dismissing the promo hides it for the whole site, so it must not be reachable
-	 * for other users or on other admin pages.
-	 */
-	public function i18n_module() {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
-		}
-
-		$screen = get_current_screen();
-		if ( $screen === null || $screen->id !== 'settings_page_clicky' ) {
-			return;
-		}
-
-		$this->migrate_i18n_promo_dismissal();
-
-		/*
-		 * Translation stats come from https://translate.wordpress.org/api/projects/wp-plugins/clicky/stable/.
-		 * The project slug is only used in the names of the options the module stores, so it is kept
-		 * the same as before to leave existing dismissals in place.
-		 */
-		new I18n_Notice_WordPressOrg(
-			[
-				'textdomain'     => 'clicky',
-				'project_slug'   => 'clicky-wordpress-plugin',
-				'plugin_name'    => __( 'Clicky for WordPress', 'clicky' ),
-				'hook'           => 'Yoast\WP\Clicky\admin_footer',
-				'glotpress_name' => 'translate.wordpress.org',
-			]
-		);
-	}
-
-	/**
-	 * Carries over a promo dismissal stored by the old yoast/i18n-module.
-	 *
-	 * The old module stored the dismissal in a transient; wpbp/i18n-notice stores it in an option.
-	 * Without this, sites that dismissed the promo would see it again.
-	 */
-	private function migrate_i18n_promo_dismissal() {
-		$old_key = 'yoast_i18n_clicky-wordpress-plugin_promo_hide';
-		if ( ! get_transient( $old_key ) ) {
-			return;
-		}
-
-		update_option( 'i18n_notice_clicky-wordpress-plugin_promo_hide', true );
-		delete_transient( $old_key );
 	}
 }

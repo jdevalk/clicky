@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "faa5c9e27da4ce5a407e94d2b9d6da1d",
+    "content-hash": "1f4431bfae6bcd476e8f08fe945cfadb",
     "packages": [
         {
             "name": "composer/installers",
@@ -156,50 +156,6 @@
                 }
             ],
             "time": "2021-09-13T08:19:44+00:00"
-        },
-        {
-            "name": "wpbp/i18n-notice",
-            "version": "dev-fix/dismiss-capability-nonce",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tacoverdo/i18n-notice.git",
-                "reference": "8efe132fdb45ac72a5498c5b55120c920026419b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tacoverdo/i18n-notice/zipball/8efe132fdb45ac72a5498c5b55120c920026419b",
-                "reference": "8efe132fdb45ac72a5498c5b55120c920026419b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Team Yoast",
-                    "email": "support@yoast.com",
-                    "homepage": "https://yoast.com"
-                }
-            ],
-            "description": "Handle i18n for plugins, based on Yoast i18n-module ",
-            "homepage": "https://github.com/WPBP/i18n-notice",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/WPBP/i18n-notice/issues",
-                "source": "https://github.com/WPBP/i18n-notice"
-            },
-            "time": "2026-11-04T08:28:40+00:00"
         }
     ],
     "packages-dev": [
@@ -2660,17 +2616,15 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "wpbp/i18n-notice": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1"
+        "php": ">=5.6"
     },
     "platform-dev": {},
     "platform-overrides": {
-        "php": "7.1.33"
+        "php": "5.6.40"
     },
     "plugin-api-version": "2.11.0"
 }

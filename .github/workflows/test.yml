@@ -25,12 +25,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - php_version: '7.1'
+          - php_version: '5.6'
             wp_version: '5.9'
             multisite: true
 
           # WP 6.5 is the last version which supports PHP < 7.2.
-          - php_version: '7.1'
+          - php_version: '7.0'
             wp_version: '6.5'
             multisite: false
 

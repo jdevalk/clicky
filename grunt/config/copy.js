@@ -22,7 +22,6 @@ module.exports = {
 					"!vendor/bin/**",
 					"!vendor/composer/installed.json",
 					"!vendor/composer/installers/**",
-					"!vendor/wpbp/i18n-notice/LICENSE",
 					"!**/composer.json",
 					"!**/README.md",
 				],
