@@ -1,0 +1,33 @@
+name: Sync readme.txt to WordPress.org trunk
+
+# WordPress.org reads fields like "Tested up to" from the readme.txt in SVN
+# trunk, so this workflow commits only readme.txt to trunk. That updates the
+# plugin page without cutting a new release. Run it manually after changing
+# readme.txt on develop.
+on:
+  workflow_dispatch:
+
+jobs:
+  sync-readme:
+    name: Sync readme.txt to SVN trunk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Install Subversion
+        run: sudo apt-get update && sudo apt-get install -y subversion
+
+      - name: Commit readme.txt to trunk
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        run: |
+          svn checkout --depth empty https://plugins.svn.wordpress.org/clicky/trunk/ svn-trunk \
+            --username "$SVN_USERNAME" --password "$SVN_PASSWORD" --non-interactive --trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other
+          svn update svn-trunk/readme.txt \
+            --username "$SVN_USERNAME" --password "$SVN_PASSWORD" --non-interactive
+          cp readme.txt svn-trunk/readme.txt
+          svn commit svn-trunk/readme.txt \
+            --message "Update readme.txt (Tested up to)" \
+            --username "$SVN_USERNAME" --password "$SVN_PASSWORD" --non-interactive
