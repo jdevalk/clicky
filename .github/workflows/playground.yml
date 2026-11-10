@@ -136,7 +136,7 @@ jobs:
           compression-level: 0
 
       # Comment with a Playground link that installs from the artifact ZIP
-      - uses: mshick/add-pr-comment@v2
+      - uses: mshick/add-pr-comment@v3
         if: github.event_name == 'pull_request'
         with:
           message: |
