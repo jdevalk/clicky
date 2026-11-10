@@ -1,33 +1,46 @@
-name: Sync readme.txt to WordPress.org trunk
+name: Sync readme.txt to WordPress.org
 
-# WordPress.org reads fields like "Tested up to" from the readme.txt in SVN
-# trunk, so this workflow commits only readme.txt to trunk. That updates the
-# plugin page without cutting a new release. Run it manually after changing
-# readme.txt on develop.
+# The plugin directory shows the readme from the Stable tag folder, so a
+# readme-only update has to land in both trunk and the current tag folder
+# (per the Plugin Developer FAQ: "Just make sure you update the trunk and
+# tag folders"). This workflow commits only readme.txt to both, using the
+# existing SVN secrets, so fields like "Tested up to" can be updated
+# without cutting a new release. Run it manually after changing readme.txt
+# on develop.
 on:
   workflow_dispatch:
 
 jobs:
   sync-readme:
-    name: Sync readme.txt to SVN trunk
+    name: Sync readme.txt to SVN trunk and tag
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Subversion
         run: sudo apt-get update && sudo apt-get install -y subversion
 
-      - name: Commit readme.txt to trunk
+      - name: Commit readme.txt to trunk and the stable tag
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         run: |
+          SVN_AUTH="--username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive"
           svn checkout --depth empty https://plugins.svn.wordpress.org/clicky/trunk/ svn-trunk \
-            --username "$SVN_USERNAME" --password "$SVN_PASSWORD" --non-interactive --trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other
-          svn update svn-trunk/readme.txt \
-            --username "$SVN_USERNAME" --password "$SVN_PASSWORD" --non-interactive
+            $SVN_AUTH --trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other
+          svn update svn-trunk/readme.txt $SVN_AUTH
           cp readme.txt svn-trunk/readme.txt
           svn commit svn-trunk/readme.txt \
-            --message "Update readme.txt (Tested up to)" \
-            --username "$SVN_USERNAME" --password "$SVN_PASSWORD" --non-interactive
+            --message "Update readme.txt (Tested up to)" $SVN_AUTH
+
+          STABLE_TAG=$(grep -i '^Stable tag:' readme.txt | head -1 | sed 's/^Stable tag:[[:space:]]*//' | tr -d '\r')
+          echo "Stable tag is $STABLE_TAG"
+          if [ -n "$STABLE_TAG" ] && [ "$STABLE_TAG" != "trunk" ]; then
+            svn checkout --depth empty "https://plugins.svn.wordpress.org/clicky/tags/$STABLE_TAG/" svn-tag \
+              $SVN_AUTH --trust-server-cert-failures=unknown-ca,cn-mismatch,expired,not-yet-valid,other
+            svn update svn-tag/readme.txt $SVN_AUTH
+            cp readme.txt svn-tag/readme.txt
+            svn commit svn-tag/readme.txt \
+              --message "Update readme.txt (Tested up to)" $SVN_AUTH
+          fi
